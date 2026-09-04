@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
+import HomeHeader from "@/components/HomeHeader";
 import Footer from "@/components/Footer";
 import HomeClient from "./HomeClient";
 
@@ -80,7 +80,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <Header />
+      <HomeHeader />
       <HomeClient faqData={faqData} />
       <Footer
         email="hello@echo5digital.com"
