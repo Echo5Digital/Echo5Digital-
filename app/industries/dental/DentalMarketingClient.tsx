@@ -7,13 +7,11 @@ import Card from "@/components/Card";
 import ContactForm from "@/components/ContactForm";
 import {
   MapPin,
-  Star,
   TrendingUp,
   Search,
   MousePointerClick,
   FileText,
   Shield,
-  Globe,
   Bot,
   ClipboardList,
   BarChart3,
@@ -26,6 +24,8 @@ import {
   Award,
   Phone,
   Mail,
+  Palette,
+  Sparkles,
 } from "lucide-react";
 
 interface FaqItem {
@@ -39,70 +39,85 @@ interface Props {
 
 const services = [
   {
-    icon: MapPin,
-    title: "Local SEO",
+    icon: Search,
+    title: "AI-Powered Keyword Research for Dentists",
     description:
-      "Dominate Google Maps and local search results so patients in your area find your practice first — before your competitors.",
+      "We use advanced AI tools for in-depth keyword research, focusing on patient-focused terms and localized searches to drive high-quality traffic and convert visitors into patients.",
     badge: "High Impact",
   },
   {
-    icon: Search,
-    title: "Google Business Profile Optimization",
-    description:
-      "We fully optimize your GBP listing with accurate info, photos, services, and ongoing post management to maximize local visibility.",
-  },
-  {
-    icon: MousePointerClick,
-    title: "Google Ads Management",
-    description:
-      "AI-optimized paid search campaigns targeting high-intent keywords like 'dentist near me' to drive immediate new patient inquiries.",
-    badge: "Fast Results",
-  },
-  {
     icon: FileText,
-    title: "Content Marketing",
+    title: "Content Optimization with Patient Care Focus",
     description:
-      "SEO-driven blog posts, service pages, and FAQs that position your practice as a trusted authority and rank for patient search queries.",
+      "We optimize service pages, blog posts, and testimonials to highlight your expertise and unique services — building a strong connection with your audience.",
   },
   {
-    icon: Star,
-    title: "Reputation Management",
+    icon: Zap,
+    title: "Technical SEO for Dental Websites",
     description:
-      "Automated review generation workflows, response strategies, and monitoring to build a 5-star online reputation across Google and other platforms.",
-    badge: "Patient Trust",
-  },
-  {
-    icon: Globe,
-    title: "Website Design & Development",
-    description:
-      "Custom, conversion-optimized dental websites built to turn visitors into booked appointments — fast, mobile-first, and HIPAA-aware.",
-  },
-];
-
-const challenges = [
-  {
-    icon: Users,
-    title: "Intense Local Competition",
-    description:
-      "Most urban and suburban markets have multiple dental practices competing for the same patient pool. Standing out requires a strategic, AI-driven approach.",
-  },
-  {
-    icon: TrendingUp,
-    title: "High Patient Acquisition Costs",
-    description:
-      "Without optimized campaigns, dental practices overpay for leads. Smart targeting and AI optimization reduce cost-per-acquisition significantly.",
+      "Site structure optimization, loading time improvements, mobile responsiveness, and continuous performance monitoring keep your website fast, crawlable, and ranking.",
   },
   {
     icon: MapPin,
-    title: "Google Maps Dependency",
+    title: "Local SEO: Putting Your Practice on the Map",
     description:
-      "Over 70% of new dental patients begin their search on Google Maps. Without a strong local SEO strategy, practices remain invisible to the highest-intent prospects.",
+      "Google Business Profile optimization and local citation building ensure your practice appears in local search results — right where patients are looking.",
+    badge: "High Impact",
   },
   {
-    icon: Star,
-    title: "Review-Driven Decisions",
+    icon: MousePointerClick,
+    title: "Lead Generation for Dental Practices",
     description:
-      "Patients read reviews before booking. Practices with fewer than 4.5 stars or limited reviews lose patients to competitors before any conversation begins.",
+      "We optimize appointment booking forms, integrate AI-driven chatbots, and implement targeted calls-to-action to turn website visitors into booked patients.",
+    badge: "Fast Results",
+  },
+  {
+    icon: Users,
+    title: "Patient-Centric Social Media Strategies",
+    description:
+      "We integrate social media with SEO, leveraging Facebook, Instagram, and YouTube — using AI to optimize campaigns and analyze engagement.",
+  },
+  {
+    icon: Palette,
+    title: "Dental Branding and Web Development",
+    description:
+      "Custom website design and modern, patient-friendly interfaces help your practice stand out and build a brand that resonates with your target audience.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Google Ads and PPC Campaigns for Dentists",
+    description:
+      "Real-time AI optimization targets the right audience, maximizing ROI and appointment bookings from every ad dollar spent.",
+    badge: "Patient Trust",
+  },
+  {
+    icon: Sparkles,
+    title: "AI-Enhanced Patient Engagement",
+    description:
+      "Personalized service recommendations, automated appointment reminders, and dynamic content adaptation keep patients engaged before and after they book.",
+  },
+];
+
+const stats = [
+  {
+    metric: "75%",
+    label: "of patients search online for dental services",
+    source: "American Dental Association",
+  },
+  {
+    metric: "63%",
+    label: "of patients are more likely to choose a dentist with an active social media presence",
+    source: "Dental Economics",
+  },
+  {
+    metric: "46%",
+    label: "of all Google searches are seeking local information",
+    source: "Google",
+  },
+  {
+    metric: "20%",
+    label: "increase in patient conversion rates from AI-driven personalization",
+    source: "MarketsandMarkets",
   },
 ];
 
@@ -134,29 +149,6 @@ const steps = [
     title: "Reporting & Refinement",
     description:
       "You receive clear monthly reports showing new patient leads, ranking improvements, ad performance, and review growth — with ongoing strategy refinements.",
-  },
-];
-
-const results = [
-  {
-    metric: "3x",
-    label: "More Google Map Views",
-    note: "Illustrative — results vary by market and starting point",
-  },
-  {
-    metric: "40%",
-    label: "Reduction in Cost Per Lead",
-    note: "Illustrative — results vary by campaign and competition",
-  },
-  {
-    metric: "50+",
-    label: "New Patient Inquiries / Month",
-    note: "Illustrative — representative of optimized dental campaigns",
-  },
-  {
-    metric: "4.8★",
-    label: "Average Review Rating Achieved",
-    note: "Illustrative — based on reputation management programs",
   },
 ];
 
@@ -214,14 +206,14 @@ export default function DentalMarketingClient({ faqData }: Props) {
               }}
             >
               <Zap size={12} />
-              AI-Powered Dental Marketing
+              Dental SEO Experts
             </div>
 
             <h1
               className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
             >
-              Grow Your Dental Practice with{" "}
+              Best Dental SEO Company &{" "}
               <span
                 style={{
                   background: "linear-gradient(135deg, #7C3AED, #A855F7)",
@@ -229,7 +221,7 @@ export default function DentalMarketingClient({ faqData }: Props) {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                AI-Powered Marketing
+                Dental SEO Expert
               </span>
             </h1>
 
@@ -237,10 +229,10 @@ export default function DentalMarketingClient({ faqData }: Props) {
               className="text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0"
               style={{ color: "rgba(229,231,235,0.75)", fontFamily: "Inter, sans-serif" }}
             >
-              Echo5 Digital is a specialist dental marketing agency that uses
-              artificial intelligence to attract more patients, dominate local
-              search, and build an unbeatable online reputation — all done for
-              you.
+              Attract more patients with high-converting search strategies. Echo5
+              Digital specializes in dental SEO, using industry-specific
+              strategies and AI-driven tools to boost your practice's visibility
+              and patient appointments.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -353,21 +345,22 @@ export default function DentalMarketingClient({ faqData }: Props) {
                 className="text-sm font-semibold uppercase tracking-widest mb-3"
                 style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
               >
-                Quick Answer: What Is Dental Marketing?
+                Why SEO Is Essential for Dental Practices
               </h2>
               <p
                 className="text-base sm:text-lg leading-relaxed"
                 style={{ color: "rgba(229,231,235,0.85)", fontFamily: "Inter, sans-serif" }}
               >
-                Dental marketing encompasses the digital strategies dental
-                practices use to attract new patients, including Local SEO,
-                Google Ads, review management, and content marketing.{" "}
-                <strong style={{ color: "#E5E7EB" }}>Echo5 Digital</strong>{" "}
-                provides AI-powered, done-for-you dental marketing services
-                tailored to the competitive nature of local dental markets.
-                Services include Google Business Profile optimization, paid ads
-                management, reputation management, and custom website design.
-                Echo5 Digital serves dental practices in{" "}
+                The dental industry is highly competitive, and{" "}
+                <strong style={{ color: "#E5E7EB" }}>
+                  SEO for dental practices is essential
+                </strong>{" "}
+                for visibility and patient discovery.{" "}
+                <strong style={{ color: "#E5E7EB" }}>Echo5 Digital</strong> uses
+                industry-specific strategies and AI-driven tools — from
+                keyword research to local SEO and lead generation — to help
+                your practice rank higher, attract more patients, and convert
+                visitors into booked appointments. We serve dental practices in{" "}
                 <strong style={{ color: "#E5E7EB" }}>
                   Houston, Sugar Land, Texas
                 </strong>{" "}
@@ -378,93 +371,27 @@ export default function DentalMarketingClient({ faqData }: Props) {
         </div>
       </Section>
 
-      {/* ── DENTAL INDUSTRY CHALLENGES ── */}
-      <Section background="default" spacing="lg" withDivider id="challenges">
-        <div className="text-center mb-12">
-          <p
-            className="text-sm font-semibold uppercase tracking-widest mb-3"
-            style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
-          >
-            The Landscape
-          </p>
-          <h2
-            className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-          >
-            Why Dental Marketing Is Different
-          </h2>
-          <p
-            className="text-base max-w-2xl mx-auto"
-            style={{ color: "rgba(229,231,235,0.65)", fontFamily: "Inter, sans-serif" }}
-          >
-            Dental practices face a unique set of marketing challenges that
-            require specialized, hyper-local strategies — not generic agency
-            playbooks.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {challenges.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.title}
-                className="flex gap-4 p-6 rounded-2xl transition-all duration-300"
-                style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(124,58,237,0.2)",
-                }}
-              >
-                <div
-                  className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
-                  style={{
-                    background: "rgba(124,58,237,0.15)",
-                    border: "1px solid rgba(168,85,247,0.3)",
-                  }}
-                >
-                  <Icon size={22} style={{ color: "#A855F7" }} />
-                </div>
-                <div>
-                  <h3
-                    className="text-lg font-semibold mb-2"
-                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
-                  >
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </Section>
-
-      {/* ── DENTAL MARKETING SERVICES ── */}
+      {/* ── DENTAL SEO STRATEGY ── */}
       <Section background="elevated" spacing="lg" withDivider id="services">
         <div className="text-center mb-12">
           <p
             className="text-sm font-semibold uppercase tracking-widest mb-3"
             style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
           >
-            Our Services
+            Our Strategy
           </p>
           <h2
             className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
           >
-            Dental Marketing Services That Drive Results
+            Our Dental SEO Strategy
           </h2>
           <p
             className="text-base max-w-2xl mx-auto"
             style={{ color: "rgba(229,231,235,0.65)", fontFamily: "Inter, sans-serif" }}
           >
-            Every service is designed specifically for dental practices and
-            executed through our AI-powered, done-for-you model.
+            A comprehensive, nine-part approach that combines AI-driven
+            execution with dental-specific expertise to grow your practice.
           </p>
         </div>
 
@@ -664,38 +591,34 @@ export default function DentalMarketingClient({ faqData }: Props) {
         </div>
       </Section>
 
-      {/* ── RESULTS SECTION ── */}
+      {/* ── INDUSTRY STUDIES & STATISTICS ── */}
       <Section background="elevated" spacing="lg" withDivider id="results">
         <div className="text-center mb-4">
           <p
             className="text-sm font-semibold uppercase tracking-widest mb-3"
             style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
           >
-            Results
+            Industry Studies
           </p>
           <h2
             className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
           >
-            What Dental Practices Can Achieve
+            Why Dental SEO Matters
           </h2>
+          <p
+            className="text-base max-w-2xl mx-auto mb-10"
+            style={{ color: "rgba(229,231,235,0.65)", fontFamily: "Inter, sans-serif" }}
+          >
+            Industry research consistently shows how patients discover and
+            choose dental practices online.
+          </p>
         </div>
 
-        {/* Disclaimer */}
-        <p
-          className="text-center text-xs mb-10 max-w-xl mx-auto"
-          style={{ color: "rgba(229,231,235,0.4)", fontFamily: "Inter, sans-serif" }}
-        >
-          * The following indicators are illustrative and representative of
-          results achievable through optimized dental marketing programs.
-          Individual results vary based on market, starting point, and campaign
-          scope.
-        </p>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {results.map((result) => (
+          {stats.map((stat) => (
             <div
-              key={result.label}
+              key={stat.label}
               className="text-center p-6 rounded-2xl"
               style={{
                 background: "rgba(255,255,255,0.03)",
@@ -711,19 +634,19 @@ export default function DentalMarketingClient({ faqData }: Props) {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                {result.metric}
+                {stat.metric}
               </div>
               <p
                 className="text-sm font-semibold mb-2"
                 style={{ color: "#E5E7EB", fontFamily: "Space Grotesk, sans-serif" }}
               >
-                {result.label}
+                {stat.label}
               </p>
               <p
                 className="text-xs"
                 style={{ color: "rgba(229,231,235,0.35)", fontFamily: "Inter, sans-serif" }}
               >
-                {result.note}
+                Source: {stat.source}
               </p>
             </div>
           ))}

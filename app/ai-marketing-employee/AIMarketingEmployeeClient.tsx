@@ -304,7 +304,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
               }}
             >
               <img
-                src="https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                src="/9105822-100kb.jpg"
                 alt="AI Marketing Employee managing digital campaigns across multiple marketing channels"
                 className="w-full h-72 object-cover"
               />
@@ -375,18 +375,24 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
       </Section>
 
       {/* ── THE PROBLEM IT SOLVES ── */}
-      <Section background="default" spacing="lg" id="problem" withDivider>
+      <Section
+        background="transparent"
+        spacing="lg"
+        id="problem"
+        withDivider
+        className="!bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+      >
         <div className="text-center mb-12">
-          <p className="text-sm font-semibold uppercase tracking-widest text-purple-400 mb-3">
+          <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#6B4EF0" }}>
             The Problem
           </p>
           <h2
             className="text-3xl sm:text-4xl font-bold mb-4"
-            style={{ fontFamily: "Space Grotesk, sans-serif" }}
+            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
           >
             Marketing Is Broken for Small Businesses
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <p className="max-w-2xl mx-auto text-lg" style={{ color: "#5B5F73" }}>
             Managing modern marketing requires expertise across a dozen channels — yet most SMBs
             can't afford the team or tools to do it properly.
           </p>
@@ -426,14 +432,22 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
           ].map((item) => (
             <div
               key={item.title}
-              className="rounded-xl p-6 flex flex-col gap-3"
+              className="group rounded-xl p-6 flex flex-col gap-3 transition-all duration-300 hover:-translate-y-1"
               style={{
-                background: "rgba(255,255,255,0.03)",
+                background: "#15172B",
                 border: "1px solid rgba(124,58,237,0.2)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "rgba(168,85,247,0.6)";
+                e.currentTarget.style.boxShadow = "0 16px 40px rgba(124,58,237,0.35)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "rgba(124,58,237,0.2)";
+                e.currentTarget.style.boxShadow = "none";
               }}
             >
               <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+                className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110"
                 style={{ background: "rgba(124,58,237,0.15)", border: "1px solid rgba(168,85,247,0.25)" }}
               >
                 <item.icon size={18} style={{ color: "#A855F7" }} />
@@ -496,7 +510,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
           </div>
           <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(124,58,237,0.25)" }}>
             <img
-              src="https://images.pexels.com/photos/17483871/pexels-photo-17483871.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+              src="/abc.jpeg"
               alt="Agentic AI system managing multiple marketing channels simultaneously for business growth"
               className="w-full h-full object-cover min-h-[320px]"
             />

@@ -8,12 +8,9 @@ import ContactForm from "@/components/ContactForm";
 import {
   MapPin,
   TrendingUp,
-  Star,
   Search,
-  BarChart2,
   Share2,
   FileText,
-  Shield,
   ChevronDown,
   ChevronUp,
   Bot,
@@ -21,11 +18,13 @@ import {
   Eye,
   RefreshCw,
   ClipboardList,
+  Phone,
   CheckCircle,
   Car,
   Wrench,
-  Users,
-  Calendar,
+  Palette,
+  Sparkles,
+  Gauge,
 } from "lucide-react";
 
 interface FaqItem {
@@ -44,72 +43,63 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  const challenges = [
-    {
-      icon: Search,
-      title: "Hyper-Competitive Local Search",
-      description:
-        "Auto businesses fight for the same high-intent keywords like 'oil change near me' or 'used cars Houston.' Standing out in local search requires a precise, AI-driven strategy.",
-    },
-    {
-      icon: Calendar,
-      title: "Seasonal Demand Fluctuations",
-      description:
-        "Tire rotations spike in spring, A/C repairs surge in summer. Manually adjusting campaigns for seasonal shifts wastes budget — AI keeps your ads optimized year-round.",
-    },
-    {
-      icon: Car,
-      title: "Inventory & Promotion Complexity",
-      description:
-        "Dealerships cycle through inventory constantly. Promoting the right vehicles to the right buyers at the right moment demands dynamic ad strategies most agencies can't keep up with.",
-    },
-    {
-      icon: Star,
-      title: "Reputation Management",
-      description:
-        "A single negative review can cost you dozens of leads. Auto consumers read more reviews than almost any other category, making proactive reputation management non-negotiable.",
-    },
-  ];
-
   const services = [
     {
-      icon: MapPin,
-      title: "Local SEO",
+      icon: Search,
+      title: "AI-Driven Keyword Research",
       description:
-        "Dominate Google Maps and local search results for your area. We optimize your entire local SEO presence so buyers searching 'dealerships near me' find you first.",
+        "We conduct in-depth keyword research using advanced AI tools to identify relevant, profitable terms for automotive businesses, accounting for search patterns, seasonal trends, and location-based demand.",
       badge: "High Impact",
     },
     {
-      icon: BarChart2,
-      title: "Google Ads Management",
+      icon: FileText,
+      title: "Content Optimization for Automotive Businesses",
       description:
-        "AI-optimized search and display campaigns targeting in-market auto buyers. We continuously refine bids, keywords, and ad copy to maximize your cost-per-lead.",
-      badge: "Fast Results",
+        "We optimize vehicle listings, service pages, blog posts, and landing pages — focusing on vehicle details and SEO best practices to engage potential customers.",
     },
     {
-      icon: Star,
-      title: "Google Business Profile",
+      icon: Gauge,
+      title: "Technical SEO for Automotive Websites",
       description:
-        "A fully optimized GBP is your #1 local ranking factor. We manage photos, posts, Q&A, and review responses to keep your profile converting at peak performance.",
+        "Site architecture optimization, loading time improvements, mobile responsiveness, and continuous performance monitoring keep your website fast, secure, and mobile-friendly.",
+    },
+    {
+      icon: MapPin,
+      title: "Local SEO for Car Dealerships",
+      description:
+        "Optimization of your Google Business Profile, local citations, and analysis of local search patterns to increase visibility for area-specific searches.",
+      badge: "High Impact",
     },
     {
       icon: Share2,
-      title: "Social Media Marketing",
+      title: "Social Media Integration for Automotive Brands",
       description:
-        "Engage car buyers on Facebook, Instagram, and beyond with compelling vehicle showcases, promotions, and community content that builds brand loyalty in your market.",
+        "We integrate social media strategy with SEO, using AI to optimize campaigns, analyze audience behavior, and drive targeted traffic via Facebook, Instagram, and YouTube.",
     },
     {
-      icon: FileText,
-      title: "Content Marketing",
+      icon: CheckCircle,
+      title: "Building Trust Through Success Stories",
       description:
-        "Authoritative blog posts, buying guides, and service tips that attract organic traffic from buyers at every stage of the customer journey — from research to purchase.",
+        "We build trust by integrating social media with SEO and leveraging platforms to showcase success stories and reach potential customers.",
     },
     {
-      icon: Shield,
-      title: "Reputation Management",
+      icon: Palette,
+      title: "Automotive Branding and Web Development",
       description:
-        "Monitor, respond to, and grow your reviews across Google, Yelp, and industry platforms. Turn satisfied customers into your most powerful marketing asset.",
-      badge: "Essential",
+        "Custom website design and branding services that create visually stunning, user-friendly sites with AI-enhanced experiences for competitive differentiation.",
+    },
+    {
+      icon: TrendingUp,
+      title: "Google Ads and PPC Campaigns",
+      description:
+        "Complementary Google Ads services using AI for real-time optimization, targeting the right audiences, and maximizing ROI on every ad dollar spent.",
+      badge: "Fast Results",
+    },
+    {
+      icon: Sparkles,
+      title: "AI-Powered Automotive Marketing",
+      description:
+        "AI-driven solutions including personalized vehicle recommendations, dynamic pricing strategies, and automated lead nurturing to keep buyers engaged.",
     },
   ];
 
@@ -146,24 +136,24 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
 
   const metrics = [
     {
-      value: "3.2×",
-      label: "Average increase in Google Maps visibility",
-      context: "Illustrative result based on campaign patterns",
+      value: "88%",
+      label: "of car buyers use the internet for research before making a purchase",
+      context: "Source: Autotrader",
     },
     {
-      value: "47%",
-      label: "Reduction in cost-per-lead via AI bid optimization",
-      context: "Illustrative result based on campaign patterns",
+      value: "75%",
+      label: "of car buyers said internet research was the most helpful medium when selecting a dealership",
+      context: "Source: Digital Air Strike",
     },
     {
-      value: "4.8★",
-      label: "Average review rating maintained for automotive clients",
-      context: "Illustrative result based on reputation management programs",
+      value: "76%",
+      label: "of people who conduct a local search visit a business within a day",
+      context: "Source: Google",
     },
     {
-      value: "60%",
-      label: "More organic traffic within 6 months of SEO onboarding",
-      context: "Illustrative result based on SEO campaign data",
+      value: "20%",
+      label: "increase in conversion rates from AI-driven personalization",
+      context: "Source: McKinsey & Company",
     },
   ];
 
@@ -173,7 +163,7 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
     { label: "Houston & Sugar Land HQ", icon: MapPin },
     { label: "National U.S. Coverage", icon: TrendingUp },
     { label: "Automotive Industry Specialists", icon: Wrench },
-    { label: "Multi-Channel Attribution", icon: BarChart2 },
+    { label: "Multi-Channel Attribution", icon: TrendingUp },
   ];
 
   return (
@@ -226,7 +216,7 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
             }}
           >
             <Car size={14} />
-            Automotive Industry Marketing
+            Automotive SEO Experts
           </div>
 
           <h1
@@ -236,7 +226,7 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
               color: "#E5E7EB",
             }}
           >
-            AI-Powered Marketing for{" "}
+            Automotive SEO &{" "}
             <span
               style={{
                 background: "linear-gradient(135deg, #7C3AED, #A855F7)",
@@ -244,7 +234,7 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Auto Businesses
+              SEO for Car Dealerships
             </span>
           </h1>
 
@@ -252,9 +242,9 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
             className="text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed"
             style={{ color: "rgba(229,231,235,0.72)", fontFamily: "Inter, sans-serif" }}
           >
-            Dealerships, repair shops, and auto service centers trust Echo5
-            Digital to deliver more leads, stronger reviews, and higher local
-            visibility — powered by AI that never stops optimizing.
+            Drive sales with tailored SEO strategies for the automotive industry.
+            Echo5 Digital specializes in automotive SEO, using industry-specific
+            strategies and AI tools to help dealerships and service centers grow.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -268,18 +258,7 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
                 fontFamily: "Inter, sans-serif",
               }}
             >
-              Book a Free Demo
-            </Link>
-            <Link
-              href="#services"
-              className="px-8 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:bg-purple-900/20"
-              style={{
-                border: "1px solid rgba(124,58,237,0.5)",
-                color: "#A855F7",
-                fontFamily: "Inter, sans-serif",
-              }}
-            >
-              Explore Services
+              Get in Touch
             </Link>
           </div>
         </div>
@@ -316,90 +295,48 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
                 className="text-base md:text-lg leading-relaxed"
                 style={{ color: "#E5E7EB", fontFamily: "Inter, sans-serif" }}
               >
-                Echo5 Digital is an AI-powered digital marketing agency serving
-                automotive businesses including dealerships, repair shops, and
-                auto service centers. We provide local SEO, Google Ads, social
-                media management, and reputation management tailored to the auto
-                industry. Our AI Marketing Employee model delivers continuous
-                campaign optimization with human oversight. We serve clients in
-                Houston, Sugar Land, Texas, and across the U.S.
+                The automotive market increasingly relies on digital channels —
+                consumers use search engines to find dealerships, compare prices,
+                read reviews, and book services.{" "}
+                <strong style={{ color: "#fff" }}>SEO improves your site's visibility</strong>,
+                optimizes user experience, and ensures your vehicles and services
+                are easily discoverable. Echo5 Digital serves automotive clients
+                in Houston, Sugar Land, Texas, and nationally across the U.S.
               </p>
             </div>
           </div>
         </div>
       </Section>
 
-      {/* ── Industry Challenges ── */}
+      {/* ── Why SEO is Crucial ── */}
       <Section background="default" spacing="lg" maxWidth="2xl" withDivider>
-        <div className="text-center mb-12">
+        <div className="text-center max-w-3xl mx-auto">
           <p
             className="text-xs font-semibold uppercase tracking-widest mb-3"
             style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
           >
-            Pain Points We Solve
+            Why It Matters
           </p>
           <h2
             className="text-3xl md:text-4xl font-bold tracking-tight mb-4"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
           >
-            Automotive Marketing Challenges
+            Why SEO Is Crucial for Automotive Businesses
           </h2>
           <p
-            className="text-base max-w-2xl mx-auto leading-relaxed"
+            className="text-base leading-relaxed"
             style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
           >
-            The automotive space is one of the most competitive in local
-            digital marketing. Here's what we hear from dealers and shop owners
-            every day — and how we fix it.
+            The automotive market increasingly relies on digital channels.
+            Consumers use search engines to find dealerships, compare prices,
+            read reviews, and book services. SEO improves site visibility,
+            optimizes the user experience, and ensures your products and
+            services are easily discoverable.
           </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {challenges.map((challenge) => (
-            <div
-              key={challenge.title}
-              className="flex gap-5 rounded-2xl p-6 transition-all duration-300"
-              style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(124,58,237,0.2)",
-              }}
-            >
-              <div
-                className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(124,58,237,0.25), rgba(168,85,247,0.12))",
-                  border: "1px solid rgba(168,85,247,0.25)",
-                }}
-              >
-                <challenge.icon size={22} style={{ color: "#A855F7" }} />
-              </div>
-              <div>
-                <h3
-                  className="text-lg font-semibold mb-2"
-                  style={{
-                    fontFamily: "Space Grotesk, sans-serif",
-                    color: "#E5E7EB",
-                  }}
-                >
-                  {challenge.title}
-                </h3>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{
-                    color: "rgba(229,231,235,0.6)",
-                    fontFamily: "Inter, sans-serif",
-                  }}
-                >
-                  {challenge.description}
-                </p>
-              </div>
-            </div>
-          ))}
         </div>
       </Section>
 
-      {/* ── Services for Automotive ── */}
+      {/* ── Automotive SEO Strategy ── */}
       <Section
         id="services"
         background="gradient"
@@ -412,20 +349,21 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
             className="text-xs font-semibold uppercase tracking-widest mb-3"
             style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
           >
-            What We Do
+            Our Strategy
           </p>
           <h2
             className="text-3xl md:text-4xl font-bold tracking-tight mb-4"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
           >
-            Services Built for Auto Businesses
+            Automotive SEO Strategy
           </h2>
           <p
             className="text-base max-w-2xl mx-auto leading-relaxed"
             style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
           >
-            Every service is contextualized for the automotive industry —
-            not generic digital marketing copy-pasted from another vertical.
+            A tailored, nine-part approach for car dealerships and service
+            centers focused on driving traffic, enhancing visibility, and
+            generating quality leads.
           </p>
         </div>
 
@@ -682,20 +620,20 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
             className="text-xs font-semibold uppercase tracking-widest mb-3"
             style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
           >
-            Performance Metrics
+            Industry Studies
           </p>
           <h2
             className="text-3xl md:text-4xl font-bold tracking-tight mb-4"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
           >
-            Results That Move the Needle
+            Why Automotive SEO Matters
           </h2>
           <p
             className="text-sm max-w-2xl mx-auto leading-relaxed"
             style={{ color: "rgba(229,231,235,0.5)", fontFamily: "Inter, sans-serif" }}
           >
-            The following metrics are illustrative results based on campaign
-            patterns observed across our automotive client programs.
+            Industry research consistently shows how car buyers discover and
+            choose dealerships and service centers online.
           </p>
         </div>
 
@@ -879,7 +817,7 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
             href="tel:713-489-7004"
             className="flex items-center gap-2 hover:text-white transition-colors"
           >
-            <Users size={14} style={{ color: "#7C3AED" }} />
+            <Phone size={14} style={{ color: "#7C3AED" }} />
             713-489-7004
           </a>
           <span className="hidden sm:block" style={{ color: "rgba(124,58,237,0.4)" }}>|</span>
@@ -1103,12 +1041,12 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
             <div
               data-utm-source="automotive-page"
               data-utm-medium="organic"
-              data-utm-campaign="automotive-marketing"
+              data-utm-campaign="automotive"
             >
               <ContactForm
-                heading="Book a Free Demo"
+                heading="Get in Touch"
                 subheading="Tell us about your auto business and we'll build a strategy tailored to your market."
-                submitLabel="Request Free Strategy Session"
+                submitLabel="Get in Touch"
                 showAppointmentNote={true}
               />
             </div>

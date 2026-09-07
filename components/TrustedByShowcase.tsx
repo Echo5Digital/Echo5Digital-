@@ -191,6 +191,11 @@ export default function TrustedByShowcase() {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !hasStarted) {
+          if (window.matchMedia("(max-width: 900px)").matches) {
+            setHasStarted(true);
+            observer.disconnect();
+            return;
+          }
           setHasStarted(true);
           // wait for the logo image + canvas sizing to be ready
           const tryStart = () => {
@@ -237,10 +242,10 @@ export default function TrustedByShowcase() {
   return (
     <div
       ref={sectionRef}
+      className="tbs-section"
       style={{
         position: "relative",
         width: "100%",
-        minHeight: "min(1100px, 100vh)",
         background: "#05060a",
         overflow: "hidden",
         display: "flex",
@@ -296,6 +301,9 @@ export default function TrustedByShowcase() {
       </div>
 
       <style jsx>{`
+        .tbs-section {
+          min-height: min(1100px, 100vh);
+        }
         .tbs-content {
           position: absolute;
           z-index: 2;
@@ -318,17 +326,22 @@ export default function TrustedByShowcase() {
         }
 
         @media (max-width: 900px) {
-          .tbs-canvas { opacity: 0.35; }
+          .tbs-section {
+            min-height: 0;
+          }
+          .tbs-canvas { display: none; }
           .tbs-content {
-            left: 0;
-            right: 0;
-            top: 50%;
-            padding: 0 24px;
+            position: static;
+            left: auto;
+            right: auto;
+            top: auto;
+            transform: none;
+            padding: 32px 24px 64px;
             align-items: center;
             text-align: center;
           }
           .tbs-heading {
-            font-size: clamp(1.8rem, 7vw, 2.75rem);
+            font-size: clamp(1.3rem, 5.5vw, 2rem);
             margin-bottom: 28px;
           }
         }

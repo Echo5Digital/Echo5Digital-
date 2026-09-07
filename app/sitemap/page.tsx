@@ -115,8 +115,8 @@ const serviceGroups: SitemapGroup[] = [
 ];
 
 const industryPages: SitemapLink[] = [
-  { label: "Dental Marketing", href: "/industries/dental-marketing", description: "Digital marketing for dental practices" },
-  { label: "Healthcare Marketing", href: "/industries/healthcare-marketing", description: "Marketing for healthcare providers" },
+  { label: "Dental Marketing", href: "/industries/dental", description: "Digital marketing for dental practices" },
+  { label: "Healthcare Marketing", href: "/industries/healthcare", description: "Marketing for healthcare providers" },
   { label: "Med Spa Marketing", href: "/industries/med-spa-marketing", description: "Growth solutions for med spas" },
   { label: "Real Estate Marketing", href: "/industries/real-estate-marketing", description: "Digital marketing for real estate" },
   { label: "Restaurant Marketing", href: "/industries/restaurant-marketing", description: "Online marketing for restaurants" },

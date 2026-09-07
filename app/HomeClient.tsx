@@ -24,7 +24,6 @@ import {
   Brain,
   Eye,
   TrendingUp,
-  Layers,
   Shield,
   ShoppingBag,
   Play,
@@ -150,30 +149,40 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         }}
       >
         {/* ── HERO ─────────────────────────────────────────────────── */}
-        <section className="relative overflow-hidden">
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 md:pt-14 md:pb-24">
-            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-10">
+        <section
+          className="relative overflow-hidden bg-cover bg-center"
+          style={{ backgroundImage: "url('/3519162.jpg')" }}
+        >
+          <div
+            aria-hidden="true"
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(180deg, rgba(10,8,26,0.55) 0%, rgba(10,8,26,0.35) 50%, rgba(10,8,26,0.65) 100%)" }}
+          />
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-6 md:pt-14 md:pb-24">
+            <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-10">
               {/* Text */}
               <div className="flex-1 w-full">
                 <div
-                  className="inline-flex items-center gap-2 rounded-full text-xs font-semibold mb-6"
+                  className="inline-flex items-center gap-2 rounded-full text-xs font-semibold mb-6 px-4 py-2"
                   style={{
-                    color: "#4F32D9",
+                    color: "#E9D5FF",
+                    background: "rgba(255,255,255,0.15)",
+                    letterSpacing: "0.5px",
                   }}
                 >
                   AI-POWERED DIGITAL SOLUTIONS
                 </div>
                 <h1
                   className="font-black leading-[1.04] tracking-tight mb-6"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#15172B" }}
+                  style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#FFFFFF" }}
                 >
                   Your AI Marketing
                   <br />
-                  <span style={{ color: "#6B4EF0" }}>Growth Engine</span> Is Here
+                  <span style={{ color: "#D8B4FE" }}>Growth Engine</span> Is Here
                 </h1>
                 <p
                   className="text-lg leading-relaxed mb-8 max-w-md"
-                  style={{ color: "#5B5F73" }}
+                  style={{ color: "#E5E1F0" }}
                 >
                   Done-for-you SEO, AEO, Google Ads, social media, and web development — powered by agentic AI with real human oversight. Serving Houston, Sugar Land, and businesses nationwide.
                 </p>
@@ -193,8 +202,8 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                     href="/results"
                     className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold text-base transition-all duration-200"
                     style={{
-                      border: "2px solid rgba(31,35,64,0.15)",
-                      color: "#1F2340",
+                      border: "2px solid rgba(255,255,255,0.4)",
+                      color: "#FFFFFF",
                       fontFamily: "Space Grotesk, sans-serif",
                     }}
                   >
@@ -213,72 +222,148 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 </div>
 
                 {/* Stats row */}
-                <div className="flex flex-wrap gap-x-10 gap-y-4">
-                  {[
-                    { value: "300+", label: "Projects Delivered" },
-                    { value: "4.8×", label: "Average ROAS" },
-                    { value: "85%", label: "Clients Scale Up" },
-                    { value: "24/7", label: "AI Monitoring" },
-                  ].map((stat) => (
-                    <div key={stat.label}>
-                      <div
-                        className="text-2xl font-bold"
-                        style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
-                      >
-                        {stat.value}
+                <div className="flex flex-col items-center sm:items-start sm:flex-row sm:flex-wrap gap-x-10 gap-y-4">
+                  <div className="flex justify-between w-full sm:contents" style={{ maxWidth: 320 }}>
+                    {[
+                      { value: "300+", label: "Projects Delivered" },
+                      { value: "4.8×", label: "Average ROAS" },
+                      { value: "85%", label: "Clients Scale Up" },
+                    ].map((stat) => (
+                      <div key={stat.label} className="text-center sm:text-left">
+                        <div
+                          className="text-2xl font-bold"
+                          style={{ fontFamily: "Space Grotesk, sans-serif", color: "#FFFFFF" }}
+                        >
+                          {stat.value}
+                        </div>
+                        <div className="text-xs" style={{ color: "#D8D3E8" }}>
+                          {stat.label}
+                        </div>
                       </div>
-                      <div className="text-xs" style={{ color: "#8B8FA3" }}>
-                        {stat.label}
-                      </div>
+                    ))}
+                  </div>
+                  <div className="text-center sm:text-left">
+                    <div
+                      className="text-2xl font-bold"
+                      style={{ fontFamily: "Space Grotesk, sans-serif", color: "#FFFFFF" }}
+                    >
+                      24/7
                     </div>
-                  ))}
+                    <div className="text-xs" style={{ color: "#D8D3E8" }}>
+                      AI Monitoring
+                    </div>
+                  </div>
                 </div>
               </div>
 
               {/* Visual */}
-              <div className="flex-1 w-full max-w-lg relative">
+              <div className="hidden lg:block flex-1 w-full max-w-lg relative min-h-0 sm:min-h-[440px]">
+                {/* Ambient glow rings behind everything */}
                 <div
-                  className="relative mx-auto rounded-full overflow-hidden flex items-center justify-center"
+                  aria-hidden="true"
+                  className="absolute rounded-full"
                   style={{
-                    width: "min(100%, 420px)",
+                    top: "50%",
+                    left: "50%",
+                    width: "min(92%, 380px)",
                     aspectRatio: "1 / 1",
-                    background: "linear-gradient(160deg, #6B4EF0 0%, #A78BFA 50%, #F2EFFC 100%)",
-                    boxShadow: "0 0 0 1px rgba(107,78,240,0.15), 0 30px 80px rgba(107,78,240,0.25)",
+                    transform: "translate(-50%, -50%)",
+                    background:
+                      "radial-gradient(circle, rgba(107,78,240,0.22) 0%, rgba(107,78,240,0.08) 55%, transparent 75%)",
+                  }}
+                />
+                {/* Robot illustration */}
+                <div
+                  className="relative mx-auto overflow-hidden rounded-[2rem]"
+                  style={{
+                    width: "min(100%, 280px)",
+                    aspectRatio: "1 / 1",
+                    boxShadow:
+                      "0 0 0 1px rgba(107,78,240,0.15), 0 30px 60px rgba(107,78,240,0.3)",
                   }}
                 >
-                  <Bot size={130} color="#fff" strokeWidth={1.2} style={{ opacity: 0.92 }} />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 rounded-full"
-                    style={{
-                      background:
-                        "radial-gradient(circle at 30% 20%, rgba(255,255,255,0.35) 0%, transparent 45%)",
-                    }}
+                  <Image
+                    src="/airobo.png"
+                    alt="AI Marketing Employee robot working at a laptop"
+                    fill
+                    sizes="280px"
+                    className="object-cover"
+                    priority
                   />
                 </div>
 
-                {/* Floating tag top-right */}
+                {/* Floating stat card — More Traffic */}
                 <div
-                  className="hidden md:block absolute text-right"
-                  style={{ top: "6%", right: "-4%", color: "#4F32D9" }}
+                  className="hidden md:flex absolute items-center gap-2.5 rounded-xl px-4 py-3"
+                  style={{
+                    top: "2%",
+                    left: "0%",
+                    background: "rgba(255,255,255,0.95)",
+                    boxShadow: "0 16px 40px rgba(31,35,64,0.15)",
+                  }}
                 >
-                  <p className="text-[0.65rem] font-bold tracking-widest leading-relaxed">
-                    HUMAN CREATIVITY
-                    <br />
-                    AI INTELLIGENCE
-                    <br />
-                    REAL RESULTS
-                  </p>
+                  <BarChart3 size={18} style={{ color: "#6B4EF0" }} />
+                  <div>
+                    <p className="text-xs font-bold" style={{ color: "#15172B" }}>More Traffic</p>
+                    <p className="text-[0.65rem]" style={{ color: "#8B8FA3" }}>Higher Rankings</p>
+                  </div>
+                  <ArrowRight size={12} style={{ color: "#8B8FA3" }} />
+                </div>
+
+                {/* Floating stat card — Better Leads */}
+                <div
+                  className="hidden md:flex absolute items-center gap-2.5 rounded-xl px-4 py-3"
+                  style={{
+                    top: "6%",
+                    right: "-2%",
+                    background: "rgba(255,255,255,0.95)",
+                    boxShadow: "0 16px 40px rgba(31,35,64,0.15)",
+                  }}
+                >
+                  <span
+                    className="flex items-center justify-center rounded-full"
+                    style={{ width: 26, height: 26, background: "rgba(107,78,240,0.12)" }}
+                  >
+                    <TrendingUp size={14} style={{ color: "#6B4EF0" }} />
+                  </span>
+                  <div>
+                    <p className="text-xs font-bold" style={{ color: "#15172B" }}>Better Leads</p>
+                    <p className="text-[0.65rem]" style={{ color: "#8B8FA3" }}>Real Growth</p>
+                  </div>
+                  <ArrowRight size={12} style={{ color: "#8B8FA3" }} />
+                </div>
+
+                {/* Floating stat card — Modern Websites */}
+                <div
+                  className="hidden sm:flex absolute items-center gap-2.5 rounded-xl px-4 py-3"
+                  style={{
+                    bottom: "26%",
+                    left: "-4%",
+                    background: "rgba(255,255,255,0.95)",
+                    boxShadow: "0 16px 40px rgba(31,35,64,0.15)",
+                  }}
+                >
+                  <span
+                    className="flex items-center justify-center rounded-lg"
+                    style={{ width: 26, height: 26, background: "#6B4EF0" }}
+                  >
+                    <Globe size={14} color="#fff" />
+                  </span>
+                  <div>
+                    <p className="text-xs font-bold" style={{ color: "#15172B" }}>Modern Websites</p>
+                    <p className="text-[0.65rem]" style={{ color: "#8B8FA3" }}>Built for You</p>
+                  </div>
+                  <ArrowRight size={12} style={{ color: "#8B8FA3" }} />
                 </div>
 
                 {/* Floating "AI Working for You" card */}
                 <div
                   className="hidden sm:block absolute rounded-2xl p-5"
                   style={{
-                    bottom: "-6%",
+                    bottom: "-4%",
                     right: "-6%",
-                    width: "230px",
-                    background: "rgba(255,255,255,0.92)",
+                    width: 230,
+                    background: "rgba(255,255,255,0.95)",
                     backdropFilter: "blur(10px)",
                     border: "1px solid rgba(107,78,240,0.12)",
                     boxShadow: "0 20px 50px rgba(31,35,64,0.15)",
@@ -296,7 +381,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                       "Content Creation",
                       "Ad Campaigns",
                       "Social Media",
-                      "Lead Generation",
+                      "Web Development",
                     ].map((task) => (
                       <div key={task} className="flex items-center justify-between">
                         <span className="text-xs" style={{ color: "#4B4F63" }}>
@@ -320,6 +405,11 @@ export default function HomeClient({ faqData }: HomeClientProps) {
             </div>
           </div>
         </section>
+
+        {/* ── TRUSTED BY (ANIMATED LOGO) — mobile only, shown above trust bar ── */}
+        <div className="lg:hidden">
+          <TrustedByShowcase />
+        </div>
 
         {/* ── TRUST BAR ────────────────────────────────────────────── */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
@@ -476,25 +566,38 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         </section>
 
         {/* ── HOW IT WORKS ─────────────────────────────────────────── */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <section className="relative overflow-hidden" style={{ background: "#0A0F1E" }}>
+          <div
+            aria-hidden="true"
+            className="absolute pointer-events-none"
+            style={{
+              top: "-10%",
+              left: "50%",
+              width: "900px",
+              height: "600px",
+              transform: "translateX(-50%)",
+              background: "radial-gradient(ellipse 50% 50% at 50% 50%, rgba(107,78,240,0.18) 0%, transparent 70%)",
+            }}
+          />
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
             <div className="lg:w-80 flex-shrink-0">
               <div
                 className="inline-flex items-center gap-2 rounded-full text-xs font-semibold mb-4"
                 style={{
 
-                  color: "#4F32D9",
+                  color: "#A78BFA",
                 }}
               >
                 HOW IT WORKS
               </div>
               <h2
                 className="font-black leading-[1.04] tracking-tight mb-4"
-                style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#15172B" }}
+                style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#F5F3FF" }}
               >
                 A Simple Process for Big Results
               </h2>
-              <p className="text-base leading-relaxed" style={{ color: "#5B5F73" }}>
+              <p className="text-base leading-relaxed" style={{ color: "#9CA3AF" }}>
                 We combine AI execution with expert human oversight to deliver continuous
                 growth.
               </p>
@@ -508,7 +611,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   top: "20px",
                   left: "8%",
                   right: "8%",
-                  background: "rgba(107,78,240,0.2)",
+                  background: "rgba(107,78,240,0.25)",
                 }}
               />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -527,20 +630,21 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                     >
                       {step.step}
                     </div>
-                    <step.icon size={22} style={{ color: "#6B4EF0" }} />
+                    <step.icon size={22} style={{ color: "#A78BFA" }} />
                     <h3
                       className="text-base font-semibold"
-                      style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
+                      style={{ fontFamily: "Space Grotesk, sans-serif", color: "#F5F3FF" }}
                     >
                       {step.title}
                     </h3>
-                    <p className="text-sm leading-relaxed" style={{ color: "#6B7085" }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "#9CA3AF" }}>
                       {step.desc}
                     </p>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
           </div>
         </section>
 
@@ -800,7 +904,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   {
                     label: "Human Team",
                     sublabel: "Strategists & editors review, refine, and guide all outputs",
-                    image: "/team.png",
+                    image: "/people-working-html-codes-100kb.jpg",
                   },
                   {
                     label: "Client Dashboard",
@@ -989,8 +1093,10 @@ export default function HomeClient({ faqData }: HomeClientProps) {
           </div>
         </Section>
 
-        {/* ── TRUSTED BY (ANIMATED LOGO) ───────────────────────────────── */}
-        <TrustedByShowcase />
+        {/* ── TRUSTED BY (ANIMATED LOGO) — desktop only, mobile copy shown near hero ── */}
+        <div className="hidden lg:block">
+          <TrustedByShowcase />
+        </div>
 
         {/* ── HUMANS WHO RUN THE AI SECTION ────────────────────────────── */}
         <TeamSection />
@@ -1217,21 +1323,21 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         </Section>
 
         {/* ── FINAL CTA / LEAD FORM ────────────────────────────────────── */}
-        <Section background="gradient" spacing="xl" maxWidth="2xl" withDivider>
+        <Section background="transparent" spacing="xl" maxWidth="2xl" withDivider className="!bg-[#EEECFB]">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
             {/* Left: copy */}
             <div className="flex-1 lg:pt-6">
               <div
                 className="inline-flex items-center gap-2  rounded-full text-xs font-semibold mb-5"
                 style={{
-                  color: "#A855F7",
+                  color: "#6B4EF0",
                 }}
               >
                 Let&apos;s Grow Together
               </div>
               <h2
                 className="font-black leading-[1.04] tracking-tight mb-4"
-                style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#E5E7EB" }}
+                style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#15172B" }}
               >
                 Ready to Put AI
                 <br />
@@ -1245,7 +1351,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   to Work for You?
                 </span>
               </h2>
-              <p className="text-base leading-relaxed mb-8" style={{ color: "#9CA3AF" }}>
+              <p className="text-base leading-relaxed mb-8" style={{ color: "#5B5F73" }}>
                 Book a free strategy demo and discover exactly how Echo5 Digital&apos;s AI Marketing
                 Employee can grow your business — no commitment required.
               </p>
@@ -1256,8 +1362,8 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   "Results-focused — we win when you win",
                 ].map((pt) => (
                   <div key={pt} className="flex items-center gap-3">
-                    <CheckCircle size={16} style={{ color: "#A855F7", flexShrink: 0 }} />
-                    <span className="text-sm" style={{ color: "#D1D5DB" }}>
+                    <CheckCircle size={16} style={{ color: "#6B4EF0", flexShrink: 0 }} />
+                    <span className="text-sm" style={{ color: "#15172B" }}>
                       {pt}
                     </span>
                   </div>
@@ -1265,14 +1371,14 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               </div>
               {/* NAP */}
               <div className="space-y-2 text-sm">
-                <p style={{ color: "#9CA3AF" }}>
+                <p style={{ color: "#5B5F73" }}>
                   Or reach us directly:
                 </p>
                 {/* Verified phone */}
-                <a href="tel:713-489-7004" className="block" style={{ color: "#A855F7" }}>
+                <a href="tel:713-489-7004" className="block" style={{ color: "#4F32D9" }}>
                   📞 713-489-7004
                 </a>
-                <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#A855F7" }}>
+                <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
                   ✉️ hello@echo5digital.com
                 </a>
               </div>
