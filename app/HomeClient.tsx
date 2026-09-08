@@ -8,6 +8,7 @@ import ContactForm from "@/components/ContactForm";
 import TeamSection from "@/components/TeamSection";
 import IndustriesWeGrow from "@/components/IndustriesWeGrow";
 import TrustedByShowcase from "@/components/TrustedByShowcase";
+import { RevealMask, BlurIn } from "@/components/ScrollFX";
 import {
   Bot,
   Search,
@@ -35,6 +36,8 @@ import {
   Phone,
   Mail,
   Building2,
+  Sparkles,
+  Rocket,
 } from "lucide-react";
 
 interface FAQItem {
@@ -150,114 +153,125 @@ export default function HomeClient({ faqData }: HomeClientProps) {
       >
         {/* ── HERO ─────────────────────────────────────────────────── */}
         <section
-          className="relative overflow-hidden bg-cover bg-center"
-          style={{ backgroundImage: "url('/3519162.jpg')" }}
+          className="relative overflow-hidden bg-cover bg-center lg:min-h-screen lg:flex lg:items-center"
+          style={{ backgroundImage: "url('/3d-render-abstract-background-with-flowing-particles-100kb.jpg')" }}
         >
           <div
             aria-hidden="true"
             className="absolute inset-0"
             style={{ background: "linear-gradient(180deg, rgba(10,8,26,0.55) 0%, rgba(10,8,26,0.35) 50%, rgba(10,8,26,0.65) 100%)" }}
           />
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-6 md:pt-14 md:pb-24">
-            <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-10">
+          <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 sm:px-8 lg:px-12 pt-10 pb-10 md:pt-14 md:pb-16">
+            <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-6">
               {/* Text */}
               <div className="flex-1 w-full">
-                <div
-                  className="inline-flex items-center gap-2 rounded-full text-xs font-semibold mb-6 px-4 py-2"
-                  style={{
-                    color: "#E9D5FF",
-                    background: "rgba(255,255,255,0.15)",
-                    letterSpacing: "0.5px",
-                  }}
-                >
-                  AI-POWERED DIGITAL SOLUTIONS
-                </div>
+                <BlurIn>
+                  <div
+                    className="inline-flex items-center gap-2 rounded-full text-sm font-semibold mb-7 px-5 py-2.5"
+                    style={{
+                      color: "#E9D5FF",
+                      background: "rgba(255,255,255,0.15)",
+                      letterSpacing: "0.5px",
+                    }}
+                  >
+                    <Sparkles size={16} />
+                    AI-POWERED DIGITAL SOLUTIONS
+                  </div>
+                </BlurIn>
                 <h1
-                  className="font-black leading-[1.04] tracking-tight mb-6"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#FFFFFF" }}
+                  className="font-black leading-[1.05] tracking-tight mb-7"
+                  style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(3rem, 5vw, 4.75rem)", color: "#FFFFFF" }}
                 >
-                  Your AI Marketing
+                  <RevealMask>Your AI Marketing</RevealMask>
                   <br />
-                  <span style={{ color: "#D8B4FE" }}>Growth Engine</span> Is Here
-                </h1>
-                <p
-                  className="text-lg leading-relaxed mb-8 max-w-md"
-                  style={{ color: "#E5E1F0" }}
-                >
-                  Done-for-you SEO, AEO, Google Ads, social media, and web development — powered by agentic AI with real human oversight. Serving Houston, Sugar Land, and businesses nationwide.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110 active:scale-95"
-                    style={{
-                      background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
-                      boxShadow: "0 8px 24px rgba(107,78,240,0.35)",
-                      fontFamily: "Space Grotesk, sans-serif",
-                    }}
-                  >
-                    Book a Free Demo <ArrowRight size={16} />
-                  </Link>
-                  <Link
-                    href="/results"
-                    className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold text-base transition-all duration-200"
-                    style={{
-                      border: "2px solid rgba(255,255,255,0.4)",
-                      color: "#FFFFFF",
-                      fontFamily: "Space Grotesk, sans-serif",
-                    }}
-                  >
+                  <RevealMask delay={0.1}>
                     <span
-                      className="inline-flex items-center justify-center rounded-full"
                       style={{
-                        width: "22px",
-                        height: "22px",
-                        background: "#6B4EF0",
+                        background: "linear-gradient(90deg, #D8B4FE, #A5B4FC)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
                       }}
                     >
-                      <Play size={10} color="#fff" fill="#fff" />
-                    </span>
-                    View Plans
-                  </Link>
-                </div>
+                      Growth Engine
+                    </span>{" "}
+                    Is Here
+                  </RevealMask>
+                </h1>
+                <BlurIn delay={0.2}>
+                  <p
+                    className="text-xl leading-relaxed mb-9 max-w-2xl"
+                    style={{ color: "#E5E1F0" }}
+                  >
+                    Done-for-you SEO, AEO, Google Ads, Social Media, and Web development — powered by agents. All with real human oversight. Serving Houston, Sugar Land, and businesses nationwide.
+                  </p>
+                </BlurIn>
+                <BlurIn delay={0.3}>
+                  <div className="flex flex-col sm:flex-row gap-5 mb-12">
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110 active:scale-95"
+                      style={{
+                        background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
+                        boxShadow: "0 8px 24px rgba(107,78,240,0.35)",
+                        fontFamily: "Space Grotesk, sans-serif",
+                      }}
+                    >
+                      Book a Free Demo <ArrowRight size={18} />
+                    </Link>
+                    <Link
+                      href="/results"
+                      className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all duration-200"
+                      style={{
+                        border: "2px solid rgba(255,255,255,0.4)",
+                        color: "#FFFFFF",
+                        fontFamily: "Space Grotesk, sans-serif",
+                      }}
+                    >
+                      <span
+                        className="inline-flex items-center justify-center rounded-full"
+                        style={{
+                          width: "22px",
+                          height: "22px",
+                          background: "#6B4EF0",
+                        }}
+                      >
+                        <Play size={10} color="#fff" fill="#fff" />
+                      </span>
+                      View Plans
+                    </Link>
+                  </div>
+                </BlurIn>
 
                 {/* Stats row */}
-                <div className="flex flex-col items-center sm:items-start sm:flex-row sm:flex-wrap gap-x-10 gap-y-4">
-                  <div className="flex justify-between w-full sm:contents" style={{ maxWidth: 320 }}>
+                <BlurIn delay={0.4}>
+                  <div className="flex flex-wrap items-start gap-x-10 gap-y-6">
                     {[
-                      { value: "300+", label: "Projects Delivered" },
-                      { value: "4.8×", label: "Average ROAS" },
-                      { value: "85%", label: "Clients Scale Up" },
+                      { icon: Rocket, value: "300+", label: "Projects Delivered" },
+                      { icon: TrendingUp, value: "4.8x", label: "Average ROAS" },
+                      { icon: Users, value: "85%", label: "Clients Scale Up" },
+                      { icon: Shield, value: "24/7", label: "AI Monitoring" },
                     ].map((stat) => (
-                      <div key={stat.label} className="text-center sm:text-left">
-                        <div
-                          className="text-2xl font-bold"
-                          style={{ fontFamily: "Space Grotesk, sans-serif", color: "#FFFFFF" }}
-                        >
-                          {stat.value}
-                        </div>
-                        <div className="text-xs" style={{ color: "#D8D3E8" }}>
-                          {stat.label}
+                      <div key={stat.label} className="flex items-start gap-3">
+                        <stat.icon size={26} style={{ color: "#C4B5FD", marginTop: 3 }} />
+                        <div>
+                          <div
+                            className="text-3xl font-bold leading-tight"
+                            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#FFFFFF" }}
+                          >
+                            {stat.value}
+                          </div>
+                          <div className="text-sm whitespace-nowrap" style={{ color: "#D8D3E8" }}>
+                            {stat.label}
+                          </div>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <div className="text-center sm:text-left">
-                    <div
-                      className="text-2xl font-bold"
-                      style={{ fontFamily: "Space Grotesk, sans-serif", color: "#FFFFFF" }}
-                    >
-                      24/7
-                    </div>
-                    <div className="text-xs" style={{ color: "#D8D3E8" }}>
-                      AI Monitoring
-                    </div>
-                  </div>
-                </div>
+                </BlurIn>
               </div>
 
               {/* Visual */}
-              <div className="hidden lg:block flex-1 w-full max-w-lg relative min-h-0 sm:min-h-[440px]">
+              <div className="hidden lg:block flex-1 w-full max-w-2xl relative min-h-0 sm:min-h-[460px]">
                 {/* Ambient glow rings behind everything */}
                 <div
                   aria-hidden="true"
@@ -265,7 +279,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   style={{
                     top: "50%",
                     left: "50%",
-                    width: "min(92%, 380px)",
+                    width: "min(92%, 460px)",
                     aspectRatio: "1 / 1",
                     transform: "translate(-50%, -50%)",
                     background:
@@ -274,104 +288,101 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 />
                 {/* Robot illustration */}
                 <div
-                  className="relative mx-auto overflow-hidden rounded-[2rem]"
+                  className="relative mx-auto"
                   style={{
-                    width: "min(100%, 280px)",
-                    aspectRatio: "1 / 1",
-                    boxShadow:
-                      "0 0 0 1px rgba(107,78,240,0.15), 0 30px 60px rgba(107,78,240,0.3)",
+                    width: "min(100%, 420px)",
+                    aspectRatio: "1268 / 1210",
                   }}
                 >
                   <Image
-                    src="/airobo.png"
+                    src="/ec.png"
                     alt="AI Marketing Employee robot working at a laptop"
                     fill
-                    sizes="280px"
-                    className="object-cover"
+                    sizes="420px"
+                    className="object-contain"
                     priority
                   />
                 </div>
 
                 {/* Floating stat card — More Traffic */}
                 <div
-                  className="hidden md:flex absolute items-center gap-2.5 rounded-xl px-4 py-3"
+                  className="hidden md:flex absolute items-center gap-2.5 rounded-xl px-4 py-3 orbit-float-a"
                   style={{
-                    top: "2%",
-                    left: "0%",
-                    background: "rgba(255,255,255,0.95)",
-                    boxShadow: "0 16px 40px rgba(31,35,64,0.15)",
+                    top: "0%",
+                    left: "2%",
+                    background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
+                    boxShadow: "0 16px 40px rgba(107,78,240,0.4)",
                   }}
                 >
-                  <BarChart3 size={18} style={{ color: "#6B4EF0" }} />
+                  <BarChart3 size={18} style={{ color: "#fff" }} />
                   <div>
-                    <p className="text-xs font-bold" style={{ color: "#15172B" }}>More Traffic</p>
-                    <p className="text-[0.65rem]" style={{ color: "#8B8FA3" }}>Higher Rankings</p>
+                    <p className="text-xs font-bold" style={{ color: "#fff" }}>More Traffic</p>
+                    <p className="text-[0.65rem]" style={{ color: "#E5E1F0" }}>Higher Rankings</p>
                   </div>
-                  <ArrowRight size={12} style={{ color: "#8B8FA3" }} />
+                  <ArrowRight size={12} style={{ color: "#fff" }} />
                 </div>
 
                 {/* Floating stat card — Better Leads */}
                 <div
-                  className="hidden md:flex absolute items-center gap-2.5 rounded-xl px-4 py-3"
+                  className="hidden md:flex absolute items-center gap-2.5 rounded-xl px-4 py-3 orbit-float-b"
                   style={{
-                    top: "6%",
-                    right: "-2%",
-                    background: "rgba(255,255,255,0.95)",
-                    boxShadow: "0 16px 40px rgba(31,35,64,0.15)",
+                    top: "4%",
+                    right: "0%",
+                    background: "linear-gradient(135deg, #EA580C, #F97316)",
+                    boxShadow: "0 16px 40px rgba(234,88,12,0.4)",
                   }}
                 >
                   <span
                     className="flex items-center justify-center rounded-full"
-                    style={{ width: 26, height: 26, background: "rgba(107,78,240,0.12)" }}
+                    style={{ width: 26, height: 26, background: "rgba(255,255,255,0.2)" }}
                   >
-                    <TrendingUp size={14} style={{ color: "#6B4EF0" }} />
+                    <TrendingUp size={14} style={{ color: "#fff" }} />
                   </span>
                   <div>
-                    <p className="text-xs font-bold" style={{ color: "#15172B" }}>Better Leads</p>
-                    <p className="text-[0.65rem]" style={{ color: "#8B8FA3" }}>Real Growth</p>
+                    <p className="text-xs font-bold" style={{ color: "#fff" }}>Better Leads</p>
+                    <p className="text-[0.65rem]" style={{ color: "#FFE8D9" }}>Real Growth</p>
                   </div>
-                  <ArrowRight size={12} style={{ color: "#8B8FA3" }} />
+                  <ArrowRight size={12} style={{ color: "#fff" }} />
                 </div>
 
                 {/* Floating stat card — Modern Websites */}
                 <div
-                  className="hidden sm:flex absolute items-center gap-2.5 rounded-xl px-4 py-3"
+                  className="hidden sm:flex absolute items-center gap-2.5 rounded-xl px-4 py-3 orbit-float-c"
                   style={{
-                    bottom: "26%",
-                    left: "-4%",
-                    background: "rgba(255,255,255,0.95)",
-                    boxShadow: "0 16px 40px rgba(31,35,64,0.15)",
+                    bottom: "6%",
+                    left: "-8%",
+                    background: "linear-gradient(135deg, #0891B2, #06B6D4)",
+                    boxShadow: "0 16px 40px rgba(8,145,178,0.4)",
                   }}
                 >
                   <span
                     className="flex items-center justify-center rounded-lg"
-                    style={{ width: 26, height: 26, background: "#6B4EF0" }}
+                    style={{ width: 26, height: 26, background: "rgba(255,255,255,0.2)" }}
                   >
                     <Globe size={14} color="#fff" />
                   </span>
                   <div>
-                    <p className="text-xs font-bold" style={{ color: "#15172B" }}>Modern Websites</p>
-                    <p className="text-[0.65rem]" style={{ color: "#8B8FA3" }}>Built for You</p>
+                    <p className="text-xs font-bold" style={{ color: "#fff" }}>Modern Websites</p>
+                    <p className="text-[0.65rem]" style={{ color: "#D2F4FA" }}>Built for You</p>
                   </div>
-                  <ArrowRight size={12} style={{ color: "#8B8FA3" }} />
+                  <ArrowRight size={12} style={{ color: "#fff" }} />
                 </div>
 
                 {/* Floating "AI Working for You" card */}
                 <div
-                  className="hidden sm:block absolute rounded-2xl p-5"
+                  className="hidden sm:block absolute rounded-2xl p-5 orbit-float-d"
                   style={{
-                    bottom: "-4%",
-                    right: "-6%",
+                    bottom: "-10%",
+                    right: "-10%",
                     width: 230,
-                    background: "rgba(255,255,255,0.95)",
-                    backdropFilter: "blur(10px)",
-                    border: "1px solid rgba(107,78,240,0.12)",
-                    boxShadow: "0 20px 50px rgba(31,35,64,0.15)",
+                    background: "linear-gradient(160deg, #1F1147, #3B2287)",
+                    border: "1px solid rgba(139,92,246,0.35)",
+                    boxShadow: "0 20px 50px rgba(31,17,71,0.5)",
                   }}
                 >
                   <p
                     className="text-xs font-semibold mb-3 flex items-center gap-1.5"
-                    style={{ color: "#4F32D9" }}
+                    style={{ color: "#D8B4FE" }}
                   >
                     <PlusCircle size={12} /> AI Working for You
                   </p>
@@ -384,16 +395,16 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                       "Web Development",
                     ].map((task) => (
                       <div key={task} className="flex items-center justify-between">
-                        <span className="text-xs" style={{ color: "#4B4F63" }}>
+                        <span className="text-xs" style={{ color: "#E5E1F0" }}>
                           {task}
                         </span>
                         <span
                           className="flex items-center gap-1 text-[0.65rem] font-medium"
-                          style={{ color: "#16A34A" }}
+                          style={{ color: "#4ADE80" }}
                         >
                           <span
                             className="w-1.5 h-1.5 rounded-full"
-                            style={{ background: "#16A34A" }}
+                            style={{ background: "#4ADE80" }}
                           />
                           Running
                         </span>
@@ -402,6 +413,46 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   </div>
                 </div>
               </div>
+
+              <style jsx>{`
+                @keyframes orbitFloatA {
+                  0% { transform: translate(0, 0); }
+                  25% { transform: translate(6px, 10px); }
+                  50% { transform: translate(0, 18px); }
+                  75% { transform: translate(-6px, 10px); }
+                  100% { transform: translate(0, 0); }
+                }
+                @keyframes orbitFloatB {
+                  0% { transform: translate(0, 0); }
+                  25% { transform: translate(-8px, 8px); }
+                  50% { transform: translate(-14px, 0); }
+                  75% { transform: translate(-8px, -8px); }
+                  100% { transform: translate(0, 0); }
+                }
+                @keyframes orbitFloatC {
+                  0% { transform: translate(0, 0); }
+                  25% { transform: translate(8px, -8px); }
+                  50% { transform: translate(14px, 0); }
+                  75% { transform: translate(8px, 8px); }
+                  100% { transform: translate(0, 0); }
+                }
+                @keyframes orbitFloatD {
+                  0% { transform: translate(0, 0); }
+                  25% { transform: translate(-6px, -10px); }
+                  50% { transform: translate(0, -18px); }
+                  75% { transform: translate(6px, -10px); }
+                  100% { transform: translate(0, 0); }
+                }
+                .orbit-float-a { animation: orbitFloatA 7s ease-in-out infinite; }
+                .orbit-float-b { animation: orbitFloatB 8s ease-in-out infinite; animation-delay: 0.5s; }
+                .orbit-float-c { animation: orbitFloatC 9s ease-in-out infinite; animation-delay: 1s; }
+                .orbit-float-d { animation: orbitFloatD 7.5s ease-in-out infinite; animation-delay: 1.5s; }
+                @media (prefers-reduced-motion: reduce) {
+                  .orbit-float-a, .orbit-float-b, .orbit-float-c, .orbit-float-d {
+                    animation: none;
+                  }
+                }
+              `}</style>
             </div>
           </div>
         </section>
@@ -412,7 +463,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         </div>
 
         {/* ── TRUST BAR ────────────────────────────────────────────── */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <section className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
           <div
             className="rounded-2xl px-6 py-8"
             style={{
@@ -448,7 +499,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         </section>
 
         {/* ── CORE SERVICES ────────────────────────────────────────── */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <section className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 pb-20">
           <div className="flex flex-col items-center text-center gap-4 mb-12">
             <span
               className="inline-flex items-center gap-2 rounded-full text-xs font-semibold"
@@ -579,7 +630,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               background: "radial-gradient(ellipse 50% 50% at 50% 50%, rgba(107,78,240,0.18) 0%, transparent 70%)",
             }}
           />
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="relative z-10 max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
             <div className="lg:w-80 flex-shrink-0">
               <div
@@ -652,7 +703,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         <IndustriesWeGrow />
 
         {/* ── DARK CTA BAND ────────────────────────────────────────── */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <section className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 pb-20">
           <div
             className="rounded-3xl p-8 md:p-14 relative overflow-hidden"
             style={{ background: "linear-gradient(135deg, #15172B 0%, #211A47 100%)" }}
@@ -752,7 +803,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
       ══════════════════════════════════════════════════════════════ */}
       <div style={{ backgroundColor: "#0A0F1E", color: "#E5E7EB" }}>
         {/* ── AI MARKETING EMPLOYEE PRODUCT TIERS ─────────────────────── */}
-        <Section background="gradient" spacing="lg" maxWidth="2xl" withDivider>
+        <Section background="gradient" spacing="lg" maxWidth="3xl" withDivider>
           <div className="text-center mb-12">
             <h2
               className="font-black leading-[1.04] tracking-tight mb-4"
@@ -873,7 +924,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         </Section>
 
         {/* ── INTERNAL GROWTH SYSTEM DIAGRAM ───────────────────────────── */}
-        <Section background="default" spacing="lg" maxWidth="2xl" withDivider>
+        <Section background="default" spacing="lg" maxWidth="3xl" withDivider>
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,320px)_1fr] gap-10 items-center">
             {/* Left intro copy */}
             <div>
@@ -976,7 +1027,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         </Section>
 
         {/* ── RESULTS / CASE STUDIES PREVIEW ──────────────────────────── */}
-        <Section background="transparent" spacing="lg" maxWidth="2xl" withDivider className="!bg-[#EEECFB] min-h-[90vh] flex items-center">
+        <Section background="transparent" spacing="lg" maxWidth="3xl" withDivider className="!bg-[#EEECFB] min-h-[90vh] flex items-center">
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,280px)_1fr] gap-10 items-start">
             {/* Left intro copy */}
             <div>
@@ -1323,7 +1374,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         </Section>
 
         {/* ── FINAL CTA / LEAD FORM ────────────────────────────────────── */}
-        <Section background="transparent" spacing="xl" maxWidth="2xl" withDivider className="!bg-[#EEECFB]">
+        <Section background="transparent" spacing="xl" maxWidth="3xl" withDivider className="!bg-[#EEECFB]">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
             {/* Left: copy */}
             <div className="flex-1 lg:pt-6">

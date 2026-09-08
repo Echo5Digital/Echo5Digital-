@@ -20,13 +20,13 @@ interface HeaderProps {
 
 const defaultNavLinks: NavLink[] = [
   { label: 'Home', route: '/' },
+  { label: 'About Us', route: '/about-us' },
   { label: 'AI Marketing Employee', route: '/ai-marketing-employee' },
   { label: 'Services', route: '/solutions' },
   { label: 'Industries', route: '/industries' },
   { label: 'Pricing', route: '/pricing' },
   { label: 'Results', route: '/results' },
   { label: 'Blog', route: '/blog' },
-  { label: 'About', route: '/about-us' },
   { label: 'Contact', route: '/contact' },
 ];
 
@@ -273,14 +273,14 @@ export default function Header({
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '0.25rem',
+              gap: '0.6rem',
               flex: 1,
               justifyContent: 'center',
               padding: '0 1rem',
             }}
             className="desktop-nav"
           >
-            {navLinks.slice(0, 7).map((link) => (
+            {navLinks.slice(0, 8).map((link) => (
               <Link
                 key={link.route}
                 href={link.route}

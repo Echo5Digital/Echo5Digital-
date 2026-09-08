@@ -2,6 +2,20 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  InkReveal,
+  MagnetPop,
+  PeelCard,
+  GlowTrail,
+  LavenderField,
+  FocusPullHero,
+  PrismReveal,
+  CircleReveal,
+  BlindsReveal,
+  DiagonalSweep,
+  FloatDrift,
+} from "@/components/SolutionsFX";
 import {
   Search,
   Megaphone,
@@ -43,12 +57,6 @@ import {
 import Section from "@/components/Section";
 import Card from "@/components/Card";
 import ContactForm from "@/components/ContactForm";
-import Breadcrumbs from "@/components/Breadcrumbs";
-
-const breadcrumbItems = [
-  { label: "Home", href: "/" },
-  { label: "Solutions", href: "/solutions" },
-];
 
 const aiMarketingServices = [
   {
@@ -250,27 +258,25 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
 
   return (
     <main style={{ backgroundColor: "#0A0F1E", color: "#E5E7EB" }}>
-      {/* Breadcrumbs */}
-      <Breadcrumbs items={breadcrumbItems} />
+      {/* ─── HERO — full-bleed background image that racks into focus on load ─── */}
+      <FocusPullHero
+        src="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1600"
+        className="min-h-screen flex items-center pt-[72px]"
+      >
+        {/* Ambient glow orbs on top of the photo overlay */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-20 blur-3xl"
+          style={{
+            background: "radial-gradient(circle, #7C3AED 0%, #A855F7 40%, transparent 70%)",
+          }}
+        />
 
-      {/* ─── HERO ─── */}
-      <Section background="gradient" spacing="xl" maxWidth="2xl" centered>
-        <div className="relative">
-          {/* Glow orbs */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-20 blur-3xl"
-            style={{
-              background:
-                "radial-gradient(circle, #7C3AED 0%, #A855F7 40%, transparent 70%)",
-            }}
-          />
-
-          {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10">
-            <Zap size={14} className="text-purple-400" />
+        <div className="relative z-10 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+          <div className="inline-flex items-center gap-2 mb-8 px-5 py-2.5 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
+            <Zap size={16} className="text-purple-400" />
             <span
-              className="text-xs font-semibold uppercase tracking-widest text-purple-400"
+              className="text-sm font-semibold uppercase tracking-widest text-purple-400"
               style={{ fontFamily: "Space Grotesk, sans-serif" }}
             >
               Full Capability Stack
@@ -278,10 +284,10 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
           </div>
 
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-8"
             style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.03em" }}
           >
-            AI-Powered Solutions{" "}
+            <PrismReveal text="AI-Powered Solutions" />
             <span
               className="block"
               style={{
@@ -290,23 +296,23 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Built for Growth
+              <PrismReveal text="Built for Growth" delay={0.6} />
             </span>
           </h1>
 
           <p
-            className="text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed"
-            style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
+            className="text-xl md:text-2xl max-w-4xl mx-auto mb-12 leading-relaxed"
+            style={{ color: "rgba(229,231,235,0.9)", fontFamily: "Inter, sans-serif", textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}
           >
             Echo5 Digital delivers a complete stack of AI-powered marketing, web development,
             and custom programming solutions — all engineered around measurable business
             outcomes, not vanity metrics.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
             <Link
               href="/contact"
-              className="px-8 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110"
+              className="px-10 py-5 rounded-full font-semibold text-white text-lg transition-all duration-200 hover:brightness-110"
               style={{
                 background: "linear-gradient(135deg, #7C3AED, #A855F7)",
                 boxShadow: "0 0 28px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
@@ -317,80 +323,81 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
             </Link>
             <Link
               href="/ai-marketing-employee"
-              className="px-8 py-4 rounded-full font-semibold text-purple-400 text-base border border-purple-500/40 transition-all duration-200 hover:bg-purple-500/10 hover:border-purple-400"
+              className="px-10 py-5 rounded-full font-semibold text-white text-lg border border-white/40 transition-all duration-200 hover:bg-white/10 hover:border-white/70 backdrop-blur-sm"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               AI Marketing Employee →
             </Link>
           </div>
 
-          {/* Hero image */}
-          <div className="mt-16 rounded-2xl overflow-hidden border border-purple-500/20 shadow-2xl">
-            <img
-              src="https://images.pexels.com/photos/27141316/pexels-photo-27141316.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt="Echo5 Digital AI-powered marketing dashboard overview"
-              className="w-full h-72 md:h-96 object-cover"
+          {/* Scroll cue */}
+          <motion.div
+            aria-hidden="true"
+            className="mt-20 w-7 h-11 rounded-full border-2 border-white/30 flex items-start justify-center p-1.5"
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <motion.div
+              className="w-2 h-2 rounded-full bg-white/80"
+              animate={{ y: [0, 16, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             />
-            <div
-              className="absolute inset-x-0 bottom-0 h-32"
-              style={{
-                background:
-                  "linear-gradient(to bottom, transparent, #0A0F1E)",
-              }}
-            />
-          </div>
+          </motion.div>
         </div>
-      </Section>
+      </FocusPullHero>
 
-      {/* ─── QUICK ANSWER BLOCK ─── */}
-      <Section background="elevated" spacing="md" maxWidth="2xl" withDivider>
-        <div
-          className="rounded-2xl p-6 md:p-8 border"
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.07) 100%)",
-            borderColor: "rgba(124,58,237,0.3)",
-          }}
-        >
-          <div className="flex items-start gap-4">
-            <div
-              className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
-              style={{
-                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                boxShadow: "0 0 16px rgba(124,58,237,0.5)",
-              }}
-            >
-              <Zap size={18} color="#fff" />
-            </div>
-            <div>
-              <p
-                className="text-xs font-bold uppercase tracking-widest mb-3"
-                style={{ color: "#A855F7", fontFamily: "Space Grotesk, sans-serif" }}
+      {/* ─── QUICK ANSWER BLOCK (light lavender) ─── */}
+      <Section background="transparent" spacing="md" maxWidth="2xl" withDivider className="!bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_60%,#EEECFB_100%)] relative">
+        <LavenderField variant="a" />
+        <InkReveal origin="8% 40%" className="relative">
+          <div
+            className="rounded-2xl p-6 md:p-8 border"
+            style={{
+              background: "linear-gradient(135deg, rgba(255,255,255,0.85), rgba(238,236,251,0.75))",
+              borderColor: "rgba(107,78,240,0.22)",
+              boxShadow: "0 12px 40px rgba(107,78,240,0.12)",
+            }}
+          >
+            <div className="flex items-start gap-4">
+              <div
+                className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
+                style={{
+                  background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
+                  boxShadow: "0 0 16px rgba(107,78,240,0.4)",
+                }}
               >
-                Quick Answer
-              </p>
-              <p
-                className="text-base md:text-lg leading-relaxed"
-                style={{ color: "#E5E7EB", fontFamily: "Inter, sans-serif" }}
-              >
-                Echo5 Digital offers a comprehensive suite of AI-powered solutions spanning
-                digital marketing, SEO, AEO, paid advertising, social media, web design, web
-                development, custom programming, and CRM automation. Its flagship{" "}
-                <Link href="/ai-marketing-employee" className="text-purple-400 underline underline-offset-2 hover:text-purple-300">
-                  AI Marketing Employee
-                </Link>{" "}
-                product bundles these capabilities into done-for-you growth plans managed by
-                agentic AI with human oversight. Echo5 Digital serves small and mid-sized
-                businesses in Houston, Sugar Land, Texas, and nationally across the U.S.
-              </p>
+                <Zap size={18} color="#fff" />
+              </div>
+              <div>
+                <p
+                  className="text-xs font-bold uppercase tracking-widest mb-3"
+                  style={{ color: "#6B4EF0", fontFamily: "Space Grotesk, sans-serif" }}
+                >
+                  Quick Answer
+                </p>
+                <p
+                  className="text-base md:text-lg leading-relaxed"
+                  style={{ color: "#1F2340", fontFamily: "Inter, sans-serif" }}
+                >
+                  Echo5 Digital offers a comprehensive suite of AI-powered solutions spanning
+                  digital marketing, SEO, AEO, paid advertising, social media, web design, web
+                  development, custom programming, and CRM automation. Its flagship{" "}
+                  <Link href="/ai-marketing-employee" className="underline underline-offset-2" style={{ color: "#6B4EF0" }}>
+                    AI Marketing Employee
+                  </Link>{" "}
+                  product bundles these capabilities into done-for-you growth plans managed by
+                  agentic AI with human oversight. Echo5 Digital serves small and mid-sized
+                  businesses in Houston, Sugar Land, Texas, and nationally across the U.S.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        </InkReveal>
       </Section>
 
       {/* ─── SOLUTIONS GRID – AI MARKETING ─── */}
       <Section background="default" spacing="lg" maxWidth="2xl" withDivider>
-        <div className="mb-12">
+        <GlowTrail className="mb-12">
           <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10">
             <TrendingUp size={14} className="text-purple-400" />
             <span
@@ -414,79 +421,112 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
             From SEO to paid media, our AI-powered marketing solutions operate continuously
             — generating traffic, leads, and revenue while you focus on running your business.
           </p>
-        </div>
+        </GlowTrail>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {aiMarketingServices.map((service) => (
-            <Link
-              key={service.title}
-              href={service.href}
-              className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-[0.75rem]"
-              aria-label={`Learn more about ${service.title}`}
-            >
-              <Card
-                title={service.title}
-                description={service.description}
-                icon={service.icon}
-                badge={service.badge ?? undefined}
-                variant="service"
-              />
-            </Link>
+          {aiMarketingServices.map((service, i) => (
+            <MagnetPop key={service.title} index={i}>
+              <Link
+                href={service.href}
+                className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-[0.75rem]"
+                aria-label={`Learn more about ${service.title}`}
+              >
+                <Card
+                  title={service.title}
+                  description={service.description}
+                  icon={service.icon}
+                  badge={service.badge ?? undefined}
+                  variant="service"
+                />
+              </Link>
+            </MagnetPop>
           ))}
         </div>
       </Section>
 
-      {/* ─── SOLUTIONS GRID – WEB & DEVELOPMENT ─── */}
-      <Section background="elevated" spacing="lg" maxWidth="2xl" withDivider>
-        <div className="mb-12">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10">
-            <Code2 size={14} className="text-purple-400" />
+      {/* ─── SOLUTIONS GRID – WEB & DEVELOPMENT (light lavender) ─── */}
+      <Section background="transparent" spacing="lg" maxWidth="2xl" withDivider className="!bg-[linear-gradient(180deg,#EEECFB_0%,#F7F5FD_50%,#FFFFFF_100%)] relative">
+        <LavenderField variant="b" />
+        <GlowTrail className="mb-12 relative">
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full border" style={{ borderColor: "rgba(107,78,240,0.25)", background: "rgba(107,78,240,0.08)" }}>
+            <Code2 size={14} style={{ color: "#6B4EF0" }} />
             <span
-              className="text-xs font-semibold uppercase tracking-widest text-purple-400"
-              style={{ fontFamily: "Space Grotesk, sans-serif" }}
+              className="text-xs font-semibold uppercase tracking-widest"
+              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#6B4EF0" }}
             >
               Web & Development Solutions
             </span>
           </div>
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
-            style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
+            style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em", color: "#1F2340" }}
           >
             Build, Automate &{" "}
-            <span style={{ color: "#A855F7" }}>Scale Your Tech Stack</span>
+            <span style={{ color: "#6B4EF0" }}>Scale Your Tech Stack</span>
           </h2>
           <p
             className="text-base md:text-lg max-w-2xl"
-            style={{ color: "rgba(229,231,235,0.65)", fontFamily: "Inter, sans-serif" }}
+            style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
           >
             From custom-coded websites to CRM integrations and reporting dashboards — our
             development team builds the digital infrastructure that powers your growth engine.
           </p>
-        </div>
+        </GlowTrail>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {webDevServices.map((service) => (
-            <Link
-              key={service.title}
-              href={service.href}
-              className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-[0.75rem]"
-              aria-label={`Learn more about ${service.title}`}
-            >
-              <Card
-                title={service.title}
-                description={service.description}
-                icon={service.icon}
-                variant="service"
-              />
-            </Link>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 relative">
+          {webDevServices.map((service, i) => {
+            const palette = [
+              { accent: "#6B4EF0", wash: "rgba(107,78,240,0.1)" },
+              { accent: "#C026D3", wash: "rgba(192,38,212,0.1)" },
+              { accent: "#0891B2", wash: "rgba(8,145,178,0.1)" },
+              { accent: "#DB2777", wash: "rgba(219,39,119,0.1)" },
+              { accent: "#7C3AED", wash: "rgba(124,58,237,0.1)" },
+              { accent: "#059669", wash: "rgba(5,150,105,0.1)" },
+            ][i % 6];
+            return (
+              <PeelCard key={service.title} index={i}>
+                <Link
+                  href={service.href}
+                  className="group block h-full rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+                  style={{
+                    background: `linear-gradient(160deg, rgba(255,255,255,0.9), ${palette.wash})`,
+                    border: `1px solid ${palette.accent}2E`,
+                    boxShadow: `0 4px 20px ${palette.accent}14`,
+                  }}
+                  aria-label={`Learn more about ${service.title}`}
+                >
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
+                    style={{
+                      background: `linear-gradient(135deg, ${palette.accent}30, ${palette.accent}14)`,
+                      border: `1px solid ${palette.accent}40`,
+                    }}
+                  >
+                    <service.icon size={22} style={{ color: palette.accent }} strokeWidth={1.8} />
+                  </div>
+                  <h3
+                    className="text-lg font-semibold mb-2"
+                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1F2340" }}
+                  >
+                    {service.title}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
+                  >
+                    {service.description}
+                  </p>
+                </Link>
+              </PeelCard>
+            );
+          })}
         </div>
       </Section>
 
       {/* ─── AI EMPLOYEE PRODUCT OVERVIEW ─── */}
       <Section background="gradient" spacing="lg" maxWidth="2xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
+          <InkReveal origin="20% 50%">
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10">
               <Bot size={14} className="text-purple-400" />
               <span
@@ -547,7 +587,7 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
               Explore AI Marketing Employee
               <ArrowRight size={16} />
             </Link>
-          </div>
+          </InkReveal>
 
           <div className="relative">
             <div
@@ -558,25 +598,22 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
                   "linear-gradient(135deg, #7C3AED, #A855F7)",
               }}
             />
-            <div
-              className="relative rounded-2xl overflow-hidden border"
-              style={{ borderColor: "rgba(168,85,247,0.3)" }}
-            >
-              <img
-                src="https://images.pexels.com/photos/8566526/pexels-photo-8566526.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                alt="AI Marketing Employee system managing multiple marketing channels simultaneously"
-                className="w-full h-80 object-cover"
-              />
-            </div>
+            <BlindsReveal
+              src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+              alt="AI Marketing Employee system managing multiple marketing channels simultaneously"
+              className="relative rounded-2xl border border-purple-400/30"
+              imgClassName="w-full h-80 object-cover"
+            />
 
             {/* Floating stat badges */}
-            <div
+            <FloatDrift
               className="absolute -top-4 -right-4 px-4 py-3 rounded-xl border shadow-xl"
               style={{
                 backgroundColor: "#0A0F1E",
                 borderColor: "rgba(124,58,237,0.4)",
                 boxShadow: "0 0 20px rgba(124,58,237,0.3)",
               }}
+              duration={3.2}
             >
               <div className="flex items-center gap-2">
                 <Zap size={16} style={{ color: "#A855F7" }} />
@@ -587,15 +624,17 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
                   24/7 AI Execution
                 </span>
               </div>
-            </div>
+            </FloatDrift>
 
-            <div
+            <FloatDrift
               className="absolute -bottom-4 -left-4 px-4 py-3 rounded-xl border shadow-xl"
               style={{
                 backgroundColor: "#0A0F1E",
                 borderColor: "rgba(124,58,237,0.4)",
                 boxShadow: "0 0 20px rgba(124,58,237,0.3)",
               }}
+              duration={3.8}
+              delay={0.6}
             >
               <div className="flex items-center gap-2">
                 <Users size={16} style={{ color: "#A855F7" }} />
@@ -606,7 +645,7 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
                   Human QA Oversight
                 </span>
               </div>
-            </div>
+            </FloatDrift>
           </div>
         </div>
       </Section>
@@ -639,144 +678,148 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
           </p>
         </div>
 
+        <DiagonalSweep
+          src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          alt="Diverse industry professionals collaborating on a growth strategy"
+          className="rounded-2xl border border-purple-500/20 mb-10"
+          imgClassName="w-full h-56 md:h-64 object-cover"
+        />
+
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-          {industries.map((industry) => {
+          {industries.map((industry, i) => {
             const Icon = industry.icon;
             return (
-              <Link
-                key={industry.label}
-                href={industry.href}
-                className="group flex flex-col items-center gap-3 p-4 rounded-xl border transition-all duration-200 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
-                style={{
-                  backgroundColor: "rgba(255,255,255,0.03)",
-                  borderColor: "rgba(124,58,237,0.2)",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                    "rgba(168,85,247,0.5)";
-                  (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                    "rgba(124,58,237,0.1)";
-                  (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-                    "0 4px 20px rgba(124,58,237,0.25)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                    "rgba(124,58,237,0.2)";
-                  (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                    "rgba(255,255,255,0.03)";
-                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
-                }}
-              >
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center transition-transform duration-200 group-hover:scale-110"
+              <MagnetPop key={industry.label} index={i}>
+                <Link
+                  href={industry.href}
+                  className="group flex flex-col items-center gap-3 p-4 rounded-xl border transition-all duration-200 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
                   style={{
-                    background:
-                      "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-                    border: "1px solid rgba(168,85,247,0.3)",
+                    backgroundColor: "rgba(255,255,255,0.03)",
+                    borderColor: "rgba(124,58,237,0.2)",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.borderColor =
+                      "rgba(168,85,247,0.5)";
+                    (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
+                      "rgba(124,58,237,0.1)";
+                    (e.currentTarget as HTMLAnchorElement).style.boxShadow =
+                      "0 4px 20px rgba(124,58,237,0.25)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.borderColor =
+                      "rgba(124,58,237,0.2)";
+                    (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
+                      "rgba(255,255,255,0.03)";
+                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
                   }}
                 >
-                  <Icon size={20} style={{ color: "#A855F7" }} strokeWidth={1.8} />
-                </div>
-                <span
-                  className="text-xs font-semibold text-center leading-tight"
-                  style={{ color: "#E5E7EB", fontFamily: "Inter, sans-serif" }}
-                >
-                  {industry.label}
-                </span>
-              </Link>
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center transition-transform duration-200 group-hover:scale-110"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
+                      border: "1px solid rgba(168,85,247,0.3)",
+                    }}
+                  >
+                    <Icon size={20} style={{ color: "#A855F7" }} strokeWidth={1.8} />
+                  </div>
+                  <span
+                    className="text-xs font-semibold text-center leading-tight"
+                    style={{ color: "#E5E7EB", fontFamily: "Inter, sans-serif" }}
+                  >
+                    {industry.label}
+                  </span>
+                </Link>
+              </MagnetPop>
             );
           })}
         </div>
       </Section>
 
-      {/* ─── HOW ECHO5 DIGITAL WORKS ─── */}
-      <Section background="elevated" spacing="lg" maxWidth="2xl" withDivider>
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10">
-            <RefreshCw size={14} className="text-purple-400" />
+      {/* ─── HOW ECHO5 DIGITAL WORKS (light lavender) ─── */}
+      <Section background="transparent" spacing="lg" maxWidth="2xl" withDivider className="!bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_50%,#EEECFB_100%)] relative">
+        <LavenderField variant="c" />
+        <GlowTrail className="text-center mb-12 relative">
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full border" style={{ borderColor: "rgba(107,78,240,0.25)", background: "rgba(107,78,240,0.08)" }}>
+            <RefreshCw size={14} style={{ color: "#6B4EF0" }} />
             <span
-              className="text-xs font-semibold uppercase tracking-widest text-purple-400"
-              style={{ fontFamily: "Space Grotesk, sans-serif" }}
+              className="text-xs font-semibold uppercase tracking-widest"
+              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#6B4EF0" }}
             >
               How It Works
             </span>
           </div>
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
-            style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
+            style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em", color: "#1F2340" }}
           >
             From Onboarding to{" "}
-            <span style={{ color: "#A855F7" }}>Compounding Growth</span>
+            <span style={{ color: "#6B4EF0" }}>Compounding Growth</span>
           </h2>
           <p
             className="text-base max-w-2xl mx-auto"
-            style={{ color: "rgba(229,231,235,0.65)", fontFamily: "Inter, sans-serif" }}
+            style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
           >
             Our five-phase operational model gives you confidence in the process — from day
             one discovery through ongoing AI execution and transparent reporting.
           </p>
-        </div>
+        </GlowTrail>
 
-        <div className="relative">
-          {/* Connector line (desktop) */}
-          <div
-            className="hidden lg:block absolute top-10 left-0 right-0 h-px"
-            style={{
-              background:
-                "linear-gradient(90deg, transparent, rgba(124,58,237,0.4) 15%, rgba(168,85,247,0.6) 50%, rgba(124,58,237,0.4) 85%, transparent)",
-              zIndex: 0,
-            }}
-          />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
-            {processSteps.map((step) => {
-              const Icon = step.icon;
-              return (
-                <div key={step.number} className="flex flex-col items-center text-center">
-                  <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center mb-4 relative"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
+          {processSteps.map((step, i) => {
+            const Icon = step.icon;
+            const palette = [
+              { accent: "#6B4EF0" },
+              { accent: "#C026D3" },
+              { accent: "#0891B2" },
+              { accent: "#DB2777" },
+              { accent: "#059669" },
+            ][i % 5];
+            return (
+              <MagnetPop key={step.number} index={i} className="flex flex-col items-center text-center">
+                <div
+                  className="w-20 h-20 rounded-2xl flex items-center justify-center mb-4 relative"
+                  style={{
+                    background: `linear-gradient(135deg, ${palette.accent}29, ${palette.accent}14)`,
+                    border: `1px solid ${palette.accent}45`,
+                    boxShadow: `0 4px 20px ${palette.accent}1F`,
+                  }}
+                >
+                  <Icon size={28} style={{ color: palette.accent }} strokeWidth={1.6} />
+                  <span
+                    className="absolute -top-2 -right-2 w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center"
                     style={{
-                      background:
-                        "linear-gradient(135deg, rgba(124,58,237,0.25), rgba(168,85,247,0.15))",
-                      border: "1px solid rgba(168,85,247,0.35)",
-                      boxShadow: "0 0 20px rgba(124,58,237,0.2)",
+                      background: `linear-gradient(135deg, ${palette.accent}, #8B5CF6)`,
+                      color: "#fff",
+                      fontFamily: "Space Grotesk, sans-serif",
+                      fontSize: "0.65rem",
                     }}
                   >
-                    <Icon size={28} style={{ color: "#A855F7" }} strokeWidth={1.6} />
-                    <span
-                      className="absolute -top-2 -right-2 w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center"
-                      style={{
-                        background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                        color: "#fff",
-                        fontFamily: "Space Grotesk, sans-serif",
-                        fontSize: "0.65rem",
-                      }}
-                    >
-                      {step.number}
-                    </span>
-                  </div>
-                  <h3
-                    className="text-base font-bold mb-2"
-                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-                  >
-                    {step.title}
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
-                  >
-                    {step.description}
-                  </p>
+                    {step.number}
+                  </span>
                 </div>
-              );
-            })}
-          </div>
+                <h3
+                  className="text-base font-bold mb-2"
+                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1F2340" }}
+                >
+                  {step.title}
+                </h3>
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
+                >
+                  {step.description}
+                </p>
+              </MagnetPop>
+            );
+          })}
         </div>
       </Section>
 
       {/* ─── LOCAL RELEVANCE ─── */}
       <Section background="default" spacing="md" maxWidth="2xl" withDivider>
-        <div
+        <InkReveal
+          origin="90% 50%"
           className="rounded-2xl p-6 md:p-8 border"
           style={{
             background:
@@ -836,7 +879,7 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
               </div>
             </div>
           </div>
-        </div>
+        </InkReveal>
       </Section>
 
       {/* ─── TRUST BAR ─── */}
@@ -859,11 +902,12 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {trustSignals.map((signal) => {
+          {trustSignals.map((signal, i) => {
             const Icon = signal.icon;
             return (
-              <div
+              <MagnetPop
                 key={signal.label}
+                index={i}
                 className="flex flex-col items-center gap-3 p-5 rounded-xl border"
                 style={{
                   backgroundColor: "rgba(255,255,255,0.03)",
@@ -886,37 +930,39 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
                 >
                   {signal.label}
                 </span>
-              </div>
+              </MagnetPop>
             );
           })}
         </div>
       </Section>
 
-      {/* ─── FAQ ─── */}
-      <Section background="default" spacing="lg" maxWidth="2xl" withDivider>
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-10">
+      {/* ─── FAQ (light lavender) ─── */}
+      <Section background="transparent" spacing="lg" maxWidth="2xl" withDivider className="!bg-[linear-gradient(180deg,#EEECFB_0%,#F7F5FD_50%,#FFFFFF_100%)] relative">
+        <LavenderField variant="b" />
+        <div className="max-w-3xl mx-auto relative">
+          <GlowTrail className="text-center mb-10">
             <h2
               className="text-3xl md:text-4xl font-bold mb-4"
-              style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
+              style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em", color: "#1F2340" }}
             >
               Frequently Asked{" "}
-              <span style={{ color: "#A855F7" }}>Questions</span>
+              <span style={{ color: "#6B4EF0" }}>Questions</span>
             </h2>
-          </div>
+          </GlowTrail>
 
           <div className="space-y-3">
             {faqData.map((item, index) => (
-              <div
+              <PeelCard
                 key={index}
+                index={index}
                 className="rounded-xl border overflow-hidden transition-all duration-200"
                 style={{
                   borderColor: openFaq === index
-                    ? "rgba(168,85,247,0.4)"
-                    : "rgba(124,58,237,0.2)",
+                    ? "rgba(107,78,240,0.4)"
+                    : "rgba(107,78,240,0.18)",
                   backgroundColor: openFaq === index
-                    ? "rgba(124,58,237,0.08)"
-                    : "rgba(255,255,255,0.02)",
+                    ? "rgba(107,78,240,0.08)"
+                    : "rgba(255,255,255,0.6)",
                 }}
               >
                 <button
@@ -927,11 +973,11 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
                 >
                   <span
                     className="text-base font-semibold"
-                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1F2340" }}
                   >
                     {item.question}
                   </span>
-                  <span className="flex-shrink-0" style={{ color: "#A855F7" }}>
+                  <span className="flex-shrink-0" style={{ color: "#6B4EF0" }}>
                     {openFaq === index ? (
                       <ChevronUp size={20} />
                     ) : (
@@ -947,7 +993,7 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
                     <p
                       className="text-sm leading-relaxed"
                       style={{
-                        color: "rgba(229,231,235,0.7)",
+                        color: "#5B5F73",
                         fontFamily: "Inter, sans-serif",
                       }}
                     >
@@ -955,7 +1001,7 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
                     </p>
                   </div>
                 )}
-              </div>
+              </PeelCard>
             ))}
           </div>
         </div>
@@ -965,7 +1011,7 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
       <Section background="gradient" spacing="xl" maxWidth="2xl" withDivider>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left: Messaging */}
-          <div>
+          <InkReveal origin="15% 20%">
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10">
               <Zap size={14} className="text-purple-400" />
               <span
@@ -1043,17 +1089,17 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
                 );
               })}
             </div>
-          </div>
+          </InkReveal>
 
           {/* Right: Contact Form */}
-          <div>
+          <InkReveal origin="85% 30%" delay={0.1}>
             <ContactForm
               heading="Find Your Solution"
               subheading="Describe your business and goals — we'll recommend the right plan."
               submitLabel="Get My Recommendation"
               showAppointmentNote={true}
             />
-          </div>
+          </InkReveal>
         </div>
       </Section>
     </main>

@@ -6,7 +6,7 @@ interface SectionProps {
   className?: string;
   background?: "default" | "elevated" | "gradient" | "transparent";
   spacing?: "sm" | "md" | "lg" | "xl";
-  maxWidth?: "sm" | "md" | "lg" | "xl" | "2xl" | "full";
+  maxWidth?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full";
   centered?: boolean;
   withDivider?: boolean;
   as?: React.ElementType;
@@ -33,6 +33,7 @@ const maxWidthStyles: Record<string, string> = {
   lg: "max-w-5xl",
   xl: "max-w-6xl",
   "2xl": "max-w-7xl",
+  "3xl": "max-w-[1800px]",
   full: "max-w-full",
 };
 

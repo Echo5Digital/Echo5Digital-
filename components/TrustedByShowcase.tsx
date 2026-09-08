@@ -347,7 +347,7 @@ export default function TrustedByShowcase() {
         }
 
         @media (max-width: 480px) {
-          .tbs-content { padding: 0 16px; }
+          .tbs-content { padding: 40px 16px 56px; }
         }
       `}</style>
     </div>

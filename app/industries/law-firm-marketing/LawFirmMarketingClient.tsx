@@ -5,6 +5,7 @@ import Link from "next/link";
 import Section from "@/components/Section";
 import Card from "@/components/Card";
 import ContactForm from "@/components/ContactForm";
+import { RevealMask, WordStagger, ParallaxImage, TiltCard, CountUp, HowWeWorkRail, BlurIn, DiagonalWipe } from "@/components/ScrollFX";
 import {
   Scale,
   Search,
@@ -30,6 +31,14 @@ import {
   Building2,
   Phone,
   Mail,
+  HeartPulse,
+  UsersRound,
+  Gavel,
+  Briefcase,
+  Home,
+  Plane,
+  FileSignature,
+  HandCoins,
 } from "lucide-react";
 
 interface FaqItem {
@@ -200,6 +209,80 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
     { icon: Globe, label: "National & Local Coverage" },
   ];
 
+  const practiceAreas = [
+    {
+      number: "01",
+      icon: HeartPulse,
+      title: "Personal Injury Law",
+      description: "Targeted campaigns for accident, injury, and negligence cases that reach clients at their moment of need.",
+    },
+    {
+      number: "02",
+      icon: UsersRound,
+      title: "Family Law",
+      description: "Sensitive, discreet marketing for divorce, custody, and adoption practices that builds trust before the first call.",
+    },
+    {
+      number: "03",
+      icon: Gavel,
+      title: "Criminal Defense",
+      description: "Urgent-intent search targeting so your firm is visible the moment someone needs representation immediately.",
+    },
+    {
+      number: "04",
+      icon: Briefcase,
+      title: "Corporate Law",
+      description: "Complex, industry-specific keyword strategies that position your firm in front of business decision-makers.",
+    },
+    {
+      number: "05",
+      icon: Home,
+      title: "Real Estate Law",
+      description: "Local property law optimization tuned to closings, disputes, and transactions in your service area.",
+    },
+    {
+      number: "06",
+      icon: Plane,
+      title: "Immigration Law",
+      description: "Visa, citizenship, and immigration-status targeting across the search terms that matter most to your clients.",
+    },
+    {
+      number: "07",
+      icon: FileSignature,
+      title: "Estate Planning",
+      description: "Wills, trusts, and estate planning content optimized for high-intent, long-consideration search journeys.",
+    },
+    {
+      number: "08",
+      icon: HandCoins,
+      title: "Employment Law",
+      description: "Workplace dispute and employee-rights targeting that connects your firm with clients facing urgent issues.",
+    },
+  ];
+
+  const industryStudies = [
+    {
+      stat: "57%",
+      description: "of legal clients use online search to find and vet an attorney before making contact.",
+      source: "Clio Legal Trends Report",
+    },
+    {
+      stat: "35%",
+      description: "of attorneys report new client acquisition success directly attributable to social media presence.",
+      source: "Attorney at Work",
+    },
+    {
+      stat: "46%",
+      description: "of all Google searches have local intent — critical for law firms competing in a specific metro market.",
+      source: "Google Research",
+    },
+    {
+      stat: "25%",
+      description: "increase in conversion rate achievable through AI-driven personalization of marketing content.",
+      source: "Gartner",
+    },
+  ];
+
   return (
     <main style={{ backgroundColor: "#0A0F1E", color: "#E5E7EB" }}>
       {/* ═══════════════════════ HERO ═══════════════════════ */}
@@ -266,28 +349,32 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
               letterSpacing: "-0.02em",
             }}
           >
-            AI-Powered Marketing for{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Law Firms
-            </span>{" "}
-            &amp; Attorneys
+            <RevealMask>AI-Powered Marketing for</RevealMask>{" "}
+            <RevealMask delay={0.1}>
+              <span
+                style={{
+                  background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Law Firms
+              </span>
+            </RevealMask>{" "}
+            <RevealMask delay={0.2}>&amp; Attorneys</RevealMask>
           </h1>
 
-          <p
-            className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed"
-            style={{ fontFamily: "Inter, sans-serif" }}
-          >
-            Generate more qualified leads, dominate local search, and appear in
-            AI-generated answers — all without hiring an in-house marketing
-            team. Echo5 Digital is your always-on AI marketing partner.
-          </p>
+          <BlurIn delay={0.35}>
+            <p
+              className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              Generate more qualified leads, dominate local search, and appear in
+              AI-generated answers — all without hiring an in-house marketing
+              team. Echo5 Digital is your always-on AI marketing partner.
+            </p>
+          </BlurIn>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
@@ -319,9 +406,10 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
               { val: "67%", label: "Lower Cost Per Lead" },
               { val: "Top 3", label: "Local Pack Rankings" },
               { val: "24/7", label: "AI Campaign Management" },
-            ].map((stat) => (
-              <div
+            ].map((stat, i) => (
+              <TiltCard
                 key={stat.label}
+                index={i}
                 className="rounded-xl p-4 text-center"
                 style={{
                   background: "rgba(124,58,237,0.1)",
@@ -337,7 +425,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
                 <p className="text-xs text-gray-400" style={{ fontFamily: "Inter, sans-serif" }}>
                   {stat.label}
                 </p>
-              </div>
+              </TiltCard>
             ))}
           </div>
         </div>
@@ -345,7 +433,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
 
       {/* ═══════════════════════ QUICK ANSWER ═══════════════════════ */}
       <Section background="elevated" spacing="md" withDivider>
-        <div
+        <BlurIn
           className="rounded-2xl p-6 md:p-8 border-l-4"
           style={{
             background: "linear-gradient(135deg, rgba(124,58,237,0.12), rgba(168,85,247,0.06))",
@@ -383,7 +471,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
               </p>
             </div>
           </div>
-        </div>
+        </BlurIn>
       </Section>
 
       {/* ═══════════════════════ INDUSTRY CHALLENGES ═══════════════════════ */}
@@ -399,7 +487,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
             className="text-3xl md:text-4xl font-bold text-gray-100 mb-4"
             style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
           >
-            The Unique Marketing Challenges Law Firms Face
+            <WordStagger text="The Unique Marketing Challenges Law Firms Face" />
           </h2>
           <p
             className="text-gray-400 max-w-2xl mx-auto text-base leading-relaxed"
@@ -412,11 +500,12 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {challenges.map((challenge) => {
+          {challenges.map((challenge, i) => {
             const Icon = challenge.icon;
             return (
-              <div
+              <TiltCard
                 key={challenge.title}
+                index={i}
                 className="flex gap-5 p-6 rounded-xl"
                 style={{
                   background: "rgba(255,255,255,0.03)",
@@ -446,7 +535,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
                     {challenge.description}
                   </p>
                 </div>
-              </div>
+              </TiltCard>
             );
           })}
         </div>
@@ -465,7 +554,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
             className="text-3xl md:text-4xl font-bold text-gray-100 mb-4"
             style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
           >
-            Digital Marketing Services for Law Firms
+            <WordStagger text="Digital Marketing Services for Law Firms" />
           </h2>
           <p
             className="text-gray-400 max-w-2xl mx-auto text-base leading-relaxed"
@@ -477,15 +566,16 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {services.map((service) => (
-            <Card
-              key={service.title}
-              title={service.title}
-              description={service.description}
-              icon={service.icon}
-              badge={service.badge}
-              variant="service"
-            />
+          {services.map((service, i) => (
+            <TiltCard key={service.title} index={i}>
+              <Card
+                title={service.title}
+                description={service.description}
+                icon={service.icon}
+                badge={service.badge}
+                variant="service"
+              />
+            </TiltCard>
           ))}
         </div>
       </Section>
@@ -504,7 +594,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
               className="text-3xl md:text-4xl font-bold text-gray-100 mb-5"
               style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
             >
-              Your Law Firm's Always-On Marketing Team
+              <WordStagger text="Your Law Firm's Always-On Marketing Team" />
             </h2>
             <p
               className="text-gray-400 text-base leading-relaxed mb-6"
@@ -549,10 +639,10 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
           </div>
 
           <div className="relative">
-            <img
+            <ParallaxImage
               src="https://images.pexels.com/photos/97080/pexels-photo-97080.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
               alt="AI marketing dashboard showing law firm campaign analytics and performance data"
-              className="rounded-2xl w-full object-cover"
+              className="rounded-2xl w-full aspect-[4/3]"
               style={{
                 border: "1px solid rgba(124,58,237,0.3)",
                 boxShadow: "0 0 60px rgba(124,58,237,0.2)",
@@ -611,10 +701,10 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
                     title: "Entity & Authority Building",
                     desc: "Establishing your firm as a recognized legal authority through citations, backlinks, and E-E-A-T signals that AI systems trust.",
                   },
-                ].map((item) => {
+                ].map((item, i) => {
                   const Icon = item.icon;
                   return (
-                    <div key={item.title} className="flex gap-4">
+                    <DiagonalWipe key={item.title} delay={i * 0.12} className="flex gap-4">
                       <div
                         className="shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
                         style={{
@@ -638,7 +728,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
                           {item.desc}
                         </p>
                       </div>
-                    </div>
+                    </DiagonalWipe>
                   );
                 })}
               </div>
@@ -656,7 +746,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
               className="text-3xl md:text-4xl font-bold text-gray-100 mb-5"
               style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
             >
-              Appear in AI-Generated Legal Search Answers
+              <WordStagger text="Appear in AI-Generated Legal Search Answers" />
             </h2>
             <p
               className="text-gray-400 text-base leading-relaxed mb-4"
@@ -699,7 +789,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
             className="text-3xl md:text-4xl font-bold text-gray-100 mb-4"
             style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
           >
-            How We Grow Your Law Firm's Caseload
+            <WordStagger text="How We Grow Your Law Firm's Caseload" />
           </h2>
           <p
             className="text-gray-400 max-w-2xl mx-auto text-base"
@@ -721,10 +811,10 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            {howItWorksSteps.map((step) => {
+            {howItWorksSteps.map((step, i) => {
               const Icon = step.icon;
               return (
-                <div key={step.number} className="flex flex-col items-center text-center">
+                <TiltCard key={step.number} index={i} className="flex flex-col items-center text-center">
                   <div
                     className="relative w-24 h-24 rounded-2xl flex flex-col items-center justify-center mb-4 z-10"
                     style={{
@@ -753,10 +843,81 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
                   >
                     {step.description}
                   </p>
-                </div>
+                </TiltCard>
               );
             })}
           </div>
+        </div>
+      </Section>
+
+      {/* ═══════════════════════ PRACTICE AREAS WE SUPPORT ═══════════════════════ */}
+      <Section background="default" spacing="lg" withDivider>
+        <div className="text-center mb-12">
+          <p
+            className="text-xs font-semibold uppercase tracking-widest text-purple-400 mb-3"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            Legal Specializations
+          </p>
+          <h2
+            className="text-3xl md:text-4xl font-bold text-gray-100 mb-4"
+            style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
+          >
+            <WordStagger text="Types of Law Practices We Support" />
+          </h2>
+          <p
+            className="text-gray-400 max-w-2xl mx-auto text-base leading-relaxed"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            Every practice area has its own client search behavior, ethics
+            considerations, and competitive landscape. Our strategies are
+            built around the specifics of your specialization.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {practiceAreas.map((area, i) => {
+            const Icon = area.icon;
+            return (
+              <TiltCard
+                key={area.title}
+                index={i}
+                className="relative p-6 rounded-2xl overflow-hidden"
+                style={{
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(124,58,237,0.2)",
+                }}
+              >
+                <span
+                  className="absolute -top-2 -right-1 text-6xl font-bold opacity-[0.06] select-none pointer-events-none"
+                  style={{ fontFamily: "Space Grotesk, sans-serif" }}
+                >
+                  {area.number}
+                </span>
+                <div
+                  className="relative w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                  style={{
+                    background: "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
+                    border: "1px solid rgba(168,85,247,0.3)",
+                  }}
+                >
+                  <Icon size={22} className="text-purple-400" />
+                </div>
+                <h3
+                  className="relative text-base font-semibold text-gray-100 mb-2"
+                  style={{ fontFamily: "Space Grotesk, sans-serif" }}
+                >
+                  {area.title}
+                </h3>
+                <p
+                  className="relative text-sm text-gray-400 leading-relaxed"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  {area.description}
+                </p>
+              </TiltCard>
+            );
+          })}
         </div>
       </Section>
 
@@ -773,7 +934,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
             className="text-3xl md:text-4xl font-bold text-gray-100 mb-4"
             style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
           >
-            Results That Speak for Themselves
+            <WordStagger text="Results That Speak for Themselves" />
           </h2>
           <p
             className="text-gray-400 max-w-2xl mx-auto text-sm"
@@ -787,9 +948,10 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
 
         {/* Metrics */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
-          {results.map((result) => (
-            <div
+          {results.map((result, i) => (
+            <TiltCard
               key={result.metric}
+              index={i}
               className="text-center p-6 rounded-2xl"
               style={{
                 background: "linear-gradient(135deg, rgba(124,58,237,0.12), rgba(168,85,247,0.06))",
@@ -820,7 +982,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
               >
                 {result.sublabel}
               </p>
-            </div>
+            </TiltCard>
           ))}
         </div>
 
@@ -839,9 +1001,10 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
               highlight: "Reduced Google Ads cost-per-lead by 58% while increasing qualified consultation requests by 2.4× through AI bid optimization.",
               services: ["Google Ads", "AEO", "Landing Page Optimization"],
             },
-          ].map((study) => (
-            <div
+          ].map((study, i) => (
+            <TiltCard
               key={study.type}
+              index={i}
               className="p-6 rounded-2xl"
               style={{
                 background: "rgba(255,255,255,0.03)",
@@ -896,7 +1059,72 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
                   </span>
                 ))}
               </div>
-            </div>
+            </TiltCard>
+          ))}
+        </div>
+      </Section>
+
+      {/* ═══════════════════════ INDUSTRY STUDIES & DATA POINTS ═══════════════════════ */}
+      <Section background="gradient" spacing="lg" withDivider>
+        <div className="text-center mb-12">
+          <p
+            className="text-xs font-semibold uppercase tracking-widest text-purple-400 mb-3"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            Why This Matters
+          </p>
+          <h2
+            className="text-3xl md:text-4xl font-bold text-gray-100 mb-4"
+            style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
+          >
+            <WordStagger text="Industry Research Backing Our Strategy" />
+          </h2>
+          <p
+            className="text-gray-400 max-w-2xl mx-auto text-base leading-relaxed"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            Our approach to legal marketing isn't guesswork — it's grounded in
+            published research on how legal clients actually search, decide,
+            and convert.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {industryStudies.map((item, i) => (
+            <TiltCard
+              key={item.source}
+              index={i}
+              className="p-6 rounded-2xl text-center"
+              style={{
+                background: "linear-gradient(135deg, rgba(124,58,237,0.12), rgba(168,85,247,0.06))",
+                border: "1px solid rgba(124,58,237,0.25)",
+              }}
+            >
+              <p
+                className="text-4xl font-bold mb-3"
+                style={{
+                  fontFamily: "Space Grotesk, sans-serif",
+                  background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                <CountUp target={parseInt(item.stat, 10)} suffix="%" />
+              </p>
+              <p
+                className="text-sm text-gray-300 leading-relaxed mb-3"
+                style={{ fontFamily: "Inter, sans-serif" }}
+              >
+                {item.description}
+              </p>
+              <p
+                className="text-xs text-gray-500 uppercase tracking-wider"
+                style={{ fontFamily: "Inter, sans-serif" }}
+              >
+                {item.source}
+              </p>
+            </TiltCard>
           ))}
         </div>
       </Section>
@@ -925,7 +1153,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
                 className="text-2xl md:text-3xl font-bold text-gray-100 mb-4"
                 style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
               >
-                Your Local Legal Marketing Partner in Houston
+                <WordStagger text="Your Local Legal Marketing Partner in Houston" />
               </h2>
               <p
                 className="text-gray-400 text-sm leading-relaxed"
@@ -1000,11 +1228,12 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {trustBadges.map((badge) => {
+          {trustBadges.map((badge, i) => {
             const Icon = badge.icon;
             return (
-              <div
+              <TiltCard
                 key={badge.label}
+                index={i}
                 className="flex flex-col items-center text-center gap-2 p-4 rounded-xl"
                 style={{
                   background: "rgba(255,255,255,0.03)",
@@ -1026,7 +1255,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
                 >
                   {badge.label}
                 </p>
-              </div>
+              </TiltCard>
             );
           })}
         </div>
@@ -1046,15 +1275,15 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
               className="text-3xl md:text-4xl font-bold text-gray-100"
               style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
             >
-              Frequently Asked Questions
+              <WordStagger text="Frequently Asked Questions" />
             </h2>
           </div>
 
           <div className="space-y-3" role="list">
             {faqData.map((item, index) => (
-              <div
+              <BlurIn
                 key={index}
-                role="listitem"
+                delay={index * 0.06}
                 className="rounded-xl overflow-hidden"
                 style={{
                   background: "rgba(255,255,255,0.03)",
@@ -1093,7 +1322,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
                     </p>
                   </div>
                 )}
-              </div>
+              </BlurIn>
             ))}
           </div>
         </div>
@@ -1113,7 +1342,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
               className="text-3xl md:text-4xl font-bold text-gray-100 mb-5"
               style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
             >
-              Ready to Grow Your Law Firm's Caseload?
+              <WordStagger text="Ready to Grow Your Law Firm's Caseload?" />
             </h2>
             <p
               className="text-gray-400 text-base leading-relaxed mb-8"

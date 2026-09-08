@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import IndustriesClient from "./IndustriesClient";
 
 export const metadata: Metadata = {
@@ -43,12 +42,6 @@ export default function IndustriesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPageSchema) }}
       />
       <Header />
-      <Breadcrumbs
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Industries", href: "/industries" },
-        ]}
-      />
       <IndustriesClient />
       <Footer
         email="hello@echo5digital.com"

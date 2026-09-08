@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import AIMarketingEmployeeClient from "./AIMarketingEmployeeClient";
 
 export const metadata: Metadata = {
   title: "AI Marketing Employee – Agentic AI Growth System | Echo5",
   description:
-    "Echo5 Digital's AI Marketing Employee is a done-for-you agentic AI growth system covering SEO, AEO, ads, social, and content — with human oversight for small businesses.",
+    "Echo5 Digital's AI Marketing Employee is a done-for-you agentic AI growth system covering SEO, AEO, ads, social, and content, with human oversight for small businesses.",
   alternates: {
     canonical: "https://echo5digital.com/ai-marketing-employee",
   },
@@ -18,12 +17,12 @@ const faqData = [
   {
     question: "What is the AI Marketing Employee?",
     answer:
-      "The AI Marketing Employee is Echo5 Digital's flagship product — an agentic AI growth system that continuously executes marketing activities across SEO, AEO, Google Ads, social media, and content, supervised by Echo5's human team.",
+      "The AI Marketing Employee is Echo5 Digital's flagship product, an agentic AI growth system that continuously executes marketing activities across SEO, AEO, Google Ads, social media, and content, supervised by Echo5's human team.",
   },
   {
     question: "How is this different from hiring a marketing agency?",
     answer:
-      "Unlike a traditional agency that assigns account managers to manually execute tasks, the AI Marketing Employee uses agentic AI systems to run continuously, adapting to performance signals in near real-time — at a fraction of the cost of a full-service retainer or in-house hire.",
+      "Unlike a traditional agency that assigns account managers to manually execute tasks, the AI Marketing Employee uses agentic AI systems to run continuously, adapting to performance signals in near real-time, at a fraction of the cost of a full-service retainer or in-house hire.",
   },
   {
     question: "Do humans review the AI's work?",
@@ -60,7 +59,7 @@ const serviceSchema = {
   "@type": "Service",
   name: "AI Marketing Employee",
   description:
-    "Echo5 Digital's AI Marketing Employee is a done-for-you agentic AI growth system covering SEO, AEO, ads, social, and content — with human oversight for small businesses.",
+    "Echo5 Digital's AI Marketing Employee is a done-for-you agentic AI growth system covering SEO, AEO, ads, social, and content, with human oversight for small businesses.",
   provider: {
     "@type": "Organization",
     name: "Echo5 Digital",
@@ -95,12 +94,6 @@ export default function AIMarketingEmployeePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
       <Header />
-      <Breadcrumbs
-        items={[
-          { label: "Home", href: "/" },
-          { label: "AI Marketing Employee", href: "/ai-marketing-employee" },
-        ]}
-      />
       <AIMarketingEmployeeClient faqData={faqData} />
       <Footer
         email="hello@echo5digital.com"

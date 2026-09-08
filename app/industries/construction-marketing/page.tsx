@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import ConstructionMarketingClient from "./ConstructionMarketingClient";
 
 export const metadata: Metadata = {
@@ -94,15 +92,6 @@ export default function ConstructionMarketingPage() {
       />
       <Header />
       <main>
-        <Section spacing="sm" background="default">
-          <Breadcrumbs
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Industries", href: "/industries" },
-              { label: "Construction Marketing", href: "/industries/construction-marketing" },
-            ]}
-          />
-        </Section>
         <ConstructionMarketingClient faqData={faqData} />
       </main>
       <Footer

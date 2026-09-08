@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import Section from "@/components/Section";
 import Card from "@/components/Card";
 import ContactForm from "@/components/ContactForm";
+import { RevealMask, WordStagger, ParallaxImage, TiltCard, CountUp, HowWeWorkRail, BlurIn, DiagonalWipe } from "@/components/ScrollFX";
+import { LavenderField, MagnetPop } from "@/components/SolutionsFX";
 import {
   Brain,
   Users,
@@ -28,6 +31,21 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
+const TECH_STACK_ITEMS = [
+  { label: "Agentic AI", sublabel: "Core execution engine", icon: Bot },
+  { label: "SEO & AEO", sublabel: "Search & answer optimization", icon: Target },
+  { label: "Google Ads", sublabel: "Paid media expertise", icon: TrendingUp },
+  { label: "Meta Ads", sublabel: "Social paid media", icon: BarChart3 },
+  { label: "Custom Dev", sublabel: "Next.js & full-stack", icon: Code2 },
+  { label: "CRM Automation", sublabel: "Workflow intelligence", icon: Network },
+  { label: "WordPress", sublabel: "CMS & website builds", icon: Globe },
+  { label: "HubSpot", sublabel: "CRM & marketing platform", icon: Users },
+  { label: "GA4 & GTM", sublabel: "Analytics & tag tracking", icon: BarChart3 },
+  { label: "Semrush", sublabel: "SEO research & tracking", icon: Target },
+  { label: "Schema Markup", sublabel: "Structured data for search & AI", icon: Code2 },
+  { label: "A/B Testing & CRO", sublabel: "Conversion rate optimization", icon: TrendingUp },
+];
+
 interface FaqItem {
   question: string;
   answer: string;
@@ -47,7 +65,7 @@ export default function AboutClient({ faqData }: Props) {
   return (
     <main style={{ backgroundColor: "#0A0F1E", color: "#E5E7EB" }}>
       {/* ─── HERO ─────────────────────────────────────────────────────────── */}
-      <Section background="gradient" spacing="xl" maxWidth="2xl">
+      <Section background="gradient" spacing="xl" maxWidth="2xl" className="lg:min-h-screen lg:flex lg:items-center">
         {/* Decorative glow orbs */}
         <div
           aria-hidden="true"
@@ -57,20 +75,20 @@ export default function AboutClient({ faqData }: Props) {
             className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-20 blur-3xl"
             style={{
               background:
-                "radial-gradient(circle, #7C3AED 0%, #A855F7 40%, transparent 70%)",
+                "radial-gradient(circle, #6B4EF0 0%, #8B5CF6 40%, transparent 70%)",
             }}
           />
         </div>
 
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Text */}
-          <div className="flex flex-col gap-6">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 items-center w-full">
+          {/* Text (top half): badge + heading — appears before the photo on mobile */}
+          <div className="order-1 lg:order-1 lg:col-start-1 lg:row-start-1 flex flex-col gap-6">
             <div
               className="inline-flex items-center gap-2 self-start px-4 py-2 rounded-full text-sm font-medium"
               style={{
-                background: "rgba(124,58,237,0.15)",
-                border: "1px solid rgba(124,58,237,0.35)",
-                color: "#A855F7",
+                background: "rgba(107,78,240,0.15)",
+                border: "1px solid rgba(107,78,240,0.35)",
+                color: "#8B5CF6",
                 fontFamily: "Inter, sans-serif",
               }}
             >
@@ -79,75 +97,42 @@ export default function AboutClient({ faqData }: Props) {
             </div>
 
             <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+              className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-tight"
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
                 color: "#E5E7EB",
                 letterSpacing: "-0.02em",
               }}
             >
-              We Are{" "}
-              <span
-                style={{
-                  background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                Echo5 Digital
-              </span>
+              <RevealMask>We Are</RevealMask>{" "}
+              <RevealMask delay={0.1}>
+                <span
+                  style={{
+                    background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  Echo5 Digital
+                </span>
+              </RevealMask>
             </h1>
-
-            <p
-              className="text-lg leading-relaxed max-w-xl"
-              style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
-            >
-              An AI-powered digital marketing and web development agency
-              headquartered in Houston and Sugar Land, Texas — built to give
-              small and mid-sized businesses access to enterprise-grade
-              marketing intelligence and execution.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110 active:scale-95"
-                style={{
-                  background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                  boxShadow:
-                    "0 0 24px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
-                  fontFamily: "Inter, sans-serif",
-                }}
-              >
-                Work With Us
-              </Link>
-              <Link
-                href="/solutions"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:bg-white/5 active:scale-95"
-                style={{
-                  border: "1px solid rgba(124,58,237,0.4)",
-                  color: "#A855F7",
-                  fontFamily: "Inter, sans-serif",
-                }}
-              >
-                See Our Services
-              </Link>
-            </div>
           </div>
 
-          {/* Hero image */}
-          <div className="relative rounded-2xl overflow-hidden aspect-[4/3] w-full">
-            <img
+          {/* Hero image — ordered right under the heading on mobile, right column on desktop */}
+          <div className="order-2 lg:order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 relative rounded-2xl overflow-hidden aspect-[4/3] lg:aspect-[16/11] w-full">
+            <ParallaxImage
               src="https://images.pexels.com/photos/3194521/pexels-photo-3194521.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
               alt="Echo5 Digital team collaborating on AI-powered marketing strategies"
-              className="w-full h-full object-cover"
+              className="w-full h-full"
+              strength={40}
             />
             <div
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(135deg, rgba(124,58,237,0.25) 0%, transparent 60%)",
+                  "linear-gradient(135deg, rgba(107,78,240,0.25) 0%, transparent 60%)",
               }}
             />
             {/* Stat chips */}
@@ -155,23 +140,22 @@ export default function AboutClient({ faqData }: Props) {
               className="absolute bottom-4 left-4 flex gap-3 flex-wrap"
             >
               {[
-                { label: "SMBs Served", value: "100+" },
-                { label: "AI-First", value: "Always" },
+                { label: "SMBs Served", value: 100, suffix: "+" },
               ].map((stat) => (
                 <div
                   key={stat.label}
                   className="px-4 py-2 rounded-xl"
                   style={{
                     background: "rgba(10,15,30,0.85)",
-                    border: "1px solid rgba(124,58,237,0.35)",
+                    border: "1px solid rgba(107,78,240,0.35)",
                     backdropFilter: "blur(12px)",
                   }}
                 >
                   <p
                     className="text-base font-bold"
-                    style={{ color: "#A855F7", fontFamily: "Space Grotesk, sans-serif" }}
+                    style={{ color: "#8B5CF6", fontFamily: "Space Grotesk, sans-serif" }}
                   >
-                    {stat.value}
+                    <CountUp target={stat.value} suffix={stat.suffix} />
                   </p>
                   <p
                     className="text-xs"
@@ -181,6 +165,68 @@ export default function AboutClient({ faqData }: Props) {
                   </p>
                 </div>
               ))}
+              <div
+                className="px-4 py-2 rounded-xl"
+                style={{
+                  background: "rgba(10,15,30,0.85)",
+                  border: "1px solid rgba(107,78,240,0.35)",
+                  backdropFilter: "blur(12px)",
+                }}
+              >
+                <p
+                  className="text-base font-bold"
+                  style={{ color: "#8B5CF6", fontFamily: "Space Grotesk, sans-serif" }}
+                >
+                  Always
+                </p>
+                <p
+                  className="text-xs"
+                  style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
+                >
+                  AI-First
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Text (bottom half): paragraph + CTAs — appears after the photo on mobile */}
+          <div className="order-3 lg:order-3 lg:col-start-1 lg:row-start-2 flex flex-col gap-6">
+            <BlurIn delay={0.3}>
+              <p
+                className="text-lg leading-relaxed max-w-xl"
+                style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
+              >
+                An AI-powered digital marketing and web development agency
+                headquartered in Houston and Sugar Land, Texas — built to give
+                small and mid-sized businesses access to enterprise-grade
+                marketing intelligence and execution.
+              </p>
+            </BlurIn>
+
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110 active:scale-95"
+                style={{
+                  background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
+                  boxShadow:
+                    "0 0 24px rgba(107,78,240,0.55), 0 4px 14px rgba(0,0,0,0.3)",
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                Work With Us
+              </Link>
+              <Link
+                href="/solutions"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:bg-white/5 active:scale-95"
+                style={{
+                  border: "1px solid rgba(107,78,240,0.4)",
+                  color: "#8B5CF6",
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                See Our Services
+              </Link>
             </div>
           </div>
         </div>
@@ -188,26 +234,26 @@ export default function AboutClient({ faqData }: Props) {
 
       {/* ─── QUICK ANSWER BLOCK ───────────────────────────────────────────── */}
       <Section background="elevated" spacing="md" maxWidth="xl" withDivider>
-        <div
+        <BlurIn
           className="rounded-2xl p-6 md:p-8"
           style={{
             background:
-              "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.06) 100%)",
-            border: "1px solid rgba(124,58,237,0.25)",
+              "linear-gradient(135deg, rgba(107,78,240,0.12) 0%, rgba(139,92,246,0.06) 100%)",
+            border: "1px solid rgba(107,78,240,0.25)",
           }}
         >
           <div className="flex items-center gap-3 mb-4">
             <div
               className="flex items-center justify-center w-8 h-8 rounded-lg shrink-0"
               style={{
-                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
               }}
             >
               <Zap size={16} color="#fff" />
             </div>
             <span
               className="text-xs font-semibold uppercase tracking-widest"
-              style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
+              style={{ color: "#8B5CF6", fontFamily: "Inter, sans-serif" }}
             >
               Quick Answer
             </span>
@@ -232,113 +278,139 @@ export default function AboutClient({ faqData }: Props) {
             services at scale. Echo5 Digital can be reached at{" "}
             <a
               href="mailto:hello@echo5digital.com"
-              style={{ color: "#A855F7", textDecoration: "underline" }}
+              style={{ color: "#8B5CF6", textDecoration: "underline" }}
             >
               hello@echo5digital.com
             </a>{" "}
             or{" "}
             <a
               href="tel:7134897004"
-              style={{ color: "#A855F7", textDecoration: "underline" }}
+              style={{ color: "#8B5CF6", textDecoration: "underline" }}
             >
               713-489-7004
             </a>
             .
           </p>
-        </div>
+        </BlurIn>
       </Section>
 
       {/* ─── OUR MISSION ─────────────────────────────────────────────────── */}
-      <Section background="default" spacing="lg" maxWidth="xl" withDivider>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
-            <img
-              src="https://images.pexels.com/photos/38808473/pexels-photo-38808473.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt="Echo5 Digital's mission: making enterprise-grade AI marketing accessible to SMBs"
-              className="w-full h-full object-cover"
+      <Section
+        background="transparent"
+        spacing="lg"
+        maxWidth="xl"
+        withDivider
+        className="relative !bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+      >
+        <LavenderField variant="a" />
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div
+            className="relative rounded-2xl overflow-hidden h-56 sm:h-72 lg:h-auto lg:aspect-[4/3]"
+            style={{ border: "1px solid rgba(124,58,237,0.15)", boxShadow: "0 12px 40px rgba(91,63,163,0.12)" }}
+          >
+            <ParallaxImage
+              src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+              alt="Small business team collaborating with AI-powered marketing tools to compete with larger enterprises"
+              className="w-full h-full"
             />
             <div
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(to right, rgba(10,15,30,0.3) 0%, transparent 100%)",
+                  "linear-gradient(to right, rgba(91,63,163,0.12) 0%, transparent 100%)",
               }}
             />
           </div>
 
-          <div className="flex flex-col gap-6">
-            <div
-              className="inline-flex items-center gap-2 self-start px-4 py-2 rounded-full text-sm font-medium"
-              style={{
-                background: "rgba(124,58,237,0.15)",
-                border: "1px solid rgba(124,58,237,0.35)",
-                color: "#A855F7",
-                fontFamily: "Inter, sans-serif",
-              }}
-            >
-              <Target size={14} />
-              Our Mission
-            </div>
+          <div className="flex flex-col gap-5 sm:gap-6">
+            <BlurIn>
+              <div
+                className="inline-flex items-center gap-2 self-start px-4 py-2 rounded-full text-sm font-medium"
+                style={{
+                  background: "rgba(107,78,240,0.1)",
+                  border: "1px solid rgba(107,78,240,0.3)",
+                  color: "#6B4EF0",
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                <Target size={14} />
+                Our Mission
+              </div>
+            </BlurIn>
 
-            <h2
-              className="text-3xl md:text-4xl font-bold leading-tight"
-              style={{
-                fontFamily: "Space Grotesk, sans-serif",
-                color: "#E5E7EB",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Leveling the Marketing Playing Field
-            </h2>
+            <BlurIn delay={0.1}>
+              <h2
+                className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight"
+                style={{
+                  fontFamily: "Space Grotesk, sans-serif",
+                  color: "#15172B",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                <WordStagger text="Leveling the Marketing Playing Field" />
+              </h2>
+            </BlurIn>
 
-            <p
-              className="text-base leading-relaxed"
-              style={{
-                color: "rgba(229,231,235,0.7)",
-                fontFamily: "Inter, sans-serif",
-              }}
-            >
-              For too long, sophisticated digital marketing has been the
-              exclusive domain of large enterprises with deep budgets and
-              in-house teams. Echo5 Digital was founded to change that.
-            </p>
-            <p
-              className="text-base leading-relaxed"
-              style={{
-                color: "rgba(229,231,235,0.7)",
-                fontFamily: "Inter, sans-serif",
-              }}
-            >
-              Our mission is to make AI-powered marketing accessible,
-              accountable, and results-driven for small and mid-sized
-              businesses. By combining the scale of artificial intelligence
-              with the judgment of experienced human strategists, we deliver
-              the kind of marketing horsepower that was once only available to
-              Fortune 500 companies — now within reach of every ambitious SMB.
-            </p>
+            <BlurIn delay={0.2}>
+              <p
+                className="text-sm sm:text-base leading-relaxed"
+                style={{
+                  color: "#5B5F73",
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                For too long, sophisticated digital marketing has been the
+                exclusive domain of large enterprises with deep budgets and
+                in-house teams. Echo5 Digital was founded to change that.
+              </p>
+            </BlurIn>
+            <BlurIn delay={0.3}>
+              <p
+                className="text-sm sm:text-base leading-relaxed"
+                style={{
+                  color: "#5B5F73",
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                Our mission is to make AI-powered marketing accessible,
+                accountable, and results-driven for small and mid-sized
+                businesses. By combining the scale of artificial intelligence
+                with the judgment of experienced human strategists, we deliver
+                the kind of marketing horsepower that was once only available to
+                Fortune 500 companies, now within reach of every ambitious SMB.
+              </p>
+            </BlurIn>
 
-            <div className="flex flex-col gap-3 pt-2">
+            <div className="flex flex-col gap-2.5 sm:gap-3 pt-2">
               {[
                 "Accessible AI tools for every SMB budget",
                 "Accountable reporting with real performance data",
                 "Strategic human oversight at every step",
-              ].map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <CheckCircle2
-                    size={18}
-                    className="shrink-0 mt-0.5"
-                    style={{ color: "#A855F7" }}
-                  />
-                  <span
-                    className="text-sm"
+              ].map((item, i) => (
+                <MagnetPop key={item} index={i}>
+                  <div
+                    className="flex items-start gap-3 p-3 rounded-xl"
                     style={{
-                      color: "rgba(229,231,235,0.8)",
-                      fontFamily: "Inter, sans-serif",
+                      background: "rgba(255,255,255,0.6)",
+                      border: "1px solid rgba(124,58,237,0.1)",
                     }}
                   >
-                    {item}
-                  </span>
-                </div>
+                    <CheckCircle2
+                      size={18}
+                      className="shrink-0 mt-0.5"
+                      style={{ color: "#6B4EF0" }}
+                    />
+                    <span
+                      className="text-sm"
+                      style={{
+                        color: "#374151",
+                        fontFamily: "Inter, sans-serif",
+                      }}
+                    >
+                      {item}
+                    </span>
+                  </div>
+                </MagnetPop>
               ))}
             </div>
           </div>
@@ -351,9 +423,9 @@ export default function AboutClient({ faqData }: Props) {
           <div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6"
             style={{
-              background: "rgba(124,58,237,0.15)",
-              border: "1px solid rgba(124,58,237,0.35)",
-              color: "#A855F7",
+              background: "rgba(107,78,240,0.15)",
+              border: "1px solid rgba(107,78,240,0.35)",
+              color: "#8B5CF6",
               fontFamily: "Inter, sans-serif",
             }}
           >
@@ -368,7 +440,7 @@ export default function AboutClient({ faqData }: Props) {
               letterSpacing: "-0.02em",
             }}
           >
-            What Makes Echo5 Digital Different
+            <WordStagger text="What Makes Echo5 Digital Different" />
           </h2>
           <p
             className="mt-4 text-base max-w-2xl mx-auto"
@@ -409,14 +481,15 @@ export default function AboutClient({ faqData }: Props) {
               description:
                 "We handle execution so you don't have to. But you're never in the dark — transparent reporting and the Command Center dashboard keep you informed at all times.",
             },
-          ].map((pillar) => (
-            <Card
-              key={pillar.title}
-              icon={pillar.icon}
-              title={pillar.title}
-              description={pillar.description}
-              variant="service"
-            />
+          ].map((pillar, i) => (
+            <TiltCard key={pillar.title} index={i}>
+              <Card
+                icon={pillar.icon}
+                title={pillar.title}
+                description={pillar.description}
+                variant="service"
+              />
+            </TiltCard>
           ))}
         </div>
       </Section>
@@ -427,9 +500,9 @@ export default function AboutClient({ faqData }: Props) {
           <div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6"
             style={{
-              background: "rgba(124,58,237,0.15)",
-              border: "1px solid rgba(124,58,237,0.35)",
-              color: "#A855F7",
+              background: "rgba(107,78,240,0.15)",
+              border: "1px solid rgba(107,78,240,0.35)",
+              color: "#8B5CF6",
               fontFamily: "Inter, sans-serif",
             }}
           >
@@ -444,7 +517,7 @@ export default function AboutClient({ faqData }: Props) {
               letterSpacing: "-0.02em",
             }}
           >
-            How We Work
+            <WordStagger text="How We Work" />
           </h2>
           <p
             className="mt-4 text-base max-w-2xl mx-auto"
@@ -458,17 +531,7 @@ export default function AboutClient({ faqData }: Props) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-          {/* Connector line (desktop) */}
-          <div
-            aria-hidden="true"
-            className="hidden md:block absolute top-10 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-px"
-            style={{
-              background:
-                "linear-gradient(90deg, transparent, rgba(124,58,237,0.4), rgba(168,85,247,0.4), transparent)",
-            }}
-          />
-
+        <HowWeWorkRail>
           {[
             {
               step: "01",
@@ -491,31 +554,32 @@ export default function AboutClient({ faqData }: Props) {
               description:
                 "Clients stay informed through our Command Center dashboard — a real-time view into campaign performance, AI activity, and strategic progress.",
             },
-          ].map((step) => (
-            <div
+          ].map((step, i) => (
+            <TiltCard
               key={step.step}
+              index={i}
               className="flex flex-col items-center text-center gap-4 p-6 rounded-2xl"
               style={{
                 background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(124,58,237,0.2)",
+                border: "1px solid rgba(107,78,240,0.2)",
               }}
             >
               <div
-                className="relative flex items-center justify-center w-16 h-16 rounded-2xl"
+                className="relative flex items-center justify-center w-16 h-16 rounded-2xl mx-auto"
                 style={{
                   background:
-                    "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-                  border: "1px solid rgba(168,85,247,0.3)",
+                    "linear-gradient(135deg, rgba(107,78,240,0.3), rgba(139,92,246,0.15))",
+                  border: "1px solid rgba(139,92,246,0.3)",
                 }}
               >
-                <step.icon size={28} style={{ color: "#A855F7" }} />
+                <step.icon size={28} style={{ color: "#8B5CF6" }} />
                 <span
                   className="absolute -top-3 -right-3 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold"
                   style={{
-                    background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                    background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
                     color: "#fff",
                     fontFamily: "Space Grotesk, sans-serif",
-                    boxShadow: "0 0 12px rgba(124,58,237,0.5)",
+                    boxShadow: "0 0 12px rgba(107,78,240,0.5)",
                   }}
                 >
                   {step.step}
@@ -539,53 +603,66 @@ export default function AboutClient({ faqData }: Props) {
               >
                 {step.description}
               </p>
-            </div>
+            </TiltCard>
           ))}
-        </div>
+        </HowWeWorkRail>
       </Section>
 
       {/* ─── OUR LOCATIONS ───────────────────────────────────────────────── */}
-      <Section background="default" spacing="lg" maxWidth="xl" withDivider>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <Section
+        background="transparent"
+        spacing="lg"
+        maxWidth="xl"
+        withDivider
+        className="relative !bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+      >
+        <LavenderField variant="c" />
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col gap-6">
-            <div
-              className="inline-flex items-center gap-2 self-start px-4 py-2 rounded-full text-sm font-medium"
-              style={{
-                background: "rgba(124,58,237,0.15)",
-                border: "1px solid rgba(124,58,237,0.35)",
-                color: "#A855F7",
-                fontFamily: "Inter, sans-serif",
-              }}
-            >
-              <MapPin size={14} />
-              Our Locations
-            </div>
+            <BlurIn>
+              <div
+                className="inline-flex items-center gap-2 self-start px-4 py-2 rounded-full text-sm font-medium"
+                style={{
+                  background: "rgba(107,78,240,0.1)",
+                  border: "1px solid rgba(107,78,240,0.3)",
+                  color: "#6B4EF0",
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                <MapPin size={14} />
+                Our Locations
+              </div>
+            </BlurIn>
 
-            <h2
-              className="text-3xl md:text-4xl font-bold leading-tight"
-              style={{
-                fontFamily: "Space Grotesk, sans-serif",
-                color: "#E5E7EB",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Rooted in Houston. Operating Globally.
-            </h2>
+            <BlurIn delay={0.1}>
+              <h2
+                className="text-3xl md:text-4xl font-bold leading-tight"
+                style={{
+                  fontFamily: "Space Grotesk, sans-serif",
+                  color: "#15172B",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                <WordStagger text="Rooted in Houston. Operating Globally." />
+              </h2>
+            </BlurIn>
 
-            <p
-              className="text-base leading-relaxed"
-              style={{
-                color: "rgba(229,231,235,0.7)",
-                fontFamily: "Inter, sans-serif",
-              }}
-            >
-              Echo5 Digital is locally rooted in the Houston–Sugar Land
-              corridor, giving us direct familiarity with the competitive
-              dynamics facing businesses in the Houston metro market. Our
-              operations support team in Kochi, Kerala, India, enables
-              around-the-clock execution capacity — meaning your campaigns
-              never sleep.
-            </p>
+            <BlurIn delay={0.2}>
+              <p
+                className="text-base leading-relaxed"
+                style={{
+                  color: "#5B5F73",
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                Echo5 Digital is locally rooted in the Houston–Sugar Land
+                corridor, giving us direct familiarity with the competitive
+                dynamics facing businesses in the Houston metro market. Our
+                operations support team in Kochi, Kerala, India, enables
+                around-the-clock execution capacity, meaning your campaigns
+                never sleep.
+              </p>
+            </BlurIn>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               {[
@@ -613,47 +690,49 @@ export default function AboutClient({ faqData }: Props) {
                   detail: "SMBs from coast to coast",
                   flag: "🌐",
                 },
-              ].map((loc) => (
-                <div
-                  key={loc.region}
-                  className="flex flex-col gap-1 p-4 rounded-xl"
-                  style={{
-                    background: "rgba(124,58,237,0.08)",
-                    border: "1px solid rgba(124,58,237,0.2)",
-                  }}
-                >
-                  <span className="text-xl">{loc.flag}</span>
-                  <p
-                    className="text-xs font-semibold uppercase tracking-wider"
-                    style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
-                  >
-                    {loc.region}
-                  </p>
-                  <p
-                    className="text-sm font-semibold"
-                    style={{ color: "#E5E7EB", fontFamily: "Space Grotesk, sans-serif" }}
-                  >
-                    {loc.location}
-                  </p>
-                  <p
-                    className="text-xs"
+              ].map((loc, i) => (
+                <MagnetPop key={loc.region} index={i}>
+                  <div
+                    className="flex flex-col gap-1 p-4 rounded-xl"
                     style={{
-                      color: "rgba(229,231,235,0.5)",
-                      fontFamily: "Inter, sans-serif",
+                      background: "rgba(255,255,255,0.75)",
+                      border: "1px solid rgba(124,58,237,0.15)",
+                      boxShadow: "0 4px 20px rgba(91,63,163,0.06)",
                     }}
                   >
-                    {loc.detail}
-                  </p>
-                </div>
+                    <span className="text-xl">{loc.flag}</span>
+                    <p
+                      className="text-xs font-semibold uppercase tracking-wider"
+                      style={{ color: "#6B4EF0", fontFamily: "Inter, sans-serif" }}
+                    >
+                      {loc.region}
+                    </p>
+                    <p
+                      className="text-sm font-semibold"
+                      style={{ color: "#15172B", fontFamily: "Space Grotesk, sans-serif" }}
+                    >
+                      {loc.location}
+                    </p>
+                    <p
+                      className="text-xs"
+                      style={{
+                        color: "#5B5F73",
+                        fontFamily: "Inter, sans-serif",
+                      }}
+                    >
+                      {loc.detail}
+                    </p>
+                  </div>
+                </MagnetPop>
               ))}
             </div>
           </div>
 
           <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
-            <img
+            <ParallaxImage
               src="https://images.pexels.com/photos/17995530/pexels-photo-17995530.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
               alt="Houston, Texas skyline — home of Echo5 Digital headquarters"
-              className="w-full h-full object-cover"
+              className="w-full h-full"
             />
             <div
               className="absolute inset-0"
@@ -666,7 +745,7 @@ export default function AboutClient({ faqData }: Props) {
               className="absolute bottom-4 left-4 right-4 p-4 rounded-xl"
               style={{
                 background: "rgba(10,15,30,0.85)",
-                border: "1px solid rgba(124,58,237,0.3)",
+                border: "1px solid rgba(107,78,240,0.3)",
                 backdropFilter: "blur(12px)",
               }}
             >
@@ -693,8 +772,8 @@ export default function AboutClient({ faqData }: Props) {
           className="rounded-2xl p-6 md:p-8"
           style={{
             background:
-              "linear-gradient(135deg, rgba(124,58,237,0.10) 0%, rgba(168,85,247,0.05) 100%)",
-            border: "1px solid rgba(124,58,237,0.25)",
+              "linear-gradient(135deg, rgba(107,78,240,0.10) 0%, rgba(139,92,246,0.05) 100%)",
+            border: "1px solid rgba(107,78,240,0.25)",
           }}
         >
           <h2
@@ -746,11 +825,11 @@ export default function AboutClient({ faqData }: Props) {
                 <div
                   className="flex items-center justify-center w-8 h-8 rounded-lg shrink-0 mt-0.5"
                   style={{
-                    background: "rgba(124,58,237,0.2)",
-                    border: "1px solid rgba(124,58,237,0.3)",
+                    background: "rgba(107,78,240,0.2)",
+                    border: "1px solid rgba(107,78,240,0.3)",
                   }}
                 >
-                  <fact.icon size={14} style={{ color: "#A855F7" }} />
+                  <fact.icon size={14} style={{ color: "#8B5CF6" }} />
                 </div>
                 <div>
                   <p
@@ -763,7 +842,7 @@ export default function AboutClient({ faqData }: Props) {
                     <a
                       href={fact.href}
                       className="text-sm font-medium transition-colors hover:text-white"
-                      style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
+                      style={{ color: "#8B5CF6", fontFamily: "Inter, sans-serif" }}
                     >
                       {fact.value}
                     </a>
@@ -788,17 +867,17 @@ export default function AboutClient({ faqData }: Props) {
           className="rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start"
           style={{
             background: "rgba(255,255,255,0.03)",
-            border: "1px solid rgba(124,58,237,0.2)",
+            border: "1px solid rgba(107,78,240,0.2)",
           }}
         >
           <div
             className="flex items-center justify-center w-12 h-12 rounded-xl shrink-0"
             style={{
-              background: "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-              border: "1px solid rgba(168,85,247,0.3)",
+              background: "linear-gradient(135deg, rgba(107,78,240,0.3), rgba(139,92,246,0.15))",
+              border: "1px solid rgba(139,92,246,0.3)",
             }}
           >
-            <MapPin size={22} style={{ color: "#A855F7" }} />
+            <MapPin size={22} style={{ color: "#8B5CF6" }} />
           </div>
           <div>
             <h2
@@ -831,9 +910,9 @@ export default function AboutClient({ faqData }: Props) {
             <div
               className="inline-flex items-center gap-2 self-start px-4 py-2 rounded-full text-sm font-medium"
               style={{
-                background: "rgba(124,58,237,0.15)",
-                border: "1px solid rgba(124,58,237,0.35)",
-                color: "#A855F7",
+                background: "rgba(107,78,240,0.15)",
+                border: "1px solid rgba(107,78,240,0.35)",
+                color: "#8B5CF6",
                 fontFamily: "Inter, sans-serif",
               }}
             >
@@ -849,7 +928,7 @@ export default function AboutClient({ faqData }: Props) {
                 letterSpacing: "-0.02em",
               }}
             >
-              AI Executes. Humans Lead.
+              <WordStagger text="AI Executes. Humans Lead." />
             </h2>
 
             <p
@@ -883,32 +962,33 @@ export default function AboutClient({ faqData }: Props) {
                 { role: "SEO & Content Specialists", icon: Target },
                 { role: "Web Developers", icon: Code2 },
                 { role: "AI Systems Engineers", icon: Cpu },
-              ].map((item) => (
-                <div
-                  key={item.role}
-                  className="flex items-center gap-3 p-3 rounded-xl"
-                  style={{
-                    background: "rgba(124,58,237,0.08)",
-                    border: "1px solid rgba(124,58,237,0.2)",
-                  }}
-                >
-                  <item.icon size={16} style={{ color: "#A855F7" }} />
-                  <span
-                    className="text-sm font-medium"
-                    style={{ color: "#E5E7EB", fontFamily: "Inter, sans-serif" }}
+              ].map((item, i) => (
+                <DiagonalWipe key={item.role} delay={i * 0.1}>
+                  <div
+                    className="flex items-center gap-3 p-3 rounded-xl"
+                    style={{
+                      background: "rgba(107,78,240,0.08)",
+                      border: "1px solid rgba(107,78,240,0.2)",
+                    }}
                   >
-                    {item.role}
-                  </span>
-                </div>
+                    <item.icon size={16} style={{ color: "#8B5CF6" }} />
+                    <span
+                      className="text-sm font-medium"
+                      style={{ color: "#E5E7EB", fontFamily: "Inter, sans-serif" }}
+                    >
+                      {item.role}
+                    </span>
+                  </div>
+                </DiagonalWipe>
               ))}
             </div>
           </div>
 
           <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
-            <img
+            <ParallaxImage
               src="https://images.pexels.com/photos/7651819/pexels-photo-7651819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
               alt="Echo5 Digital's human strategists and specialists working alongside AI systems"
-              className="w-full h-full object-cover"
+              className="w-full h-full"
             />
             <div
               className="absolute inset-0"
@@ -922,70 +1002,92 @@ export default function AboutClient({ faqData }: Props) {
       </Section>
 
       {/* ─── TRUST BAR ───────────────────────────────────────────────────── */}
-      <Section background="elevated" spacing="md" maxWidth="2xl" withDivider>
-        <div className="text-center mb-10">
-          <h2
-            className="text-2xl md:text-3xl font-bold"
-            style={{
-              fontFamily: "Space Grotesk, sans-serif",
-              color: "#E5E7EB",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Built on Proven Technologies &amp; Methodologies
-          </h2>
-          <p
-            className="mt-3 text-sm max-w-xl mx-auto"
-            style={{ color: "rgba(229,231,235,0.55)", fontFamily: "Inter, sans-serif" }}
-          >
-            Our AI-first stack draws on industry-leading platforms and
-            evidence-based marketing frameworks.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {[
-            { label: "Agentic AI", sublabel: "Core execution engine", icon: Bot },
-            { label: "SEO & AEO", sublabel: "Search & answer optimization", icon: Target },
-            { label: "Google Ads", sublabel: "Paid media expertise", icon: TrendingUp },
-            { label: "Meta Ads", sublabel: "Social paid media", icon: BarChart3 },
-            { label: "Custom Dev", sublabel: "Next.js & full-stack", icon: Code2 },
-            { label: "CRM Automation", sublabel: "Workflow intelligence", icon: Network },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="flex flex-col items-center gap-3 p-4 rounded-2xl text-center"
+      <Section
+        background="transparent"
+        spacing="md"
+        maxWidth="full"
+        withDivider
+        className="relative !bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+      >
+        <LavenderField variant="c" />
+        <div className="relative z-10 text-center mb-10 max-w-2xl mx-auto px-4">
+          <BlurIn>
+            <h2
+              className="text-2xl md:text-3xl font-bold"
               style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(124,58,237,0.18)",
+                fontFamily: "Space Grotesk, sans-serif",
+                color: "#15172B",
+                letterSpacing: "-0.01em",
               }}
             >
+              <WordStagger text="Built on Proven Technologies & Methodologies" />
+            </h2>
+            <p
+              className="mt-3 text-sm max-w-xl mx-auto"
+              style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
+            >
+              Our AI-first stack draws on industry-leading platforms and
+              evidence-based marketing frameworks.
+            </p>
+          </BlurIn>
+        </div>
+
+        <div className="relative z-10" style={{ overflow: "hidden", width: "100%" }}>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 z-10"
+            style={{ background: "linear-gradient(to right, #F7F5FD, transparent)" }}
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 z-10"
+            style={{ background: "linear-gradient(to left, #EEECFB, transparent)" }}
+          />
+          <motion.div
+            style={{ display: "flex", alignItems: "stretch", gap: 16, width: "max-content" }}
+            animate={{ x: ["-50%", "0%"] }}
+            transition={{ duration: 32, repeat: Infinity, ease: "linear" }}
+          >
+            {[
+              ...TECH_STACK_ITEMS,
+              ...TECH_STACK_ITEMS,
+            ].map((item, i) => (
               <div
-                className="flex items-center justify-center w-10 h-10 rounded-xl"
+                key={i}
+                className="flex flex-col items-center gap-3 p-4 rounded-2xl text-center shrink-0"
                 style={{
-                  background:
-                    "linear-gradient(135deg, rgba(124,58,237,0.25), rgba(168,85,247,0.12))",
-                  border: "1px solid rgba(168,85,247,0.25)",
+                  width: 180,
+                  background: "rgba(255,255,255,0.75)",
+                  border: "1px solid rgba(124,58,237,0.15)",
+                  boxShadow: "0 4px 20px rgba(91,63,163,0.06)",
                 }}
               >
-                <item.icon size={18} style={{ color: "#A855F7" }} />
-              </div>
-              <div>
-                <p
-                  className="text-sm font-semibold"
-                  style={{ color: "#E5E7EB", fontFamily: "Space Grotesk, sans-serif" }}
+                <div
+                  className="flex items-center justify-center w-10 h-10 rounded-xl"
+                  style={{
+                    background: "rgba(107,78,240,0.12)",
+                    border: "1px solid rgba(124,58,237,0.25)",
+                  }}
                 >
-                  {item.label}
-                </p>
-                <p
-                  className="text-xs mt-0.5"
-                  style={{ color: "rgba(229,231,235,0.4)", fontFamily: "Inter, sans-serif" }}
-                >
-                  {item.sublabel}
-                </p>
+                  <item.icon size={18} style={{ color: "#6B4EF0" }} />
+                </div>
+                <div>
+                  <p
+                    className="text-sm font-semibold"
+                    style={{ color: "#15172B", fontFamily: "Space Grotesk, sans-serif" }}
+                  >
+                    {item.label}
+                  </p>
+                  <p
+                    className="text-xs mt-0.5"
+                    style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
+                  >
+                    {item.sublabel}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </motion.div>
         </div>
       </Section>
 
@@ -1000,7 +1102,7 @@ export default function AboutClient({ faqData }: Props) {
               letterSpacing: "-0.02em",
             }}
           >
-            Frequently Asked Questions
+            <WordStagger text="Frequently Asked Questions" />
           </h2>
           <p
             className="mt-4 text-base max-w-xl mx-auto"
@@ -1013,14 +1115,15 @@ export default function AboutClient({ faqData }: Props) {
 
         <div className="max-w-3xl mx-auto flex flex-col gap-3">
           {faqData.map((item, index) => (
-            <div
+            <BlurIn
               key={index}
+              delay={index * 0.06}
               className="rounded-2xl overflow-hidden"
               style={{
-                border: `1px solid ${openFaq === index ? "rgba(168,85,247,0.4)" : "rgba(124,58,237,0.2)"}`,
+                border: `1px solid ${openFaq === index ? "rgba(139,92,246,0.4)" : "rgba(107,78,240,0.2)"}`,
                 background:
                   openFaq === index
-                    ? "rgba(124,58,237,0.08)"
+                    ? "rgba(107,78,240,0.08)"
                     : "rgba(255,255,255,0.02)",
                 transition: "all 0.2s ease",
               }}
@@ -1034,14 +1137,14 @@ export default function AboutClient({ faqData }: Props) {
                   className="text-base font-semibold"
                   style={{
                     fontFamily: "Space Grotesk, sans-serif",
-                    color: openFaq === index ? "#A855F7" : "#E5E7EB",
+                    color: openFaq === index ? "#8B5CF6" : "#E5E7EB",
                   }}
                 >
                   {item.question}
                 </span>
                 <span
                   className="shrink-0"
-                  style={{ color: "#A855F7" }}
+                  style={{ color: "#8B5CF6" }}
                 >
                   {openFaq === index ? (
                     <ChevronUp size={20} />
@@ -1063,92 +1166,108 @@ export default function AboutClient({ faqData }: Props) {
                   </p>
                 </div>
               )}
-            </div>
+            </BlurIn>
           ))}
         </div>
       </Section>
 
       {/* ─── CTA – WORK WITH US ──────────────────────────────────────────── */}
-      <Section background="gradient" spacing="lg" maxWidth="xl" withDivider>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <Section
+        background="transparent"
+        spacing="lg"
+        maxWidth="xl"
+        withDivider
+        className="relative !bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+      >
+        <LavenderField variant="b" />
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left: copy */}
           <div className="flex flex-col gap-6">
-            <div
-              className="inline-flex items-center gap-2 self-start px-4 py-2 rounded-full text-sm font-medium"
-              style={{
-                background: "rgba(124,58,237,0.15)",
-                border: "1px solid rgba(124,58,237,0.35)",
-                color: "#A855F7",
-                fontFamily: "Inter, sans-serif",
-              }}
-            >
-              <Zap size={14} />
-              Let&apos;s Work Together
-            </div>
-
-            <h2
-              className="text-3xl md:text-4xl font-bold leading-tight"
-              style={{
-                fontFamily: "Space Grotesk, sans-serif",
-                color: "#E5E7EB",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Ready to Grow Your Business with AI?
-            </h2>
-
-            <p
-              className="text-base leading-relaxed"
-              style={{
-                color: "rgba(229,231,235,0.7)",
-                fontFamily: "Inter, sans-serif",
-              }}
-            >
-              Whether you&apos;re a Houston-area business looking for a local
-              partner or an SMB anywhere in the U.S. ready to scale, Echo5
-              Digital is here to help. Start a conversation — no pressure, no
-              fluff.
-            </p>
-
-            <div className="flex flex-col gap-4 pt-2">
-              <div className="flex items-center gap-3">
-                <Mail size={16} style={{ color: "#A855F7" }} />
-                <a
-                  href="mailto:hello@echo5digital.com"
-                  className="text-sm transition-colors hover:text-white"
-                  style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
-                >
-                  hello@echo5digital.com
-                </a>
+            <BlurIn>
+              <div
+                className="inline-flex items-center gap-2 self-start px-4 py-2 rounded-full text-sm font-medium"
+                style={{
+                  background: "rgba(107,78,240,0.1)",
+                  border: "1px solid rgba(107,78,240,0.3)",
+                  color: "#6B4EF0",
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                <Zap size={14} />
+                Let&apos;s Work Together
               </div>
-              <div className="flex items-center gap-3">
-                <Phone size={16} style={{ color: "#A855F7" }} />
-                <a
-                  href="tel:7134897004"
-                  className="text-sm transition-colors hover:text-white"
-                  style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
-                >
-                  713-489-7004
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <MapPin size={16} style={{ color: "#A855F7" }} />
-                <span
-                  className="text-sm"
-                  style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
-                >
-                  Houston &amp; Sugar Land, Texas
-                </span>
-              </div>
+            </BlurIn>
+
+            <BlurIn delay={0.1}>
+              <h2
+                className="text-3xl md:text-4xl font-bold leading-tight"
+                style={{
+                  fontFamily: "Space Grotesk, sans-serif",
+                  color: "#15172B",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                <WordStagger text="Ready to Grow Your Business with AI?" />
+              </h2>
+            </BlurIn>
+
+            <BlurIn delay={0.2}>
+              <p
+                className="text-base leading-relaxed"
+                style={{
+                  color: "#5B5F73",
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                Whether you&apos;re a Houston-area business looking for a local
+                partner or an SMB anywhere in the U.S. ready to scale, Echo5
+                Digital is here to help. Start a conversation, no pressure, no
+                fluff.
+              </p>
+            </BlurIn>
+
+            <div className="flex flex-col gap-3 pt-2">
+              {[
+                { icon: Mail, label: "hello@echo5digital.com", href: "mailto:hello@echo5digital.com" },
+                { icon: Phone, label: "713-489-7004", href: "tel:7134897004" },
+                { icon: MapPin, label: "Houston & Sugar Land, Texas", href: null },
+              ].map((item, i) => (
+                <MagnetPop key={item.label} index={i}>
+                  <div
+                    className="flex items-center gap-3 p-3 rounded-xl"
+                    style={{ background: "rgba(255,255,255,0.6)", border: "1px solid rgba(124,58,237,0.1)" }}
+                  >
+                    <div
+                      className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                      style={{ background: "rgba(107,78,240,0.12)", border: "1px solid rgba(124,58,237,0.25)" }}
+                    >
+                      <item.icon size={15} style={{ color: "#6B4EF0" }} />
+                    </div>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className="text-sm transition-colors hover:text-[#6B4EF0]"
+                        style={{ color: "#374151", fontFamily: "Inter, sans-serif" }}
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <span className="text-sm" style={{ color: "#374151", fontFamily: "Inter, sans-serif" }}>
+                        {item.label}
+                      </span>
+                    )}
+                  </div>
+                </MagnetPop>
+              ))}
             </div>
 
             <Link
               href="/contact"
               className="inline-flex items-center justify-center gap-2 self-start px-8 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110 active:scale-95"
               style={{
-                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
                 boxShadow:
-                  "0 0 24px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
+                  "0 0 24px rgba(107,78,240,0.4), 0 4px 14px rgba(91,63,163,0.2)",
                 fontFamily: "Inter, sans-serif",
               }}
             >

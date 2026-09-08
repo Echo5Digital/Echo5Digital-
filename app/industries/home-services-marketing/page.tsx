@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import HomeServicesMarketingClient from "./HomeServicesMarketingClient";
 
 export const metadata: Metadata = {
@@ -85,13 +84,6 @@ export default function HomeServicesMarketingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
       <Header />
-      <Breadcrumbs
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Industries", href: "/industries" },
-          { label: "Home Services Marketing", href: "/industries/home-services-marketing" },
-        ]}
-      />
       <main>
         <HomeServicesMarketingClient faqData={faqData} />
       </main>

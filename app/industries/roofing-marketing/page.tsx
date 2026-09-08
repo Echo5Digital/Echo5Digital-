@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import RoofingMarketingClient from "./RoofingMarketingClient";
 
 export const metadata: Metadata = {
@@ -80,12 +79,6 @@ const serviceSchema = {
   url: "https://echo5digital.com/industries/roofing-marketing",
 };
 
-const breadcrumbItems = [
-  { label: "Home", href: "/" },
-  { label: "Industries", href: "/industries" },
-  { label: "Roofing Marketing", href: "/industries/roofing-marketing" },
-];
-
 export default function RoofingMarketingPage() {
   return (
     <>
@@ -98,7 +91,6 @@ export default function RoofingMarketingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
       <Header />
-      <Breadcrumbs items={breadcrumbItems} />
       <RoofingMarketingClient faqData={faqData} />
       <Footer
         email="hello@echo5digital.com"

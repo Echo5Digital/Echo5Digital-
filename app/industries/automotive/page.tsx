@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import AutomotiveMarketingClient from "./AutomotiveMarketingClient";
 
 export const metadata: Metadata = {
@@ -13,12 +11,6 @@ export const metadata: Metadata = {
     canonical: "/industries/automotive",
   },
 };
-
-const breadcrumbItems = [
-  { label: "Home", href: "/" },
-  { label: "Industries", href: "/industries" },
-  { label: "Automotive Marketing", href: "/industries/automotive" },
-];
 
 const faqData = [
   {
@@ -100,9 +92,6 @@ export default function AutomotiveMarketingPage() {
       />
       <Header />
       <div className="bg-[#0A0F1E] min-h-screen">
-        <Section spacing="sm" maxWidth="2xl">
-          <Breadcrumbs items={breadcrumbItems} />
-        </Section>
         <AutomotiveMarketingClient faqData={faqData} />
       </div>
       <Footer

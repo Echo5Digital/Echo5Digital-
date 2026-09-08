@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import LawFirmMarketingClient from "./LawFirmMarketingClient";
 
 export const metadata: Metadata = {
@@ -77,12 +76,6 @@ const faqSchema = {
 };
 
 export default function LawFirmMarketingPage() {
-  const breadcrumbItems = [
-    { label: "Home", href: "/" },
-    { label: "Industries", href: "/industries" },
-    { label: "Law Firm Marketing", href: "/industries/law-firm-marketing" },
-  ];
-
   return (
     <>
       <script
@@ -94,7 +87,6 @@ export default function LawFirmMarketingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Header />
-      <Breadcrumbs items={breadcrumbItems} />
       <LawFirmMarketingClient faqData={faqData} />
       <Footer
         email="hello@echo5digital.com"

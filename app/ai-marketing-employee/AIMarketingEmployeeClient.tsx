@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import Section from "@/components/Section";
-import Card from "@/components/Card";
 import ContactForm from "@/components/ContactForm";
+import { FocusPullHero, FlipUpReveal, CurtainBadge, CircleReveal, MagnetPop, FloatDrift, LavenderField } from "@/components/SolutionsFX";
+import { TiltCard, BlurIn } from "@/components/ScrollFX";
 import {
   Bot,
   Brain,
@@ -66,7 +68,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
       title: "Social Media",
       badge: "Engagement",
       description:
-        "Continuous AI-generated social content, scheduling, and performance tracking across all major platforms — hands-free.",
+        "Continuous AI-generated social content, scheduling, and performance tracking across all major platforms, hands-free.",
       href: "/pricing",
     },
     {
@@ -82,7 +84,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
       title: "Content",
       badge: "Authority",
       description:
-        "Blog posts, landing pages, and lead magnets created and published by AI — reviewed by our human content strategists.",
+        "Blog posts, landing pages, and lead magnets created and published by AI, reviewed by our human content strategists.",
       href: "/pricing",
     },
     {
@@ -98,7 +100,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
       title: "Super Growth",
       badge: "All-In-One",
       description:
-        "The complete AI Marketing Employee stack — every tier combined into one unified agentic growth engine.",
+        "The complete AI Marketing Employee stack: every tier combined into one unified agentic growth engine.",
       href: "/pricing",
     },
   ];
@@ -172,7 +174,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
       icon: Brain,
       title: "AI Executes",
       description:
-        "Agentic AI systems run your SEO, ads, content, and social 24/7 — continuously generating, publishing, and optimizing.",
+        "Agentic AI systems run your SEO, ads, content, and social 24/7, continuously generating, publishing, and optimizing.",
     },
     {
       icon: Eye,
@@ -184,7 +186,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
       icon: RefreshCw,
       title: "System Adapts",
       description:
-        "Performance signals trigger automatic adjustments — the AI learns and improves every cycle.",
+        "Performance signals trigger automatic adjustments, and the AI learns and improves every cycle.",
     },
     {
       icon: Monitor,
@@ -217,7 +219,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
       icon: Zap,
       color: "#10B981",
       title: "System Adjusts",
-      description: "Changes deploy automatically or with one-click approval — minimizing lag between insight and action.",
+      description: "Changes deploy automatically or with one-click approval, minimizing lag between insight and action.",
     },
   ];
 
@@ -237,106 +239,119 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
 
   return (
     <main style={{ backgroundColor: "#0A0F1E", color: "#E5E7EB", fontFamily: "Inter, sans-serif" }}>
-      {/* ── HERO ── */}
-      <Section background="gradient" spacing="xl" id="hero">
-        <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12">
-          <div className="flex-1 text-center lg:text-left">
-            <div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-6"
+      {/* ── HERO: full-bleed background image that racks into focus on load ── */}
+      <FocusPullHero
+        src="https://images.pexels.com/photos/8438979/pexels-photo-8438979.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1600"
+        className="min-h-screen flex items-center pt-[72px]"
+      >
+        {/* Ambient glow orbs on top of the photo overlay */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-20 blur-3xl"
+          style={{
+            background: "radial-gradient(circle, #7C3AED 0%, #A855F7 40%, transparent 70%)",
+          }}
+        />
+
+        <div className="relative z-10 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+          <CurtainBadge className="inline-flex items-center gap-2 mb-8 px-5 py-2.5 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
+            <Bot size={16} className="text-purple-400" />
+            <span
+              className="text-sm font-semibold uppercase tracking-widest text-purple-400"
+              style={{ fontFamily: "Space Grotesk, sans-serif" }}
+            >
+              Agentic AI Growth System
+            </span>
+          </CurtainBadge>
+
+          <h1
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-8"
+            style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.03em" }}
+          >
+            <FlipUpReveal text="Your AI Marketing Employee" delay={0.3} />
+            <span
+              className="block"
               style={{
-                background: "rgba(124,58,237,0.15)",
-                border: "1px solid rgba(168,85,247,0.35)",
-                color: "#A855F7",
+                background: "linear-gradient(135deg, #A855F7, #7C3AED)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               }}
             >
-              <Bot size={14} />
-              Agentic AI Growth System
-            </div>
-            <h1
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+              <FlipUpReveal text="Never Clocks Out" delay={0.9} />
+            </span>
+          </h1>
+
+          <motion.p
+            className="text-xl md:text-2xl max-w-4xl mx-auto mb-12 leading-relaxed"
+            style={{ color: "rgba(229,231,235,0.9)", fontFamily: "Inter, sans-serif", textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Done-for-you agentic AI that continuously manages your SEO, AEO, Google Ads, social
+            media, and content, with expert human oversight from Echo5 Digital's team.
+          </motion.p>
+
+          <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-5"
+            initial="hidden"
+            animate="show"
+            variants={{
+              hidden: {},
+              show: { transition: { staggerChildren: 0.15, delayChildren: 1.75 } },
+            }}
+          >
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, scale: 0.5 },
+                show: { opacity: 1, scale: 1 },
+              }}
+              transition={{ type: "spring", stiffness: 260, damping: 14 }}
             >
-              Your{" "}
-              <span
-                style={{
-                  background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                AI Marketing Employee
-              </span>{" "}
-              Never Clocks Out
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
-              Done-for-you agentic AI that continuously manages your SEO, AEO, Google Ads, social
-              media, and content — with expert human oversight from Echo5 Digital's team.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Link
                 href="/pricing"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110"
+                className="inline-block px-10 py-5 rounded-full font-semibold text-white text-lg transition-all duration-200 hover:brightness-110 hover:scale-105"
                 style={{
                   background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                  boxShadow: "0 0 24px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
+                  boxShadow: "0 0 28px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
+                  fontFamily: "Inter, sans-serif",
                 }}
               >
-                Explore Plans <ArrowRight size={18} />
+                Explore Plans
               </Link>
+            </motion.div>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, scale: 0.5 },
+                show: { opacity: 1, scale: 1 },
+              }}
+              transition={{ type: "spring", stiffness: 260, damping: 14 }}
+            >
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:bg-purple-900/20"
-                style={{
-                  border: "2px solid rgba(124,58,237,0.5)",
-                  color: "#A855F7",
-                }}
+                className="inline-block px-10 py-5 rounded-full font-semibold text-white text-lg border border-white/40 transition-all duration-200 hover:bg-white/10 hover:border-white/70 hover:scale-105 backdrop-blur-sm"
+                style={{ fontFamily: "Inter, sans-serif" }}
               >
                 Book a Demo
               </Link>
-            </div>
-          </div>
-          <div className="flex-1 relative w-full max-w-lg">
-            <div
-              className="rounded-2xl overflow-hidden"
-              style={{
-                border: "1px solid rgba(124,58,237,0.3)",
-                boxShadow: "0 0 60px rgba(124,58,237,0.2)",
-              }}
-            >
-              <img
-                src="/9105822-100kb.jpg"
-                alt="AI Marketing Employee managing digital campaigns across multiple marketing channels"
-                className="w-full h-72 object-cover"
-              />
-            </div>
-            {/* Floating stat badges */}
-            <div
-              className="absolute -top-4 -left-4 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold"
-              style={{
-                background: "rgba(10,15,30,0.95)",
-                border: "1px solid rgba(124,58,237,0.4)",
-                boxShadow: "0 0 20px rgba(124,58,237,0.25)",
-                color: "#E5E7EB",
-              }}
-            >
-              <Zap size={16} className="text-yellow-400" />
-              24/7 Active
-            </div>
-            <div
-              className="absolute -bottom-4 -right-4 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold"
-              style={{
-                background: "rgba(10,15,30,0.95)",
-                border: "1px solid rgba(168,85,247,0.4)",
-                boxShadow: "0 0 20px rgba(168,85,247,0.25)",
-                color: "#E5E7EB",
-              }}
-            >
-              <TrendingUp size={16} className="text-emerald-400" />
-              AI + Human Oversight
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Scroll cue */}
+          <motion.div
+            aria-hidden="true"
+            className="mt-20 w-7 h-11 rounded-full border-2 border-white/30 flex items-start justify-center p-1.5"
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <motion.div
+              className="w-2 h-2 rounded-full bg-white/80"
+              animate={{ y: [0, 16, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
         </div>
-      </Section>
+      </FocusPullHero>
 
       {/* ── QUICK ANSWER / DIRECT ANSWER BLOCK ── */}
       <Section background="elevated" spacing="sm" id="quick-answer" withDivider>
@@ -393,7 +408,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
             Marketing Is Broken for Small Businesses
           </h2>
           <p className="max-w-2xl mx-auto text-lg" style={{ color: "#5B5F73" }}>
-            Managing modern marketing requires expertise across a dozen channels — yet most SMBs
+            Managing modern marketing requires expertise across a dozen channels, yet most SMBs
             can't afford the team or tools to do it properly.
           </p>
         </div>
@@ -402,7 +417,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
             {
               icon: DollarSign,
               title: "Hiring Is Expensive",
-              desc: "A full marketing team costs $80K–$200K+ per year in salaries, benefits, and tools — out of reach for most SMBs.",
+              desc: "A full marketing team costs $80K–$200K+ per year in salaries, benefits, and tools, out of reach for most SMBs.",
             },
             {
               icon: Clock,
@@ -412,17 +427,17 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
             {
               icon: Layers,
               title: "Too Many Channels",
-              desc: "SEO, AEO, Google Ads, social media, content, email — you need expertise in all of them to compete in 2025.",
+              desc: "SEO, AEO, Google Ads, social media, content, email: you need expertise in all of them to compete in 2025.",
             },
             {
               icon: BarChart3,
               title: "Blind Reporting",
-              desc: "Most businesses don't know if their marketing is working until it's too late — no real-time visibility, no adaptive strategy.",
+              desc: "Most businesses don't know if their marketing is working until it's too late: no real-time visibility, no adaptive strategy.",
             },
             {
               icon: RefreshCw,
               title: "Constant Platform Changes",
-              desc: "Google updates, AI search, algorithm shifts — keeping up requires constant learning that most teams don't have time for.",
+              desc: "Google updates, AI search, algorithm shifts: keeping up requires constant learning that most teams don't have time for.",
             },
             {
               icon: Users,
@@ -465,34 +480,53 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
       </Section>
 
       {/* ── WHAT IS THE AI MARKETING EMPLOYEE ── */}
-      <Section background="gradient" spacing="lg" id="what-is" withDivider>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <Section background="gradient" spacing="lg" id="what-is" withDivider className="relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-40 -left-40 w-[480px] h-[480px] rounded-full opacity-20 blur-3xl"
+          style={{ background: "radial-gradient(circle, #7C3AED 0%, transparent 70%)" }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-40 -right-20 w-[420px] h-[420px] rounded-full opacity-15 blur-3xl"
+          style={{ background: "radial-gradient(circle, #A855F7 0%, transparent 70%)" }}
+        />
+
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-purple-400 mb-3">
-              The Solution
-            </p>
-            <h2
-              className="text-3xl sm:text-4xl font-bold mb-6"
-              style={{ fontFamily: "Space Grotesk, sans-serif" }}
-            >
-              What Is the AI Marketing Employee?
-            </h2>
-            <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              The AI Marketing Employee is Echo5 Digital's flagship agentic AI product — a
-              fully autonomous growth system that runs your marketing around the clock, across every
-              channel that matters.
-            </p>
-            <p className="text-gray-400 leading-relaxed mb-6">
-              Unlike traditional agency retainers where humans manually execute tasks on a
-              slow cycle, our agentic AI systems operate continuously — creating content,
-              optimizing ads, improving SEO rankings, engaging on social, and adapting to
-              performance signals in near real-time.
-            </p>
-            <p className="text-gray-400 leading-relaxed mb-8">
-              And unlike hiring in-house, you get the equivalent of a full marketing department —
-              SEO specialists, ad managers, content writers, analysts — at a fraction of the cost,
-              with Echo5's human team ensuring quality, strategy, and brand alignment at every step.
-            </p>
+            <BlurIn>
+              <p className="text-sm font-semibold uppercase tracking-widest text-purple-400 mb-3">
+                The Solution
+              </p>
+              <h2
+                className="text-3xl sm:text-4xl font-bold mb-6"
+                style={{ fontFamily: "Space Grotesk, sans-serif" }}
+              >
+                What Is the AI Marketing Employee?
+              </h2>
+            </BlurIn>
+            <BlurIn delay={0.12}>
+              <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                The AI Marketing Employee is Echo5 Digital's flagship agentic AI product, a
+                fully autonomous growth system that runs your marketing around the clock, across every
+                channel that matters.
+              </p>
+            </BlurIn>
+            <BlurIn delay={0.24}>
+              <p className="text-gray-400 leading-relaxed mb-6">
+                Unlike traditional agency retainers where humans manually execute tasks on a
+                slow cycle, our agentic AI systems operate continuously, creating content,
+                optimizing ads, improving SEO rankings, engaging on social, and adapting to
+                performance signals in near real-time.
+              </p>
+            </BlurIn>
+            <BlurIn delay={0.36}>
+              <p className="text-gray-400 leading-relaxed mb-8">
+                And unlike hiring in-house, you get the equivalent of a full marketing department:
+                SEO specialists, ad managers, content writers, analysts, at a fraction of the cost,
+                with Echo5's human team ensuring quality, strategy, and brand alignment at every step.
+              </p>
+            </BlurIn>
             <ul className="space-y-3">
               {[
                 "Operates 24/7 without downtime or holidays",
@@ -500,75 +534,143 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
                 "Adapts to performance data automatically",
                 "Supervised by Echo5's expert human team",
                 "Transparent reporting via Client Command Center",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-gray-300">
-                  <CheckCircle size={16} className="text-emerald-400 mt-0.5 shrink-0" />
-                  {item}
-                </li>
+              ].map((item, i) => (
+                <MagnetPop key={item} index={i}>
+                  <li className="flex items-start gap-3 text-sm text-gray-300">
+                    <CheckCircle size={16} className="text-emerald-400 mt-0.5 shrink-0" />
+                    {item}
+                  </li>
+                </MagnetPop>
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(124,58,237,0.25)" }}>
-            <img
-              src="/abc.jpeg"
-              alt="Agentic AI system managing multiple marketing channels simultaneously for business growth"
-              className="w-full h-full object-cover min-h-[320px]"
-            />
+
+          <div className="relative">
+            <TiltCard>
+              <CircleReveal
+                src="/abc.jpeg"
+                alt="Agentic AI system managing multiple marketing channels simultaneously for business growth"
+                className="rounded-2xl"
+                imgClassName="w-full h-full object-cover min-h-[320px] rounded-2xl"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 rounded-2xl pointer-events-none"
+                style={{ border: "1px solid rgba(124,58,237,0.3)", boxShadow: "0 0 60px rgba(124,58,237,0.2)" }}
+              />
+            </TiltCard>
+
+            <FloatDrift
+              className="absolute -top-5 -right-5 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold"
+              style={{
+                background: "rgba(10,15,30,0.95)",
+                border: "1px solid rgba(124,58,237,0.4)",
+                boxShadow: "0 0 20px rgba(124,58,237,0.25)",
+                color: "#E5E7EB",
+              }}
+              duration={3.8}
+            >
+              <Bot size={16} className="text-purple-400" />
+              Fully Agentic
+            </FloatDrift>
+            <FloatDrift
+              className="absolute -bottom-5 -left-5 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold"
+              style={{
+                background: "rgba(10,15,30,0.95)",
+                border: "1px solid rgba(168,85,247,0.4)",
+                boxShadow: "0 0 20px rgba(168,85,247,0.25)",
+                color: "#E5E7EB",
+              }}
+              duration={4.2}
+              delay={0.6}
+            >
+              <Eye size={16} className="text-emerald-400" />
+              Human Verified
+            </FloatDrift>
           </div>
         </div>
       </Section>
 
       {/* ── HUMAN OVERSIGHT WORKFLOW ── */}
-      <Section background="elevated" spacing="lg" id="human-oversight" withDivider>
-        <div className="text-center mb-12">
-          <p className="text-sm font-semibold uppercase tracking-widest text-purple-400 mb-3">
-            Human + AI Together
-          </p>
-          <h2
-            className="text-3xl sm:text-4xl font-bold mb-4"
-            style={{ fontFamily: "Space Grotesk, sans-serif" }}
-          >
-            Human Oversight Workflow
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            AI drives the execution. Humans ensure the strategy, quality, and brand alignment.
-            Here's how Echo5's oversight model works.
-          </p>
+      <Section
+        background="transparent"
+        spacing="lg"
+        id="human-oversight"
+        withDivider
+        className="relative !bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+      >
+        <LavenderField variant="b" />
+        <div className="relative z-10 text-center mb-12">
+          <BlurIn>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#6B4EF0" }}>
+              Human + AI Together
+            </p>
+            <h2
+              className="text-3xl sm:text-4xl font-bold mb-4"
+              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
+            >
+              Human Oversight Workflow
+            </h2>
+            <p className="max-w-2xl mx-auto" style={{ color: "#5B5F73" }}>
+              AI drives the execution. Humans ensure the strategy, quality, and brand alignment.
+              Here's how Echo5's oversight model works.
+            </p>
+          </BlurIn>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {overviewSteps.map((step, i) => (
-            <div key={step.title} className="relative flex flex-col items-center text-center gap-4">
-              {i < overviewSteps.length - 1 && (
-                <div
-                  className="hidden lg:block absolute top-8 left-[calc(50%+2.5rem)] right-0 h-px"
-                  style={{ background: "linear-gradient(90deg, rgba(124,58,237,0.5), transparent)" }}
-                />
-              )}
-              <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center"
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {overviewSteps.map((step, i) => {
+            const accents = [
+              { solid: "#7C3AED", soft: "rgba(124,58,237,0.12)", border: "rgba(124,58,237,0.3)" },
+              { solid: "#EA580C", soft: "rgba(234,88,12,0.12)", border: "rgba(234,88,12,0.3)" },
+              { solid: "#0891B2", soft: "rgba(8,145,178,0.12)", border: "rgba(8,145,178,0.3)" },
+              { solid: "#10B981", soft: "rgba(16,185,129,0.12)", border: "rgba(16,185,129,0.3)" },
+            ];
+            const accent = accents[i % accents.length];
+            return (
+              <TiltCard
+                key={step.title}
+                index={i}
+                className="relative flex flex-col items-center text-center gap-4 p-6 sm:p-7 rounded-2xl overflow-hidden"
                 style={{
-                  background: "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-                  border: "1px solid rgba(168,85,247,0.35)",
-                  boxShadow: "0 0 24px rgba(124,58,237,0.2)",
+                  background: "rgba(255,255,255,0.8)",
+                  border: `1px solid ${accent.border}`,
+                  boxShadow: "0 4px 24px rgba(91,63,163,0.08)",
                 }}
               >
-                <step.icon size={28} style={{ color: "#A855F7" }} />
-              </div>
-              <div
-                className="text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center"
-                style={{ background: "rgba(124,58,237,0.5)", color: "#fff" }}
-              >
-                {i + 1}
-              </div>
-              <h3
-                className="font-semibold text-base"
-                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-              >
-                {step.title}
-              </h3>
-              <p className="text-sm text-gray-400 leading-relaxed">{step.description}</p>
-            </div>
-          ))}
+                <span
+                  aria-hidden="true"
+                  className="absolute top-0 left-0 right-0 h-1.5"
+                  style={{ background: accent.solid }}
+                />
+                <span
+                  className="absolute -top-3 -right-3 text-sm font-bold rounded-full w-9 h-9 flex items-center justify-center"
+                  style={{
+                    background: accent.solid,
+                    color: "#fff",
+                    boxShadow: `0 4px 14px ${accent.border}`,
+                  }}
+                >
+                  {i + 1}
+                </span>
+                <div
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center"
+                  style={{
+                    background: accent.soft,
+                    border: `1px solid ${accent.border}`,
+                  }}
+                >
+                  <step.icon size={28} style={{ color: accent.solid }} />
+                </div>
+                <h3
+                  className="font-semibold text-base"
+                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
+                >
+                  {step.title}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#5B5F73" }}>{step.description}</p>
+              </TiltCard>
+            );
+          })}
         </div>
       </Section>
 
@@ -585,7 +687,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
             Internal Growth System Diagram
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Every layer of the AI Marketing Employee ecosystem — from AI agents to human oversight
+            Every layer of the AI Marketing Employee ecosystem, from AI agents to human oversight
             to your live dashboard.
           </p>
         </div>
@@ -698,36 +800,104 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
       </Section>
 
       {/* ── TIERS OVERVIEW ── */}
-      <Section background="elevated" spacing="lg" id="tiers" withDivider>
-        <div className="text-center mb-12">
-          <p className="text-sm font-semibold uppercase tracking-widest text-purple-400 mb-3">
-            Choose Your Plan
-          </p>
-          <h2
-            className="text-3xl sm:text-4xl font-bold mb-4"
-            style={{ fontFamily: "Space Grotesk, sans-serif" }}
-          >
-            AI Marketing Employee Tiers
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Start with the channels that matter most, or go all-in with Super Growth. Every tier
-            includes AI execution and human oversight.
-          </p>
+      <Section
+        background="transparent"
+        spacing="lg"
+        id="tiers"
+        withDivider
+        className="relative !bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+      >
+        <LavenderField variant="c" />
+        <div className="relative z-10 text-center mb-12">
+          <BlurIn>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#6B4EF0" }}>
+              Choose Your Plan
+            </p>
+            <h2
+              className="text-3xl sm:text-4xl font-bold mb-4"
+              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
+            >
+              AI Marketing Employee Tiers
+            </h2>
+            <p className="max-w-2xl mx-auto" style={{ color: "#5B5F73" }}>
+              Start with the channels that matter most, or go all-in with Super Growth. Every tier
+              includes AI execution and human oversight.
+            </p>
+          </BlurIn>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tiers.map((tier) => (
-            <Link key={tier.title} href={tier.href} className="block group no-underline">
-              <Card
-                title={tier.title}
-                description={tier.description}
-                icon={tier.icon}
-                badge={tier.badge}
-                variant="service"
-              />
-            </Link>
-          ))}
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {tiers.map((tier, i) => {
+            const glows = [
+              "radial-gradient(circle at 100% 0%, rgba(16,185,129,0.35), transparent 55%), #10182B",
+              "radial-gradient(circle at 100% 0%, rgba(34,211,238,0.35), transparent 55%), #10182B",
+              "radial-gradient(circle at 100% 0%, rgba(168,85,247,0.35), transparent 55%), #10182B",
+              "radial-gradient(circle at 100% 0%, rgba(59,130,246,0.35), transparent 55%), #10182B",
+              "radial-gradient(circle at 100% 0%, rgba(217,119,6,0.35), transparent 55%), #10182B",
+              "radial-gradient(circle at 100% 0%, rgba(16,185,129,0.35), transparent 55%), #10182B",
+            ];
+            const accents = ["#34D399", "#22D3EE", "#C084FC", "#60A5FA", "#F59E0B", "#34D399"];
+            const accent = accents[i % accents.length];
+            return (
+              <Link key={tier.title} href={tier.href} className="block no-underline">
+                <MagnetPop index={i}>
+                  <div
+                    className="group relative flex flex-col gap-4 p-6 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5"
+                    style={{
+                      background: glows[i % glows.length],
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      boxShadow: "0 8px 30px rgba(10,15,30,0.35)",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLDivElement).style.borderColor = accent;
+                      (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 0 1px ${accent}, 0 16px 40px ${accent}40`;
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.08)";
+                      (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 30px rgba(10,15,30,0.35)";
+                    }}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="absolute top-4 right-6 w-1.5 h-1.5 rounded-full"
+                      style={{ background: accent, boxShadow: `0 0 8px ${accent}` }}
+                    />
+                    <div className="flex items-start justify-between gap-3">
+                      <div
+                        className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6"
+                        style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)" }}
+                      >
+                        <tier.icon size={22} style={{ color: accent }} strokeWidth={1.8} />
+                      </div>
+                      <ArrowRight
+                        size={18}
+                        className="mt-2 shrink-0 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0"
+                        style={{ color: accent }}
+                      />
+                    </div>
+                    <div>
+                      <span
+                        className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-3"
+                        style={{ background: `${accent}1A`, color: accent, border: `1px solid ${accent}40` }}
+                      >
+                        {tier.badge}
+                      </span>
+                      <h3
+                        className="text-lg font-semibold mb-2 transition-colors duration-300"
+                        style={{ fontFamily: "Space Grotesk, sans-serif", color: "#F1F5F9" }}
+                      >
+                        {tier.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed" style={{ color: "rgba(226,232,240,0.65)" }}>
+                        {tier.description}
+                      </p>
+                    </div>
+                  </div>
+                </MagnetPop>
+              </Link>
+            );
+          })}
         </div>
-        <div className="text-center mt-10">
+        <div className="relative z-10 text-center mt-10">
           <Link
             href="/pricing"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110"
@@ -805,7 +975,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
             Performance Response Flow
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            When performance signals shift, the system responds — automatically or with rapid
+            When performance signals shift, the system responds, automatically or with rapid
             human validation. No waiting weeks for your agency to "circle back."
           </p>
         </div>
@@ -859,23 +1029,35 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
       </Section>
 
       {/* ── COMPARISON SECTION ── */}
-      <Section background="elevated" spacing="lg" id="comparison" withDivider>
-        <div className="text-center mb-12">
-          <p className="text-sm font-semibold uppercase tracking-widest text-purple-400 mb-3">
-            The Numbers Don't Lie
-          </p>
-          <h2
-            className="text-3xl sm:text-4xl font-bold mb-4"
-            style={{ fontFamily: "Space Grotesk, sans-serif" }}
-          >
-            AI Marketing Employee vs. The Alternatives
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            See why hundreds of SMBs are choosing agentic AI over expensive in-house hires or
-            slow traditional agencies.
-          </p>
+      <Section
+        background="transparent"
+        spacing="lg"
+        id="comparison"
+        withDivider
+        className="relative !bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+      >
+        <LavenderField variant="a" />
+        <div className="relative z-10 text-center mb-12">
+          <BlurIn>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#6B4EF0" }}>
+              The Numbers Don't Lie
+            </p>
+            <h2
+              className="text-3xl sm:text-4xl font-bold mb-4"
+              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
+            >
+              AI Marketing Employee vs. The Alternatives
+            </h2>
+            <p className="max-w-2xl mx-auto" style={{ color: "#5B5F73" }}>
+              See why hundreds of SMBs are choosing agentic AI over expensive in-house hires or
+              slow traditional agencies.
+            </p>
+          </BlurIn>
         </div>
-        <div className="overflow-x-auto rounded-2xl" style={{ border: "1px solid rgba(124,58,237,0.2)" }}>
+        <div
+          className="relative z-10 overflow-x-auto rounded-2xl"
+          style={{ border: "1px solid rgba(124,58,237,0.2)", background: "#0F1629", boxShadow: "0 12px 40px rgba(91,63,163,0.15)" }}
+        >
           <table className="w-full min-w-[600px]" style={{ borderCollapse: "collapse" }}>
             <thead>
               <tr style={{ background: "rgba(124,58,237,0.12)" }}>
@@ -976,7 +1158,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
               We also serve businesses nationally across the U.S.
             </p>
             <div className="flex flex-wrap gap-4 mt-4 text-sm">
-              {/* Phone — verified fact */}
+              {/* Phone: verified fact */}
               <a
                 href="tel:713-489-7004"
                 className="flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors"
@@ -984,7 +1166,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
                 <span>📞</span>
                 <span>713-489-7004</span>
               </a>
-              {/* Email — verified fact */}
+              {/* Email: verified fact */}
               <a
                 href="mailto:hello@echo5digital.com"
                 className="flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors"
@@ -992,7 +1174,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
                 <span>✉️</span>
                 <span>hello@echo5digital.com</span>
               </a>
-              {/* Address — verified fact */}
+              {/* Address: verified fact */}
               <span className="flex items-center gap-2 text-gray-400">
                 <span>📍</span>
                 <span>Houston / Sugar Land, Texas</span>
@@ -1003,55 +1185,67 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
       </Section>
 
       {/* ── INDUSTRIES SERVED ── */}
-      <Section background="elevated" spacing="lg" id="industries" withDivider>
-        <div className="text-center mb-12">
-          <p className="text-sm font-semibold uppercase tracking-widest text-purple-400 mb-3">
-            Who It's For
-          </p>
-          <h2
-            className="text-3xl sm:text-4xl font-bold mb-4"
-            style={{ fontFamily: "Space Grotesk, sans-serif" }}
-          >
-            Industries We Serve
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            The AI Marketing Employee is purpose-built for small and mid-sized businesses across
-            every major vertical.
-          </p>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {industries.map((ind) => (
-            <Link
-              key={ind.name}
-              href={ind.href}
-              className="group flex flex-col items-center gap-3 p-5 rounded-xl text-center transition-all duration-200 no-underline"
-              style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(124,58,237,0.18)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(168,85,247,0.45)";
-                (e.currentTarget as HTMLAnchorElement).style.background = "rgba(124,58,237,0.1)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(124,58,237,0.18)";
-                (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.03)";
-              }}
+      <Section
+        background="transparent"
+        spacing="lg"
+        id="industries"
+        withDivider
+        className="relative !bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+      >
+        <LavenderField variant="b" />
+        <div className="relative z-10 text-center mb-12">
+          <BlurIn>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#6B4EF0" }}>
+              Who It's For
+            </p>
+            <h2
+              className="text-3xl sm:text-4xl font-bold mb-4"
+              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
             >
-              <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center"
-                style={{ background: "rgba(124,58,237,0.15)", border: "1px solid rgba(168,85,247,0.2)" }}
+              Industries We Serve
+            </h2>
+            <p className="max-w-2xl mx-auto" style={{ color: "#5B5F73" }}>
+              The AI Marketing Employee is purpose-built for small and mid-sized businesses across
+              every major vertical.
+            </p>
+          </BlurIn>
+        </div>
+        <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          {industries.map((ind, i) => (
+            <MagnetPop key={ind.name} index={i}>
+              <Link
+                href={ind.href}
+                className="group flex flex-col items-center gap-3 p-5 rounded-xl text-center transition-all duration-200 no-underline"
+                style={{
+                  background: "rgba(255,255,255,0.75)",
+                  border: "1px solid rgba(124,58,237,0.15)",
+                  boxShadow: "0 4px 20px rgba(91,63,163,0.06)",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(124,58,237,0.4)";
+                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 28px rgba(124,58,237,0.18)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(124,58,237,0.15)";
+                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 20px rgba(91,63,163,0.06)";
+                }}
               >
-                <ind.icon size={18} style={{ color: "#A855F7" }} />
-              </div>
-              <span className="text-xs font-medium text-gray-300 leading-snug">{ind.name}</span>
-            </Link>
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                  style={{ background: "rgba(107,78,240,0.12)", border: "1px solid rgba(124,58,237,0.25)" }}
+                >
+                  <ind.icon size={18} style={{ color: "#6B4EF0" }} />
+                </div>
+                <span className="text-xs font-medium leading-snug" style={{ color: "#374151" }}>{ind.name}</span>
+              </Link>
+            </MagnetPop>
           ))}
         </div>
-        <div className="text-center mt-8">
+        <div className="relative z-10 text-center mt-8">
           <Link
             href="/industries"
-            className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors text-sm font-medium"
+            className="inline-flex items-center gap-2 transition-colors text-sm font-medium"
+            style={{ color: "#6B4EF0" }}
           >
             View All Industries <ArrowRight size={16} />
           </Link>
@@ -1127,7 +1321,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed mb-8">
               Stop losing ground to competitors who are already using AI. Book a free demo
-              call and see the AI Marketing Employee in action — or drop your details and
+              call and see the AI Marketing Employee in action, or drop your details and
               we'll reach out within 24 hours.
             </p>
             <div className="space-y-4">

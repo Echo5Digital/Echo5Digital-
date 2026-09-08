@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import AestheticsMarketingClient from "./AestheticsMarketingClient";
 
 export const metadata: Metadata = {
@@ -87,12 +86,6 @@ const serviceJsonLd = {
   ],
 };
 
-const breadcrumbItems = [
-  { label: "Home", href: "/" },
-  { label: "Industries", href: "/industries" },
-  { label: "Aesthetics Marketing", href: "/industries/aesthetics-marketing" },
-];
-
 export default function AestheticsMarketingPage() {
   return (
     <>
@@ -105,7 +98,6 @@ export default function AestheticsMarketingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
       <Header />
-      <Breadcrumbs items={breadcrumbItems} />
       <main>
         <AestheticsMarketingClient faqData={faqData} />
       </main>

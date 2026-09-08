@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import EcommerceMarketingClient from "./EcommerceMarketingClient";
 
 export const metadata: Metadata = {
@@ -79,12 +78,6 @@ const serviceSchema = {
   url: "https://echo5digital.com/industries/ecommerce-marketing",
 };
 
-const breadcrumbItems = [
-  { label: "Home", href: "/" },
-  { label: "Industries", href: "/industries" },
-  { label: "Ecommerce Marketing", href: "/industries/ecommerce-marketing" },
-];
-
 export default function EcommerceMarketingPage() {
   return (
     <>
@@ -97,7 +90,6 @@ export default function EcommerceMarketingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
       <Header />
-      <Breadcrumbs items={breadcrumbItems} />
       <main>
         {/* Quick Answer Block — server-rendered for AEO crawlability */}
         <Section background="elevated" spacing="sm" withDivider>

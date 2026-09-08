@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import ProfessionalServicesClient from "./ProfessionalServicesClient";
 
 export const metadata: Metadata = {
@@ -87,12 +86,6 @@ const serviceSchema = {
   ],
 };
 
-const breadcrumbItems = [
-  { label: "Home", href: "/" },
-  { label: "Industries", href: "/industries" },
-  { label: "Professional Services Marketing", href: "/industries/professional-services-marketing" },
-];
-
 export default function ProfessionalServicesMarketingPage() {
   return (
     <>
@@ -105,7 +98,6 @@ export default function ProfessionalServicesMarketingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
       <Header />
-      <Breadcrumbs items={breadcrumbItems} />
       <ProfessionalServicesClient faqData={faqData} />
       <Footer
         email="hello@echo5digital.com"

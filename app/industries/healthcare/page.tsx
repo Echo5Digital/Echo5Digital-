@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import HealthcareMarketingClient from "./HealthcareMarketingClient";
 
 export const metadata: Metadata = {
@@ -41,12 +40,6 @@ const serviceSchema = {
   url: "https://echo5digital.com/industries/healthcare",
 };
 
-const breadcrumbItems = [
-  { label: "Home", href: "/" },
-  { label: "Industries", href: "/industries" },
-  { label: "Healthcare Marketing", href: "/industries/healthcare" },
-];
-
 export default function HealthcareMarketingPage() {
   return (
     <>
@@ -55,7 +48,6 @@ export default function HealthcareMarketingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
       <Header />
-      <Breadcrumbs items={breadcrumbItems} />
       <main>
         <HealthcareMarketingClient />
       </main>
