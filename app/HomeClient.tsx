@@ -38,6 +38,7 @@ import {
   Building2,
   Sparkles,
   Rocket,
+  XCircle,
 } from "lucide-react";
 
 interface FAQItem {
@@ -921,6 +922,142 @@ export default function HomeClient({ faqData }: HomeClientProps) {
             </Link>
             .
           </p>
+        </Section>
+
+        {/* ── TRADITIONAL AGENCY VS ECHO5 DIGITAL ─────────────────────── */}
+        <Section background="transparent" spacing="lg" maxWidth="3xl" withDivider className="relative !bg-[#07050F]">
+          {/* Background image + overlay */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage:
+                "url('/user-people-network-circuit-board-link-connection-technology-100kb.jpg')",
+            }}
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(7,5,15,0.93) 0%, rgba(7,5,15,0.90) 100%)",
+            }}
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 opacity-40"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+              backgroundSize: "36px 36px",
+            }}
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full opacity-20 blur-3xl"
+            style={{
+              background: "radial-gradient(circle, #7C3AED 0%, #A855F7 40%, transparent 70%)",
+            }}
+          />
+
+          {/* Content */}
+          <div className="relative z-10">
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <div className="text-xs font-bold tracking-widest mb-3" style={{ color: "#A855F7" }}>
+                THE DIFFERENCE IS CLEAR
+              </div>
+              <h2
+                className="font-black leading-[1.05] tracking-tight mb-4"
+                style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.9rem, 4.5vw, 3rem)", color: "#FFFFFF" }}
+              >
+                Traditional Agency{" "}
+                <span
+                  style={{
+                    background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  VS
+                </span>{" "}
+                Echo5 Digital
+              </h2>
+              <p className="text-base leading-relaxed" style={{ color: "#9CA3AF" }}>
+                Why smart brands are replacing their agencies with Echo5&apos;s AI-powered growth system.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch max-w-4xl mx-auto">
+              {/* Traditional Agency */}
+              <div
+                className="rounded-2xl p-8"
+                style={{
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}
+              >
+                <h3
+                  className="text-lg font-bold mb-6"
+                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#9CA3AF" }}
+                >
+                  Traditional Agency
+                </h3>
+                <ul className="space-y-4">
+                  {[
+                    "Human team with limited capacity",
+                    "Slow execution — weeks to go live",
+                    "Monthly vanity metric reports",
+                    "Disconnected tools and platforms",
+                    "No lead intelligence or attribution",
+                    "AI as an afterthought",
+                    "Scales by hiring more people",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <XCircle size={18} style={{ color: "#6B7280", flexShrink: 0, marginTop: 1 }} />
+                      <span className="text-sm leading-relaxed" style={{ color: "#9CA3AF" }}>
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Echo5 Digital */}
+              <div
+                className="rounded-2xl p-8 relative overflow-hidden"
+                style={{
+                  background: "linear-gradient(160deg, rgba(124,58,237,0.18) 0%, rgba(168,85,247,0.06) 100%)",
+                  border: "1px solid rgba(168,85,247,0.4)",
+                  boxShadow: "0 0 40px rgba(124,58,237,0.25)",
+                }}
+              >
+                <h3
+                  className="text-lg font-bold mb-6"
+                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#FFFFFF" }}
+                >
+                  Echo5 Digital
+                </h3>
+                <ul className="space-y-4">
+                  {[
+                    "AI employees — unlimited capacity",
+                    "Same-day execution and deployment",
+                    "Real-time business intelligence dashboard",
+                    "One unified AI platform for everything",
+                    "Full lead pipeline, CRM & attribution",
+                    "AI is the core, not a feature",
+                    "Scales infinitely without headcount",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CheckCircle size={18} style={{ color: "#A855F7", flexShrink: 0, marginTop: 1 }} />
+                      <span className="text-sm leading-relaxed" style={{ color: "#E5E7EB" }}>
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
         </Section>
 
         {/* ── INTERNAL GROWTH SYSTEM DIAGRAM ───────────────────────────── */}
