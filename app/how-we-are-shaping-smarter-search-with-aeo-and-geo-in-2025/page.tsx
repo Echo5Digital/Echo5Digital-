@@ -4,9 +4,9 @@ import Footer from "@/components/Footer";
 import ArticleClient from "./ArticleClient";
 
 export const metadata: Metadata = {
-  title: "How We Are Shaping Smarter Search with AEO and GEO in 2025 | Echo5 Digital Blog",
+  title: "How We Are Shaping Smarter Search with AEO and GEO in 2025",
   description:
-    "Search is answering questions before users click. Here's how Echo5 Digital is building AEO and GEO into every client site to stay visible in AI-driven search.",
+    "In 2025, we're not chasing search trends we're engineering them. See how our custom AEO + GEO blueprint is redefining visibility, one query and one city at a time.",
   alternates: {
     canonical: "https://echo5digital.com/how-we-are-shaping-smarter-search-with-aeo-and-geo-in-2025/",
   },
@@ -32,7 +32,7 @@ const articleSchema = {
     },
   },
   description:
-    "Search is answering questions before users click. Here's how Echo5 Digital is building AEO and GEO into every client site to stay visible in AI-driven search.",
+    "In 2025, we're not chasing search trends we're engineering them. See how our custom AEO + GEO blueprint is redefining visibility, one query and one city at a time.",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://echo5digital.com/how-we-are-shaping-smarter-search-with-aeo-and-geo-in-2025/",

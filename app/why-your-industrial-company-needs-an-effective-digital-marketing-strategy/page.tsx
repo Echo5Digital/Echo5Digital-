@@ -4,9 +4,9 @@ import Footer from "@/components/Footer";
 import ArticleClient from "./ArticleClient";
 
 export const metadata: Metadata = {
-  title: "Why Your Industrial Company Needs an Effective Digital Marketing Strategy | Echo5 Digital Blog",
+  title: "Boost Your Factory's Reach with Industrial Digital Marketing",
   description:
-    "Industrial buyers already research online before calling a sales rep. Here's why manufacturing, fabrication, and logistics companies can't afford to skip digital marketing.",
+    "Unlock growth with expert industrial digital marketing services. From SEO to lead-gen, discover how factories can thrive in the digital age.",
   alternates: {
     canonical:
       "https://echo5digital.com/why-your-industrial-company-needs-an-effective-digital-marketing-strategy/",
@@ -33,7 +33,7 @@ const articleSchema = {
     },
   },
   description:
-    "Industrial buyers already research online before calling a sales rep. Here's why manufacturing, fabrication, and logistics companies can't afford to skip digital marketing.",
+    "Unlock growth with expert industrial digital marketing services. From SEO to lead-gen, discover how factories can thrive in the digital age.",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id":

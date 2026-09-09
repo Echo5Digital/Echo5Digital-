@@ -173,6 +173,13 @@ export default function ArticleClient() {
             The goal stays simple — make search feel seamless, intelligent, and genuinely useful, no matter how someone chooses to ask.
           </p>
 
+          <h2 className="text-4xl sm:text-5xl font-extrabold mb-6 mt-16 leading-tight" style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}>
+            Explore More We&apos;re Just Getting Started
+          </h2>
+          <p className="mb-6 leading-relaxed text-lg" style={{ color: "#D1D5DB" }}>
+            If you&apos;ve made it this far, it means you care about the future of search just like we do. We invite you to explore more on our site, browse our updated service pages, check out our latest content hubs, or drop us a message with your questions. You&apos;ll start seeing smarter, faster answers throughout the site, and this blog is just the beginning.
+          </p>
+
           <div className="mt-12 pt-8" style={{ borderTop: "1px solid rgba(124,58,237,0.2)" }}>
             <Link
               href="/blog"

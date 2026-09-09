@@ -4,20 +4,20 @@ import Footer from "@/components/Footer";
 import ArticleClient from "./ArticleClient";
 
 export const metadata: Metadata = {
-  title: "How to Rank on ChatGPT: 7 Tips to Get Featured by AI - Echo5 Digital",
+  title: "LinkedIn Expands Video Ads and AI Tools to Empower B2B Marketers - Echo5 Digital",
   description:
-    "The 7 actionable strategies to enhance your content visibility in ChatGPT answers. Optimize your prompts, structure, and relevance to stand out in AI-generated results.",
+    "See how LinkedIn's expanded video ads and new AI-powered Accelerate tools help B2B marketers boost engagement, streamline campaigns, and improve ROI.",
   alternates: {
-    canonical: "https://echo5digital.com/how-to-rank-on-chatgpt-7-tips-to-get-featured-by-ai/",
+    canonical: "https://echo5digital.com/linkedin-expands-video-ads-and-ai-tools-to-empower-b2b-marketers/",
   },
 };
 
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "How to Rank on ChatGPT: 7 Tips to Get Featured by AI",
-  datePublished: "2025-07-14",
-  dateModified: "2025-07-14",
+  headline: "LinkedIn Expands Video Ads and AI Tools to Empower B2B Marketers",
+  datePublished: "2024-06-06T10:52:29+00:00",
+  dateModified: "2024-06-06T10:59:14+00:00",
   author: {
     "@type": "Person",
     name: "shani",
@@ -32,10 +32,10 @@ const articleSchema = {
     },
   },
   description:
-    "The 7 actionable strategies to enhance your content visibility in ChatGPT answers. Optimize your prompts, structure, and relevance to stand out in AI-generated results.",
+    "See how LinkedIn's expanded video ads and new AI-powered Accelerate tools help B2B marketers boost engagement, streamline campaigns, and improve ROI.",
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": "https://echo5digital.com/how-to-rank-on-chatgpt-7-tips-to-get-featured-by-ai/",
+    "@id": "https://echo5digital.com/linkedin-expands-video-ads-and-ai-tools-to-empower-b2b-marketers/",
   },
 };
 

@@ -4,9 +4,9 @@ import Footer from "@/components/Footer";
 import ArticleClient from "./ArticleClient";
 
 export const metadata: Metadata = {
-  title: "How AEO and GEO Trends Are Affecting Digital Marketing | Echo5 Digital Blog",
+  title: "Future of SEO: AEO and GEO Explained | Echo5 Digital",
   description:
-    "Answer Engine Optimization and Generative Engine Optimization are reshaping how businesses get discovered. Here's what marketers need to know about these emerging search trends.",
+    "Discover how AEO and GEO are transforming SEO. Learn how AI-driven search optimization shapes the future of digital marketing.",
   alternates: {
     canonical: "https://echo5digital.com/how-aeo-and-geo-trends-are-affecting-digital-marketing/",
   },
@@ -32,7 +32,7 @@ const articleSchema = {
     },
   },
   description:
-    "Answer Engine Optimization and Generative Engine Optimization are reshaping how businesses get discovered. Here's what marketers need to know about these emerging search trends.",
+    "Discover how AEO and GEO are transforming SEO. Learn how AI-driven search optimization shapes the future of digital marketing.",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://echo5digital.com/how-aeo-and-geo-trends-are-affecting-digital-marketing/",

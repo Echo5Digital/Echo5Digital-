@@ -4,9 +4,9 @@ import Footer from "@/components/Footer";
 import ArticleClient from "./ArticleClient";
 
 export const metadata: Metadata = {
-  title: "How Social Media Management Companies Help Boost Brand Visibility? | Echo5 Digital Blog",
+  title: "How Social Media Management Companies Help Boost Brand Visibility",
   description:
-    "See how professional social media management turns scattered posting into a strategic system that grows reach, engagement, and revenue for Houston businesses.",
+    "Discover how Social Media Management Company In Houston boosts brand visibility through strategic content, community engagement, and targeted advertising.",
   alternates: {
     canonical: "https://echo5digital.com/how-social-media-management-companies-help-boost-brand-visibility/",
   },
@@ -32,7 +32,7 @@ const articleSchema = {
     },
   },
   description:
-    "See how professional social media management turns scattered posting into a strategic system that grows reach, engagement, and revenue for Houston businesses.",
+    "Discover how Social Media Management Company In Houston boosts brand visibility through strategic content, community engagement, and targeted advertising.",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://echo5digital.com/how-social-media-management-companies-help-boost-brand-visibility/",
