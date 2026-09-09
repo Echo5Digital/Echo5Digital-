@@ -4,7 +4,7 @@ interface SectionProps {
   children: React.ReactNode;
   id?: string;
   className?: string;
-  background?: "default" | "elevated" | "gradient" | "transparent";
+  background?: "default" | "elevated" | "gradient" | "transparent" | "lavender";
   spacing?: "sm" | "md" | "lg" | "xl";
   maxWidth?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full";
   centered?: boolean;
@@ -18,6 +18,7 @@ const backgroundStyles: Record<string, string> = {
   gradient:
     "bg-gradient-to-br from-[#0A0F1E] via-[#110D2E] to-[#0A0F1E]",
   transparent: "bg-transparent",
+  lavender: "bg-gradient-to-br from-white via-[#F1EDFB] to-[#E9E1FA]",
 };
 
 const spacingStyles: Record<string, string> = {

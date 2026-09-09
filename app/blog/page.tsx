@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import BlogClient from "./BlogClient";
 
 export const metadata: Metadata = {
@@ -71,7 +70,6 @@ export default function BlogPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Header />
-      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Blog", href: "/blog" }]} />
 
       {/* Quick Answer Block */}
       <Section background="elevated" spacing="sm" withDivider>

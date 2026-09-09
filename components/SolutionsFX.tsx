@@ -358,9 +358,13 @@ export function PeelCard({
 export function GlowTrail({
   children,
   className = "",
+  trackColor = "rgba(107,78,240,0.15)",
+  glowGradient = "linear-gradient(90deg, transparent, #A855F7, #6B4EF0, transparent)",
 }: {
   children: ReactNode;
   className?: string;
+  trackColor?: string;
+  glowGradient?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-15% 0px" });
@@ -383,14 +387,14 @@ export function GlowTrail({
       <motion.div
         aria-hidden="true"
         className="relative h-[3px] rounded-full mt-4 overflow-hidden"
-        style={{ background: "rgba(107,78,240,0.15)", opacity: trackOpacity }}
+        style={{ background: trackColor, opacity: trackOpacity }}
       >
         <motion.div
           className="absolute top-0 h-full rounded-full"
           style={{
             left: glowLeft,
             width: "18%",
-            background: "linear-gradient(90deg, transparent, #A855F7, #6B4EF0, transparent)",
+            background: glowGradient,
             filter: "blur(0.5px)",
           }}
         />

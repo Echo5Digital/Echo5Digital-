@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, ReactNode } from "react";
 import Link from "next/link";
 import {
   Check,
@@ -21,9 +21,11 @@ import {
   ArrowRight,
   Sparkles,
 } from "lucide-react";
+import { motion, useInView } from "framer-motion";
 import Section from "@/components/Section";
 import ContactForm from "@/components/ContactForm";
-import Breadcrumbs from "@/components/Breadcrumbs";
+import { BlurIn, StickyImageScrollList } from "@/components/ScrollFX";
+import { FocusPullHero, FlipUpReveal, CurtainBadge } from "@/components/SolutionsFX";
 
 interface FaqItem {
   question: string;
@@ -32,6 +34,36 @@ interface FaqItem {
 
 interface PricingClientProps {
   faqData: FaqItem[];
+}
+
+function TrustSignalCard({ children, index }: { children: ReactNode; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-10% 0px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      className="group relative p-7 rounded-2xl transition-all duration-300 hover:-translate-y-1.5"
+      style={{
+        background: "linear-gradient(160deg, #F3EEFC 0%, #E9E0FA 100%)",
+        border: "1px solid rgba(124,58,237,0.15)",
+        boxShadow: "0 4px 20px rgba(124,58,237,0.08)",
+      }}
+      initial={{ opacity: 0, y: 36, scale: 0.94 }}
+      animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
+      onMouseEnter={(e) => {
+        (e.currentTarget as HTMLDivElement).style.boxShadow = "0 16px 40px rgba(124,58,237,0.2)";
+        (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(168,85,247,0.4)";
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 20px rgba(124,58,237,0.08)";
+        (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(124,58,237,0.15)";
+      }}
+    >
+      {children}
+    </motion.div>
+  );
 }
 
 const plans = [
@@ -258,36 +290,48 @@ const alaCarteServices = [
     name: "Website Design",
     description: "Custom-designed, conversion-optimized websites built to reflect your brand and drive results.",
     startingAt: "Starting at $2,500",
+    image:
+      "https://images.pexels.com/photos/16323580/pexels-photo-16323580.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
   },
   {
     icon: Code2,
     name: "Web Development",
     description: "Full-stack development including custom features, integrations, and performance optimization.",
     startingAt: "Starting at $3,000",
+    image:
+      "https://images.pexels.com/photos/159299/graphic-design-studio-tracfone-programming-html-159299.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
   },
   {
     icon: Database,
     name: "CRM Setup & Automation",
     description: "Full CRM implementation, pipeline build-out, and automation flows to convert and retain customers.",
     startingAt: "Starting at $1,200",
+    image:
+      "https://images.pexels.com/photos/29506609/pexels-photo-29506609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
   },
   {
     icon: Megaphone,
     name: "Google Ads Management",
     description: "AI-assisted campaign creation, ongoing optimization, and transparent reporting for paid search.",
     startingAt: "Starting at $750/mo",
+    image:
+      "https://images.pexels.com/photos/6476580/pexels-photo-6476580.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
   },
   {
     icon: BarChart3,
     name: "SEO Audit & Strategy",
     description: "In-depth technical and content SEO audit with a prioritized action plan for organic growth.",
     startingAt: "Starting at $800",
+    image:
+      "https://images.pexels.com/photos/12969403/pexels-photo-12969403.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
   },
   {
     icon: Bot,
     name: "Custom AI Programming",
     description: "Bespoke AI integrations, chatbots, automation scripts, and workflow tools built for your business.",
     startingAt: "Starting at $1,500",
+    image:
+      "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
   },
 ];
 
@@ -389,89 +433,138 @@ function FaqAccordion({ items }: { items: FaqItem[] }) {
 export default function PricingClient({ faqData }: PricingClientProps) {
   return (
     <>
-      {/* Breadcrumbs */}
-      <Breadcrumbs
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Pricing", href: "/pricing" },
-        ]}
-      />
+      {/* Hero — full-bleed photo that racks into focus on load, matching the AI Marketing Employee page */}
+      <FocusPullHero
+        src="https://images.pexels.com/photos/6802042/pexels-photo-6802042.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1600"
+        overlay="linear-gradient(180deg, rgba(10,8,26,0.88) 0%, rgba(10,8,26,0.9) 55%, rgba(10,8,26,0.95) 100%)"
+        className="min-h-0 lg:min-h-screen flex items-center pt-[100px] pb-14 lg:pt-[72px] lg:pb-0"
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-20 blur-3xl"
+          style={{
+            background: "radial-gradient(circle, #7C3AED 0%, #A855F7 40%, transparent 70%)",
+          }}
+        />
 
-      {/* Hero */}
-      <Section spacing="lg" background="gradient" centered>
-        <div className="relative">
-          {/* Decorative glow */}
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full pointer-events-none"
-            style={{
-              background: "radial-gradient(ellipse, rgba(124,58,237,0.2) 0%, transparent 70%)",
-              filter: "blur(40px)",
-            }}
-          />
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full text-sm font-medium"
-              style={{
-                background: "rgba(124,58,237,0.15)",
-                border: "1px solid rgba(168,85,247,0.3)",
-                color: "#A855F7",
-                fontFamily: "Inter, sans-serif",
-              }}>
-              <Sparkles size={14} />
+        {/* Solid scrim directly behind the text so legibility never depends on hero height or photo brightness */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse 80% 65% at 50% 50%, rgba(6,5,16,0.55) 0%, transparent 75%)",
+          }}
+        />
+
+        <div className="relative z-10 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+          <CurtainBadge className="inline-flex items-center gap-2 mb-8 px-5 py-2.5 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
+            <Sparkles size={16} className="text-purple-400" />
+            <span
+              className="text-sm font-semibold uppercase tracking-widest text-purple-400"
+              style={{ fontFamily: "Space Grotesk, sans-serif" }}
+            >
               Transparent, Value-Based Pricing
-            </div>
-            <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+            </span>
+          </CurtainBadge>
+
+          <h1
+            className="text-4xl sm:text-6xl md:text-7xl font-bold leading-[1.05] mb-6 sm:mb-8"
+            style={{
+              fontFamily: "Space Grotesk, sans-serif",
+              letterSpacing: "-0.03em",
+              color: "#FFFFFF",
+              textShadow: "0 4px 24px rgba(0,0,0,0.5)",
+            }}
+          >
+            <FlipUpReveal text="Real Marketing Results." delay={0.3} />
+            <span
+              className="block"
+              style={{
+                background: "linear-gradient(135deg, #A855F7, #7C3AED)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
             >
-              Real Marketing Results.{" "}
-              <span
-                style={{
-                  background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Predictable Pricing.
-              </span>
-            </h1>
-            <p
-              className="text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed"
-              style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
+              <FlipUpReveal text="Predictable Pricing." delay={0.9} />
+            </span>
+          </h1>
+
+          <motion.p
+            className="text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed"
+            style={{ color: "rgba(229,231,235,0.9)", fontFamily: "Inter, sans-serif", textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            No opaque retainers. No guesswork. Echo5 Digital's AI Marketing Employee plans are
+            built around transparent, value-based pricing — so you always know exactly what
+            you're getting and what it costs.
+          </motion.p>
+
+          <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-5"
+            initial="hidden"
+            animate="show"
+            variants={{
+              hidden: {},
+              show: { transition: { staggerChildren: 0.15, delayChildren: 1.75 } },
+            }}
+          >
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, scale: 0.5 },
+                show: { opacity: 1, scale: 1 },
+              }}
+              transition={{ type: "spring", stiffness: 260, damping: 14 }}
             >
-              No opaque retainers. No guesswork. Echo5 Digital's AI Marketing Employee plans are built around transparent, value-based pricing — so you always know exactly what you're getting and what it costs.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="#plans"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110"
+                className="inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110 hover:scale-105"
                 style={{
                   background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                  boxShadow: "0 0 24px rgba(124,58,237,0.5), 0 4px 14px rgba(124,58,237,0.3)",
+                  boxShadow: "0 0 28px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
                   fontFamily: "Inter, sans-serif",
                 }}
               >
                 View Plans <ArrowRight size={16} />
               </a>
+            </motion.div>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, scale: 0.5 },
+                show: { opacity: 1, scale: 1 },
+              }}
+              transition={{ type: "spring", stiffness: 260, damping: 14 }}
+            >
               <a
                 href="#custom-quote"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-sm transition-all duration-200 hover:bg-purple-500/10"
-                style={{
-                  border: "1px solid rgba(124,58,237,0.5)",
-                  color: "#A855F7",
-                  fontFamily: "Inter, sans-serif",
-                }}
+                className="inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-base border border-white/40 text-white transition-all duration-200 hover:bg-white/10 hover:border-white/70 hover:scale-105 backdrop-blur-sm"
+                style={{ fontFamily: "Inter, sans-serif" }}
               >
                 Get a Custom Quote
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Scroll cue */}
+          <motion.div
+            aria-hidden="true"
+            className="hidden sm:flex mt-16 w-7 h-11 rounded-full border-2 border-white/30 items-start justify-center p-1.5"
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <motion.div
+              className="w-2 h-2 rounded-full bg-white/80"
+              animate={{ y: [0, 16, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
         </div>
-      </Section>
+      </FocusPullHero>
 
       {/* Quick Answer Block */}
       <Section spacing="sm" background="elevated" withDivider>
-        <div
-          className="rounded-2xl p-6 md:p-8"
+        <BlurIn className="rounded-2xl p-6 md:p-8"
           style={{
             background: "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.06) 100%)",
             border: "1px solid rgba(168,85,247,0.25)",
@@ -502,41 +595,36 @@ export default function PricingClient({ faqData }: PricingClientProps) {
               </p>
             </div>
           </div>
-        </div>
+        </BlurIn>
       </Section>
 
       {/* AI Marketing Employee Pricing Cards */}
-      <Section id="plans" spacing="lg" background="default" maxWidth="2xl">
-        <div className="text-center mb-12">
+      <Section id="plans" spacing="lg" background="lavender" maxWidth="2xl">
+        <BlurIn className="text-center mb-12">
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1E1B2E" }}
           >
             AI Marketing Employee Plans
           </h2>
           <p
             className="text-base max-w-2xl mx-auto"
-            style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
+            style={{ color: "rgba(30,27,46,0.65)", fontFamily: "Inter, sans-serif" }}
           >
             Choose the plan that fits your business stage. Every tier includes human oversight and our AI-powered marketing engine.
           </p>
-        </div>
+        </BlurIn>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-          {plans.map((plan) => (
-            <div
+          {plans.map((plan, i) => (
+            <BlurIn
               key={plan.name}
+              delay={i * 0.12}
               className="relative flex flex-col rounded-2xl overflow-hidden transition-all duration-300"
               style={{
-                background: plan.highlight
-                  ? "linear-gradient(160deg, rgba(124,58,237,0.2) 0%, rgba(168,85,247,0.12) 100%)"
-                  : "rgba(255,255,255,0.04)",
-                border: plan.highlight
-                  ? "1px solid rgba(168,85,247,0.55)"
-                  : "1px solid rgba(124,58,237,0.2)",
-                boxShadow: plan.highlight
-                  ? "0 0 40px rgba(124,58,237,0.25), 0 8px 32px rgba(0,0,0,0.3)"
-                  : "0 4px 20px rgba(0,0,0,0.2)",
+                background: "#141225",
+                border: "1px solid rgba(124,58,237,0.2)",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
               }}
             >
               {/* Top accent line */}
@@ -583,7 +671,7 @@ export default function PricingClient({ faqData }: PricingClientProps) {
                     className="text-4xl font-bold"
                     style={{
                       fontFamily: "Space Grotesk, sans-serif",
-                      color: plan.highlight ? "#A855F7" : "#E5E7EB",
+                      color: "#E5E7EB",
                     }}
                   >
                     {plan.price}
@@ -654,17 +742,17 @@ export default function PricingClient({ faqData }: PricingClientProps) {
                   {plan.cta}
                 </Link>
               </div>
-            </div>
+            </BlurIn>
           ))}
         </div>
 
         <p
           className="text-center text-sm mt-8"
-          style={{ color: "rgba(229,231,235,0.4)", fontFamily: "Inter, sans-serif" }}
+          style={{ color: "rgba(30,27,46,0.6)", fontFamily: "Inter, sans-serif" }}
         >
           All prices shown in USD. Contact us for custom enterprise pricing.{" "}
           {/* Phone placeholder — verified business number */}
-          <a href="tel:7134897004" className="underline hover:text-purple-400 transition-colors" style={{ color: "rgba(168,85,247,0.7)" }}>
+          <a href="tel:7134897004" className="underline hover:text-purple-600 transition-colors" style={{ color: "#7C3AED" }}>
             713-489-7004
           </a>
         </p>
@@ -672,7 +760,7 @@ export default function PricingClient({ faqData }: PricingClientProps) {
 
       {/* What's Included Comparison Table */}
       <Section spacing="lg" background="elevated" maxWidth="2xl" withDivider>
-        <div className="text-center mb-12">
+        <BlurIn className="text-center mb-12">
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
@@ -685,9 +773,9 @@ export default function PricingClient({ faqData }: PricingClientProps) {
           >
             See exactly what each plan covers across every service dimension before you decide.
           </p>
-        </div>
+        </BlurIn>
 
-        <div className="overflow-x-auto rounded-2xl" style={{ border: "1px solid rgba(124,58,237,0.2)" }}>
+        <BlurIn delay={0.15} className="overflow-x-auto rounded-2xl" style={{ border: "1px solid rgba(124,58,237,0.2)" }}>
           <table className="w-full min-w-[640px]" role="table" aria-label="Plan feature comparison">
             <thead>
               <tr style={{ background: "rgba(124,58,237,0.12)", borderBottom: "1px solid rgba(124,58,237,0.2)" }}>
@@ -763,35 +851,44 @@ export default function PricingClient({ faqData }: PricingClientProps) {
               ))}
             </tbody>
           </table>
-        </div>
+        </BlurIn>
       </Section>
 
       {/* À La Carte / Standalone Services */}
-      <Section spacing="lg" background="default" maxWidth="2xl" withDivider>
-        <div className="text-center mb-12">
+      <section
+        className="relative py-16 md:py-28 px-4 sm:px-6 lg:px-8"
+        style={{ background: "linear-gradient(160deg, #FFFFFF 0%, #F1EDFB 50%, #E9E1FA 100%)" }}
+      >
+        <div
+          aria-hidden="true"
+          className="absolute top-0 left-0 right-0 h-px"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(124,58,237,0.5), transparent)" }}
+        />
+        <div className="max-w-7xl mx-auto">
+        <BlurIn className="text-center mb-12">
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1E1B2E" }}
           >
             À La Carte Services
           </h2>
           <p
             className="text-base max-w-2xl mx-auto"
-            style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
+            style={{ color: "rgba(30,27,46,0.65)", fontFamily: "Inter, sans-serif" }}
           >
             Need a specific service without a full plan? Purchase any of our standalone services independently — no long-term commitment required.
           </p>
-        </div>
+        </BlurIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {alaCarteServices.map((service) => {
+        <StickyImageScrollList
+          items={alaCarteServices}
+          renderCard={(service, i) => {
             const Icon = service.icon;
             return (
               <div
-                key={service.name}
-                className="flex flex-col gap-4 rounded-xl p-6 transition-all duration-300 group hover:-translate-y-1"
+                className="flex flex-col gap-4 rounded-xl p-6 transition-all duration-300 group hover:-translate-y-1 h-full"
                 style={{
-                  background: "rgba(255,255,255,0.04)",
+                  background: "#141225",
                   border: "1px solid rgba(124,58,237,0.2)",
                 }}
                 onMouseEnter={(e) => {
@@ -846,13 +943,14 @@ export default function PricingClient({ faqData }: PricingClientProps) {
                 </Link>
               </div>
             );
-          })}
+          }}
+        />
         </div>
-      </Section>
+      </section>
 
       {/* Pricing Philosophy Statement */}
       <Section spacing="lg" background="gradient" maxWidth="xl" withDivider>
-        <div
+        <BlurIn
           className="rounded-2xl p-8 md:p-12 text-center relative overflow-hidden"
           style={{
             background: "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.07) 100%)",
@@ -890,69 +988,89 @@ export default function PricingClient({ faqData }: PricingClientProps) {
           >
             But AI alone isn't enough. Every plan at Echo5 Digital includes human strategy, human review, and human accountability. You're not buying a tool — you're getting a team powered by one. That's why our pricing is flat, transparent, and tiered around what your business actually needs — not padded with overhead you never see.
           </p>
-        </div>
+        </BlurIn>
       </Section>
 
       {/* Trust Bar */}
-      <Section spacing="lg" background="elevated" maxWidth="2xl" withDivider>
-        <div className="text-center mb-10">
-          <h2
-            className="text-2xl md:text-3xl font-bold mb-3"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-          >
-            What's Behind Every Plan
-          </h2>
-          <p
-            className="text-sm"
-            style={{ color: "rgba(229,231,235,0.55)", fontFamily: "Inter, sans-serif" }}
-          >
-            Real team. Real AI. Real results.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {trustSignals.map((signal) => {
-            const Icon = signal.icon;
-            return (
-              <div
-                key={signal.label}
-                className="flex items-start gap-4 p-5 rounded-xl"
-                style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(124,58,237,0.15)",
-                }}
-              >
-                <div
-                  className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
-                  style={{
-                    background: "rgba(124,58,237,0.2)",
-                    border: "1px solid rgba(168,85,247,0.2)",
-                  }}
-                >
-                  <Icon size={18} style={{ color: "#A855F7" }} />
-                </div>
-                <div>
+      <section
+        className="relative py-16 md:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden"
+        style={{ background: "linear-gradient(160deg, #FFFFFF 0%, #F1EDFB 50%, #E9E1FA 100%)" }}
+      >
+        <div
+          aria-hidden="true"
+          className="absolute top-0 left-0 right-0 h-px"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(124,58,237,0.5), transparent)" }}
+        />
+        {/* Ambient glow blobs */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-24 -left-24 w-72 h-72 rounded-full opacity-30 blur-3xl"
+          style={{ background: "radial-gradient(circle, #C4A0FA 0%, transparent 70%)" }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-24 -right-24 w-72 h-72 rounded-full opacity-30 blur-3xl"
+          style={{ background: "radial-gradient(circle, #A855F7 0%, transparent 70%)" }}
+        />
+
+        <div className="max-w-7xl mx-auto relative">
+          <BlurIn className="text-center mb-14">
+            <p
+              className="text-xs font-bold uppercase tracking-widest mb-3"
+              style={{ color: "#7C3AED", fontFamily: "Inter, sans-serif" }}
+            >
+              Why Echo5
+            </p>
+            <h2
+              className="text-3xl md:text-4xl font-bold mb-4"
+              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1E1B2E" }}
+            >
+              What's Behind Every Plan
+            </h2>
+            <p
+              className="text-base"
+              style={{ color: "rgba(30,27,46,0.6)", fontFamily: "Inter, sans-serif" }}
+            >
+              Real team. Real AI. Real results.
+            </p>
+          </BlurIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {trustSignals.map((signal, i) => {
+              const Icon = signal.icon;
+              return (
+                <TrustSignalCard key={signal.label} index={i}>
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+                    style={{
+                      background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                      boxShadow: "0 8px 20px rgba(124,58,237,0.35)",
+                    }}
+                  >
+                    <Icon size={22} color="#fff" />
+                  </div>
                   <p
-                    className="text-sm font-semibold mb-1"
-                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                    className="text-base font-bold mb-2"
+                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1E1B2E" }}
                   >
                     {signal.label}
                   </p>
                   <p
-                    className="text-xs leading-relaxed"
-                    style={{ color: "rgba(229,231,235,0.55)", fontFamily: "Inter, sans-serif" }}
+                    className="text-sm leading-relaxed"
+                    style={{ color: "rgba(30,27,46,0.6)", fontFamily: "Inter, sans-serif" }}
                   >
                     {signal.description}
                   </p>
-                </div>
-              </div>
-            );
-          })}
+                </TrustSignalCard>
+              );
+            })}
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* FAQ Accordion */}
       <Section spacing="lg" background="default" maxWidth="xl" withDivider>
-        <div className="text-center mb-12">
+        <BlurIn className="text-center mb-12">
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
@@ -965,8 +1083,10 @@ export default function PricingClient({ faqData }: PricingClientProps) {
           >
             Everything you need to know before choosing a plan.
           </p>
-        </div>
-        <FaqAccordion items={faqData} />
+        </BlurIn>
+        <BlurIn delay={0.1}>
+          <FaqAccordion items={faqData} />
+        </BlurIn>
         <p
           className="text-center text-sm mt-8"
           style={{ color: "rgba(229,231,235,0.45)", fontFamily: "Inter, sans-serif" }}
@@ -994,7 +1114,7 @@ export default function PricingClient({ faqData }: PricingClientProps) {
       {/* CTA – Get a Custom Quote */}
       <Section id="custom-quote" spacing="lg" background="elevated" maxWidth="xl" withDivider>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
+          <BlurIn>
             <div
               className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider"
               style={{
@@ -1080,15 +1200,15 @@ export default function PricingClient({ faqData }: PricingClientProps) {
                 </a>
               </p>
             </div>
-          </div>
-          <div>
+          </BlurIn>
+          <BlurIn delay={0.15}>
             <ContactForm
               heading="Get a Custom Quote"
               subheading="Tell us about your business goals and we'll put together a tailored plan with transparent pricing."
               submitLabel="Request My Custom Quote"
               showAppointmentNote={true}
             />
-          </div>
+          </BlurIn>
         </div>
       </Section>
     </>

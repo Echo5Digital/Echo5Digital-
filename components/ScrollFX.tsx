@@ -445,6 +445,88 @@ export function PinnedZoom({
 }
 
 /**
+ * ImageBesideRow — one row of an ImageScrollList: image on one side, card content on the
+ * other (sides alternate per row on desktop). The image slides in from its own outer edge
+ * (left column slides in from the left, right column from the right) while the card content
+ * fades/rises, both triggered as the row scrolls into view. No pinning/sticky — the row
+ * scrolls normally with the rest of the page.
+ */
+function ImageBesideRow({
+  item,
+  index,
+  renderCard,
+  imageClassName,
+}: {
+  item: { image: string; name: string };
+  index: number;
+  renderCard: (item: any, index: number) => ReactNode;
+  imageClassName: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-10% 0px" });
+  const reversed = index % 2 === 1;
+  const imageFromX = reversed ? 120 : -120;
+
+  return (
+    <div
+      ref={ref}
+      className={`grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-stretch ${
+        reversed ? "lg:[&>*:first-child]:order-2" : ""
+      }`}
+    >
+      <motion.div
+        className={`relative w-full aspect-[16/10] lg:aspect-auto rounded-2xl overflow-hidden ${imageClassName}`}
+        style={{
+          border: "1px solid rgba(124,58,237,0.25)",
+          boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
+        }}
+        initial={{ opacity: 0, x: imageFromX }}
+        animate={inView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <img src={item.image} alt={item.name} className="absolute inset-0 w-full h-full object-cover" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, rgba(10,15,30,0) 55%, rgba(10,15,30,0.45) 100%)",
+          }}
+        />
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+      >
+        {renderCard(item, index)}
+      </motion.div>
+    </div>
+  );
+}
+
+/**
+ * ImageScrollList — list of rows, each pairing an image with a card, alternating sides
+ * on desktop and stacking image-above-card on mobile. Scrolls normally (no sticky/pin).
+ */
+export function StickyImageScrollList({
+  items,
+  renderCard,
+  imageClassName = "",
+}: {
+  items: { image: string; name: string }[];
+  renderCard: (item: any, index: number) => ReactNode;
+  imageClassName?: string;
+}) {
+  return (
+    <div className="flex flex-col gap-10 lg:gap-16">
+      {items.map((item, i) => (
+        <ImageBesideRow key={item.name} item={item} index={i} renderCard={renderCard} imageClassName={imageClassName} />
+      ))}
+    </div>
+  );
+}
+
+/**
  * MarqueeReveal — a horizontal auto-scrolling strip whose speed reacts to page scroll
  * velocity, giving a "living" background element distinct from static grids.
  */
