@@ -292,9 +292,16 @@ export default function FashionClient({ faqData }: Props) {
             alt="Fashion model in an editorial studio shoot"
             fill
             priority
-            className="object-cover opacity-50"
+            className="object-cover opacity-90 lg:hidden"
           />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(10,15,30,0.4) 0%, rgba(10,15,30,0.65) 55%, #0A0F1E 100%)" }} />
+          <Image
+            src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1600"
+            alt="Flat lay of a jacket, shoes, and accessories styled together"
+            fill
+            priority
+            className="hidden lg:block object-cover opacity-90"
+          />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(10,15,30,0.15) 0%, rgba(10,15,30,0.35) 55%, #0A0F1E 100%)" }} />
         </div>
         <div
           className="absolute top-0 left-1/4 w-96 h-96 rounded-full pointer-events-none opacity-20"

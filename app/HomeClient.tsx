@@ -180,7 +180,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 </BlurIn>
                 <h1
                   className="font-black leading-[1.05] tracking-tight mb-7"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(3rem, 5vw, 4.75rem)", color: "#FFFFFF" }}
+                  style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.25rem, 8vw, 4.75rem)", color: "#FFFFFF" }}
                 >
                   <RevealMask>Your AI Marketing</RevealMask>
                   <br />
@@ -244,7 +244,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
 
                 {/* Stats row */}
                 <BlurIn delay={0.4}>
-                  <div className="flex flex-wrap items-start gap-x-10 gap-y-6">
+                  <div className="flex flex-wrap items-start gap-x-6 sm:gap-x-10 gap-y-6">
                     {[
                       { icon: Rocket, value: "300+", label: "Projects Delivered" },
                       { icon: TrendingUp, value: "4.8x", label: "Average ROAS" },

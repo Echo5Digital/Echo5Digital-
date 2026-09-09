@@ -159,19 +159,21 @@ export default function TeamSection() {
           {/* ── Right: Photo with arc ── */}
           <div className="relative flex justify-center lg:justify-end">
             {/* Photo card */}
-            <div className="relative" style={{ width: 340, height: 420 }}>
+            <div className="relative w-full max-w-[340px] aspect-[340/420]">
               {/* Rotating arc text */}
               <div
                 className="absolute z-20 pointer-events-none"
                 style={{
-                  bottom: -54,
-                  right: -54,
-                  width: 240,
-                  height: 240,
+                  bottom: "-14%",
+                  right: "-16%",
+                  width: "60%",
+                  height: "60%",
+                  minWidth: 140,
+                  minHeight: 140,
                   animation: "spinSlow 12s linear infinite",
                 }}
               >
-                <svg viewBox="0 0 240 240" width="240" height="240">
+                <svg viewBox="0 0 240 240" width="100%" height="100%">
                   <defs>
                     <path
                       id="arcPath"
@@ -209,7 +211,7 @@ export default function TeamSection() {
                     alt={member.name}
                     fill
                     className="object-cover object-top"
-                    sizes="340px"
+                    sizes="(max-width: 1024px) 90vw, 340px"
                     style={{ filter: "grayscale(100%)" }}
                   />
                 </motion.div>
