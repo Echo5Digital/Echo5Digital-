@@ -102,30 +102,6 @@ const allPosts: Post[] = [
     imageAlt: "Silhouette of a person facing a glowing digital brain, representing AI visibility and ranking on ChatGPT",
   },
   {
-    id: 7,
-    title: "How to Build a High-Converting Business Website in 2025",
-    excerpt:
-      "A beautiful website that doesn't convert is a liability. Learn the web design principles, page structures, and performance benchmarks that turn visitors into leads.",
-    category: "Web Development",
-    date: "April 30, 2025",
-    readTime: "7 min read",
-    slug: "high-converting-business-website-2025",
-    imageSrc: "https://images.pexels.com/photos/14553720/pexels-photo-14553720.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    imageAlt: "Modern high-converting business website displayed on multiple devices",
-  },
-  {
-    id: 8,
-    title: "Generative Engine Optimization (GEO): Beyond SEO in the AI Age",
-    excerpt:
-      "As AI models become the primary interface for information discovery, GEO ensures your brand gets cited and recommended by generative AI engines like ChatGPT and Gemini.",
-    category: "SEO",
-    date: "April 22, 2025",
-    readTime: "8 min read",
-    slug: "generative-engine-optimization-geo",
-    imageSrc: "https://images.pexels.com/photos/9822732/pexels-photo-9822732.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    imageAlt: "Diagram showing how generative engine optimization works for brand visibility",
-  },
-  {
     id: 9,
     title: "Google Business Profile Optimization: The Sugar Land & Houston Playbook",
     excerpt:
