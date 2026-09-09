@@ -16,6 +16,7 @@ import {
   DiagonalSweep,
   FloatDrift,
 } from "@/components/SolutionsFX";
+import { WordStagger, BlurIn } from "@/components/ScrollFX";
 import {
   Search,
   Megaphone,
@@ -27,7 +28,6 @@ import {
   MapPin,
   Layers,
   ChevronDown,
-  ChevronUp,
   ArrowRight,
   CheckCircle,
   Zap,
@@ -887,7 +887,7 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
         <div className="text-center mb-8">
           <h2
             className="text-2xl md:text-3xl font-bold mb-3"
-            style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
+            style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em", color: "#E5E7EB" }}
           >
             Built on{" "}
             <span style={{ color: "#A855F7" }}>Technical Credibility</span>
@@ -936,106 +936,105 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
         </div>
       </Section>
 
-      {/* ─── FAQ (light lavender) ─── */}
-      <Section background="transparent" spacing="lg" maxWidth="2xl" withDivider className="!bg-[linear-gradient(180deg,#EEECFB_0%,#F7F5FD_50%,#FFFFFF_100%)] relative">
-        <LavenderField variant="b" />
-        <div className="max-w-3xl mx-auto relative">
-          <GlowTrail className="text-center mb-10">
-            <h2
-              className="text-3xl md:text-4xl font-bold mb-4"
-              style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em", color: "#1F2340" }}
+      {/* ── FAQ ACCORDION ────────────────────────────────────────────── */}
+      <Section background="elevated" spacing="lg" maxWidth="lg" withDivider>
+        <div className="text-center mb-10">
+          <h2
+            className="font-black leading-[1.04] tracking-tight mb-4"
+            style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#E5E7EB" }}
+          >
+            Frequently Asked Questions
+          </h2>
+          <p className="text-base" style={{ color: "#9CA3AF" }}>
+            Everything you need to know about Echo5 Digital and our AI marketing approach.
+          </p>
+        </div>
+        <div className="space-y-4">
+          {faqData.map((item, index) => (
+            <div
+              key={index}
+              className="rounded-2xl overflow-hidden transition-all duration-300"
+              style={{
+                background: openFaq === index
+                  ? "linear-gradient(135deg, rgba(124,58,237,0.14) 0%, rgba(168,85,247,0.08) 100%)"
+                  : "rgba(255,255,255,0.03)",
+                border: openFaq === index
+                  ? "1px solid rgba(168,85,247,0.4)"
+                  : "1px solid rgba(124,58,237,0.22)",
+              }}
             >
-              Frequently Asked{" "}
-              <span style={{ color: "#6B4EF0" }}>Questions</span>
-            </h2>
-          </GlowTrail>
-
-          <div className="space-y-3">
-            {faqData.map((item, index) => (
-              <PeelCard
-                key={index}
-                index={index}
-                className="rounded-xl border overflow-hidden transition-all duration-200"
+              <button
+                onClick={() => toggleFaq(index)}
+                className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+                aria-expanded={openFaq === index}
+                aria-controls={`faq-answer-${index}`}
+              >
+                <span
+                  className="text-base font-semibold"
+                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                >
+                  {item.question}
+                </span>
+                <ChevronDown
+                  size={18}
+                  style={{
+                    color: "#A855F7",
+                    flexShrink: 0,
+                    transition: "transform 0.3s ease",
+                    transform: openFaq === index ? "rotate(180deg)" : "rotate(0deg)",
+                  }}
+                />
+              </button>
+              <div
+                id={`faq-answer-${index}`}
+                role="region"
                 style={{
-                  borderColor: openFaq === index
-                    ? "rgba(107,78,240,0.4)"
-                    : "rgba(107,78,240,0.18)",
-                  backgroundColor: openFaq === index
-                    ? "rgba(107,78,240,0.08)"
-                    : "rgba(255,255,255,0.6)",
+                  maxHeight: openFaq === index ? "500px" : "0",
+                  overflow: "hidden",
+                  transition: "max-height 0.35s ease",
                 }}
               >
-                <button
-                  onClick={() => toggleFaq(index)}
-                  className="w-full flex items-center justify-between gap-4 p-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-xl"
-                  aria-expanded={openFaq === index}
-                  aria-controls={`faq-answer-${index}`}
-                >
-                  <span
-                    className="text-base font-semibold"
-                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1F2340" }}
-                  >
-                    {item.question}
-                  </span>
-                  <span className="flex-shrink-0" style={{ color: "#6B4EF0" }}>
-                    {openFaq === index ? (
-                      <ChevronUp size={20} />
-                    ) : (
-                      <ChevronDown size={20} />
-                    )}
-                  </span>
-                </button>
-                {openFaq === index && (
-                  <div
-                    id={`faq-answer-${index}`}
-                    className="px-5 pb-5"
-                  >
-                    <p
-                      className="text-sm leading-relaxed"
-                      style={{
-                        color: "#5B5F73",
-                        fontFamily: "Inter, sans-serif",
-                      }}
-                    >
-                      {item.answer}
-                    </p>
-                  </div>
-                )}
-              </PeelCard>
-            ))}
-          </div>
+                <p className="px-6 pb-5 text-sm leading-relaxed" style={{ color: "#9CA3AF" }}>
+                  {item.answer}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </Section>
 
       {/* ─── CTA – FIND YOUR SOLUTION ─── */}
-      <Section background="gradient" spacing="xl" maxWidth="2xl" withDivider>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Left: Messaging */}
-          <InkReveal origin="15% 20%">
-            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10">
-              <Zap size={14} className="text-purple-400" />
-              <span
-                className="text-xs font-semibold uppercase tracking-widest text-purple-400"
-                style={{ fontFamily: "Space Grotesk, sans-serif" }}
+      <Section background="transparent" spacing="xl" maxWidth="3xl" withDivider className="!bg-[#EEECFB]">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+          {/* Left: copy */}
+          <div className="flex-1 lg:pt-6">
+            <BlurIn>
+              <div
+                className="inline-flex items-center gap-2 rounded-full text-xs font-semibold mb-5"
+                style={{ color: "#6B4EF0" }}
               >
                 Get Started
-              </span>
-            </div>
+              </div>
+            </BlurIn>
             <h2
-              className="text-3xl md:text-4xl font-bold mb-6"
-              style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
+              className="font-black leading-[1.04] tracking-tight mb-4"
+              style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#15172B" }}
             >
-              Find the Right{" "}
-              <span style={{ color: "#A855F7" }}>Solution for Your Business</span>
+              <WordStagger text="Find the Right" />
+              <br />
+              <WordStagger
+                text="Solution for Your Business"
+                delay={0.2}
+                wordClassName="bg-clip-text text-transparent bg-[linear-gradient(135deg,#7C3AED,#A855F7)]"
+              />
             </h2>
-            <p
-              className="text-base leading-relaxed mb-8"
-              style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
-            >
-              Tell us about your business, your goals, and where you&apos;re at today. Our team
-              will review your situation and recommend the right plan — whether that&apos;s a
-              single service, an AI Marketing Employee bundle, or a full custom engagement.
-            </p>
+            <BlurIn delay={0.15}>
+              <p className="text-base leading-relaxed mb-8" style={{ color: "#5B5F73" }}>
+                Tell us about your business, your goals, and where you&apos;re at today. Our team
+                will review your situation and recommend the right plan — whether that&apos;s a
+                single service, an AI Marketing Employee bundle, or a full custom engagement.
+              </p>
+            </BlurIn>
 
             <div className="space-y-4">
               {[
@@ -1054,52 +1053,47 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
                   title: "Growth Strategy",
                   desc: "Receive a tailored roadmap for your business stage",
                 },
-              ].map((item) => {
+              ].map((item, idx) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.title} className="flex items-start gap-4">
-                    <div
-                      className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, rgba(124,58,237,0.25), rgba(168,85,247,0.15))",
-                        border: "1px solid rgba(168,85,247,0.3)",
-                      }}
-                    >
-                      <Icon size={18} style={{ color: "#A855F7" }} strokeWidth={1.8} />
-                    </div>
-                    <div>
-                      <p
-                        className="font-semibold text-sm mb-0.5"
-                        style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-                      >
-                        {item.title}
-                      </p>
-                      <p
-                        className="text-sm"
+                  <MagnetPop key={item.title} index={idx}>
+                    <div className="flex items-start gap-4">
+                      <div
+                        className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
                         style={{
-                          color: "rgba(229,231,235,0.6)",
-                          fontFamily: "Inter, sans-serif",
+                          background: "linear-gradient(135deg, rgba(107,78,240,0.16), rgba(168,85,247,0.08))",
+                          border: "1px solid rgba(107,78,240,0.25)",
                         }}
                       >
-                        {item.desc}
-                      </p>
+                        <Icon size={18} style={{ color: "#6B4EF0" }} strokeWidth={1.8} />
+                      </div>
+                      <div>
+                        <p
+                          className="font-semibold text-sm mb-0.5"
+                          style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
+                        >
+                          {item.title}
+                        </p>
+                        <p className="text-sm" style={{ color: "#5B5F73" }}>
+                          {item.desc}
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </MagnetPop>
                 );
               })}
             </div>
-          </InkReveal>
+          </div>
 
-          {/* Right: Contact Form */}
-          <InkReveal origin="85% 30%" delay={0.1}>
+          {/* Right: form */}
+          <div className="flex-1 w-full">
             <ContactForm
               heading="Find Your Solution"
               subheading="Describe your business and goals — we'll recommend the right plan."
               submitLabel="Get My Recommendation"
               showAppointmentNote={true}
             />
-          </InkReveal>
+          </div>
         </div>
       </Section>
     </main>

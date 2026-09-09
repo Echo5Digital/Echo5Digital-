@@ -1112,26 +1112,22 @@ export default function PricingClient({ faqData }: PricingClientProps) {
       </Section>
 
       {/* CTA – Get a Custom Quote */}
-      <Section id="custom-quote" spacing="lg" background="elevated" maxWidth="xl" withDivider>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <BlurIn>
+      <Section id="custom-quote" spacing="xl" background="transparent" maxWidth="xl" withDivider className="!bg-[#EEECFB]">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+          {/* Left: copy */}
+          <BlurIn className="flex-1 lg:pt-6">
             <div
-              className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider"
-              style={{
-                background: "rgba(124,58,237,0.15)",
-                border: "1px solid rgba(168,85,247,0.3)",
-                color: "#A855F7",
-                fontFamily: "Inter, sans-serif",
-              }}
+              className="inline-flex items-center gap-2 rounded-full text-xs font-semibold mb-5"
+              style={{ color: "#6B4EF0" }}
             >
-              <Sparkles size={12} />
-              Custom Enterprise Pricing
+              Let&apos;s Grow Together
             </div>
             <h2
-              className="text-3xl md:text-4xl font-bold mb-5 leading-tight"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+              className="font-black leading-[1.04] tracking-tight mb-4"
+              style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#15172B" }}
             >
-              Non-Standard Needs?{" "}
+              Non-Standard Needs?
+              <br />
               <span
                 style={{
                   background: "linear-gradient(135deg, #7C3AED, #A855F7)",
@@ -1139,69 +1135,44 @@ export default function PricingClient({ faqData }: PricingClientProps) {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                Let's Build Your Plan.
+                Let&apos;s Build Your Plan.
               </span>
             </h2>
-            <p
-              className="text-base leading-relaxed mb-6"
-              style={{ color: "rgba(229,231,235,0.65)", fontFamily: "Inter, sans-serif" }}
-            >
-              If you have enterprise scope, unique channel requirements, or multi-location marketing needs that don't fit neatly into a tiered plan, reach out. We'll build a custom scope and pricing structure tailored exactly to what your business needs — no padding, no fluff.
+            <p className="text-base leading-relaxed mb-8" style={{ color: "#5B5F73" }}>
+              If you have enterprise scope, unique channel requirements, or multi-location
+              marketing needs that don&apos;t fit neatly into a tiered plan, reach out. We&apos;ll
+              build a custom scope and pricing structure tailored exactly to what your business
+              needs — no padding, no fluff.
             </p>
-            <ul className="space-y-3">
+            <div className="space-y-4 mb-8">
               {[
                 "Multi-location or franchise marketing",
                 "Enterprise CRM & automation builds",
                 "Dedicated development resources",
                 "White-label marketing for agencies",
               ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <div
-                    className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ background: "rgba(124,58,237,0.25)" }}
-                  >
-                    <Check size={11} style={{ color: "#A855F7" }} />
-                  </div>
-                  <span
-                    className="text-sm"
-                    style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
-                  >
+                <div key={item} className="flex items-center gap-3">
+                  <Check size={16} style={{ color: "#6B4EF0", flexShrink: 0 }} />
+                  <span className="text-sm" style={{ color: "#15172B" }}>
                     {item}
                   </span>
-                </li>
+                </div>
               ))}
-            </ul>
-            <div className="mt-8 p-5 rounded-xl" style={{ background: "rgba(124,58,237,0.08)", border: "1px solid rgba(124,58,237,0.2)" }}>
-              <p
-                className="text-sm font-semibold mb-1"
-                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-              >
-                Prefer to talk directly?
-              </p>
-              <p className="text-sm" style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}>
-                Email:{" "}
-                <a
-                  href="mailto:hello@echo5digital.com"
-                  className="hover:text-purple-400 transition-colors"
-                  style={{ color: "#A855F7" }}
-                >
-                  hello@echo5digital.com
-                </a>
-              </p>
-              <p className="text-sm mt-1" style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}>
-                Phone:{" "}
-                {/* Verified business phone */}
-                <a
-                  href="tel:7134897004"
-                  className="hover:text-purple-400 transition-colors"
-                  style={{ color: "#A855F7" }}
-                >
-                  713-489-7004
-                </a>
-              </p>
+            </div>
+            {/* NAP */}
+            <div className="space-y-2 text-sm">
+              <p style={{ color: "#5B5F73" }}>Or reach us directly:</p>
+              <a href="tel:713-489-7004" className="block" style={{ color: "#4F32D9" }}>
+                📞 713-489-7004
+              </a>
+              <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
+                ✉️ hello@echo5digital.com
+              </a>
             </div>
           </BlurIn>
-          <BlurIn delay={0.15}>
+
+          {/* Right: form */}
+          <BlurIn delay={0.15} className="flex-1 w-full">
             <ContactForm
               heading="Get a Custom Quote"
               subheading="Tell us about your business goals and we'll put together a tailored plan with transparent pricing."

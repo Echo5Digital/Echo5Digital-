@@ -27,6 +27,7 @@ import {
   Target,
   Activity,
   Globe,
+  CheckCircle,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -870,27 +871,23 @@ export default function ResultsClient({ faqData }: Props) {
         </div>
       </Section>
 
-      {/* ── CTA – Book a Demo ── */}
-      <Section background="gradient" spacing="xl" id="book-demo" withDivider>
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-15 blur-3xl"
-          style={{ background: "radial-gradient(circle, #7C3AED 0%, #A855F7 50%, transparent 70%)" }}
-        />
-        <div className="relative z-10 flex flex-col lg:flex-row gap-16 items-center justify-between">
-          {/* Left copy */}
-          <InkReveal origin="15% 20%" className="flex-1 max-w-xl">
-            <p
-              className="text-xs font-semibold uppercase tracking-widest mb-3"
-              style={{ color: "#A855F7", fontFamily: "Space Grotesk, sans-serif" }}
+      {/* ── FINAL CTA / LEAD FORM ────────────────────────────────────── */}
+      <Section background="transparent" spacing="xl" maxWidth="3xl" id="book-demo" withDivider className="!bg-[#EEECFB]">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+          {/* Left: copy */}
+          <InkReveal origin="15% 20%" className="flex-1 lg:pt-6">
+            <div
+              className="inline-flex items-center gap-2 rounded-full text-xs font-semibold mb-5"
+              style={{ color: "#6B4EF0" }}
             >
-              Ready to Grow?
-            </p>
+              Let&apos;s Grow Together
+            </div>
             <h2
-              className="text-3xl sm:text-4xl font-bold mb-4"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB", lineHeight: 1.15 }}
+              className="font-black leading-[1.04] tracking-tight mb-4"
+              style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#15172B" }}
             >
-              See What Echo5 Digital Can Do for{" "}
+              Ready to Put AI
+              <br />
               <span
                 style={{
                   background: "linear-gradient(135deg, #7C3AED, #A855F7)",
@@ -898,61 +895,45 @@ export default function ResultsClient({ faqData }: Props) {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                Your Business
+                to Work for You?
               </span>
             </h2>
-            <p
-              className="text-base leading-relaxed mb-6"
-              style={{ color: "rgba(229,231,235,0.65)", fontFamily: "Inter, sans-serif" }}
-            >
-              Book a free strategy demo and we'll walk you through exactly how our AI Marketing Employee
-              model can be applied to your industry, your market, and your goals — with no obligation.
+            <p className="text-base leading-relaxed mb-8" style={{ color: "#5B5F73" }}>
+              Book a free strategy demo and discover exactly how Echo5 Digital&apos;s AI Marketing
+              Employee can grow your business — no commitment required.
             </p>
-            <ul className="flex flex-col gap-3 mb-6">
+            <div className="space-y-4 mb-8">
               {[
-                "Free 30-minute strategy session",
-                "AI-powered audit of your current digital presence",
-                "Tailored growth roadmap for your industry",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3 text-sm" style={{ color: "rgba(229,231,235,0.75)", fontFamily: "Inter, sans-serif" }}>
-                  <span
-                    className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
-                    style={{ background: "rgba(124,58,237,0.25)", border: "1px solid rgba(168,85,247,0.35)" }}
-                  >
-                    <span className="w-2 h-2 rounded-full" style={{ background: "#A855F7" }} aria-hidden="true" />
+                "Free 30-minute strategy demo",
+                "No contracts, cancel anytime",
+                "Results-focused — we win when you win",
+              ].map((pt) => (
+                <div key={pt} className="flex items-center gap-3">
+                  <CheckCircle size={16} style={{ color: "#6B4EF0", flexShrink: 0 }} />
+                  <span className="text-sm" style={{ color: "#15172B" }}>
+                    {pt}
                   </span>
-                  {item}
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
             {/* NAP */}
-            <div className="flex flex-col gap-2">
-              <a
-                href="tel:7134897004"
-                className="inline-flex items-center gap-2 text-sm hover:text-white transition-colors"
-                style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
-              >
-                <Phone size={15} style={{ color: "#7C3AED" }} />
-                {/* verified phone */}
-                713-489-7004
+            <div className="space-y-2 text-sm">
+              <p style={{ color: "#5B5F73" }}>Or reach us directly:</p>
+              <a href="tel:713-489-7004" className="block" style={{ color: "#4F32D9" }}>
+                📞 713-489-7004
               </a>
-              <a
-                href="mailto:hello@echo5digital.com"
-                className="inline-flex items-center gap-2 text-sm hover:text-white transition-colors"
-                style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
-              >
-                <Mail size={15} style={{ color: "#7C3AED" }} />
-                hello@echo5digital.com
+              <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
+                ✉️ hello@echo5digital.com
               </a>
             </div>
           </InkReveal>
 
-          {/* Right – Contact Form */}
-          <div className="flex-1 w-full max-w-lg">
+          {/* Right: form */}
+          <div className="flex-1 w-full">
             <ContactForm
               heading="Book Your Free Demo"
-              subheading="Tell us about your business and goals. We'll be in touch within 24 hours."
-              submitLabel="Request Free Demo"
+              subheading="Tell us about your business and goals. We'll reach out within 24 hours."
+              submitLabel="Send My Request"
               showAppointmentNote={true}
             />
           </div>

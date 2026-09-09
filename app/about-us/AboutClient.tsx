@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Section from "@/components/Section";
@@ -57,19 +57,66 @@ interface Props {
 
 export default function AboutClient({ faqData }: Props) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [heroFocused, setHeroFocused] = useState(false);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  useEffect(() => {
+    const t = setTimeout(() => setHeroFocused(true), 150);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <main style={{ backgroundColor: "#0A0F1E", color: "#E5E7EB" }}>
       {/* ─── HERO ─────────────────────────────────────────────────────────── */}
-      <Section background="gradient" spacing="xl" maxWidth="2xl" className="lg:min-h-screen lg:flex lg:items-center">
-        {/* Decorative glow orbs */}
+      <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#0A0F1E] via-[#110D2E] to-[#0A0F1E] py-20 md:py-36 lg:min-h-[calc(100vh-72px)] lg:py-24 lg:flex lg:items-center">
+        {/* Desktop-only full-width, full-height banner background image — racks into focus on load, like the AI Marketing Employee hero */}
+        <motion.div
+          aria-hidden="true"
+          className="hidden lg:block absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1080&w=1920')",
+          }}
+          initial={{ filter: "blur(28px) saturate(0.3) brightness(0.8)", scale: 1.12 }}
+          animate={
+            heroFocused
+              ? { filter: "blur(0px) saturate(1) brightness(1)", scale: 1 }
+              : {}
+          }
+          transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+        />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 overflow-hidden"
+          className="hidden lg:block absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(10,8,26,0.78) 0%, rgba(10,8,26,0.82) 50%, rgba(10,8,26,0.9) 100%)",
+          }}
+        />
+
+        {/* Mobile/tablet ambient glow — matches Section's own "gradient" background treatment */}
+        <div
+          aria-hidden="true"
+          className="lg:hidden pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full opacity-10 blur-3xl"
+          style={{
+            background: "radial-gradient(circle, #7C3AED 0%, #A855F7 40%, transparent 70%)",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          className="lg:hidden pointer-events-none absolute -bottom-40 right-0 w-[400px] h-[400px] rounded-full opacity-10 blur-3xl"
+          style={{
+            background: "radial-gradient(circle, #A855F7 0%, #7C3AED 50%, transparent 70%)",
+          }}
+        />
+
+        {/* Decorative glow orb — sits on top of the banner image on desktop, like the AI Marketing Employee hero */}
+        <div
+          aria-hidden="true"
+          className="hidden lg:block pointer-events-none absolute inset-0 overflow-hidden"
         >
           <div
             className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-20 blur-3xl"
@@ -80,11 +127,12 @@ export default function AboutClient({ faqData }: Props) {
           />
         </div>
 
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 items-center w-full">
+        <div className="relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-1 gap-12 lg:gap-6 items-center w-full lg:text-center">
           {/* Text (top half): badge + heading — appears before the photo on mobile */}
-          <div className="order-1 lg:order-1 lg:col-start-1 lg:row-start-1 flex flex-col gap-6">
+          <div className="order-1 lg:order-1 lg:col-start-1 lg:row-start-1 flex flex-col gap-6 lg:items-center">
             <div
-              className="inline-flex items-center gap-2 self-start px-4 py-2 rounded-full text-sm font-medium"
+              className="inline-flex items-center gap-2 self-start lg:self-center px-4 py-2 lg:px-5 lg:py-2.5 rounded-full text-sm lg:text-base font-medium"
               style={{
                 background: "rgba(107,78,240,0.15)",
                 border: "1px solid rgba(107,78,240,0.35)",
@@ -92,12 +140,12 @@ export default function AboutClient({ faqData }: Props) {
                 fontFamily: "Inter, sans-serif",
               }}
             >
-              <Zap size={14} />
+              <Zap size={14} className="lg:w-4 lg:h-4" />
               AI-Powered Digital Agency
             </div>
 
             <h1
-              className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-tight"
+              className="text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight lg:leading-[1.05]"
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
                 color: "#E5E7EB",
@@ -120,8 +168,8 @@ export default function AboutClient({ faqData }: Props) {
             </h1>
           </div>
 
-          {/* Hero image — ordered right under the heading on mobile, right column on desktop */}
-          <div className="order-2 lg:order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 relative rounded-2xl overflow-hidden aspect-[4/3] lg:aspect-[16/11] w-full">
+          {/* Hero image — shown under the heading on mobile; hidden on desktop where the full banner replaces it */}
+          <div className="order-2 lg:hidden relative rounded-2xl overflow-hidden aspect-[4/3] w-full">
             <ParallaxImage
               src="https://images.pexels.com/photos/3194521/pexels-photo-3194521.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
               alt="Echo5 Digital team collaborating on AI-powered marketing strategies"
@@ -190,10 +238,10 @@ export default function AboutClient({ faqData }: Props) {
           </div>
 
           {/* Text (bottom half): paragraph + CTAs — appears after the photo on mobile */}
-          <div className="order-3 lg:order-3 lg:col-start-1 lg:row-start-2 flex flex-col gap-6">
+          <div className="order-3 flex flex-col gap-6 lg:items-center">
             <BlurIn delay={0.3}>
               <p
-                className="text-lg leading-relaxed max-w-xl"
+                className="text-lg lg:text-2xl leading-relaxed max-w-xl lg:max-w-3xl lg:mx-auto"
                 style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
               >
                 An AI-powered digital marketing and web development agency
@@ -203,10 +251,10 @@ export default function AboutClient({ faqData }: Props) {
               </p>
             </BlurIn>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row gap-4 lg:gap-5 pt-2 lg:justify-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110 active:scale-95"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 lg:px-10 lg:py-5 rounded-full font-semibold text-white text-base lg:text-lg transition-all duration-200 hover:brightness-110 hover:scale-105 active:scale-95"
                 style={{
                   background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
                   boxShadow:
@@ -218,7 +266,7 @@ export default function AboutClient({ faqData }: Props) {
               </Link>
               <Link
                 href="/solutions"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:bg-white/5 active:scale-95"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 lg:px-10 lg:py-5 rounded-full font-semibold text-base lg:text-lg transition-all duration-200 hover:bg-white/5 hover:scale-105 active:scale-95"
                 style={{
                   border: "1px solid rgba(107,78,240,0.4)",
                   color: "#8B5CF6",
@@ -230,7 +278,8 @@ export default function AboutClient({ faqData }: Props) {
             </div>
           </div>
         </div>
-      </Section>
+        </div>
+      </section>
 
       {/* ─── QUICK ANSWER BLOCK ───────────────────────────────────────────── */}
       <Section background="elevated" spacing="md" maxWidth="xl" withDivider>
@@ -308,11 +357,20 @@ export default function AboutClient({ faqData }: Props) {
             className="relative rounded-2xl overflow-hidden h-56 sm:h-72 lg:h-auto lg:aspect-[4/3]"
             style={{ border: "1px solid rgba(124,58,237,0.15)", boxShadow: "0 12px 40px rgba(91,63,163,0.12)" }}
           >
-            <ParallaxImage
-              src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt="Small business team collaborating with AI-powered marketing tools to compete with larger enterprises"
-              className="w-full h-full"
-            />
+            <div className="lg:hidden w-full h-full">
+              <ParallaxImage
+                src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                alt="Small business team collaborating with AI-powered marketing tools to compete with larger enterprises"
+                className="w-full h-full"
+              />
+            </div>
+            <div className="hidden lg:block w-full h-full">
+              <ParallaxImage
+                src="/modern-equipped-computer-lab-100kb.jpg"
+                alt="Small business team collaborating with AI-powered marketing tools to compete with larger enterprises"
+                className="w-full h-full"
+              />
+            </div>
             <div
               className="absolute inset-0"
               style={{

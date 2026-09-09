@@ -6,8 +6,8 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Section from "@/components/Section";
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
-import { FocusPullHero, SoftFadeUp, CurtainBadge } from "@/components/SolutionsFX";
-import { BlurIn, TiltCard, CountUp, ParallaxImage } from "@/components/ScrollFX";
+import { FocusPullHero, SoftFadeUp, CurtainBadge, LavenderField, MagnetPop } from "@/components/SolutionsFX";
+import { BlurIn, TiltCard, CountUp, WordStagger } from "@/components/ScrollFX";
 import {
   Stethoscope,
   GraduationCap,
@@ -28,6 +28,7 @@ import {
   Zap,
   TrendingUp,
   CheckCircle,
+  CheckCircle2,
   ArrowRight,
   Star,
 } from "lucide-react";
@@ -354,53 +355,60 @@ export default function IndustriesClient() {
       </FocusPullHero>
 
       {/* ── Quick Answer Block ── */}
-      <Section background="elevated" spacing="md" withDivider id="quick-answer">
-        <BlurIn>
+      <Section
+        background="transparent"
+        spacing="md"
+        withDivider
+        id="quick-answer"
+        className="relative !bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+      >
+        <LavenderField variant="a" />
+        <BlurIn className="relative z-10">
           <div
             className="rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row gap-6 items-start"
             style={{
-              background: "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.07) 100%)",
-              border: "1px solid rgba(124,58,237,0.3)",
-              boxShadow: "0 0 40px rgba(124,58,237,0.08)",
+              background: "rgba(255,255,255,0.7)",
+              border: "1px solid rgba(124,58,237,0.15)",
+              boxShadow: "0 12px 40px rgba(91,63,163,0.1)",
             }}
           >
             <div className="flex-shrink-0">
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center"
                 style={{
-                  background: "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.2))",
-                  border: "1px solid rgba(168,85,247,0.35)",
+                  background: "linear-gradient(135deg, rgba(107,78,240,0.16), rgba(168,85,247,0.08))",
+                  border: "1px solid rgba(107,78,240,0.25)",
                 }}
               >
-                <Zap size={22} style={{ color: "#A855F7" }} />
+                <Zap size={22} style={{ color: "#6B4EF0" }} />
               </div>
             </div>
             <div>
               <p
                 className="text-xs font-semibold uppercase tracking-widest mb-2"
-                style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
+                style={{ color: "#6B4EF0", fontFamily: "Inter, sans-serif" }}
               >
                 Quick Answer
               </p>
               <h2
                 className="text-xl sm:text-2xl font-bold mb-3"
-                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
               >
                 What Industries Does Echo5 Digital Serve?
               </h2>
               <p
                 className="text-sm sm:text-base leading-relaxed"
-                style={{ fontFamily: "Inter, sans-serif", color: "rgba(229,231,235,0.78)" }}
+                style={{ fontFamily: "Inter, sans-serif", color: "#5B5F73" }}
               >
                 Echo5 Digital is an AI-powered digital marketing agency that serves small and
                 mid-sized businesses across a wide range of industries, including{" "}
-                <strong className="text-white">
+                <strong style={{ color: "#15172B" }}>
                   dental, healthcare, home services, roofing, construction, fitness, aesthetics,
                   real estate, professional services, eCommerce, automotive, and law firms
                 </strong>
                 . Each industry receives a customized marketing strategy built on AI-driven SEO,
                 paid ads, content, and web development. The agency serves clients in{" "}
-                <strong className="text-white">Houston, Sugar Land, Texas</strong> and nationally
+                <strong style={{ color: "#15172B" }}>Houston, Sugar Land, Texas</strong> and nationally
                 across the U.S.
               </p>
             </div>
@@ -531,115 +539,90 @@ export default function IndustriesClient() {
       </Section>
 
       {/* ── Why Industry-Specific Marketing Matters ── */}
-      <Section background="elevated" spacing="lg" withDivider id="why-industry-specific">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Text side */}
-          <Reveal variant="left">
-            <div>
+      <Section
+        background="transparent"
+        spacing="lg"
+        withDivider
+        id="why-industry-specific"
+        className="relative !bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+      >
+        <LavenderField variant="b" />
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-x-16 lg:gap-y-0 items-center">
+          {/* Text side — intro (badge, heading, paragraph) */}
+          <div className="order-1 lg:order-1 lg:col-start-2 lg:row-start-1">
+            <BlurIn>
               <span
                 className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-5"
                 style={{
-                  background: "rgba(124,58,237,0.15)",
-                  border: "1px solid rgba(168,85,247,0.3)",
-                  color: "#A855F7",
+                  background: "rgba(107,78,240,0.1)",
+                  border: "1px solid rgba(107,78,240,0.3)",
+                  color: "#6B4EF0",
                   fontFamily: "Inter, sans-serif",
                 }}
               >
                 Why It Matters
               </span>
-              <h2
-                className="text-3xl sm:text-4xl font-bold mb-5 leading-tight"
-                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-              >
-                Why Industry-Specific Marketing{" "}
-                <span
-                  style={{
-                    background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
-                  Outperforms Generic Campaigns
-                </span>
-              </h2>
+            </BlurIn>
+            <h2
+              className="text-3xl sm:text-4xl font-bold mb-5 leading-tight"
+              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
+            >
+              <WordStagger text="Why Industry-Specific Marketing" />{" "}
+              <WordStagger
+                text="Outperforms Generic Campaigns"
+                delay={0.2}
+                wordClassName="bg-clip-text text-transparent bg-[linear-gradient(135deg,#7C3AED,#A855F7)]"
+              />
+            </h2>
+            <BlurIn delay={0.15}>
               <p
                 className="text-base leading-relaxed mb-8"
-                style={{ fontFamily: "Inter, sans-serif", color: "rgba(229,231,235,0.7)" }}
+                style={{ fontFamily: "Inter, sans-serif", color: "#5B5F73" }}
               >
                 Generic digital marketing campaigns treat all businesses as if they operate in
                 a vacuum. In reality, every industry has its own language, trust signals,
                 regulatory guardrails, and conversion triggers. Applying a one-size-fits-all
                 approach guarantees mediocre results at best — and wasted budget at worst.
               </p>
+            </BlurIn>
+          </div>
 
-              <div className="flex flex-col gap-5">
-                {whyPoints.map((point, idx) => {
-                  const Icon = point.icon;
-                  return (
-                    <Reveal key={point.title} variant="up" delay={idx * 0.08}>
-                      <div className="flex gap-4 items-start">
-                        <div
-                          className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
-                          style={{
-                            background:
-                              "linear-gradient(135deg, rgba(124,58,237,0.25), rgba(168,85,247,0.12))",
-                            border: "1px solid rgba(168,85,247,0.25)",
-                          }}
-                        >
-                          <Icon size={18} style={{ color: "#A855F7" }} />
-                        </div>
-                        <div>
-                          <h3
-                            className="text-base font-semibold mb-1"
-                            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-                          >
-                            {point.title}
-                          </h3>
-                          <p
-                            className="text-sm leading-relaxed"
-                            style={{
-                              fontFamily: "Inter, sans-serif",
-                              color: "rgba(229,231,235,0.6)",
-                            }}
-                          >
-                            {point.description}
-                          </p>
-                        </div>
-                      </div>
-                    </Reveal>
-                  );
-                })}
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Image side */}
-          <Reveal variant="right" delay={0.1}>
-            <div className="relative">
+          {/* Image side — mobile/tablet: single image, sits under the paragraph */}
+          <Reveal variant="right" delay={0.1} className="order-2 lg:hidden">
+            <TiltCard className="relative">
               <div
-                className="absolute inset-0 rounded-2xl opacity-40 blur-2xl"
+                className="absolute inset-0 rounded-2xl opacity-30 blur-2xl"
                 style={{
-                  background: "radial-gradient(circle, rgba(124,58,237,0.4) 0%, transparent 70%)",
+                  background: "radial-gradient(circle, rgba(107,78,240,0.35) 0%, transparent 70%)",
                   transform: "scale(0.85)",
                 }}
               />
-              <ParallaxImage
-                src="https://images.pexels.com/photos/37685036/pexels-photo-37685036.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                alt="Marketing strategist reviewing industry-tailored campaign performance data"
-                className="rounded-2xl h-72 sm:h-96"
+              <motion.div
+                className="relative overflow-hidden rounded-2xl w-full aspect-[3/2] flex items-center justify-center"
                 style={{
-                  border: "1px solid rgba(124,58,237,0.3)",
-                  boxShadow: "0 0 40px rgba(124,58,237,0.15)",
+                  border: "1px solid rgba(124,58,237,0.2)",
+                  boxShadow: "0 12px 40px rgba(91,63,163,0.15)",
+                  background: "#F1EDFB",
                 }}
-              />
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-10% 0px" }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <img
+                  src="/focused-businessman-showing-corporate-graphs-presentation-using-tablet-working-company-ideas-100kb.jpg"
+                  alt="Marketing strategist reviewing industry-tailored campaign performance data"
+                  className="w-full h-full object-contain"
+                />
+              </motion.div>
 
               {/* Floating stat card */}
               <motion.div
                 className="absolute -bottom-5 -left-5 p-4 rounded-xl"
                 style={{
-                  background: "rgba(10,15,30,0.95)",
-                  border: "1px solid rgba(124,58,237,0.4)",
-                  boxShadow: "0 0 30px rgba(124,58,237,0.25)",
+                  background: "rgba(255,255,255,0.95)",
+                  border: "1px solid rgba(124,58,237,0.25)",
+                  boxShadow: "0 12px 32px rgba(91,63,163,0.2)",
                   backdropFilter: "blur(12px)",
                 }}
                 initial={{ opacity: 0, y: 20, scale: 0.8 }}
@@ -660,13 +643,239 @@ export default function IndustriesClient() {
                 />
                 <p
                   className="text-xs mt-0.5"
-                  style={{ fontFamily: "Inter, sans-serif", color: "rgba(229,231,235,0.6)" }}
+                  style={{ fontFamily: "Inter, sans-serif", color: "#5B5F73" }}
                 >
                   Industry Verticals
                 </p>
               </motion.div>
-            </div>
+            </TiltCard>
           </Reveal>
+
+          {/* Checklist cards — sits after the image on mobile, alongside the intro on desktop */}
+          <div className="order-3 lg:order-none lg:col-start-2 lg:row-start-2 flex flex-col gap-3">
+            {whyPoints.map((point, idx) => {
+              const Icon = point.icon;
+              return (
+                <MagnetPop key={point.title} index={idx}>
+                  <div
+                    className="flex gap-4 items-start p-4 rounded-xl transition-colors duration-200 hover:bg-[rgba(139,92,246,0.14)]"
+                    style={{
+                      background: "rgba(139,92,246,0.08)",
+                      border: "1px solid rgba(124,58,237,0.15)",
+                    }}
+                  >
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, rgba(107,78,240,0.16), rgba(168,85,247,0.08))",
+                        border: "1px solid rgba(107,78,240,0.25)",
+                      }}
+                    >
+                      <Icon size={18} style={{ color: "#6B4EF0" }} />
+                    </div>
+                    <div>
+                      <h3
+                        className="text-base font-semibold mb-1"
+                        style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
+                      >
+                        {point.title}
+                      </h3>
+                      <p
+                        className="text-sm leading-relaxed"
+                        style={{
+                          fontFamily: "Inter, sans-serif",
+                          color: "#5B5F73",
+                        }}
+                      >
+                        {point.description}
+                      </p>
+                    </div>
+                  </div>
+                </MagnetPop>
+              );
+            })}
+          </div>
+
+          {/* Image side — desktop/laptop: staggered 3-image stack */}
+          <div className="hidden lg:block relative h-[620px] lg:col-start-1 lg:row-start-1 lg:row-span-2">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 rounded-2xl opacity-30 blur-2xl"
+              style={{
+                background: "radial-gradient(circle, rgba(107,78,240,0.3) 0%, transparent 70%)",
+                transform: "scale(0.85)",
+              }}
+            />
+
+            {/* Image 1 — top right */}
+            <Reveal variant="right" delay={0.1} className="absolute top-0 right-0 w-[72%] z-30">
+              <TiltCard className="relative">
+                <motion.div
+                  className="relative overflow-hidden rounded-2xl w-full aspect-[3/2] flex items-center justify-center"
+                  style={{
+                    border: "1px solid rgba(124,58,237,0.2)",
+                    boxShadow: "0 16px 40px rgba(91,63,163,0.2)",
+                    background: "#F1EDFB",
+                  }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-10% 0px" }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <img
+                    src="/focused-businessman-showing-corporate-graphs-presentation-using-tablet-working-company-ideas-100kb.jpg"
+                    alt="Marketing strategist reviewing industry-tailored campaign performance data"
+                    className="w-full h-full object-contain"
+                  />
+                </motion.div>
+
+                <motion.div
+                  className="absolute -bottom-5 -left-5 p-4 rounded-xl"
+                  style={{
+                    background: "rgba(255,255,255,0.95)",
+                    border: "1px solid rgba(124,58,237,0.25)",
+                    boxShadow: "0 12px 32px rgba(91,63,163,0.2)",
+                    backdropFilter: "blur(12px)",
+                  }}
+                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-10% 0px" }}
+                  transition={{ type: "spring", stiffness: 200, damping: 16, delay: 0.4 }}
+                >
+                  <CountUp
+                    target={14}
+                    suffix="+"
+                    className="block text-2xl font-bold"
+                    style={{
+                      fontFamily: "Space Grotesk, sans-serif",
+                      background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  />
+                  <p
+                    className="text-xs mt-0.5"
+                    style={{ fontFamily: "Inter, sans-serif", color: "#5B5F73" }}
+                  >
+                    Industry Verticals
+                  </p>
+                </motion.div>
+              </TiltCard>
+            </Reveal>
+
+            {/* Image 2 — beneath, offset left */}
+            <Reveal variant="up" delay={0.25} className="absolute top-[220px] left-0 w-[62%] z-20">
+              <TiltCard className="relative">
+                <motion.div
+                  className="relative overflow-hidden rounded-2xl w-full aspect-[3/2] flex items-center justify-center"
+                  style={{
+                    border: "1px solid rgba(124,58,237,0.2)",
+                    boxShadow: "0 14px 36px rgba(91,63,163,0.18)",
+                    background: "#F1EDFB",
+                  }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-10% 0px" }}
+                  transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <img
+                    src="/team-reviewing-marketing-strategies-digital-screen-100kb.jpg"
+                    alt="Marketing team reviewing industry-specific campaign strategies on a digital screen"
+                    className="w-full h-full object-contain"
+                  />
+                </motion.div>
+
+                <motion.div
+                  className="absolute -bottom-4 -right-4 p-3.5 rounded-xl"
+                  style={{
+                    background: "rgba(255,255,255,0.95)",
+                    border: "1px solid rgba(124,58,237,0.25)",
+                    boxShadow: "0 10px 28px rgba(91,63,163,0.18)",
+                    backdropFilter: "blur(12px)",
+                  }}
+                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-10% 0px" }}
+                  transition={{ type: "spring", stiffness: 200, damping: 16, delay: 0.55 }}
+                >
+                  <CountUp
+                    target={100}
+                    suffix="+"
+                    className="block text-xl font-bold"
+                    style={{
+                      fontFamily: "Space Grotesk, sans-serif",
+                      background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  />
+                  <p
+                    className="text-xs mt-0.5"
+                    style={{ fontFamily: "Inter, sans-serif", color: "#5B5F73" }}
+                  >
+                    SMBs Served
+                  </p>
+                </motion.div>
+              </TiltCard>
+            </Reveal>
+
+            {/* Image 3 — bottom right, beneath image 1 */}
+            <Reveal variant="up" delay={0.4} className="absolute bottom-0 right-[6%] w-[54%] z-10">
+              <TiltCard className="relative">
+                <motion.div
+                  className="relative overflow-hidden rounded-2xl w-full aspect-[3/2] flex items-center justify-center"
+                  style={{
+                    border: "1px solid rgba(124,58,237,0.2)",
+                    boxShadow: "0 12px 32px rgba(91,63,163,0.16)",
+                    background: "#F1EDFB",
+                  }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-10% 0px" }}
+                  transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <img
+                    src="/people-office-analyzing-checking-finance-graphs-100kb.jpg"
+                    alt="Office team analyzing finance and performance graphs"
+                    className="w-full h-full object-contain"
+                  />
+                </motion.div>
+
+                <motion.div
+                  className="absolute -bottom-4 -left-4 p-3.5 rounded-xl"
+                  style={{
+                    background: "rgba(255,255,255,0.95)",
+                    border: "1px solid rgba(124,58,237,0.25)",
+                    boxShadow: "0 10px 28px rgba(91,63,163,0.18)",
+                    backdropFilter: "blur(12px)",
+                  }}
+                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-10% 0px" }}
+                  transition={{ type: "spring", stiffness: 200, damping: 16, delay: 0.7 }}
+                >
+                  <p
+                    className="text-xl font-bold"
+                    style={{
+                      fontFamily: "Space Grotesk, sans-serif",
+                      background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    24/7
+                  </p>
+                  <p
+                    className="text-xs mt-0.5"
+                    style={{ fontFamily: "Inter, sans-serif", color: "#5B5F73" }}
+                  >
+                    AI Monitoring
+                  </p>
+                </motion.div>
+              </TiltCard>
+            </Reveal>
+          </div>
         </div>
       </Section>
 
@@ -770,37 +979,44 @@ export default function IndustriesClient() {
       </Section>
 
       {/* ── Local Relevance ── */}
-      <Section background="elevated" spacing="md" withDivider id="local-relevance">
-        <Reveal variant="zoom">
+      <Section
+        background="transparent"
+        spacing="md"
+        withDivider
+        id="local-relevance"
+        className="relative !bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+      >
+        <LavenderField variant="c" />
+        <Reveal variant="zoom" className="relative z-10">
           <div
             className="rounded-2xl p-6 sm:p-10 flex flex-col md:flex-row gap-8 items-center"
             style={{
-              background: "linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(168,85,247,0.05) 100%)",
-              border: "1px solid rgba(124,58,237,0.25)",
+              background: "rgba(255,255,255,0.7)",
+              border: "1px solid rgba(124,58,237,0.15)",
+              boxShadow: "0 12px 40px rgba(91,63,163,0.1)",
             }}
           >
             <div className="flex-shrink-0">
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center"
                 style={{
-                  background: "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.2))",
-                  border: "1px solid rgba(168,85,247,0.35)",
-                  boxShadow: "0 0 24px rgba(124,58,237,0.25)",
+                  background: "linear-gradient(135deg, rgba(107,78,240,0.16), rgba(168,85,247,0.08))",
+                  border: "1px solid rgba(107,78,240,0.25)",
                 }}
               >
-                <MapPin size={28} style={{ color: "#A855F7" }} />
+                <MapPin size={28} style={{ color: "#6B4EF0" }} />
               </div>
             </div>
             <div>
               <h2
                 className="text-2xl sm:text-3xl font-bold mb-3"
-                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
               >
                 Serving Houston &amp; Sugar Land, Texas
               </h2>
               <p
                 className="text-base leading-relaxed mb-4"
-                style={{ fontFamily: "Inter, sans-serif", color: "rgba(229,231,235,0.72)" }}
+                style={{ fontFamily: "Inter, sans-serif", color: "#5B5F73" }}
               >
                 Houston and Sugar Land, Texas are home to a diverse business ecosystem spanning
                 healthcare, home services, legal, real estate, and more. Echo5 Digital's
@@ -809,26 +1025,26 @@ export default function IndustriesClient() {
               </p>
               <div className="flex flex-wrap gap-4 text-sm" style={{ fontFamily: "Inter, sans-serif" }}>
                 <div className="flex items-center gap-2">
-                  <span style={{ color: "#A855F7" }}>📍</span>
+                  <span style={{ color: "#6B4EF0" }}>📍</span>
                   {/* NAP - verified facts only */}
-                  <span style={{ color: "rgba(229,231,235,0.75)" }}>Houston / Sugar Land, Texas</span>
+                  <span style={{ color: "#5B5F73" }}>Houston / Sugar Land, Texas</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span style={{ color: "#A855F7" }}>📞</span>
+                  <span style={{ color: "#6B4EF0" }}>📞</span>
                   <a
                     href="tel:7134897004"
-                    style={{ color: "rgba(229,231,235,0.75)" }}
-                    className="hover:text-white transition-colors"
+                    style={{ color: "#5B5F73" }}
+                    className="hover:text-[#15172B] transition-colors"
                   >
                     713-489-7004
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span style={{ color: "#A855F7" }}>✉️</span>
+                  <span style={{ color: "#6B4EF0" }}>✉️</span>
                   <a
                     href="mailto:hello@echo5digital.com"
-                    style={{ color: "rgba(229,231,235,0.75)" }}
-                    className="hover:text-white transition-colors"
+                    style={{ color: "#5B5F73" }}
+                    className="hover:text-[#15172B] transition-colors"
                   >
                     hello@echo5digital.com
                   </a>
@@ -935,149 +1151,160 @@ export default function IndustriesClient() {
       </Section>
 
       {/* ── CTA Section ── */}
-      <Section background="gradient" spacing="xl" id="cta" withDivider>
-        <Reveal variant="up" className="text-center mb-12">
-          <span
-            className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-4"
-            style={{
-              background: "rgba(124,58,237,0.15)",
-              border: "1px solid rgba(168,85,247,0.3)",
-              color: "#A855F7",
-              fontFamily: "Inter, sans-serif",
-            }}
-          >
-            Ready to Grow?
-          </span>
-          <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-          >
-            Let&apos;s Build Your{" "}
-            <span
+      <Section background="transparent" spacing="xl" maxWidth="3xl" id="cta" withDivider className="!bg-[#EEECFB]">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+          {/* Left: copy */}
+          <div className="flex-1 lg:pt-6">
+            <BlurIn>
+              <div
+                className="inline-flex items-center gap-2 rounded-full text-xs font-semibold mb-5"
+                style={{ color: "#6B4EF0" }}
+              >
+                Ready to Grow?
+              </div>
+            </BlurIn>
+            <h2
+              className="font-black leading-[1.04] tracking-tight mb-4"
+              style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#15172B" }}
+            >
+              <WordStagger text="Let's Build Your" />
+              <br />
+              <WordStagger
+                text="Industry-Specific Growth Engine"
+                delay={0.2}
+                wordClassName="bg-clip-text text-transparent bg-[linear-gradient(135deg,#7C3AED,#A855F7)]"
+              />
+            </h2>
+            <BlurIn delay={0.15}>
+              <p className="text-base leading-relaxed mb-8" style={{ color: "#5B5F73" }}>
+                Select your industry below or reach out directly. Our team will craft a
+                tailored AI marketing strategy built around your specific vertical, goals, and market.
+              </p>
+            </BlurIn>
+
+            <div className="space-y-4 mb-8">
+              {[
+                "Tailored strategy for your specific vertical",
+                "No contracts, cancel anytime",
+                "Results-focused — we win when you win",
+              ].map((pt) => (
+                <div key={pt} className="flex items-center gap-3">
+                  <CheckCircle size={16} style={{ color: "#6B4EF0", flexShrink: 0 }} />
+                  <span className="text-sm" style={{ color: "#15172B" }}>
+                    {pt}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* NAP */}
+            <div className="space-y-2 text-sm mb-10">
+              <p style={{ color: "#5B5F73" }}>Or reach us directly:</p>
+              {/* Verified phone */}
+              <a href="tel:7134897004" className="block" style={{ color: "#4F32D9" }}>
+                📞 713-489-7004
+              </a>
+              <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
+                ✉️ hello@echo5digital.com
+              </a>
+            </div>
+
+            {/* Browse by Industry */}
+            <div
+              className="rounded-2xl p-6 mb-6"
               style={{
-                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                background: "rgba(255,255,255,0.6)",
+                border: "1px solid rgba(124,58,237,0.15)",
               }}
             >
-              Industry-Specific
-            </span>{" "}
-            Growth Engine
-          </h2>
-          <p
-            className="text-base max-w-xl mx-auto"
-            style={{ fontFamily: "Inter, sans-serif", color: "rgba(229,231,235,0.65)" }}
-          >
-            Select your industry above or reach out directly. Our team will craft a
-            tailored AI marketing strategy built around your specific vertical, goals, and market.
-          </p>
-        </Reveal>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start max-w-5xl mx-auto">
-          {/* Left: CTA options */}
-          <Reveal variant="left">
-            <div className="flex flex-col gap-6">
-              <div
-                className="rounded-2xl p-6"
-                style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(124,58,237,0.25)",
-                }}
+              <h3
+                className="text-lg font-bold mb-2"
+                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
               >
-                <h3
-                  className="text-xl font-bold mb-3"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-                >
-                  Browse by Industry
-                </h3>
-                <p
-                  className="text-sm leading-relaxed mb-5"
-                  style={{ fontFamily: "Inter, sans-serif", color: "rgba(229,231,235,0.6)" }}
-                >
-                  Explore tailored marketing programs built for your specific vertical.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {industries.map((ind, idx) => (
-                    <Reveal key={ind.label} variant="zoom" delay={idx * 0.02} className="inline-block">
-                      <Link
-                        href={ind.href}
-                        className="text-xs font-medium px-3 py-1.5 rounded-full transition-all duration-200 hover:brightness-110"
-                        style={{
-                          background: "rgba(124,58,237,0.18)",
-                          border: "1px solid rgba(168,85,247,0.28)",
-                          color: "#C4B5FD",
-                          fontFamily: "Inter, sans-serif",
-                          textDecoration: "none",
-                        }}
-                      >
-                        {ind.label}
-                      </Link>
-                    </Reveal>
-                  ))}
-                </div>
-              </div>
-
-              <div
-                className="rounded-2xl p-6"
-                style={{
-                  background: "linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(168,85,247,0.08) 100%)",
-                  border: "1px solid rgba(124,58,237,0.3)",
-                }}
-              >
-                <h3
-                  className="text-xl font-bold mb-2"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-                >
-                  Prefer to Talk?
-                </h3>
-                <p
-                  className="text-sm mb-5"
-                  style={{ fontFamily: "Inter, sans-serif", color: "rgba(229,231,235,0.62)" }}
-                >
-                  Book a free 30-minute strategy call with our team. We&apos;ll review your
-                  industry, goals, and current marketing to identify the highest-leverage
-                  opportunities.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-white text-sm transition-all duration-200 hover:brightness-110 active:scale-95"
-                    style={{
-                      background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                      boxShadow: "0 0 20px rgba(124,58,237,0.45)",
-                      fontFamily: "Inter, sans-serif",
-                      textDecoration: "none",
-                    }}
-                  >
-                    Book a Free Strategy Call <ArrowRight size={15} />
-                  </Link>
-                  <a
-                    href="tel:7134897004"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-200 hover:bg-white/10 active:scale-95"
-                    style={{
-                      border: "1px solid rgba(124,58,237,0.45)",
-                      color: "#E5E7EB",
-                      fontFamily: "Inter, sans-serif",
-                      textDecoration: "none",
-                    }}
-                  >
-                    {/* Verified phone number */}
-                    Call 713-489-7004
-                  </a>
-                </div>
+                Browse by Industry
+              </h3>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "#5B5F73" }}>
+                Explore tailored marketing programs built for your specific vertical.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {industries.map((ind, idx) => (
+                  <Reveal key={ind.label} variant="zoom" delay={idx * 0.02} className="inline-block">
+                    <Link
+                      href={ind.href}
+                      className="text-xs font-medium px-3 py-1.5 rounded-full transition-all duration-200 hover:brightness-110"
+                      style={{
+                        background: "rgba(107,78,240,0.12)",
+                        border: "1px solid rgba(107,78,240,0.3)",
+                        color: "#6B4EF0",
+                        fontFamily: "Inter, sans-serif",
+                        textDecoration: "none",
+                      }}
+                    >
+                      {ind.label}
+                    </Link>
+                  </Reveal>
+                ))}
               </div>
             </div>
-          </Reveal>
 
-          {/* Right: Contact Form */}
-          <Reveal variant="right" delay={0.1}>
+            {/* Prefer to Talk */}
+            <div
+              className="rounded-2xl p-6"
+              style={{
+                background: "linear-gradient(135deg, rgba(107,78,240,0.12) 0%, rgba(168,85,247,0.06) 100%)",
+                border: "1px solid rgba(124,58,237,0.2)",
+              }}
+            >
+              <h3
+                className="text-lg font-bold mb-2"
+                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
+              >
+                Prefer to Talk?
+              </h3>
+              <p className="text-sm mb-5" style={{ color: "#5B5F73" }}>
+                Book a free 30-minute strategy call with our team. We&apos;ll review your
+                industry, goals, and current marketing to identify the highest-leverage
+                opportunities.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-white text-sm transition-all duration-200 hover:brightness-110 active:scale-95"
+                  style={{
+                    background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                    boxShadow: "0 0 20px rgba(124,58,237,0.35)",
+                    fontFamily: "Inter, sans-serif",
+                    textDecoration: "none",
+                  }}
+                >
+                  Book a Free Strategy Call <ArrowRight size={15} />
+                </Link>
+                <a
+                  href="tel:7134897004"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-200 hover:bg-white active:scale-95"
+                  style={{
+                    border: "1px solid rgba(124,58,237,0.3)",
+                    color: "#15172B",
+                    fontFamily: "Inter, sans-serif",
+                    textDecoration: "none",
+                  }}
+                >
+                  {/* Verified phone number */}
+                  Call 713-489-7004
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: form */}
+          <div className="flex-1 w-full lg:sticky lg:top-24">
             <ContactForm
               heading="Tell Us About Your Business"
               subheading="Share your industry and goals — we'll build a custom AI marketing strategy tailored for you."
               submitLabel="Get My Custom Strategy"
               showAppointmentNote={true}
             />
-          </Reveal>
+          </div>
         </div>
       </Section>
     </main>

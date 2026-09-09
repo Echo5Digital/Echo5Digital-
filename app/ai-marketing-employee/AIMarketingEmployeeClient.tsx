@@ -1306,56 +1306,67 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
         </div>
       </Section>
 
-      {/* ── CTA / LEAD FORM ── */}
-      <Section background="gradient" spacing="lg" id="cta" withDivider>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <div className="pt-4">
-            <p className="text-sm font-semibold uppercase tracking-widest text-purple-400 mb-4">
-              Ready to Get Started?
-            </p>
-            <h2
-              className="text-3xl sm:text-4xl font-bold mb-6"
-              style={{ fontFamily: "Space Grotesk, sans-serif" }}
+      {/* ── FINAL CTA / LEAD FORM ────────────────────────────────────── */}
+      <Section background="transparent" spacing="xl" maxWidth="3xl" id="cta" withDivider className="!bg-[#EEECFB]">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+          {/* Left: copy */}
+          <div className="flex-1 lg:pt-6">
+            <div
+              className="inline-flex items-center gap-2 rounded-full text-xs font-semibold mb-5"
+              style={{ color: "#6B4EF0" }}
             >
-              Hire Your AI Marketing Employee Today
+              Ready to Get Started?
+            </div>
+            <h2
+              className="font-black leading-[1.04] tracking-tight mb-4"
+              style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#15172B" }}
+            >
+              Hire Your AI Marketing
+              <br />
+              <span
+                style={{
+                  background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Employee Today
+              </span>
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed mb-8">
+            <p className="text-base leading-relaxed mb-8" style={{ color: "#5B5F73" }}>
               Stop losing ground to competitors who are already using AI. Book a free demo
               call and see the AI Marketing Employee in action, or drop your details and
-              we'll reach out within 24 hours.
+              we&apos;ll reach out within 24 hours.
             </p>
-            <div className="space-y-4">
+            <div className="space-y-4 mb-8">
               {[
-                { icon: Star, text: "Free onboarding consultation included" },
-                { icon: Shield, text: "No long-term contracts required" },
-                { icon: Clock, text: "Live within days, not months" },
-                { icon: Users, text: "Dedicated human oversight team from day one" },
-              ].map((item) => (
-                <div key={item.text} className="flex items-center gap-3 text-gray-300 text-sm">
-                  <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-                    style={{ background: "rgba(124,58,237,0.2)", border: "1px solid rgba(168,85,247,0.25)" }}
-                  >
-                    <item.icon size={15} style={{ color: "#A855F7" }} />
-                  </div>
-                  {item.text}
+                "Free onboarding consultation included",
+                "No long-term contracts required",
+                "Live within days, not months",
+                "Dedicated human oversight team from day one",
+              ].map((pt) => (
+                <div key={pt} className="flex items-center gap-3">
+                  <CheckCircle size={16} style={{ color: "#6B4EF0", flexShrink: 0 }} />
+                  <span className="text-sm" style={{ color: "#15172B" }}>
+                    {pt}
+                  </span>
                 </div>
               ))}
             </div>
-            <div className="mt-8">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110"
-                style={{
-                  background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                  boxShadow: "0 0 24px rgba(124,58,237,0.45)",
-                }}
-              >
-                Book a Free Demo <ArrowRight size={18} />
-              </Link>
+            {/* NAP */}
+            <div className="space-y-2 text-sm">
+              <p style={{ color: "#5B5F73" }}>Or reach us directly:</p>
+              <a href="tel:713-489-7004" className="block" style={{ color: "#4F32D9" }}>
+                📞 713-489-7004
+              </a>
+              <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
+                ✉️ hello@echo5digital.com
+              </a>
             </div>
           </div>
-          <div>
+
+          {/* Right: form */}
+          <div className="flex-1 w-full">
             <ContactForm
               heading="Get Started Today"
               subheading="Tell us about your business and marketing goals. We'll respond within 24 hours."
