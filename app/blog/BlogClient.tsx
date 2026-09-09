@@ -3,18 +3,20 @@
 import { useState } from "react";
 import Link from "next/link";
 import Section from "@/components/Section";
-import { Search, ArrowRight, ChevronDown, ChevronUp, Mail, Rss, TrendingUp, Globe, Target, Share2, Code2, Bot, MapPin } from "lucide-react";
+import { Search, ArrowRight, ChevronDown, ChevronUp, Mail, TrendingUp, Globe, Target, Share2, Bot } from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 interface Post {
   id: number;
   title: string;
-  excerpt: string;
+  excerpt?: string;
   category: string;
+  secondaryCategory?: string;
   date: string;
   readTime: string;
   slug: string;
+  href?: string;
   imageSrc: string;
   imageAlt: string;
   featured?: boolean;
@@ -31,92 +33,73 @@ interface Props {
 
 // ─── Static Data ─────────────────────────────────────────────────────────────
 
-const categories = [
-  { label: "All", value: "all", icon: Rss },
-  { label: "AI Marketing", value: "AI Marketing", icon: Bot },
-  { label: "SEO", value: "SEO", icon: TrendingUp },
-  { label: "AEO", value: "AEO", icon: Search },
-  { label: "Google Ads", value: "Google Ads", icon: Target },
-  { label: "Social Media", value: "Social Media", icon: Share2 },
-  { label: "Content Marketing", value: "Content Marketing", icon: Rss },
-  { label: "Web Development", value: "Web Development", icon: Code2 },
-  { label: "Local Marketing", value: "Local Marketing", icon: MapPin },
-];
-
 const allPosts: Post[] = [
   {
     id: 1,
-    title: "How AI Is Transforming Digital Marketing for Small Businesses",
-    excerpt:
-      "Discover how AI-powered tools are leveling the playing field, enabling small and mid-sized businesses to compete with enterprise-level marketing at a fraction of the cost.",
-    category: "AI Marketing",
-    date: "June 12, 2025",
+    title: "How Social Media Management Companies Help Boost Brand Visibility?",
+    category: "Digital Marketing",
+    date: "September 17, 2025",
     readTime: "6 min read",
-    slug: "ai-transforming-digital-marketing-small-businesses",
-    imageSrc: "https://images.pexels.com/photos/38748853/pexels-photo-38748853.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    imageAlt: "AI-powered digital marketing dashboard for small businesses",
+    slug: "how-social-media-management-companies-help-boost-brand-visibility",
+    href: "/how-social-media-management-companies-help-boost-brand-visibility",
+    imageSrc: "/Untitled-design-740x600.webp",
+    imageAlt: "Woman using a tablet surrounded by social media engagement icons representing brand visibility",
     featured: true,
   },
   {
     id: 2,
-    title: "Answer Engine Optimization (AEO): The Complete Guide for 2025",
-    excerpt:
-      "AEO is the new frontier of search. Learn how to optimize your content to appear in AI-generated answers from ChatGPT, Perplexity, Google SGE, and beyond.",
-    category: "AEO",
-    date: "June 5, 2025",
-    readTime: "9 min read",
-    slug: "answer-engine-optimization-guide-2025",
-    imageSrc: "https://images.pexels.com/photos/267415/pexels-photo-267415.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    imageAlt: "Illustration of answer engine optimization for AI search results",
-    featured: true,
+    title: "Choosing a PPC Advertising Company in Houston: What to Look for Beyond Clicks and Impressions",
+    category: "Digital Marketing",
+    date: "August 20, 2025",
+    readTime: "7 min read",
+    slug: "choosing-a-ppc-advertising-company-in-houston",
+    href: "/choosing-a-ppc-advertising-company-in-houston-what-to-look-for-beyond-clicks-and-impressions/",
+    imageSrc: "/20250820_1450_PPC-Analysis-in-Houston_simple_compose_01k33cbjyrfev8hrr3ed5be3nb-740x600.webp",
+    imageAlt: "Marketing team reviewing PPC campaign analytics including ROI, conversions, and growth charts",
   },
   {
     id: 3,
-    title: "Local SEO in Houston: 7 Tactics That Drive Real Results",
-    excerpt:
-      "Houston's competitive business landscape demands a smart local SEO strategy. We break down seven proven tactics Texas businesses are using to dominate Google Maps and local search.",
-    category: "Local Marketing",
-    date: "May 28, 2025",
-    readTime: "7 min read",
-    slug: "local-seo-houston-tactics",
-    imageSrc: "https://images.pexels.com/photos/18441165/pexels-photo-18441165.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    imageAlt: "Houston Texas city skyline representing local SEO strategy",
+    title: "How AEO and GEO Trends Are Affecting Digital Marketing",
+    category: "Digital Marketing",
+    date: "September 26, 2025",
+    readTime: "6 min read",
+    slug: "aeo-geo-trends-digital-marketing",
+    href: "/how-aeo-and-geo-trends-are-affecting-digital-marketing/",
+    imageSrc: "/Untitled-design-1-740x600.webp",
+    imageAlt: "Business professionals analyzing digital marketing data and trends",
   },
   {
     id: 4,
-    title: "Google Ads vs. Meta Ads: Which Platform Should You Choose in 2025?",
-    excerpt:
-      "Google Ads and Meta Ads each have distinct strengths. This side-by-side breakdown helps business owners make an informed decision based on goals, budget, and audience.",
-    category: "Google Ads",
-    date: "May 20, 2025",
-    readTime: "8 min read",
-    slug: "google-ads-vs-meta-ads-2025",
-    imageSrc: "https://images.pexels.com/photos/7662059/pexels-photo-7662059.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    imageAlt: "Comparison chart of Google Ads and Meta Ads performance metrics",
+    title: "Why Your Industrial Company Needs an Effective Digital Marketing Strategy",
+    category: "Digital Marketing",
+    date: "July 24, 2025",
+    readTime: "6 min read",
+    slug: "why-your-industrial-company-needs-an-effective-digital-marketing-strategy",
+    href: "/why-your-industrial-company-needs-an-effective-digital-marketing-strategy/",
+    imageSrc: "/Futuristic-Factory-Insights-740x600.jpg",
+    imageAlt: "Industrial professional analyzing digital marketing growth data on a laptop in a factory setting",
   },
   {
     id: 5,
-    title: "Content Marketing That Actually Converts: A Framework for SMBs",
-    excerpt:
-      "Publishing content is easy. Publishing content that converts visitors into customers is a skill. Here's the strategic framework Echo5 Digital uses for clients.",
-    category: "Content Marketing",
-    date: "May 14, 2025",
-    readTime: "5 min read",
-    slug: "content-marketing-framework-smbs",
-    imageSrc: "https://images.pexels.com/photos/942331/pexels-photo-942331.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    imageAlt: "Content marketer building a strategy framework on a laptop",
+    title: "How We Are Shaping Smarter Search with AEO and GEO in 2025",
+    category: "Digital Marketing",
+    date: "July 15, 2025",
+    readTime: "6 min read",
+    slug: "how-we-are-shaping-smarter-search-with-aeo-and-geo-in-2025",
+    href: "/how-we-are-shaping-smarter-search-with-aeo-and-geo-in-2025/",
+    imageSrc: "/20250715_1502_AI-Summarization-Dynamics_simple_compose_01k06pt16sehbrnrn63fee2y6h-Copy-740x600.jpg",
+    imageAlt: "Futuristic interface showing AEO and GEO search results across ChatGPT, Google SGE, and Bing Copilot",
   },
   {
     id: 6,
-    title: "Social Media Marketing in 2025: What's Working Right Now",
-    excerpt:
-      "The social media landscape shifts fast. We analyze the formats, platforms, and posting strategies that are generating the highest ROI for businesses right now.",
-    category: "Social Media",
-    date: "May 7, 2025",
+    title: "How to Rank on ChatGPT: 7 Tips to Get Featured by AI",
+    category: "Digital Marketing",
+    date: "July 14, 2025",
     readTime: "6 min read",
-    slug: "social-media-marketing-2025-whats-working",
-    imageSrc: "https://images.pexels.com/photos/15635241/pexels-photo-15635241.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    imageAlt: "Social media content creator reviewing analytics on a phone and laptop",
+    slug: "how-to-rank-on-chatgpt-7-tips-to-get-featured-by-ai",
+    href: "/how-to-rank-on-chatgpt-7-tips-to-get-featured-by-ai/",
+    imageSrc: "/7-ways-to-get-visibile-in-chatgpt-featured-image-740x600.jpg",
+    imageAlt: "Silhouette of a person facing a glowing digital brain, representing AI visibility and ranking on ChatGPT",
   },
   {
     id: 7,
@@ -154,6 +137,29 @@ const allPosts: Post[] = [
     imageSrc: "https://images.pexels.com/photos/6986455/pexels-photo-6986455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     imageAlt: "Google Business Profile listing for a local business in Houston Texas",
   },
+  {
+    id: 10,
+    title: "LinkedIn Expands Video Ads and AI Tools to Empower B2B Marketers",
+    category: "Digital Marketing",
+    secondaryCategory: "SMM",
+    date: "June 6, 2024",
+    readTime: "5 min read",
+    slug: "linkedin-expands-video-ads-and-ai-tools-to-empower-b2b-marketers",
+    href: "/why-hire-a-professional-ppc-consultant-to-manage-your-websites-ppc-campaign/",
+    imageSrc: "/blog_featr1-740x600.jpg",
+    imageAlt: "Person holding a phone showing the LinkedIn app in front of the LinkedIn logo",
+  },
+  {
+    id: 11,
+    title: "Why Hire A Professional PPC Consultant to Manage Your Website's PPC Campaign?",
+    category: "Digital Marketing",
+    date: "June 6, 2024",
+    readTime: "5 min read",
+    slug: "why-hire-a-professional-ppc-consultant-to-manage-your-websites-ppc-campaign",
+    href: "/why-hire-a-professional-ppc-consultant-to-manage-your-websites-ppc-campaign/",
+    imageSrc: "/blog_featr2-740x600.jpg",
+    imageAlt: "Illustration of a professional considering PPC campaign strategy with a large question mark",
+  },
 ];
 
 const services = [
@@ -174,10 +180,9 @@ export default function BlogClient({ faqData }: Props) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [visibleCount, setVisibleCount] = useState(6);
 
-  const featuredPosts = allPosts.filter((p) => p.featured);
   const filteredPosts =
     activeCategory === "all"
-      ? allPosts.filter((p) => !p.featured)
+      ? allPosts
       : allPosts.filter((p) => p.category === activeCategory);
 
   const visiblePosts = filteredPosts.slice(0, visibleCount);
@@ -268,153 +273,6 @@ export default function BlogClient({ faqData }: Props) {
         </div>
       </Section>
 
-      {/* ── Featured Post Spotlight ── */}
-      <Section background="default" spacing="md" withDivider>
-        <div className="mb-8">
-          <h2
-            className="text-2xl md:text-3xl font-bold mb-2"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-          >
-            Featured Articles
-          </h2>
-          <p className="text-sm" style={{ color: "rgba(229,231,235,0.5)", fontFamily: "Inter, sans-serif" }}>
-            Cornerstone content to accelerate your digital growth
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {featuredPosts.map((post) => (
-            <article
-              key={post.id}
-              className="group relative flex flex-col overflow-hidden rounded-xl transition-all duration-300 hover:-translate-y-1"
-              style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(124,58,237,0.25)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,85,247,0.55)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 40px rgba(124,58,237,0.3)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(124,58,237,0.25)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "none";
-              }}
-            >
-              {/* Image */}
-              <div className="relative overflow-hidden h-52">
-                <img
-                  src={post.imageSrc}
-                  alt={post.imageAlt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(10,15,30,0.95) 100%)" }}
-                />
-                {/* Featured badge */}
-                <span
-                  className="absolute top-3 left-3 text-xs font-semibold px-3 py-1 rounded-full"
-                  style={{
-                    background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                    color: "#fff",
-                    fontFamily: "Inter, sans-serif",
-                    boxShadow: "0 0 12px rgba(124,58,237,0.6)",
-                  }}
-                >
-                  ★ Featured
-                </span>
-                <span
-                  className="absolute top-3 right-3 text-xs font-semibold px-3 py-1 rounded-full"
-                  style={{
-                    background: "rgba(124,58,237,0.8)",
-                    color: "#E5E7EB",
-                    fontFamily: "Inter, sans-serif",
-                    backdropFilter: "blur(4px)",
-                  }}
-                >
-                  {post.category}
-                </span>
-              </div>
-
-              {/* Content */}
-              <div className="flex flex-col flex-1 p-6 gap-3">
-                <div className="flex items-center gap-3 text-xs" style={{ color: "rgba(229,231,235,0.4)", fontFamily: "Inter, sans-serif" }}>
-                  <span>{post.date}</span>
-                  <span>·</span>
-                  <span>{post.readTime}</span>
-                </div>
-                <h3
-                  className="text-xl font-bold leading-snug"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-                >
-                  {post.title}
-                </h3>
-                <p
-                  className="text-sm leading-relaxed flex-1"
-                  style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
-                >
-                  {post.excerpt}
-                </p>
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="inline-flex items-center gap-2 text-sm font-semibold mt-2 transition-all duration-200 group/link"
-                  style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
-                >
-                  Read Article{" "}
-                  <ArrowRight
-                    size={15}
-                    className="transition-transform duration-200 group-hover/link:translate-x-1"
-                  />
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
-      </Section>
-
-      {/* ── Category Filter Bar ── */}
-      <Section background="elevated" spacing="sm" withDivider>
-        <div className="mb-4">
-          <h2
-            className="text-lg font-semibold"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-          >
-            Browse by Topic
-          </h2>
-        </div>
-        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Blog categories">
-          {categories.map(({ label, value, icon: Icon }) => {
-            const isActive = activeCategory === value;
-            return (
-              <button
-                key={value}
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => {
-                  setActiveCategory(value);
-                  setVisibleCount(6);
-                }}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200"
-                style={{
-                  fontFamily: "Inter, sans-serif",
-                  background: isActive
-                    ? "linear-gradient(135deg, #7C3AED, #A855F7)"
-                    : "rgba(124,58,237,0.1)",
-                  color: isActive ? "#fff" : "rgba(229,231,235,0.7)",
-                  border: isActive
-                    ? "1px solid transparent"
-                    : "1px solid rgba(124,58,237,0.25)",
-                  boxShadow: isActive ? "0 0 16px rgba(124,58,237,0.45)" : "none",
-                  cursor: "pointer",
-                }}
-              >
-                <Icon size={13} aria-hidden="true" />
-                {label}
-              </button>
-            );
-          })}
-        </div>
-      </Section>
 
       {/* ── Blog Post Grid ── */}
       <Section id="blog-grid" background="default" spacing="lg" withDivider>
@@ -460,7 +318,11 @@ export default function BlogClient({ faqData }: Props) {
                   }}
                 >
                   {/* Thumbnail */}
-                  <div className="relative overflow-hidden h-44">
+                  <Link
+                    href={post.href ?? `/blog/${post.slug}`}
+                    className="relative overflow-hidden h-44 block"
+                    aria-label={post.title}
+                  >
                     <img
                       src={post.imageSrc}
                       alt={post.imageAlt}
@@ -470,19 +332,35 @@ export default function BlogClient({ faqData }: Props) {
                       className="absolute inset-0"
                       style={{ background: "linear-gradient(to bottom, transparent 50%, rgba(10,15,30,0.9) 100%)" }}
                     />
-                    <span
-                      className="absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full"
-                      style={{
-                        background: "rgba(124,58,237,0.85)",
-                        color: "#E5E7EB",
-                        fontFamily: "Inter, sans-serif",
-                        backdropFilter: "blur(4px)",
-                        border: "1px solid rgba(168,85,247,0.4)",
-                      }}
-                    >
-                      {post.category}
-                    </span>
-                  </div>
+                    <div className="absolute top-3 left-3 flex items-center gap-2">
+                      <span
+                        className="text-xs font-semibold px-2.5 py-1 rounded-full"
+                        style={{
+                          background: "rgba(124,58,237,0.85)",
+                          color: "#E5E7EB",
+                          fontFamily: "Inter, sans-serif",
+                          backdropFilter: "blur(4px)",
+                          border: "1px solid rgba(168,85,247,0.4)",
+                        }}
+                      >
+                        {post.category}
+                      </span>
+                      {post.secondaryCategory && (
+                        <span
+                          className="text-xs font-semibold px-2.5 py-1 rounded-full"
+                          style={{
+                            background: "rgba(124,58,237,0.85)",
+                            color: "#E5E7EB",
+                            fontFamily: "Inter, sans-serif",
+                            backdropFilter: "blur(4px)",
+                            border: "1px solid rgba(168,85,247,0.4)",
+                          }}
+                        >
+                          {post.secondaryCategory}
+                        </span>
+                      )}
+                    </div>
+                  </Link>
 
                   {/* Body */}
                   <div className="flex flex-col flex-1 p-5 gap-3">
@@ -500,14 +378,16 @@ export default function BlogClient({ faqData }: Props) {
                     >
                       {post.title}
                     </h3>
-                    <p
-                      className="text-sm leading-relaxed flex-1 line-clamp-3"
-                      style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
-                    >
-                      {post.excerpt}
-                    </p>
+                    {post.excerpt && (
+                      <p
+                        className="text-sm leading-relaxed flex-1 line-clamp-3"
+                        style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
+                      >
+                        {post.excerpt}
+                      </p>
+                    )}
                     <Link
-                      href={`/blog/${post.slug}`}
+                      href={post.href ?? `/blog/${post.slug}`}
                       className="inline-flex items-center gap-1.5 text-xs font-semibold mt-1 group/link"
                       style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
                       aria-label={`Read more about ${post.title}`}
