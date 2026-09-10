@@ -1,8 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import Section from "@/components/Section";
+import { BlurIn, RevealMask, ScrollProgressRail } from "@/components/ScrollFX";
+import { ShutterReveal, TrackingReveal, SwingIn } from "@/components/SolutionsFX";
 import { Search, ArrowRight, ChevronDown, ChevronUp, Mail, TrendingUp, Globe, Target, Share2, Bot } from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -143,6 +146,12 @@ export default function BlogClient({ faqData }: Props) {
   const [subscribed, setSubscribed] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [visibleCount, setVisibleCount] = useState(6);
+  const [heroFocused, setHeroFocused] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setHeroFocused(true), 150);
+    return () => clearTimeout(t);
+  }, []);
 
   const filteredPosts =
     activeCategory === "all"
@@ -163,80 +172,148 @@ export default function BlogClient({ faqData }: Props) {
   return (
     <>
       {/* ── Blog Hero ── */}
-      <Section background="gradient" spacing="xl" centered>
-        {/* Decorative orbs */}
+      <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#0A0F1E] via-[#110D2E] to-[#0A0F1E] flex items-center py-16 sm:py-20 md:min-h-screen md:py-36">
+        {/* Full-width, full-height banner background image — racks into focus on load, like the About Us hero */}
+        <motion.div
+          aria-hidden="true"
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.pexels.com/photos/265667/pexels-photo-265667.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1080&w=1920')",
+          }}
+          initial={{ filter: "blur(28px) saturate(0.3) brightness(0.8)", scale: 1.12 }}
+          animate={
+            heroFocused
+              ? { filter: "blur(0px) saturate(1) brightness(1)", scale: 1 }
+              : {}
+          }
+          transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(10,8,26,0.82) 0%, rgba(10,8,26,0.85) 50%, rgba(10,8,26,0.92) 100%)",
+          }}
+        />
+
+        {/* Decorative glow orb — sits on top of the banner image */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full opacity-20 blur-3xl"
           style={{ background: "radial-gradient(ellipse, #7C3AED 0%, #A855F7 40%, transparent 70%)" }}
         />
-        <div className="relative z-10">
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <span
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest"
-              style={{
-                background: "rgba(124,58,237,0.15)",
-                border: "1px solid rgba(168,85,247,0.35)",
-                color: "#A855F7",
-                fontFamily: "Space Grotesk, sans-serif",
-              }}
-            >
-              <Bot size={13} />
-              Echo5 Digital Blog
-            </span>
-          </div>
+
+        <div className="relative z-10 mx-auto w-full px-5 sm:px-6 lg:px-8 max-w-6xl text-center">
+          <BlurIn>
+            <div className="flex items-center justify-center gap-2 mb-4 sm:mb-6">
+              <span
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 lg:px-5 lg:py-2.5 rounded-full text-xs sm:text-sm lg:text-base font-medium"
+                style={{
+                  background: "rgba(107,78,240,0.15)",
+                  border: "1px solid rgba(107,78,240,0.35)",
+                  color: "#8B5CF6",
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                <Bot size={13} className="sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
+                Echo5 Digital Blog
+              </span>
+            </div>
+          </BlurIn>
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight tracking-tight"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+            className="text-[2.25rem] leading-[1.15] sm:text-4xl sm:leading-tight md:text-5xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 lg:leading-[1.05]"
+            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB", letterSpacing: "-0.02em" }}
           >
-            AI Marketing Insights{" "}
-            <span
-              className="inline-block"
-              style={{
-                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              & Strategies
-            </span>
+            <RevealMask>AI Marketing Insights</RevealMask>{" "}
+            <RevealMask delay={0.1}>
+              <span
+                className="inline-block"
+                style={{
+                  background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                & Strategies
+              </span>
+            </RevealMask>
           </h1>
-          <p
-            className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-8"
-            style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
-          >
-            Expert guidance on SEO, AEO, Google Ads, social media, and AI-powered growth — written for
-            small and mid-sized businesses ready to scale their digital presence.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="#blog-grid"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-white text-sm transition-all duration-200 hover:brightness-110"
-              style={{
-                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                boxShadow: "0 0 24px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
-                fontFamily: "Inter, sans-serif",
-              }}
+          <BlurIn delay={0.3}>
+            <p
+              className="text-base sm:text-lg lg:text-2xl max-w-md sm:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8"
+              style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
             >
-              Browse Articles <ArrowRight size={16} />
-            </a>
-            <a
-              href="#newsletter"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm transition-all duration-200 hover:bg-purple-900/30"
-              style={{
-                background: "rgba(124,58,237,0.12)",
-                border: "1px solid rgba(124,58,237,0.35)",
-                color: "#E5E7EB",
-                fontFamily: "Inter, sans-serif",
-              }}
+              Expert guidance on SEO, AEO, Google Ads, social media, and AI-powered growth — written for
+              small and mid-sized businesses ready to scale their digital presence.
+            </p>
+          </BlurIn>
+          <BlurIn delay={0.4}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 lg:gap-5">
+              <a
+                href="#blog-grid"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 lg:px-10 lg:py-5 rounded-full font-semibold text-white text-sm sm:text-base lg:text-lg transition-all duration-200 hover:brightness-110 hover:scale-105 active:scale-95"
+                style={{
+                  background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
+                  boxShadow: "0 0 24px rgba(107,78,240,0.55), 0 4px 14px rgba(0,0,0,0.3)",
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                Browse Articles <ArrowRight size={18} />
+              </a>
+              <a
+                href="#newsletter"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 lg:px-10 lg:py-5 rounded-full font-semibold text-sm sm:text-base lg:text-lg transition-all duration-200 hover:bg-white/5 hover:scale-105 active:scale-95"
+                style={{
+                  border: "1px solid rgba(107,78,240,0.4)",
+                  color: "#E5E7EB",
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                <Mail size={17} /> Subscribe to Newsletter
+              </a>
+            </div>
+          </BlurIn>
+        </div>
+      </section>
+
+      {/* Quick Answer Block */}
+      <Section
+        background="transparent"
+        spacing="sm"
+        withDivider
+        className="!bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+      >
+        <div
+          className="rounded-xl border px-6 py-5 flex gap-4 items-start"
+          style={{
+            background: "linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(168,85,247,0.04) 100%)",
+            borderColor: "rgba(124,58,237,0.2)",
+          }}
+        >
+          <div
+            className="shrink-0 w-2 self-stretch rounded-full"
+            style={{ background: "linear-gradient(180deg, #7C3AED, #A855F7)" }}
+            aria-hidden="true"
+          />
+          <div>
+            <p
+              className="text-xs font-semibold uppercase tracking-widest mb-2"
+              style={{ color: "#7C3AED", fontFamily: "Space Grotesk, sans-serif" }}
             >
-              <Mail size={15} /> Subscribe to Newsletter
-            </a>
+              Quick Answer
+            </p>
+            <p className="text-sm leading-relaxed" style={{ color: "#1F2340", fontFamily: "Inter, sans-serif" }}>
+              The Echo5 Digital blog covers AI-powered marketing strategies, SEO, Answer Engine Optimization (AEO),
+              Google Ads, social media, content marketing, and web development. It is written for small and mid-sized
+              business owners and marketing decision-makers seeking practical, expert guidance on growing their online
+              presence.
+            </p>
           </div>
         </div>
       </Section>
-
 
       {/* ── Blog Post Grid ── */}
       <Section id="blog-grid" background="default" spacing="lg" withDivider>
@@ -245,7 +322,7 @@ export default function BlogClient({ faqData }: Props) {
             className="text-2xl md:text-3xl font-bold"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
           >
-            {activeCategory === "all" ? "Latest Articles" : activeCategory}
+            <TrackingReveal text={activeCategory === "all" ? "Latest Articles" : activeCategory} />
           </h2>
           <span
             className="text-sm"
@@ -255,6 +332,7 @@ export default function BlogClient({ faqData }: Props) {
           </span>
         </div>
 
+        <ScrollProgressRail>
         {filteredPosts.length === 0 ? (
           <div className="text-center py-16">
             <p style={{ color: "rgba(229,231,235,0.4)", fontFamily: "Inter, sans-serif" }}>
@@ -287,10 +365,11 @@ export default function BlogClient({ faqData }: Props) {
                     className="relative overflow-hidden h-44 block"
                     aria-label={post.title}
                   >
-                    <img
+                    <ShutterReveal
                       src={post.imageSrc}
                       alt={post.imageAlt}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full"
+                      imgClassName="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div
                       className="absolute inset-0"
@@ -388,16 +467,24 @@ export default function BlogClient({ faqData }: Props) {
             )}
           </>
         )}
+        </ScrollProgressRail>
       </Section>
 
       {/* ── Newsletter Signup CTA ── */}
-      <Section id="newsletter" background="elevated" spacing="lg" centered withDivider>
+      <Section
+        id="newsletter"
+        background="transparent"
+        spacing="lg"
+        centered
+        withDivider
+        className="!bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+      >
         <div
           className="relative overflow-hidden rounded-2xl p-8 md:p-12 mx-auto max-w-2xl"
           style={{
-            background: "linear-gradient(135deg, rgba(124,58,237,0.18) 0%, rgba(168,85,247,0.1) 100%)",
-            border: "1px solid rgba(124,58,237,0.3)",
-            boxShadow: "0 0 60px rgba(124,58,237,0.15)",
+            background: "linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(168,85,247,0.05) 100%)",
+            border: "1px solid rgba(124,58,237,0.2)",
+            boxShadow: "0 12px 40px rgba(91,63,163,0.12)",
           }}
         >
           {/* Decorative glow */}
@@ -418,13 +505,13 @@ export default function BlogClient({ faqData }: Props) {
             </div>
             <h2
               className="text-2xl md:text-3xl font-bold mb-3"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1F2340" }}
             >
               Get AI Marketing Tips in Your Inbox
             </h2>
             <p
               className="text-sm leading-relaxed mb-8 max-w-md mx-auto"
-              style={{ color: "rgba(229,231,235,0.65)", fontFamily: "Inter, sans-serif" }}
+              style={{ color: "rgba(31,35,64,0.65)", fontFamily: "Inter, sans-serif" }}
             >
               Subscribe for expert insights on AI marketing, SEO, AEO, and digital growth strategies —
               delivered directly to you. No spam, unsubscribe anytime.
@@ -442,11 +529,11 @@ export default function BlogClient({ faqData }: Props) {
                 </div>
                 <p
                   className="text-lg font-bold"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1F2340" }}
                 >
                   You're subscribed!
                 </p>
-                <p style={{ color: "rgba(229,231,235,0.55)", fontFamily: "Inter, sans-serif", fontSize: "0.875rem" }}>
+                <p style={{ color: "rgba(31,35,64,0.6)", fontFamily: "Inter, sans-serif", fontSize: "0.875rem" }}>
                   Welcome aboard — expect expert AI marketing insights soon.
                 </p>
               </div>
@@ -468,9 +555,9 @@ export default function BlogClient({ faqData }: Props) {
                   placeholder="you@yourbusiness.com"
                   className="flex-1 px-5 py-3 rounded-full text-sm outline-none transition-all duration-200"
                   style={{
-                    background: "rgba(10,15,30,0.7)",
-                    border: "1px solid rgba(124,58,237,0.35)",
-                    color: "#E5E7EB",
+                    background: "#FFFFFF",
+                    border: "1px solid rgba(124,58,237,0.3)",
+                    color: "#1F2340",
                     fontFamily: "Inter, sans-serif",
                     minWidth: 0,
                   }}
@@ -479,7 +566,7 @@ export default function BlogClient({ faqData }: Props) {
                     (e.currentTarget as HTMLInputElement).style.boxShadow = "0 0 12px rgba(124,58,237,0.3)";
                   }}
                   onBlur={(e) => {
-                    (e.currentTarget as HTMLInputElement).style.borderColor = "rgba(124,58,237,0.35)";
+                    (e.currentTarget as HTMLInputElement).style.borderColor = "rgba(124,58,237,0.3)";
                     (e.currentTarget as HTMLInputElement).style.boxShadow = "none";
                   }}
                 />
@@ -501,7 +588,7 @@ export default function BlogClient({ faqData }: Props) {
 
             <p
               className="mt-4 text-xs"
-              style={{ color: "rgba(229,231,235,0.35)", fontFamily: "Inter, sans-serif" }}
+              style={{ color: "rgba(31,35,64,0.45)", fontFamily: "Inter, sans-serif" }}
             >
               Join business owners and marketers who read Echo5 Digital insights. Unsubscribe anytime.
             </p>
@@ -516,7 +603,7 @@ export default function BlogClient({ faqData }: Props) {
             className="text-2xl md:text-3xl font-bold mb-3"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
           >
-            Ready to Put These Strategies to Work?
+            <SwingIn text="Ready to Put These Strategies to Work?" />
           </h2>
           <p
             className="text-sm max-w-xl mx-auto leading-relaxed"
@@ -596,7 +683,7 @@ export default function BlogClient({ faqData }: Props) {
               className="text-2xl md:text-3xl font-bold mb-3"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
             >
-              Frequently Asked Questions
+              <TrackingReveal text="Frequently Asked Questions" />
             </h2>
             <p
               className="text-sm"

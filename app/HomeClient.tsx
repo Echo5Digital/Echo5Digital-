@@ -245,23 +245,24 @@ export default function HomeClient({ faqData }: HomeClientProps) {
 
                 {/* Stats row */}
                 <BlurIn delay={0.4}>
-                  <div className="flex flex-wrap items-start gap-x-6 sm:gap-x-10 gap-y-6">
+                  <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-x-4 sm:gap-x-10 gap-y-6">
                     {[
                       { icon: Rocket, value: "300+", label: "Projects Delivered" },
                       { icon: TrendingUp, value: "4.8x", label: "Average ROAS" },
                       { icon: Users, value: "85%", label: "Clients Scale Up" },
                       { icon: Shield, value: "24/7", label: "AI Monitoring" },
                     ].map((stat) => (
-                      <div key={stat.label} className="flex items-start gap-3">
-                        <stat.icon size={26} style={{ color: "#C4B5FD", marginTop: 3 }} />
-                        <div>
+                      <div key={stat.label} className="flex items-start gap-2 sm:gap-3 min-w-0">
+                        <stat.icon size={24} className="shrink-0 sm:hidden" style={{ color: "#C4B5FD", marginTop: 3 }} />
+                        <stat.icon size={26} className="shrink-0 hidden sm:block" style={{ color: "#C4B5FD", marginTop: 3 }} />
+                        <div className="min-w-0">
                           <div
-                            className="text-3xl font-bold leading-tight"
+                            className="text-2xl sm:text-3xl font-bold leading-tight"
                             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#FFFFFF" }}
                           >
                             {stat.value}
                           </div>
-                          <div className="text-sm whitespace-nowrap" style={{ color: "#D8D3E8" }}>
+                          <div className="text-xs sm:text-sm whitespace-nowrap" style={{ color: "#D8D3E8" }}>
                             {stat.label}
                           </div>
                         </div>

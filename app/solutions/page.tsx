@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import GetInTouchMarquee from "@/components/GetInTouchMarquee";
 import SolutionsClient from "./SolutionsClient";
 
 export const metadata: Metadata = {
@@ -79,6 +80,7 @@ export default function SolutionsPage() {
       />
       <Header />
       <SolutionsClient faqData={faqData} />
+      <GetInTouchMarquee />
       <Footer
         email="hello@echo5digital.com"
         // placeholder phone number used per business facts

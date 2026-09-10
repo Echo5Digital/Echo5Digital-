@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
+import GetInTouchMarquee from "@/components/GetInTouchMarquee";
 import PricingClient from "./PricingClient";
 
 export const metadata: Metadata = {
@@ -60,6 +61,7 @@ export default function PricingPage() {
       <main>
         <PricingClient faqData={faqData} />
       </main>
+      <GetInTouchMarquee />
       <Footer
         email="hello@echo5digital.com"
         phone="713-489-7004"
