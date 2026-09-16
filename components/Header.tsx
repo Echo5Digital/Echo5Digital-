@@ -193,11 +193,11 @@ export default function Header({
 
       <header
         style={{
-          backgroundColor: scrolled ? 'rgba(10,15,30,0.92)' : 'rgba(10,15,30,0.72)',
+          backgroundColor: 'rgba(10,15,30,0.92)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
           borderBottom: scrolled ? '1px solid rgba(124,58,237,0.25)' : '1px solid transparent',
-          transition: 'background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
+          transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
           boxShadow: scrolled ? '0 4px 32px rgba(124,58,237,0.12)' : 'none',
           position: 'fixed',
           top: 0,

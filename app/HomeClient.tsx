@@ -153,308 +153,90 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         }}
       >
         {/* ── HERO ─────────────────────────────────────────────────── */}
-        <section
-          className="relative overflow-hidden bg-cover bg-center lg:min-h-screen lg:flex lg:items-center"
-          style={{ backgroundImage: "url('/3d-render-abstract-background-with-flowing-particles-100kb.jpg')" }}
-        >
-          <div
-            aria-hidden="true"
-            className="absolute inset-0"
-            style={{ background: "linear-gradient(180deg, rgba(10,8,26,0.55) 0%, rgba(10,8,26,0.35) 50%, rgba(10,8,26,0.65) 100%)" }}
-          />
-          <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 sm:px-8 lg:px-12 pt-10 pb-10 md:pt-14 md:pb-16">
-            <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-6">
+        <section className="hero-banner relative overflow-hidden">
+          <style jsx>{`
+            .hero-banner {
+              background-color: #ffffff;
+            }
+            @media (min-width: 1024px) {
+              .hero-banner {
+                background-image: url("/banners.png");
+                background-size: 100% auto;
+                background-position: top center;
+                background-repeat: no-repeat;
+              }
+            }
+          `}</style>
+          <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 sm:px-8 lg:px-12 pt-14 pb-14 md:pt-16 md:pb-20 lg:min-h-[min(41.3vw,787px)] lg:flex lg:items-center">
+            <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-8">
               {/* Text */}
-              <div className="flex-1 w-full">
+              <div className="w-full lg:w-[100%] lg:flex-shrink-0">
                 <BlurIn>
-                  <div
-                    className="inline-flex items-center gap-2 rounded-full text-sm font-semibold mb-7 px-5 py-2.5"
-                    style={{
-                      color: "#E9D5FF",
-                      background: "rgba(255,255,255,0.15)",
-                      letterSpacing: "0.5px",
-                    }}
+                  <p
+                    className="text-xs font-bold uppercase mb-5"
+                    style={{ color: "#6B4EF0", letterSpacing: "2px" }}
                   >
-                    <Sparkles size={16} />
-                    AI-POWERED DIGITAL SOLUTIONS
-                  </div>
+                    Done-For-You Marketing For Local Businesses
+                  </p>
                 </BlurIn>
                 <h1
-                  className="font-black leading-[1.05] tracking-tight mb-7"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.25rem, 8vw, 4.75rem)", color: "#FFFFFF" }}
+                  className="font-black leading-[1.05] tracking-tight mb-5"
+                  style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 6.5vw, 4.25rem)", color: "#15172B" }}
                 >
-                  <RevealMask>Your AI Marketing</RevealMask>
+                  <RevealMask>We Run Your</RevealMask>
                   <br />
-                  <RevealMask delay={0.1}>
-                    <span
-                      style={{
-                        background: "linear-gradient(90deg, #D8B4FE, #A5B4FC)",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                      }}
-                    >
-                      Growth Engine
-                    </span>{" "}
-                    Is Here
-                  </RevealMask>
+                  <RevealMask delay={0.1}>Marketing.</RevealMask>
                 </h1>
+                <BlurIn delay={0.15}>
+                  <p
+                    className="font-bold leading-snug mb-6"
+                    style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.25rem, 2.6vw, 1.75rem)", color: "#0D9488" }}
+                  >
+                    AI keeps watch. Our experts take action.
+                  </p>
+                </BlurIn>
                 <BlurIn delay={0.2}>
                   <p
-                    className="text-xl leading-relaxed mb-9 max-w-2xl"
-                    style={{ color: "#E5E1F0" }}
+                    className="text-lg leading-relaxed mb-9 max-w-xl"
+                    style={{ color: "#5B5F73" }}
                   >
-                    Done-for-you SEO, AEO, Google Ads, Social Media, and Web development — powered by agents. All with real human oversight. Serving Houston, Sugar Land, and businesses nationwide.
+                    Your AI Marketing Employee monitors performance and finds opportunities. Our marketing team turns them into completed work — from SEO and content to ads and website improvements.
                   </p>
                 </BlurIn>
                 <BlurIn delay={0.3}>
-                  <div className="flex flex-col sm:flex-row gap-5 mb-12">
+                  <div className="flex flex-col sm:flex-row gap-4 mb-6">
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110 active:scale-95"
+                      className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-base whitespace-nowrap transition-all duration-200 hover:brightness-110 active:scale-95"
                       style={{
-                        background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
-                        boxShadow: "0 8px 24px rgba(107,78,240,0.35)",
+                        background: "#15172B",
+                        boxShadow: "0 8px 24px rgba(21,23,43,0.25)",
                         fontFamily: "Space Grotesk, sans-serif",
                       }}
                     >
-                      Book a Free Demo <ArrowRight size={18} />
+                      Book a Growth Review
                     </Link>
                     <Link
-                      href="/results"
-                      className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all duration-200"
+                      href="/pricing"
+                      className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap transition-all duration-200"
                       style={{
-                        border: "2px solid rgba(255,255,255,0.4)",
-                        color: "#FFFFFF",
+                        border: "2px solid rgba(21,23,43,0.15)",
+                        color: "#15172B",
                         fontFamily: "Space Grotesk, sans-serif",
                       }}
                     >
-                      <span
-                        className="inline-flex items-center justify-center rounded-full"
-                        style={{
-                          width: "22px",
-                          height: "22px",
-                          background: "#6B4EF0",
-                        }}
-                      >
-                        <Play size={10} color="#fff" fill="#fff" />
-                      </span>
-                      View Plans
+                      Explore Our Plans
                     </Link>
                   </div>
                 </BlurIn>
-
-                {/* Stats row */}
-                <BlurIn delay={0.4}>
-                  <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-x-4 sm:gap-x-10 gap-y-6">
-                    {[
-                      { icon: Rocket, value: "300+", label: "Projects Delivered" },
-                      { icon: TrendingUp, value: "4.8x", label: "Average ROAS" },
-                      { icon: Users, value: "85%", label: "Clients Scale Up" },
-                      { icon: Shield, value: "24/7", label: "AI Monitoring" },
-                    ].map((stat) => (
-                      <div key={stat.label} className="flex items-start gap-2 sm:gap-3 min-w-0">
-                        <stat.icon size={24} className="shrink-0 sm:hidden" style={{ color: "#C4B5FD", marginTop: 3 }} />
-                        <stat.icon size={26} className="shrink-0 hidden sm:block" style={{ color: "#C4B5FD", marginTop: 3 }} />
-                        <div className="min-w-0">
-                          <div
-                            className="text-2xl sm:text-3xl font-bold leading-tight"
-                            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#FFFFFF" }}
-                          >
-                            {stat.value}
-                          </div>
-                          <div className="text-xs sm:text-sm whitespace-nowrap" style={{ color: "#D8D3E8" }}>
-                            {stat.label}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                <BlurIn delay={0.35}>
+                  <p className="text-sm" style={{ color: "#8B8FA3" }}>
+                    AI-powered monitoring. Human-managed delivery.
+                  </p>
                 </BlurIn>
               </div>
 
-              {/* Visual */}
-              <div className="hidden lg:block flex-1 w-full max-w-2xl relative min-h-0 sm:min-h-[460px]">
-                {/* Ambient glow rings behind everything */}
-                <div
-                  aria-hidden="true"
-                  className="absolute rounded-full"
-                  style={{
-                    top: "50%",
-                    left: "50%",
-                    width: "min(92%, 460px)",
-                    aspectRatio: "1 / 1",
-                    transform: "translate(-50%, -50%)",
-                    background:
-                      "radial-gradient(circle, rgba(107,78,240,0.22) 0%, rgba(107,78,240,0.08) 55%, transparent 75%)",
-                  }}
-                />
-                {/* Robot illustration */}
-                <div
-                  className="relative mx-auto"
-                  style={{
-                    width: "min(100%, 420px)",
-                    aspectRatio: "1268 / 1210",
-                  }}
-                >
-                  <Image
-                    src="/ec.png"
-                    alt="AI Marketing Employee robot working at a laptop"
-                    fill
-                    sizes="420px"
-                    className="object-contain"
-                    priority
-                  />
-                </div>
-
-                {/* Floating stat card — More Traffic */}
-                <div
-                  className="hidden md:flex absolute items-center gap-2.5 rounded-xl px-4 py-3 orbit-float-a"
-                  style={{
-                    top: "0%",
-                    left: "2%",
-                    background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
-                    boxShadow: "0 16px 40px rgba(107,78,240,0.4)",
-                  }}
-                >
-                  <BarChart3 size={18} style={{ color: "#fff" }} />
-                  <div>
-                    <p className="text-xs font-bold" style={{ color: "#fff" }}>More Traffic</p>
-                    <p className="text-[0.65rem]" style={{ color: "#E5E1F0" }}>Higher Rankings</p>
-                  </div>
-                  <ArrowRight size={12} style={{ color: "#fff" }} />
-                </div>
-
-                {/* Floating stat card — Better Leads */}
-                <div
-                  className="hidden md:flex absolute items-center gap-2.5 rounded-xl px-4 py-3 orbit-float-b"
-                  style={{
-                    top: "4%",
-                    right: "0%",
-                    background: "linear-gradient(135deg, #EA580C, #F97316)",
-                    boxShadow: "0 16px 40px rgba(234,88,12,0.4)",
-                  }}
-                >
-                  <span
-                    className="flex items-center justify-center rounded-full"
-                    style={{ width: 26, height: 26, background: "rgba(255,255,255,0.2)" }}
-                  >
-                    <TrendingUp size={14} style={{ color: "#fff" }} />
-                  </span>
-                  <div>
-                    <p className="text-xs font-bold" style={{ color: "#fff" }}>Better Leads</p>
-                    <p className="text-[0.65rem]" style={{ color: "#FFE8D9" }}>Real Growth</p>
-                  </div>
-                  <ArrowRight size={12} style={{ color: "#fff" }} />
-                </div>
-
-                {/* Floating stat card — Modern Websites */}
-                <div
-                  className="hidden sm:flex absolute items-center gap-2.5 rounded-xl px-4 py-3 orbit-float-c"
-                  style={{
-                    bottom: "6%",
-                    left: "-8%",
-                    background: "linear-gradient(135deg, #0891B2, #06B6D4)",
-                    boxShadow: "0 16px 40px rgba(8,145,178,0.4)",
-                  }}
-                >
-                  <span
-                    className="flex items-center justify-center rounded-lg"
-                    style={{ width: 26, height: 26, background: "rgba(255,255,255,0.2)" }}
-                  >
-                    <Globe size={14} color="#fff" />
-                  </span>
-                  <div>
-                    <p className="text-xs font-bold" style={{ color: "#fff" }}>Modern Websites</p>
-                    <p className="text-[0.65rem]" style={{ color: "#D2F4FA" }}>Built for You</p>
-                  </div>
-                  <ArrowRight size={12} style={{ color: "#fff" }} />
-                </div>
-
-                {/* Floating "AI Working for You" card */}
-                <div
-                  className="hidden sm:block absolute rounded-2xl p-5 orbit-float-d"
-                  style={{
-                    bottom: "-10%",
-                    right: "-10%",
-                    width: 230,
-                    background: "linear-gradient(160deg, #1F1147, #3B2287)",
-                    border: "1px solid rgba(139,92,246,0.35)",
-                    boxShadow: "0 20px 50px rgba(31,17,71,0.5)",
-                  }}
-                >
-                  <p
-                    className="text-xs font-semibold mb-3 flex items-center gap-1.5"
-                    style={{ color: "#D8B4FE" }}
-                  >
-                    <PlusCircle size={12} /> AI Working for You
-                  </p>
-                  <div className="flex flex-col gap-2.5">
-                    {[
-                      "SEO Optimization",
-                      "Content Creation",
-                      "Ad Campaigns",
-                      "Social Media",
-                      "Web Development",
-                    ].map((task) => (
-                      <div key={task} className="flex items-center justify-between">
-                        <span className="text-xs" style={{ color: "#E5E1F0" }}>
-                          {task}
-                        </span>
-                        <span
-                          className="flex items-center gap-1 text-[0.65rem] font-medium"
-                          style={{ color: "#4ADE80" }}
-                        >
-                          <span
-                            className="w-1.5 h-1.5 rounded-full"
-                            style={{ background: "#4ADE80" }}
-                          />
-                          Running
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <style jsx>{`
-                @keyframes orbitFloatA {
-                  0% { transform: translate(0, 0); }
-                  25% { transform: translate(6px, 10px); }
-                  50% { transform: translate(0, 18px); }
-                  75% { transform: translate(-6px, 10px); }
-                  100% { transform: translate(0, 0); }
-                }
-                @keyframes orbitFloatB {
-                  0% { transform: translate(0, 0); }
-                  25% { transform: translate(-8px, 8px); }
-                  50% { transform: translate(-14px, 0); }
-                  75% { transform: translate(-8px, -8px); }
-                  100% { transform: translate(0, 0); }
-                }
-                @keyframes orbitFloatC {
-                  0% { transform: translate(0, 0); }
-                  25% { transform: translate(8px, -8px); }
-                  50% { transform: translate(14px, 0); }
-                  75% { transform: translate(8px, 8px); }
-                  100% { transform: translate(0, 0); }
-                }
-                @keyframes orbitFloatD {
-                  0% { transform: translate(0, 0); }
-                  25% { transform: translate(-6px, -10px); }
-                  50% { transform: translate(0, -18px); }
-                  75% { transform: translate(6px, -10px); }
-                  100% { transform: translate(0, 0); }
-                }
-                .orbit-float-a { animation: orbitFloatA 7s ease-in-out infinite; }
-                .orbit-float-b { animation: orbitFloatB 8s ease-in-out infinite; animation-delay: 0.5s; }
-                .orbit-float-c { animation: orbitFloatC 9s ease-in-out infinite; animation-delay: 1s; }
-                .orbit-float-d { animation: orbitFloatD 7.5s ease-in-out infinite; animation-delay: 1.5s; }
-                @media (prefers-reduced-motion: reduce) {
-                  .orbit-float-a, .orbit-float-b, .orbit-float-c, .orbit-float-d {
-                    animation: none;
-                  }
-                }
-              `}</style>
+              <div className="hidden lg:block lg:flex-1" aria-hidden="true" />
             </div>
           </div>
         </section>
