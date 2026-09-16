@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import SEOClient from "./SEOClient";
 
 export const metadata: Metadata = {
@@ -85,12 +84,6 @@ const serviceSchemaData = {
 };
 
 export default function SEOPage() {
-  const breadcrumbItems = [
-    { label: "Home", href: "/" },
-    { label: "Services", href: "/solutions" },
-    { label: "SEO Services", href: "/services/seo" },
-  ];
-
   return (
     <>
       <script
@@ -102,7 +95,6 @@ export default function SEOPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchemaData) }}
       />
       <Header />
-      <Breadcrumbs items={breadcrumbItems} />
       <SEOClient faqItems={faqItems} />
       <Footer
         email="hello@echo5digital.com"

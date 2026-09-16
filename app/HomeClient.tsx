@@ -8,7 +8,7 @@ import ContactForm from "@/components/ContactForm";
 import TeamSection from "@/components/TeamSection";
 import IndustriesWeGrow from "@/components/IndustriesWeGrow";
 import TrustedByShowcase from "@/components/TrustedByShowcase";
-import { RevealMask, BlurIn } from "@/components/ScrollFX";
+import { RevealMask, BlurIn, ProcessStepsRail, ProcessStepCard, DiagonalWipe, SplitClash, ClipRow } from "@/components/ScrollFX";
 import {
   Bot,
   Search,
@@ -190,7 +190,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 <BlurIn delay={0.15}>
                   <p
                     className="font-bold leading-snug mb-6"
-                    style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.25rem, 2.6vw, 1.75rem)", color: "#0D9488" }}
+                    style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.25rem, 2.6vw, 1.75rem)", color: "rgb(148, 73, 242)" }}
                   >
                     AI keeps watch. Our experts take action.
                   </p>
@@ -209,8 +209,8 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                       href="/contact"
                       className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-base whitespace-nowrap transition-all duration-200 hover:brightness-110 active:scale-95"
                       style={{
-                        background: "#15172B",
-                        boxShadow: "0 8px 24px rgba(21,23,43,0.25)",
+                        background: "rgb(135, 65, 240)",
+                        boxShadow: "0 8px 24px rgba(135,65,240,0.35)",
                         fontFamily: "Space Grotesk, sans-serif",
                       }}
                     >
@@ -401,86 +401,90 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         </section>
 
         {/* ── HOW IT WORKS ─────────────────────────────────────────── */}
-        <section className="relative overflow-hidden" style={{ background: "#0A0F1E" }}>
-          <div
-            aria-hidden="true"
-            className="absolute pointer-events-none"
-            style={{
-              top: "-10%",
-              left: "50%",
-              width: "900px",
-              height: "600px",
-              transform: "translateX(-50%)",
-              background: "radial-gradient(ellipse 50% 50% at 50% 50%, rgba(107,78,240,0.18) 0%, transparent 70%)",
-            }}
-          />
-          <div className="relative z-10 max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
-            <div className="lg:w-80 flex-shrink-0">
-              <div
-                className="inline-flex items-center gap-2 rounded-full text-xs font-semibold mb-4"
-                style={{
-
-                  color: "#A78BFA",
-                }}
-              >
-                HOW IT WORKS
-              </div>
-              <h2
-                className="font-black leading-[1.04] tracking-tight mb-4"
-                style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#F5F3FF" }}
-              >
-                A Simple Process for Big Results
-              </h2>
-              <p className="text-base leading-relaxed" style={{ color: "#9CA3AF" }}>
-                We combine AI execution with expert human oversight to deliver continuous
-                growth.
-              </p>
-            </div>
-
-            <div className="flex-1 relative">
+        <section className="w-full px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+          <BlurIn>
+            <div
+              className="relative overflow-hidden rounded-[2rem] w-full px-8 py-12 md:px-14 md:py-16"
+              style={{ background: "linear-gradient(135deg, #E4D9FB 0%, #DCCBFA 100%)" }}
+            >
               <div
                 aria-hidden="true"
-                className="hidden lg:block absolute h-px"
+                className="absolute pointer-events-none"
                 style={{
-                  top: "20px",
-                  left: "8%",
-                  right: "8%",
-                  background: "rgba(107,78,240,0.25)",
+                  top: "-20%",
+                  right: "-8%",
+                  width: "500px",
+                  height: "500px",
+                  background: "radial-gradient(ellipse 50% 50% at 50% 50%, rgba(107,78,240,0.15) 0%, transparent 70%)",
                 }}
               />
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {processSteps.map((step) => (
-                  <div key={step.step} className="relative flex flex-col gap-3">
-                    <div
-                      className="flex items-center justify-center rounded-full text-sm font-bold relative z-10"
-                      style={{
-                        width: "40px",
-                        height: "40px",
-                        background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
-                        color: "#fff",
-                        fontFamily: "Space Grotesk, sans-serif",
-                        boxShadow: "0 6px 16px rgba(107,78,240,0.35)",
-                      }}
+              <div className="relative z-10 flex flex-col lg:flex-row gap-12 lg:gap-16">
+                <div className="lg:w-80 flex-shrink-0">
+                  <BlurIn delay={0.05}>
+                    <p
+                      className="text-xs font-bold uppercase mb-4"
+                      style={{ color: "#6B4EF0", letterSpacing: "2px" }}
                     >
-                      {step.step}
-                    </div>
-                    <step.icon size={22} style={{ color: "#A78BFA" }} />
-                    <h3
-                      className="text-base font-semibold"
-                      style={{ fontFamily: "Space Grotesk, sans-serif", color: "#F5F3FF" }}
-                    >
-                      {step.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed" style={{ color: "#9CA3AF" }}>
-                      {step.desc}
+                      How it works
                     </p>
-                  </div>
-                ))}
+                  </BlurIn>
+                  <h2
+                    className="font-black leading-[1.05] tracking-tight mb-4"
+                    style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 3.5rem)", color: "#15172B" }}
+                  >
+                    <RevealMask>A simple</RevealMask>
+                    <br />
+                    <RevealMask delay={0.1}>process for</RevealMask>
+                    <br />
+                    <RevealMask delay={0.2}>big results</RevealMask>
+                  </h2>
+                  <BlurIn delay={0.3}>
+                    <p className="text-base leading-relaxed" style={{ color: "#4B4F63" }}>
+                      We combine AI execution with expert human oversight to deliver continuous
+                      growth.
+                    </p>
+                  </BlurIn>
+                </div>
+
+                <div className="flex-1">
+                  <ProcessStepsRail
+                    columns={4}
+                    lineColor="rgba(107,78,240,0.3)"
+                    dotColor="#6B4EF0"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+                  >
+                    {processSteps.map((step, i) => (
+                      <ProcessStepCard key={step.step} index={i} className="relative flex flex-col gap-3">
+                        <div
+                          className="flex items-center justify-center rounded-full text-sm font-bold relative z-10"
+                          style={{
+                            width: "40px",
+                            height: "40px",
+                            background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
+                            color: "#fff",
+                            fontFamily: "Space Grotesk, sans-serif",
+                            boxShadow: "0 6px 16px rgba(107,78,240,0.35)",
+                          }}
+                        >
+                          {step.step}
+                        </div>
+                        <step.icon size={22} style={{ color: "#6B4EF0" }} />
+                        <h3
+                          className="text-base font-semibold"
+                          style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
+                        >
+                          {step.title}
+                        </h3>
+                        <p className="text-sm leading-relaxed" style={{ color: "#4B4F63" }}>
+                          {step.desc}
+                        </p>
+                      </ProcessStepCard>
+                    ))}
+                  </ProcessStepsRail>
+                </div>
               </div>
             </div>
-          </div>
-          </div>
+          </BlurIn>
         </section>
 
         {/* ── INDUSTRIES WE GROW ──────────────────────────────────── */}
@@ -708,8 +712,8 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         </Section>
 
         {/* ── TRADITIONAL AGENCY VS ECHO5 DIGITAL ─────────────────────── */}
-        <Section background="transparent" spacing="lg" maxWidth="3xl" withDivider className="relative !bg-[#07050F]">
-          {/* Background image + overlay */}
+        <Section background="transparent" spacing="sm" maxWidth="3xl" withDivider className="relative !bg-[#0A0616]">
+          {/* Background image (network/circuit tech visual) */}
           <div
             aria-hidden="true"
             className="absolute inset-0 bg-cover bg-center"
@@ -723,122 +727,206 @@ export default function HomeClient({ faqData }: HomeClientProps) {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(7,5,15,0.93) 0%, rgba(7,5,15,0.90) 100%)",
+                "linear-gradient(180deg, rgba(10,6,22,0.55) 0%, rgba(10,6,22,0.75) 50%, rgba(10,6,22,0.92) 100%)",
             }}
+          />
+          {/* Glow orbs for extra depth */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-24 left-1/4 w-[500px] h-[500px] rounded-full opacity-30 blur-3xl"
+            style={{ background: "radial-gradient(circle, #A855F7 0%, transparent 70%)" }}
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 opacity-40"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
-              backgroundSize: "36px 36px",
-            }}
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full opacity-20 blur-3xl"
-            style={{
-              background: "radial-gradient(circle, #7C3AED 0%, #A855F7 40%, transparent 70%)",
-            }}
+            className="pointer-events-none absolute bottom-0 right-0 w-[450px] h-[450px] rounded-full opacity-25 blur-3xl"
+            style={{ background: "radial-gradient(circle, #7C3AED 0%, transparent 70%)" }}
           />
 
           {/* Content */}
           <div className="relative z-10">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <div className="text-xs font-bold tracking-widest mb-3" style={{ color: "#A855F7" }}>
-                THE DIFFERENCE IS CLEAR
-              </div>
-              <h2
-                className="font-black leading-[1.05] tracking-tight mb-4"
-                style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.9rem, 4.5vw, 3rem)", color: "#FFFFFF" }}
-              >
-                Traditional Agency{" "}
-                <span
+            <DiagonalWipe>
+              <div className="text-center max-w-2xl mx-auto mb-8">
+                <div
+                  className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest mb-3"
                   style={{
-                    background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
+                    color: "#D8B4FE",
+                    background: "rgba(168,85,247,0.12)",
+                    border: "1px solid rgba(168,85,247,0.35)",
                   }}
                 >
-                  VS
-                </span>{" "}
-                Echo5 Digital
-              </h2>
-              <p className="text-base leading-relaxed" style={{ color: "#9CA3AF" }}>
-                Why smart brands are replacing their agencies with Echo5&apos;s AI-powered growth system.
-              </p>
-            </div>
+                  THE DIFFERENCE IS CLEAR
+                </div>
+                <h2
+                  className="font-black leading-[1.05] tracking-tight mb-3"
+                  style={{
+                    fontFamily: "Space Grotesk, sans-serif",
+                    fontSize: "clamp(1.9rem, 4.5vw, 3rem)",
+                    color: "#FFFFFF",
+                  }}
+                >
+                  Traditional Agency{" "}
+                  <span
+                    style={{
+                      background: "linear-gradient(135deg, #A855F7, #E9D5FF)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    VS
+                  </span>{" "}
+                  Echo5 Digital
+                </h2>
+                <p className="text-base leading-relaxed" style={{ color: "#C4C7D6" }}>
+                  Why smart brands are replacing their agencies with Echo5&apos;s AI-powered growth system.
+                </p>
+              </div>
+            </DiagonalWipe>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch max-w-4xl mx-auto">
-              {/* Traditional Agency */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-stretch max-w-4xl mx-auto relative">
+              {/* VS badge between the two cards (desktop only) */}
               <div
-                className="rounded-2xl p-8"
+                aria-hidden="true"
+                className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 items-center justify-center rounded-full font-black text-white"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  width: "64px",
+                  height: "64px",
+                  fontFamily: "Space Grotesk, sans-serif",
+                  fontSize: "1.1rem",
+                  background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                  boxShadow: "0 10px 30px rgba(168,85,247,0.5), 0 0 0 6px rgba(10,6,22,0.9)",
                 }}
               >
-                <h3
-                  className="text-lg font-bold mb-6"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#9CA3AF" }}
-                >
-                  Traditional Agency
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    "Human team with limited capacity",
-                    "Slow execution — weeks to go live",
-                    "Monthly vanity metric reports",
-                    "Disconnected tools and platforms",
-                    "No lead intelligence or attribution",
-                    "AI as an afterthought",
-                    "Scales by hiring more people",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <XCircle size={18} style={{ color: "#6B7280", flexShrink: 0, marginTop: 1 }} />
-                      <span className="text-sm leading-relaxed" style={{ color: "#9CA3AF" }}>
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                VS
               </div>
+
+              {/* Traditional Agency */}
+              <SplitClash side="left">
+                <div
+                  className="rounded-2xl p-6 h-full"
+                  style={{
+                    background: "rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    boxShadow: "0 25px 60px rgba(0,0,0,0.35)",
+                    backdropFilter: "blur(14px)",
+                  }}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div
+                      className="flex items-center justify-center rounded-full flex-shrink-0"
+                      style={{ width: "48px", height: "48px", background: "rgba(255,255,255,0.1)" }}
+                    >
+                      <Users size={22} style={{ color: "#C4C7D6" }} />
+                    </div>
+                    <h3
+                      className="text-lg font-bold"
+                      style={{ fontFamily: "Space Grotesk, sans-serif", color: "#F5F3FF" }}
+                    >
+                      Traditional Agency
+                    </h3>
+                  </div>
+                  <ul>
+                    {[
+                      "Human team with limited capacity",
+                      "Slow execution — weeks to go live",
+                      "Monthly vanity metric reports",
+                      "Disconnected tools and platforms",
+                      "No lead intelligence or attribution",
+                      "AI as an afterthought",
+                      "Scales by hiring more people",
+                    ].map((item, i, arr) => (
+                      <ClipRow
+                        key={item}
+                        index={i}
+                        className="flex items-center gap-3 py-2.5"
+                        style={{
+                          borderBottom: i < arr.length - 1 ? "1px solid rgba(255,255,255,0.1)" : "none",
+                        }}
+                      >
+                        <span
+                          className="flex items-center justify-center rounded-full flex-shrink-0"
+                          style={{ width: "22px", height: "22px", background: "rgba(255,255,255,0.1)" }}
+                        >
+                          <XCircle size={14} style={{ color: "#9CA3AF" }} />
+                        </span>
+                        <span className="text-sm leading-relaxed" style={{ color: "#B4B7C9" }}>
+                          {item}
+                        </span>
+                      </ClipRow>
+                    ))}
+                  </ul>
+                </div>
+              </SplitClash>
 
               {/* Echo5 Digital */}
-              <div
-                className="rounded-2xl p-8 relative overflow-hidden"
-                style={{
-                  background: "linear-gradient(160deg, rgba(124,58,237,0.18) 0%, rgba(168,85,247,0.06) 100%)",
-                  border: "1px solid rgba(168,85,247,0.4)",
-                  boxShadow: "0 0 40px rgba(124,58,237,0.25)",
-                }}
-              >
-                <h3
-                  className="text-lg font-bold mb-6"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#FFFFFF" }}
+              <SplitClash side="right" delay={0.1}>
+                <div
+                  className="rounded-2xl p-6 relative overflow-hidden h-full"
+                  style={{
+                    background: "linear-gradient(160deg, rgba(124,58,237,0.22) 0%, rgba(168,85,247,0.1) 100%)",
+                    border: "1.5px solid rgba(168,85,247,0.5)",
+                    boxShadow: "0 30px 70px rgba(124,58,237,0.35)",
+                  }}
                 >
-                  Echo5 Digital
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    "AI employees — unlimited capacity",
-                    "Same-day execution and deployment",
-                    "Real-time business intelligence dashboard",
-                    "One unified AI platform for everything",
-                    "Full lead pipeline, CRM & attribution",
-                    "AI is the core, not a feature",
-                    "Scales infinitely without headcount",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <CheckCircle size={18} style={{ color: "#A855F7", flexShrink: 0, marginTop: 1 }} />
-                      <span className="text-sm leading-relaxed" style={{ color: "#E5E7EB" }}>
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                  <div
+                    aria-hidden="true"
+                    className="absolute top-0 left-0 right-0 h-1.5"
+                    style={{ background: "linear-gradient(90deg, #7C3AED, #A855F7, #E9D5FF)" }}
+                  />
+                  <div className="flex items-center gap-3 mb-4">
+                    <div
+                      className="flex items-center justify-center rounded-full flex-shrink-0"
+                      style={{
+                        width: "48px",
+                        height: "48px",
+                        background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                        boxShadow: "0 6px 16px rgba(124,58,237,0.5)",
+                      }}
+                    >
+                      <Bot size={24} style={{ color: "#fff" }} />
+                    </div>
+                    <h3
+                      className="text-lg font-bold"
+                      style={{ fontFamily: "Space Grotesk, sans-serif", color: "#FFFFFF" }}
+                    >
+                      Echo5 Digital
+                    </h3>
+                  </div>
+                  <ul>
+                    {[
+                      "AI employees — unlimited capacity",
+                      "Same-day execution and deployment",
+                      "Real-time business intelligence dashboard",
+                      "One unified AI platform for everything",
+                      "Full lead pipeline, CRM & attribution",
+                      "AI is the core, not a feature",
+                      "Scales infinitely without headcount",
+                    ].map((item, i, arr) => (
+                      <ClipRow
+                        key={item}
+                        index={i}
+                        className="flex items-center gap-3 py-2.5"
+                        style={{
+                          borderBottom: i < arr.length - 1 ? "1px solid rgba(168,85,247,0.2)" : "none",
+                        }}
+                      >
+                        <span
+                          className="flex items-center justify-center rounded-full flex-shrink-0"
+                          style={{
+                            width: "22px",
+                            height: "22px",
+                            background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                          }}
+                        >
+                          <CheckCircle size={14} style={{ color: "#fff" }} />
+                        </span>
+                        <span className="text-sm leading-relaxed font-medium" style={{ color: "#F5F3FF" }}>
+                          {item}
+                        </span>
+                      </ClipRow>
+                    ))}
+                  </ul>
+                </div>
+              </SplitClash>
             </div>
           </div>
         </Section>

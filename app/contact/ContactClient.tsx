@@ -35,26 +35,45 @@ export default function ContactClient({ faqData }: ContactClientProps) {
   return (
     <main>
       {/* ── Hero Section ── */}
-      <Section background="gradient" spacing="lg" centered>
-        {/* Decorative orbs */}
+      <div className="relative w-full overflow-hidden">
+        {/* Banner background image (full-bleed behind the entire hero section) */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-20 blur-3xl"
+          className="absolute inset-0 bg-cover bg-center"
           style={{
-            background:
-              "radial-gradient(circle, #7C3AED 0%, #A855F7 40%, transparent 70%)",
+            backgroundImage:
+              "url('https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1080&w=1920')",
           }}
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full opacity-10 blur-3xl"
+          className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(circle, #A855F7 0%, transparent 70%)",
+              "linear-gradient(180deg, rgba(10,15,30,0.88) 0%, rgba(10,8,26,0.85) 50%, rgba(10,15,30,0.92) 100%)",
           }}
         />
 
-        <div className="relative z-10 flex flex-col items-center gap-6">
+        <Section background="transparent" spacing="lg" centered className="relative">
+          {/* Decorative orbs */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-20 blur-3xl"
+            style={{
+              background:
+                "radial-gradient(circle, #7C3AED 0%, #A855F7 40%, transparent 70%)",
+            }}
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full opacity-10 blur-3xl"
+            style={{
+              background:
+                "radial-gradient(circle, #A855F7 0%, transparent 70%)",
+            }}
+          />
+
+          <div className="relative z-10 flex flex-col items-center gap-6">
           {/* Badge */}
           <div
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest"
@@ -105,23 +124,24 @@ export default function ContactClient({ faqData }: ContactClientProps) {
               <span>Free discovery consultation</span>
             </div>
           </div>
-        </div>
-      </Section>
+          </div>
+        </Section>
+      </div>
 
       {/* ── Contact Details + Form ── */}
-      <Section background="default" spacing="lg" maxWidth="2xl">
+      <Section background="transparent" spacing="lg" maxWidth="2xl" className="!bg-[#EEECFB]">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
           {/* Contact Details Block */}
           <div className="lg:col-span-2 flex flex-col gap-6">
             <div>
               <h2
-                className="text-2xl font-bold text-[#E5E7EB] mb-2"
+                className="text-2xl font-bold text-[#15172B] mb-2"
                 style={{ fontFamily: "Space Grotesk, sans-serif" }}
               >
                 Get in Touch
               </h2>
               <p
-                className="text-sm text-[#9CA3AF] leading-relaxed"
+                className="text-sm text-[#5B5F73] leading-relaxed"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 Reach us directly via phone, email, or the contact form. We look
@@ -136,20 +156,20 @@ export default function ContactClient({ faqData }: ContactClientProps) {
                 href="tel:7134897004"
                 className="group flex items-center gap-4 p-4 rounded-[0.75rem] transition-all duration-200"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(124,58,237,0.25)",
+                  background: "rgba(255,255,255,0.6)",
+                  border: "1px solid rgba(107,78,240,0.2)",
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                    "rgba(168,85,247,0.55)";
+                    "rgba(107,78,240,0.45)";
                   (e.currentTarget as HTMLAnchorElement).style.background =
-                    "rgba(124,58,237,0.08)";
+                    "rgba(255,255,255,0.9)";
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                    "rgba(124,58,237,0.25)";
+                    "rgba(107,78,240,0.2)";
                   (e.currentTarget as HTMLAnchorElement).style.background =
-                    "rgba(255,255,255,0.03)";
+                    "rgba(255,255,255,0.6)";
                 }}
                 aria-label="Call Echo5 Digital at 713-489-7004"
               >
@@ -157,21 +177,21 @@ export default function ContactClient({ faqData }: ContactClientProps) {
                   className="flex items-center justify-center w-11 h-11 rounded-[0.75rem] shrink-0"
                   style={{
                     background:
-                      "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-                    border: "1px solid rgba(168,85,247,0.3)",
+                      "linear-gradient(135deg, rgba(124,58,237,0.18), rgba(168,85,247,0.08))",
+                    border: "1px solid rgba(107,78,240,0.25)",
                   }}
                 >
-                  <Phone size={18} style={{ color: "#A855F7" }} />
+                  <Phone size={18} style={{ color: "#6B4EF0" }} />
                 </div>
                 <div>
                   <p
-                    className="text-xs text-[#6B7280] uppercase tracking-wider font-medium mb-0.5"
+                    className="text-xs text-[#8A8FA3] uppercase tracking-wider font-medium mb-0.5"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Phone
                   </p>
                   <p
-                    className="text-[#E5E7EB] font-semibold text-sm group-hover:text-[#A855F7] transition-colors"
+                    className="text-[#15172B] font-semibold text-sm group-hover:text-[#6B4EF0] transition-colors"
                     style={{ fontFamily: "Space Grotesk, sans-serif" }}
                   >
                     713-489-7004
@@ -184,20 +204,20 @@ export default function ContactClient({ faqData }: ContactClientProps) {
                 href="mailto:hello@echo5digital.com"
                 className="group flex items-center gap-4 p-4 rounded-[0.75rem] transition-all duration-200"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(124,58,237,0.25)",
+                  background: "rgba(255,255,255,0.6)",
+                  border: "1px solid rgba(107,78,240,0.2)",
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                    "rgba(168,85,247,0.55)";
+                    "rgba(107,78,240,0.45)";
                   (e.currentTarget as HTMLAnchorElement).style.background =
-                    "rgba(124,58,237,0.08)";
+                    "rgba(255,255,255,0.9)";
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                    "rgba(124,58,237,0.25)";
+                    "rgba(107,78,240,0.2)";
                   (e.currentTarget as HTMLAnchorElement).style.background =
-                    "rgba(255,255,255,0.03)";
+                    "rgba(255,255,255,0.6)";
                 }}
                 aria-label="Email Echo5 Digital at hello@echo5digital.com"
               >
@@ -205,21 +225,21 @@ export default function ContactClient({ faqData }: ContactClientProps) {
                   className="flex items-center justify-center w-11 h-11 rounded-[0.75rem] shrink-0"
                   style={{
                     background:
-                      "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-                    border: "1px solid rgba(168,85,247,0.3)",
+                      "linear-gradient(135deg, rgba(124,58,237,0.18), rgba(168,85,247,0.08))",
+                    border: "1px solid rgba(107,78,240,0.25)",
                   }}
                 >
-                  <Mail size={18} style={{ color: "#A855F7" }} />
+                  <Mail size={18} style={{ color: "#6B4EF0" }} />
                 </div>
                 <div>
                   <p
-                    className="text-xs text-[#6B7280] uppercase tracking-wider font-medium mb-0.5"
+                    className="text-xs text-[#8A8FA3] uppercase tracking-wider font-medium mb-0.5"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Email
                   </p>
                   <p
-                    className="text-[#E5E7EB] font-semibold text-sm group-hover:text-[#A855F7] transition-colors break-all"
+                    className="text-[#15172B] font-semibold text-sm group-hover:text-[#6B4EF0] transition-colors break-all"
                     style={{ fontFamily: "Space Grotesk, sans-serif" }}
                   >
                     hello@echo5digital.com
@@ -231,29 +251,29 @@ export default function ContactClient({ faqData }: ContactClientProps) {
               <div
                 className="flex items-center gap-4 p-4 rounded-[0.75rem]"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(124,58,237,0.25)",
+                  background: "rgba(255,255,255,0.6)",
+                  border: "1px solid rgba(107,78,240,0.2)",
                 }}
               >
                 <div
                   className="flex items-center justify-center w-11 h-11 rounded-[0.75rem] shrink-0"
                   style={{
                     background:
-                      "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-                    border: "1px solid rgba(168,85,247,0.3)",
+                      "linear-gradient(135deg, rgba(124,58,237,0.18), rgba(168,85,247,0.08))",
+                    border: "1px solid rgba(107,78,240,0.25)",
                   }}
                 >
-                  <MapPin size={18} style={{ color: "#A855F7" }} />
+                  <MapPin size={18} style={{ color: "#6B4EF0" }} />
                 </div>
                 <div>
                   <p
-                    className="text-xs text-[#6B7280] uppercase tracking-wider font-medium mb-0.5"
+                    className="text-xs text-[#8A8FA3] uppercase tracking-wider font-medium mb-0.5"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Primary Location
                   </p>
                   <p
-                    className="text-[#E5E7EB] font-semibold text-sm"
+                    className="text-[#15172B] font-semibold text-sm"
                     style={{ fontFamily: "Space Grotesk, sans-serif" }}
                   >
                     Houston &amp; Sugar Land, Texas
@@ -265,29 +285,29 @@ export default function ContactClient({ faqData }: ContactClientProps) {
               <div
                 className="flex items-center gap-4 p-4 rounded-[0.75rem]"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(124,58,237,0.25)",
+                  background: "rgba(255,255,255,0.6)",
+                  border: "1px solid rgba(107,78,240,0.2)",
                 }}
               >
                 <div
                   className="flex items-center justify-center w-11 h-11 rounded-[0.75rem] shrink-0"
                   style={{
                     background:
-                      "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-                    border: "1px solid rgba(168,85,247,0.3)",
+                      "linear-gradient(135deg, rgba(124,58,237,0.18), rgba(168,85,247,0.08))",
+                    border: "1px solid rgba(107,78,240,0.25)",
                   }}
                 >
-                  <Globe size={18} style={{ color: "#A855F7" }} />
+                  <Globe size={18} style={{ color: "#6B4EF0" }} />
                 </div>
                 <div>
                   <p
-                    className="text-xs text-[#6B7280] uppercase tracking-wider font-medium mb-0.5"
+                    className="text-xs text-[#8A8FA3] uppercase tracking-wider font-medium mb-0.5"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
                     Also Serving
                   </p>
                   <p
-                    className="text-[#E5E7EB] font-semibold text-sm"
+                    className="text-[#15172B] font-semibold text-sm"
                     style={{ fontFamily: "Space Grotesk, sans-serif" }}
                   >
                     National U.S. Clients
@@ -301,18 +321,18 @@ export default function ContactClient({ faqData }: ContactClientProps) {
               className="p-5 rounded-[0.75rem]"
               style={{
                 background:
-                  "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.06) 100%)",
-                border: "1px solid rgba(124,58,237,0.25)",
+                  "linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(168,85,247,0.05) 100%)",
+                border: "1px solid rgba(107,78,240,0.2)",
               }}
             >
               <h3
-                className="text-sm font-semibold text-[#E5E7EB] mb-2"
+                className="text-sm font-semibold text-[#15172B] mb-2"
                 style={{ fontFamily: "Space Grotesk, sans-serif" }}
               >
                 Serving Greater Houston
               </h3>
               <p
-                className="text-xs text-[#9CA3AF] leading-relaxed"
+                className="text-xs text-[#5B5F73] leading-relaxed"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 Echo5 Digital is based in Houston and Sugar Land, Texas. Local
@@ -321,14 +341,14 @@ export default function ContactClient({ faqData }: ContactClientProps) {
                 services. Contact us at{" "}
                 <a
                   href="tel:7134897004"
-                  className="text-[#A855F7] hover:text-[#7C3AED] transition-colors underline underline-offset-2"
+                  className="text-[#6B4EF0] hover:text-[#4F32D9] transition-colors underline underline-offset-2"
                 >
                   713-489-7004
                 </a>{" "}
                 or{" "}
                 <a
                   href="mailto:hello@echo5digital.com"
-                  className="text-[#A855F7] hover:text-[#7C3AED] transition-colors underline underline-offset-2"
+                  className="text-[#6B4EF0] hover:text-[#4F32D9] transition-colors underline underline-offset-2"
                 >
                   hello@echo5digital.com
                 </a>
@@ -484,42 +504,42 @@ export default function ContactClient({ faqData }: ContactClientProps) {
       </Section>
 
       {/* ── Service Area Note ── */}
-      <Section background="default" spacing="sm" maxWidth="xl" withDivider>
+      <Section background="transparent" spacing="sm" maxWidth="xl" withDivider className="!bg-[#F5F3FC]">
         <div
           className="flex flex-col md:flex-row items-center gap-6 p-6 md:p-8 rounded-[0.75rem]"
           style={{
             background:
-              "linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(168,85,247,0.04) 100%)",
-            border: "1px solid rgba(124,58,237,0.2)",
+              "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(238,236,251,0.6) 100%)",
+            border: "1px solid rgba(107,78,240,0.2)",
           }}
         >
           <div className="flex items-center justify-center w-14 h-14 rounded-[0.75rem] shrink-0"
             style={{
-              background: "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-              border: "1px solid rgba(168,85,247,0.3)",
+              background: "linear-gradient(135deg, rgba(124,58,237,0.18), rgba(168,85,247,0.08))",
+              border: "1px solid rgba(107,78,240,0.25)",
             }}
           >
-            <MapPin size={22} style={{ color: "#A855F7" }} />
+            <MapPin size={22} style={{ color: "#6B4EF0" }} />
           </div>
 
           <div>
             <h2
-              className="text-lg font-bold text-[#E5E7EB] mb-1.5"
+              className="text-lg font-bold text-[#15172B] mb-1.5"
               style={{ fontFamily: "Space Grotesk, sans-serif" }}
             >
               Where We Operate
             </h2>
             <p
-              className="text-sm text-[#9CA3AF] leading-relaxed"
+              className="text-sm text-[#5B5F73] leading-relaxed"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
-              <strong className="text-[#E5E7EB]">Primary Markets:</strong>{" "}
+              <strong className="text-[#15172B]">Primary Markets:</strong>{" "}
               Houston and Sugar Land, Texas — serving local businesses with
               hands-on, personalized AI-powered digital marketing.{" "}
-              <strong className="text-[#E5E7EB]">National Clients:</strong>{" "}
+              <strong className="text-[#15172B]">National Clients:</strong>{" "}
               We work with brands across the United States, delivering the same
               results-driven approach remotely.{" "}
-              <strong className="text-[#E5E7EB]">Operations Support:</strong>{" "}
+              <strong className="text-[#15172B]">Operations Support:</strong>{" "}
               Our technology and creative operations are supported from Kochi,
               Kerala, India, enabling 24/7 productivity across time zones.
             </p>

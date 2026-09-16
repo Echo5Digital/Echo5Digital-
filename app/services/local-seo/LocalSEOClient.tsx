@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import Section from "@/components/Section";
-import Card from "@/components/Card";
 import ContactForm from "@/components/ContactForm";
+import Reveal from "@/components/Reveal";
+import { FocusPullHero, PrismReveal } from "@/components/SolutionsFX";
+import { TiltCard, CountUp, ProcessStepsRail, ProcessStepCard, ClipRow } from "@/components/ScrollFX";
 import {
   MapPin,
   Search,
@@ -46,50 +49,33 @@ export default function LocalSEOClient({ faqData }: Props) {
 
   return (
     <main style={{ backgroundColor: "#0A0F1E", color: "#E5E7EB" }}>
-      {/* ── HERO ── */}
-      <section
-        className="relative overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(135deg, #0A0F1E 0%, #110D2E 50%, #0A0F1E 100%)",
-          paddingTop: "5rem",
-          paddingBottom: "5rem",
-        }}
+      {/* ── HERO — full-bleed background image that racks into focus on load ── */}
+      <FocusPullHero
+        src="https://images.pexels.com/photos/18462227/pexels-photo-18462227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1600"
+        className="min-h-screen flex items-center pt-[72px]"
       >
-        {/* Background image overlay */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.pexels.com/photos/18462227/pexels-photo-18462227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            alt="Houston Texas city skyline at night"
-            className="w-full h-full object-cover opacity-10"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(10,15,30,0.95) 0%, rgba(17,13,46,0.88) 50%, rgba(10,15,30,0.95) 100%)",
-            }}
-          />
-        </div>
-
         {/* Glow orbs */}
         <div
-          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none z-0"
+          aria-hidden="true"
+          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(124,58,237,0.25) 0%, transparent 70%)",
+            filter: "blur(60px)",
           }}
         />
         <div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full pointer-events-none z-0"
+          aria-hidden="true"
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(168,85,247,0.2) 0%, transparent 70%)",
+            filter: "blur(50px)",
           }}
         />
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10">
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
             <MapPin size={14} className="text-purple-400" />
             <span className="text-purple-400 text-xs font-semibold uppercase tracking-widest">
               Houston &amp; Sugar Land, Texas
@@ -100,22 +86,22 @@ export default function LocalSEOClient({ faqData }: Props) {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
             style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}
           >
-            Dominate{" "}
+            <PrismReveal text="Dominate Local Search" />
             <span
+              className="block"
               style={{
-                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                background: "linear-gradient(135deg, #A855F7, #7C3AED)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Local Search
-            </span>{" "}
-            in Houston &amp; Sugar Land
+              <PrismReveal text="in Houston & Sugar Land" delay={0.5} />
+            </span>
           </h1>
 
           <p
             className="text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed"
-            style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
+            style={{ color: "rgba(229,231,235,0.9)", fontFamily: "Inter, sans-serif", textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}
           >
             Echo5 Digital delivers AI-powered local SEO services that put your business
             at the top of Google's map pack and local results — so nearby customers find
@@ -136,27 +122,37 @@ export default function LocalSEOClient({ faqData }: Props) {
             </a>
             <a
               href="#what-is-local-seo"
-              className="px-8 py-4 rounded-full font-semibold text-sm transition-all duration-200 hover:bg-purple-500/10"
-              style={{
-                border: "2px solid rgba(124,58,237,0.5)",
-                color: "#A855F7",
-                fontFamily: "Inter, sans-serif",
-              }}
+              className="px-8 py-4 rounded-full font-semibold text-sm text-white border border-white/40 transition-all duration-200 hover:bg-white/10 hover:border-white/70 backdrop-blur-sm"
+              style={{ fontFamily: "Inter, sans-serif" }}
             >
               Learn More
             </a>
           </div>
+
+          {/* Scroll cue */}
+          <motion.div
+            aria-hidden="true"
+            className="mt-16 mx-auto w-7 h-11 rounded-full border-2 border-white/30 flex items-start justify-center p-1.5"
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <motion.div
+              className="w-2 h-2 rounded-full bg-white/80"
+              animate={{ y: [0, 16, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
         </div>
-      </section>
+      </FocusPullHero>
 
       {/* ── QUICK ANSWER BLOCK ── */}
-      <Section background="elevated" spacing="md" id="quick-answer">
+      <Section background="transparent" spacing="md" id="quick-answer" className="!bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_60%,#EEECFB_100%)]">
         <div
-          className="rounded-2xl p-6 md:p-8 border"
+          className="rounded-2xl p-6 md:p-8 border shadow-sm"
           style={{
             background:
-              "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.07) 100%)",
-            borderColor: "rgba(124,58,237,0.35)",
+              "linear-gradient(135deg, rgba(168,85,247,0.12) 0%, rgba(124,58,237,0.08) 100%)",
+            borderColor: "rgba(168,85,247,0.35)",
           }}
         >
           <div className="flex items-start gap-4">
@@ -172,13 +168,13 @@ export default function LocalSEOClient({ faqData }: Props) {
             <div>
               <p
                 className="text-xs font-semibold uppercase tracking-widest mb-2"
-                style={{ color: "#A855F7", fontFamily: "Space Grotesk, sans-serif" }}
+                style={{ color: "#7C3AED", fontFamily: "Space Grotesk, sans-serif" }}
               >
                 Quick Answer
               </p>
               <p
                 className="text-base md:text-lg leading-relaxed"
-                style={{ color: "#E5E7EB", fontFamily: "Inter, sans-serif" }}
+                style={{ color: "#1F2333", fontFamily: "Inter, sans-serif" }}
               >
                 Local SEO is the practice of optimizing a business's online presence to rank in
                 geographically relevant searches and Google's local map pack. Echo5 Digital
@@ -244,19 +240,26 @@ export default function LocalSEOClient({ faqData }: Props) {
       </Section>
 
       {/* ── WHAT IS LOCAL SEO ── */}
-      <Section background="gradient" spacing="lg" id="what-is-local-seo" withDivider>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <Section
+        background="transparent"
+        spacing="lg"
+        id="what-is-local-seo"
+        withDivider
+        className="relative !bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+      >
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Text */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#A855F7", fontFamily: "Space Grotesk, sans-serif" }}>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#6B4EF0", fontFamily: "Space Grotesk, sans-serif" }}>
               Understanding Local SEO
             </p>
             <h2
               className="text-3xl md:text-4xl font-bold mb-6 leading-tight"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB", letterSpacing: "-0.02em" }}
+              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B", letterSpacing: "-0.02em" }}
             >
               What Is Local SEO &amp; Why Does It Matter?
             </h2>
-            <div className="space-y-4" style={{ fontFamily: "Inter, sans-serif", color: "#9CA3AF" }}>
+            <div className="space-y-4" style={{ fontFamily: "Inter, sans-serif", color: "#5B5F73" }}>
               <p className="text-base leading-relaxed">
                 Local SEO is a specialized branch of search engine optimization that focuses on
                 helping businesses appear prominently when people search for products or services
@@ -275,52 +278,142 @@ export default function LocalSEOClient({ faqData }: Props) {
               </p>
             </div>
           </div>
-          <div className="relative rounded-2xl overflow-hidden">
-            <img
-              src="https://images.pexels.com/photos/67112/pexels-photo-67112.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt="Local business owner reviewing Google local search rankings on a laptop"
-              className="w-full h-72 md:h-96 object-cover rounded-2xl"
-              style={{ border: "1px solid rgba(124,58,237,0.25)" }}
-            />
+
+          {/* Image side — mobile/tablet: single image */}
+          <Reveal variant="right" delay={0.1} className="lg:hidden">
             <div
-              className="absolute inset-0 rounded-2xl"
-              style={{
-                background:
-                  "linear-gradient(to top, rgba(10,15,30,0.6) 0%, transparent 60%)",
-              }}
-            />
-            <div
-              className="absolute bottom-4 left-4 right-4 p-4 rounded-xl"
-              style={{
-                background: "rgba(10,15,30,0.85)",
-                border: "1px solid rgba(124,58,237,0.3)",
-                backdropFilter: "blur(12px)",
-              }}
+              className="relative overflow-hidden rounded-2xl w-full aspect-[3/2]"
+              style={{ border: "1px solid rgba(124,58,237,0.2)", boxShadow: "0 12px 40px rgba(91,63,163,0.15)" }}
             >
-              <p className="text-sm font-semibold text-white mb-1" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
-                Local Map Pack Visibility
-              </p>
-              <p className="text-xs" style={{ color: "#9CA3AF" }}>
-                93% of local searches result in a map pack display — be there when it counts.
-              </p>
+              <img
+                src="https://images.pexels.com/photos/67112/pexels-photo-67112.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                alt="Local business owner reviewing Google local search rankings on a laptop"
+                className="w-full h-full object-cover"
+              />
             </div>
+          </Reveal>
+
+          {/* Image side — desktop: staggered 3-image collage */}
+          <div className="hidden lg:block relative h-[560px]">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 rounded-2xl opacity-30 blur-2xl"
+              style={{
+                background: "radial-gradient(circle, rgba(107,78,240,0.3) 0%, transparent 70%)",
+                transform: "scale(0.85)",
+              }}
+            />
+
+            {/* Image 1 — top right, Google search on laptop */}
+            <Reveal variant="right" delay={0.1} className="absolute top-0 right-0 w-[72%] z-30">
+              <TiltCard>
+                <div
+                  className="relative overflow-hidden rounded-2xl w-full aspect-[3/2]"
+                  style={{ border: "1px solid rgba(124,58,237,0.2)", boxShadow: "0 16px 40px rgba(91,63,163,0.2)" }}
+                >
+                  <img
+                    src="https://images.pexels.com/photos/67112/pexels-photo-67112.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                    alt="Local business owner reviewing Google local search rankings on a laptop"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div
+                  className="absolute -bottom-5 -left-5 p-4 rounded-xl"
+                  style={{
+                    background: "rgba(255,255,255,0.95)",
+                    border: "1px solid rgba(124,58,237,0.25)",
+                    boxShadow: "0 12px 32px rgba(91,63,163,0.2)",
+                    backdropFilter: "blur(12px)",
+                  }}
+                >
+                  <p className="text-sm font-semibold mb-1" style={{ fontFamily: "Space Grotesk, sans-serif", color: "#7C3AED" }}>
+                    Local Map Pack Visibility
+                  </p>
+                  <p className="text-xs" style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}>
+                    93% of local searches result in a map pack display.
+                  </p>
+                </div>
+              </TiltCard>
+            </Reveal>
+
+            {/* Image 2 — mid left, team reviewing performance data */}
+            <Reveal variant="left" delay={0.25} className="absolute top-[36%] left-0 w-[62%] z-20">
+              <TiltCard index={1}>
+                <div
+                  className="relative overflow-hidden rounded-2xl w-full aspect-[4/3]"
+                  style={{ border: "1px solid rgba(124,58,237,0.2)", boxShadow: "0 16px 40px rgba(91,63,163,0.2)" }}
+                >
+                  <img
+                    src="/team-reviewing-marketing-strategies-digital-screen-100kb.jpg"
+                    alt="Marketing team reviewing local SEO performance data on a digital screen"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div
+                  className="absolute -bottom-4 -right-4 px-4 py-3 rounded-xl"
+                  style={{
+                    background: "rgba(255,255,255,0.95)",
+                    border: "1px solid rgba(124,58,237,0.25)",
+                    boxShadow: "0 12px 32px rgba(91,63,163,0.2)",
+                    backdropFilter: "blur(12px)",
+                  }}
+                >
+                  <CountUp
+                    target={93}
+                    suffix="%"
+                    className="block text-xl font-bold"
+                    style={{
+                      fontFamily: "Space Grotesk, sans-serif",
+                      background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  />
+                  <p className="text-xs mt-0.5" style={{ fontFamily: "Inter, sans-serif", color: "#5B5F73" }}>
+                    Searches Show Map Pack
+                  </p>
+                </div>
+              </TiltCard>
+            </Reveal>
+
+            {/* Image 3 — bottom right, ROI/performance dashboard review */}
+            <Reveal variant="up" delay={0.4} className="absolute bottom-0 right-[6%] w-[48%] z-10">
+              <TiltCard index={2}>
+                <div
+                  className="relative overflow-hidden rounded-2xl w-full aspect-[4/3]"
+                  style={{ border: "1px solid rgba(124,58,237,0.2)", boxShadow: "0 16px 40px rgba(91,63,163,0.2)" }}
+                >
+                  <img
+                    src="/20250820_1450_PPC-Analysis-in-Houston_simple_compose_01k33cbjyrfev8hrr3ed5be3nb-740x600.webp"
+                    alt="Houston marketing team analyzing local campaign performance and ROI"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </TiltCard>
+            </Reveal>
           </div>
         </div>
       </Section>
 
       {/* ── CORE LOCAL SEO SERVICES ── */}
-      <Section background="elevated" spacing="lg" id="services" withDivider>
+      <Section
+        background="transparent"
+        spacing="lg"
+        id="services"
+        withDivider
+        className="!bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_50%,#EEECFB_100%)]"
+      >
         <div className="text-center mb-12">
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#A855F7", fontFamily: "Space Grotesk, sans-serif" }}>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#6B4EF0", fontFamily: "Space Grotesk, sans-serif" }}>
             What We Deliver
           </p>
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB", letterSpacing: "-0.02em" }}
+            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B", letterSpacing: "-0.02em" }}
           >
             Core Local SEO Services
           </h2>
-          <p className="text-base max-w-2xl mx-auto" style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}>
+          <p className="text-base max-w-2xl mx-auto" style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}>
             A comprehensive suite of local SEO strategies built to put your Houston or Sugar
             Land business at the top of every relevant local search.
           </p>
@@ -333,46 +426,100 @@ export default function LocalSEOClient({ faqData }: Props) {
               description:
                 "We fully optimize your GBP listing — categories, attributes, photos, posts, Q&A, and service areas — to maximize map pack visibility and click-through rates.",
               badge: "High Impact",
+              accent: "#34D399",
             },
             {
               icon: Link2,
               title: "Local Citation Building",
               description:
                 "We build and audit consistent NAP citations across directories like Yelp, YellowPages, and industry-specific platforms to reinforce your local authority.",
+              badge: "Authority",
+              accent: "#22D3EE",
             },
             {
               icon: Search,
               title: "Geo-Targeted Keyword Strategy",
               description:
                 "We identify high-intent, location-specific keywords for Houston and Sugar Land, then integrate them into your site architecture, content, and metadata.",
+              badge: "Foundation",
+              accent: "#A855F7",
             },
             {
               icon: Globe,
               title: "Local Link Building",
               description:
                 "We earn backlinks from locally relevant Houston and Sugar Land sources — chambers of commerce, local news, and industry directories — to boost domain authority.",
+              badge: "Growth",
+              accent: "#60A5FA",
             },
             {
               icon: FileText,
               title: "On-Page Local Signals",
               description:
                 "We embed schema markup, geo-tagged content, and local landing pages that tell search engines exactly where you serve and what you offer.",
+              badge: "Technical",
+              accent: "#FB923C",
             },
             {
               icon: Star,
               title: "Review Generation & Management",
               description:
                 "We implement review request workflows to grow your Google ratings and monitor review sentiment, helping you build trust with local searchers.",
+              badge: "Trust",
+              accent: "#34D399",
             },
           ].map((service, i) => (
-            <Card
+            <div
               key={i}
-              variant="service"
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-              badge={service.badge}
-            />
+              className="group relative flex flex-col overflow-hidden rounded-2xl p-6 gap-4 transition-all duration-300 hover:-translate-y-1"
+              style={{
+                background: `linear-gradient(160deg, ${service.accent}26 0%, #12162A 45%)`,
+                border: "1px solid rgba(255,255,255,0.08)",
+                boxShadow: "0 12px 32px rgba(31,23,66,0.18)",
+              }}
+            >
+              {/* Status dot */}
+              <span
+                aria-hidden="true"
+                className="absolute top-4 right-4 w-2 h-2 rounded-full"
+                style={{ background: service.accent, boxShadow: `0 0 8px 2px ${service.accent}99` }}
+              />
+
+              <div className="flex items-start justify-between gap-3">
+                <div
+                  className="flex items-center justify-center w-11 h-11 rounded-xl shrink-0 transition-transform duration-300 group-hover:scale-110"
+                  style={{ background: "rgba(255,255,255,0.06)", border: `1px solid ${service.accent}55` }}
+                >
+                  <service.icon size={20} style={{ color: service.accent }} strokeWidth={1.8} />
+                </div>
+              </div>
+
+              <span
+                className="inline-flex self-start text-xs font-semibold px-3 py-1 rounded-full"
+                style={{
+                  color: service.accent,
+                  border: `1px solid ${service.accent}55`,
+                  background: `${service.accent}1A`,
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                {service.badge}
+              </span>
+
+              <h3
+                className="text-lg font-semibold leading-snug"
+                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#F3F4F6", letterSpacing: "-0.01em" }}
+              >
+                {service.title}
+              </h3>
+
+              <p
+                className="text-sm leading-relaxed"
+                style={{ fontFamily: "Inter, sans-serif", color: "rgba(229,231,235,0.6)" }}
+              >
+                {service.description}
+              </p>
+            </div>
           ))}
         </div>
       </Section>
@@ -459,98 +606,96 @@ export default function LocalSEOClient({ faqData }: Props) {
       </Section>
 
       {/* ── HOW IT WORKS ── */}
-      <Section background="elevated" spacing="lg" id="how-it-works" withDivider>
+      <Section
+        background="transparent"
+        spacing="lg"
+        id="how-it-works"
+        withDivider
+        className="!bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_50%,#EEECFB_100%)]"
+      >
         <div className="text-center mb-12">
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#A855F7", fontFamily: "Space Grotesk, sans-serif" }}>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#6B4EF0", fontFamily: "Space Grotesk, sans-serif" }}>
             Our Process
           </p>
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB", letterSpacing: "-0.02em" }}
+            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B", letterSpacing: "-0.02em" }}
           >
             How It Works
           </h2>
-          <p className="text-base max-w-2xl mx-auto" style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}>
+          <p className="text-base max-w-2xl mx-auto" style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}>
             A proven, step-by-step process that combines AI execution with human strategic
             oversight to deliver consistent local ranking improvements.
           </p>
         </div>
-        <div className="relative">
-          {/* Connector line */}
-          <div
-            className="hidden lg:block absolute top-10 left-0 right-0 h-px"
-            style={{
-              background:
-                "linear-gradient(90deg, transparent, rgba(124,58,237,0.4) 15%, rgba(168,85,247,0.4) 85%, transparent)",
-              top: "2.5rem",
-            }}
-          />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                step: "01",
-                icon: <Users size={20} className="text-purple-400" />,
-                title: "Discovery & Onboarding",
-                desc: "We learn your business, competitive landscape, and goals. AI audits your existing local presence for a baseline.",
-              },
-              {
-                step: "02",
-                icon: <Search size={20} className="text-purple-400" />,
-                title: "Strategy & Keyword Mapping",
-                desc: "Human strategists build a geo-targeted keyword plan and identify the highest-value local opportunities for Houston and Sugar Land.",
-              },
-              {
-                step: "03",
-                icon: <Zap size={20} className="text-purple-400" />,
-                title: "AI-Driven Implementation",
-                desc: "Our agentic AI executes citation building, on-page optimization, GBP updates, and schema markup — with expert review at every step.",
-              },
-              {
-                step: "04",
-                icon: <TrendingUp size={20} className="text-purple-400" />,
-                title: "Monitor, Report & Improve",
-                desc: "Continuous AI monitoring surfaces ranking changes and opportunities. Monthly human-curated reports keep you informed and in control.",
-              },
-            ].map((item, i) => (
+        <ProcessStepsRail
+          columns={4}
+          lineColor="rgba(124,58,237,0.2)"
+          fillGradient="linear-gradient(90deg, #7C3AED, #A855F7)"
+          dotColor="#A855F7"
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          {[
+            {
+              step: "01",
+              icon: <Users size={20} style={{ color: "#7C3AED" }} />,
+              title: "Discovery & Onboarding",
+              desc: "We learn your business, competitive landscape, and goals. AI audits your existing local presence for a baseline.",
+            },
+            {
+              step: "02",
+              icon: <Search size={20} style={{ color: "#7C3AED" }} />,
+              title: "Strategy & Keyword Mapping",
+              desc: "Human strategists build a geo-targeted keyword plan and identify the highest-value local opportunities for Houston and Sugar Land.",
+            },
+            {
+              step: "03",
+              icon: <Zap size={20} style={{ color: "#7C3AED" }} />,
+              title: "AI-Driven Implementation",
+              desc: "Our agentic AI executes citation building, on-page optimization, GBP updates, and schema markup — with expert review at every step.",
+            },
+            {
+              step: "04",
+              icon: <TrendingUp size={20} style={{ color: "#7C3AED" }} />,
+              title: "Monitor, Report & Improve",
+              desc: "Continuous AI monitoring surfaces ranking changes and opportunities. Monthly human-curated reports keep you informed and in control.",
+            },
+          ].map((item, i) => (
+            <ProcessStepCard
+              key={i}
+              index={i}
+              className="relative flex flex-col p-6 rounded-2xl border border-[rgba(124,58,237,0.25)] bg-[#F1EDFB]"
+            >
               <div
-                key={i}
-                className="relative flex flex-col p-6 rounded-2xl border"
+                className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  borderColor: "rgba(124,58,237,0.25)",
+                  background: "linear-gradient(135deg, rgba(124,58,237,0.14), rgba(168,85,247,0.08))",
+                  border: "1px solid rgba(124,58,237,0.3)",
                 }}
               >
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-                    border: "1px solid rgba(168,85,247,0.3)",
-                  }}
-                >
-                  {item.icon}
-                </div>
-                <span
-                  className="text-xs font-bold mb-2"
-                  style={{ color: "#7C3AED", fontFamily: "Space Grotesk, sans-serif" }}
-                >
-                  Step {item.step}
-                </span>
-                <h3
-                  className="text-base font-bold mb-2"
-                  style={{ color: "#E5E7EB", fontFamily: "Space Grotesk, sans-serif" }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
-                >
-                  {item.desc}
-                </p>
+                {item.icon}
               </div>
-            ))}
-          </div>
-        </div>
+              <span
+                className="text-xs font-bold mb-2"
+                style={{ color: "#7C3AED", fontFamily: "Space Grotesk, sans-serif" }}
+              >
+                Step {item.step}
+              </span>
+              <h3
+                className="text-base font-bold mb-2"
+                style={{ color: "#15172B", fontFamily: "Space Grotesk, sans-serif" }}
+              >
+                {item.title}
+              </h3>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
+              >
+                {item.desc}
+              </p>
+            </ProcessStepCard>
+          ))}
+        </ProcessStepsRail>
       </Section>
 
       {/* ── SERVICE AREA COVERAGE ── */}
@@ -675,81 +820,92 @@ export default function LocalSEOClient({ faqData }: Props) {
       </Section>
 
       {/* ── INTERNAL LINKS ── */}
-      <Section background="elevated" spacing="md" withDivider>
-        <div className="text-center mb-8">
-          <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: "#A855F7", fontFamily: "Space Grotesk, sans-serif" }}>
+      <Section background="transparent" spacing="lg" withDivider className="relative !bg-white overflow-hidden">
+        {/* Ambient background glow */}
+        <div
+          aria-hidden="true"
+          className="hidden lg:block absolute top-1/4 right-0 w-[440px] h-[440px] rounded-full pointer-events-none"
+          style={{
+            background: "radial-gradient(circle, rgba(168,85,247,0.22) 0%, transparent 70%)",
+            filter: "blur(20px)",
+          }}
+        />
+
+        <div className="relative z-10 mb-10">
+          <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: "#6B4EF0", fontFamily: "Space Grotesk, sans-serif" }}>
             Related Services
           </p>
           <h2
             className="text-2xl md:text-3xl font-bold"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB", letterSpacing: "-0.02em" }}
+            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B", letterSpacing: "-0.02em" }}
           >
             Explore More Echo5 Digital Services
           </h2>
         </div>
-        <div className="grid sm:grid-cols-3 gap-5">
+
+        <ul className="relative z-10">
           {[
             {
               href: "/services/google-business-profile",
               title: "Google Business Profile",
               desc: "Full GBP optimization and management to maximize map pack visibility and local credibility.",
-              icon: <Building2 size={18} className="text-purple-400" />,
             },
             {
               href: "/services/seo",
               title: "SEO & AEO",
               desc: "Broader search engine optimization and answer engine optimization to grow organic visibility across Google and AI search.",
-              icon: <Search size={18} className="text-purple-400" />,
+              image: "/focused-businessman-showing-corporate-graphs-presentation-using-tablet-working-company-ideas-100kb.jpg",
             },
             {
               href: "/services/content-marketing",
               title: "Content Marketing",
               desc: "AI-assisted content strategies that build local authority and drive qualified traffic to your Houston or Sugar Land business.",
-              icon: <FileText size={18} className="text-purple-400" />,
             },
-          ].map((link, i) => (
-            <Link
-              key={i}
-              href={link.href}
-              className="group flex flex-col p-5 rounded-xl border transition-all duration-200 hover:-translate-y-1"
-              style={{
-                background: "rgba(255,255,255,0.03)",
-                borderColor: "rgba(124,58,237,0.22)",
-                textDecoration: "none",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(168,85,247,0.5)";
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 30px rgba(124,58,237,0.2)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(124,58,237,0.22)";
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
-              }}
-            >
-              <div
-                className="w-9 h-9 rounded-lg flex items-center justify-center mb-3"
-                style={{ background: "rgba(124,58,237,0.18)", border: "1px solid rgba(168,85,247,0.25)" }}
-              >
-                {link.icon}
-              </div>
-              <h3
-                className="text-base font-bold mb-1.5 group-hover:text-purple-400 transition-colors"
-                style={{ color: "#E5E7EB", fontFamily: "Space Grotesk, sans-serif" }}
-              >
-                {link.title}
-              </h3>
-              <p
-                className="text-sm leading-relaxed flex-1"
-                style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
-              >
-                {link.desc}
-              </p>
-              <div className="flex items-center gap-1 mt-3 text-xs font-medium" style={{ color: "#A855F7" }}>
-                Learn more <ArrowRight size={12} />
-              </div>
-            </Link>
+          ].map((link, idx) => (
+            <ClipRow key={link.title} index={idx} className="list-none border-t border-[rgba(124,58,237,0.15)] last:border-b">
+              <Link href={link.href} className="group flex items-center gap-6 md:gap-10 py-6 md:py-8">
+                {link.image && (
+                  <div
+                    className="hidden sm:block flex-shrink-0 w-28 h-20 md:w-36 md:h-24 rounded-xl md:rounded-2xl overflow-hidden transition-transform duration-300 group-hover:-rotate-2 group-hover:scale-105"
+                    style={{ boxShadow: "0 12px 32px rgba(91,63,163,0.25)", border: "1px solid rgba(124,58,237,0.2)" }}
+                  >
+                    <img
+                      src={link.image}
+                      alt={`Team reviewing ${link.title} performance data`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-4">
+                    <h3
+                      className="font-bold tracking-tight transition-colors duration-300 group-hover:text-transparent"
+                      style={{
+                        fontFamily: "Space Grotesk, sans-serif",
+                        fontSize: "clamp(1.5rem, 3.5vw, 2.75rem)",
+                        color: "#15172B",
+                        backgroundImage: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                        WebkitBackgroundClip: "text",
+                      }}
+                    >
+                      {link.title}
+                    </h3>
+                    <span
+                      className="hidden md:flex flex-shrink-0 items-center gap-2 text-sm font-medium opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0"
+                      style={{ color: "#6B4EF0", fontFamily: "Inter, sans-serif" }}
+                    >
+                      Learn more <ArrowRight size={16} />
+                    </span>
+                  </div>
+                  <p className="mt-1 max-w-xl text-sm leading-relaxed" style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}>
+                    {link.desc}
+                  </p>
+                </div>
+              </Link>
+            </ClipRow>
           ))}
-        </div>
+        </ul>
       </Section>
 
       {/* ── FAQ ACCORDION ── */}
@@ -824,48 +980,78 @@ export default function LocalSEOClient({ faqData }: Props) {
       </Section>
 
       {/* ── LEAD FORM CTA ── */}
-      <Section background="elevated" spacing="lg" id="lead-form" withDivider>
-        <div className="text-center mb-10">
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#A855F7", fontFamily: "Space Grotesk, sans-serif" }}>
-            Get Started Today
-          </p>
-          <h2
-            className="text-3xl md:text-4xl font-bold mb-4"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB", letterSpacing: "-0.02em" }}
-          >
-            Book Your Free Local SEO Demo
-          </h2>
-          <p className="text-base max-w-2xl mx-auto mb-2" style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}>
-            Ready to dominate local search in Houston and Sugar Land? Fill out the form below
-            or contact us directly — our team will respond within 24 hours.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4 text-sm" style={{ fontFamily: "Inter, sans-serif" }}>
-            <a
-              href="tel:713-489-7004"
-              className="flex items-center gap-2 hover:text-white transition-colors"
-              style={{ color: "#A855F7" }}
+      <Section
+        background="transparent"
+        spacing="xl"
+        maxWidth="3xl"
+        id="lead-form"
+        withDivider
+        className="!bg-[#EEECFB]"
+      >
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+          {/* Left: copy */}
+          <div className="flex-1 lg:pt-6">
+            <p
+              className="text-xs font-semibold uppercase tracking-widest mb-5"
+              style={{ color: "#6B4EF0", fontFamily: "Inter, sans-serif" }}
             >
-              <CheckCircle size={14} />
-              <span>713-489-7004</span>
-            </a>
-            <a
-              href="mailto:hello@echo5digital.com"
-              className="flex items-center gap-2 hover:text-white transition-colors"
-              style={{ color: "#A855F7" }}
+              Get Started Today
+            </p>
+            <h2
+              className="font-black leading-[1.04] tracking-tight mb-4"
+              style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#15172B" }}
             >
-              <CheckCircle size={14} />
-              <span>hello@echo5digital.com</span>
-            </a>
+              Book Your Free
+              <br />
+              <span
+                style={{
+                  background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Local SEO Demo
+              </span>
+            </h2>
+            <p className="text-base leading-relaxed mb-8" style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}>
+              Ready to dominate local search in Houston and Sugar Land? Fill out the form and
+              our team will respond within 24 hours — no commitment required.
+            </p>
+            <div className="space-y-4 mb-8">
+              {[
+                "Free local SEO strategy walkthrough",
+                "No contracts, cancel anytime",
+                "Results-focused — we win when you win",
+              ].map((pt) => (
+                <div key={pt} className="flex items-center gap-3">
+                  <CheckCircle size={16} style={{ color: "#6B4EF0", flexShrink: 0 }} />
+                  <span className="text-sm" style={{ color: "#15172B", fontFamily: "Inter, sans-serif" }}>
+                    {pt}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="space-y-2 text-sm">
+              <p style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}>Or reach us directly:</p>
+              <a href="tel:713-489-7004" className="block" style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}>
+                📞 713-489-7004
+              </a>
+              <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}>
+                ✉️ hello@echo5digital.com
+              </a>
+            </div>
+          </div>
+
+          {/* Right: form */}
+          <div className="flex-1 w-full">
+            <ContactForm
+              heading="Book Your Free Demo"
+              subheading="Tell us about your business and we'll show you exactly how Echo5 Digital can help you dominate local search in Houston and Sugar Land, TX."
+              submitLabel="Book My Free Demo"
+              showAppointmentNote={true}
+            />
           </div>
         </div>
-
-        {/* Hidden UTM fields via a wrapper form note */}
-        <ContactForm
-          heading="Start Ranking Locally"
-          subheading="Tell us about your business and we'll show you exactly how Echo5 Digital can help you dominate local search in Houston and Sugar Land, TX."
-          submitLabel="Book My Free Demo"
-          showAppointmentNote={true}
-        />
       </Section>
     </main>
   );

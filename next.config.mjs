@@ -13,6 +13,21 @@ const nextConfig = {
         destination: "/industries/law-firm-marketing",
         permanent: true,
       },
+      {
+        source: "/about-us-page",
+        destination: "/about-us",
+        permanent: true,
+      },
+      {
+        source: "/blogs",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/seo-agency-in-houston",
+        destination: "/contact",
+        permanent: true,
+      },
     ];
   },
 };

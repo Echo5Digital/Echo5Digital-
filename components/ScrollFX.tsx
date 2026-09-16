@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState, ReactNode } from "react";
+import Link from "next/link";
 import { motion, useScroll, useTransform, useSpring, useMotionValue, useInView } from "framer-motion";
 
 /**
@@ -387,6 +388,104 @@ export function HowWeWorkRail({ children }: { children: ReactNode }) {
 }
 
 /**
+ * ProcessStepsRail — wraps a row of numbered step cards with a horizontal connector line
+ * that fills left-to-right in sync with scroll progress through the row, plus a traveling
+ * glow dot (desktop only; steps stack on mobile with no rail).
+ */
+export function ProcessStepsRail({
+  children,
+  columns = 4,
+  lineColor = "rgba(107,78,240,0.25)",
+  fillGradient = "linear-gradient(90deg, #6B4EF0, #8B5CF6)",
+  dotColor = "#8B5CF6",
+  className = "",
+}: {
+  children: ReactNode;
+  columns?: number;
+  lineColor?: string;
+  fillGradient?: string;
+  dotColor?: string;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 80%", "end 60%"],
+  });
+  const scaleX = useSpring(scrollYProgress, { stiffness: 80, damping: 20 });
+  const dotLeft = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const halfCol = 50 / columns;
+
+  return (
+    <div ref={ref} className="relative">
+      <div
+        aria-hidden="true"
+        className="hidden lg:block absolute h-px"
+        style={{
+          top: "20px",
+          left: `${halfCol}%`,
+          right: `${halfCol}%`,
+          background: lineColor,
+        }}
+      >
+        <motion.div
+          style={{
+            scaleX,
+            transformOrigin: "left",
+            position: "absolute",
+            inset: 0,
+            background: fillGradient,
+          }}
+        />
+        <motion.div
+          aria-hidden="true"
+          style={{
+            left: dotLeft,
+            position: "absolute",
+            top: "50%",
+            width: 10,
+            height: 10,
+            borderRadius: "50%",
+            transform: "translate(-50%, -50%)",
+            background: dotColor,
+            boxShadow: `0 0 14px 5px ${dotColor}99`,
+          }}
+        />
+      </div>
+      <div className={className}>{children}</div>
+    </div>
+  );
+}
+
+/**
+ * ProcessStepCard — single step card that rises/blurs in on scroll, for use inside
+ * ProcessStepsRail.
+ */
+export function ProcessStepCard({
+  children,
+  index = 0,
+  className = "",
+}: {
+  children: ReactNode;
+  index?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-10% 0px" });
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={{ opacity: 0, y: 36, scale: 0.94 }}
+      animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: index * 0.12 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/**
  * BlurIn — blur + rise entrance, kept local to this page so it doesn't collide with the
  * fade/slide pattern already used sitewide.
  */
@@ -551,5 +650,139 @@ export function DiagonalWipe({
     >
       {children}
     </motion.div>
+  );
+}
+
+/**
+ * SplitClash — pair of panels that fly in from opposite outer edges and "clash" into place,
+ * for face-off / comparison layouts (e.g. "X vs Y"). Distinct from the fade/blur patterns
+ * used elsewhere: a fast overshoot spring on the X axis instead.
+ */
+export function SplitClash({
+  children,
+  side,
+  className = "",
+  delay = 0,
+}: {
+  children: ReactNode;
+  side: "left" | "right";
+  className?: string;
+  delay?: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-10% 0px" });
+  const fromX = side === "left" ? -140 : 140;
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={{ opacity: 0, x: fromX, rotate: side === "left" ? -3 : 3 }}
+      animate={inView ? { opacity: 1, x: 0, rotate: 0 } : {}}
+      transition={{ type: "spring", stiffness: 120, damping: 16, delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/**
+ * ClipRow — list row revealed by an expanding clip-path (like a blind lifting), rather than
+ * fade/blur. Each row's own inView trigger with an index-based delay gives a fast cascading
+ * feel for comparison lists.
+ */
+export function ClipRow({
+  children,
+  index = 0,
+  className = "",
+  style,
+}: {
+  children: ReactNode;
+  index?: number;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  const ref = useRef<HTMLLIElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-10% 0px" });
+  return (
+    <motion.li
+      ref={ref}
+      className={className}
+      style={style}
+      initial={{ clipPath: "inset(0 100% 0 0)", opacity: 0 }}
+      animate={inView ? { clipPath: "inset(0 0% 0 0)", opacity: 1 } : {}}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
+    >
+      {children}
+    </motion.li>
+  );
+}
+
+/**
+ * TextMarquee — continuously scrolling row of repeated text, for a "keep moving" banner
+ * embedded inside a section (as opposed to GetInTouchMarquee, which is a full standalone
+ * page section). Optionally wraps in a Link when href is given.
+ */
+export function TextMarquee({
+  text,
+  href,
+  className = "",
+  background = "transparent",
+  borderColor,
+  textColor = "rgba(21,23,43,0.4)",
+  separatorColor = "#7C3AED",
+  duration = 22,
+}: {
+  text: string;
+  href?: string;
+  className?: string;
+  background?: string;
+  borderColor?: string;
+  textColor?: string;
+  separatorColor?: string;
+  duration?: number;
+}) {
+  const ROW = Array.from({ length: 8 }, () => text);
+  const content = (
+    <motion.div
+      className="flex items-center whitespace-nowrap py-5 md:py-6"
+      style={{ width: "max-content" }}
+      animate={{ x: ["0%", "-50%"] }}
+      transition={{ duration, repeat: Infinity, ease: "linear" }}
+    >
+      {[...ROW, ...ROW].map((label, i) => (
+        <span key={i} className="flex items-center shrink-0">
+          <span
+            className="text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight"
+            style={{ fontFamily: "Space Grotesk, sans-serif", color: textColor }}
+          >
+            {label}
+          </span>
+          <span
+            className="mx-5 md:mx-8 text-2xl sm:text-3xl md:text-4xl font-bold"
+            style={{ color: separatorColor }}
+            aria-hidden="true"
+          >
+            _
+          </span>
+        </span>
+      ))}
+    </motion.div>
+  );
+
+  const wrapperClass = `group relative block w-full overflow-hidden ${className}`;
+  const wrapperStyle = borderColor ? { background, borderColor } : { background };
+
+  if (href) {
+    return (
+      <Link href={href} aria-label={text} className={wrapperClass} style={wrapperStyle}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <div className={wrapperClass} style={wrapperStyle}>
+      {content}
+    </div>
   );
 }

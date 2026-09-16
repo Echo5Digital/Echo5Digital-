@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import LocalSEOClient from "./LocalSEOClient";
 
 export const metadata: Metadata = {
@@ -55,12 +53,6 @@ const faqSchema = {
   })),
 };
 
-const breadcrumbItems = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/solutions" },
-  { label: "Local SEO", href: "/services/local-seo" },
-];
-
 export default function LocalSEOPage() {
   return (
     <>
@@ -69,7 +61,6 @@ export default function LocalSEOPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Header />
-      <Breadcrumbs items={breadcrumbItems} />
       <LocalSEOClient faqData={faqData} />
       <Footer
         email="hello@echo5digital.com"
