@@ -5,15 +5,16 @@ import { motion } from "framer-motion";
 
 const ROW = Array.from({ length: 8 }, () => "GET IN TOUCH");
 
-export default function GetInTouchMarquee() {
+export default function GetInTouchMarquee({ variant = "dark" }: { variant?: "dark" | "light" }) {
+  const isLight = variant === "light";
   return (
     <Link
       href="/contact"
       aria-label="Get in touch — go to contact page"
       className="group relative block w-full overflow-hidden border-y"
       style={{
-        borderColor: "rgba(124,58,237,0.25)",
-        background: "#0A0F1E",
+        borderColor: "rgba(124,58,237,0.2)",
+        background: isLight ? "#ffffff" : "#0A0F1E",
       }}
     >
       <motion.div
@@ -25,8 +26,13 @@ export default function GetInTouchMarquee() {
         {[...ROW, ...ROW].map((label, i) => (
           <span key={i} className="flex items-center shrink-0">
             <span
-              className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight transition-colors duration-300 group-hover:text-white"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "rgba(229,231,235,0.5)" }}
+              className={`text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight transition-colors duration-300 ${
+                isLight ? "group-hover:text-[#15172B]" : "group-hover:text-white"
+              }`}
+              style={{
+                fontFamily: "Space Grotesk, sans-serif",
+                color: isLight ? "rgba(21,23,43,0.35)" : "rgba(229,231,235,0.5)",
+              }}
             >
               {label}
             </span>

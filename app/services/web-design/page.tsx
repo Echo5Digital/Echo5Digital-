@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
+import GetInTouchMarquee from "@/components/GetInTouchMarquee";
 import WebDesignClient from "./WebDesignClient";
 
 export const metadata: Metadata = {
@@ -96,17 +95,9 @@ export default function WebDesignPage() {
       />
       <Header />
       <main>
-        <Section spacing="sm" background="default">
-          <Breadcrumbs
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Services", href: "/solutions" },
-              { label: "Web Design", href: "/services/web-design" },
-            ]}
-          />
-        </Section>
         <WebDesignClient faqData={faqData} />
       </main>
+      <GetInTouchMarquee variant="light" />
       <Footer
         email="hello@echo5digital.com"
         phone="713-489-7004"

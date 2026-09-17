@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
+import GetInTouchMarquee from "@/components/GetInTouchMarquee";
 import GoogleAdsClient from "./GoogleAdsClient";
 
 export const metadata: Metadata = {
@@ -65,6 +66,7 @@ export default function GoogleAdsPage() {
       <main>
         <GoogleAdsClient faqData={faqData} />
       </main>
+      <GetInTouchMarquee variant="light" />
       <Footer
         email="hello@echo5digital.com"
         phone="713-489-7004"

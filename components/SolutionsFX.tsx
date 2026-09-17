@@ -83,12 +83,14 @@ export function ScrambleText({
  */
 export function FocusPullHero({
   src,
+  mobileSrc,
   children,
   className = "",
   overlay = "linear-gradient(180deg, rgba(10,8,26,0.5) 0%, rgba(10,8,26,0.65) 55%, rgba(10,8,26,0.9) 100%)",
   bgPositionClassName = "bg-center",
 }: {
   src: string;
+  mobileSrc?: string;
   children: ReactNode;
   className?: string;
   overlay?: string;
@@ -101,18 +103,28 @@ export function FocusPullHero({
     return () => clearTimeout(t);
   }, []);
 
+  const focusAnim = focused
+    ? { filter: "blur(0px) saturate(1) brightness(1)", scale: 1 }
+    : {};
+
   return (
     <div className={`relative overflow-hidden ${className}`}>
+      {mobileSrc && (
+        <motion.div
+          aria-hidden="true"
+          className={`absolute inset-0 bg-cover ${bgPositionClassName} sm:hidden`}
+          style={{ backgroundImage: `url('${mobileSrc}')` }}
+          initial={{ filter: "blur(28px) saturate(0.3) brightness(0.8)", scale: 1.12 }}
+          animate={focusAnim}
+          transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+        />
+      )}
       <motion.div
         aria-hidden="true"
-        className={`absolute inset-0 bg-cover ${bgPositionClassName}`}
+        className={`absolute inset-0 bg-cover ${bgPositionClassName} ${mobileSrc ? "hidden sm:block" : ""}`}
         style={{ backgroundImage: `url('${src}')` }}
         initial={{ filter: "blur(28px) saturate(0.3) brightness(0.8)", scale: 1.12 }}
-        animate={
-          focused
-            ? { filter: "blur(0px) saturate(1) brightness(1)", scale: 1 }
-            : {}
-        }
+        animate={focusAnim}
         transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
       />
       <div aria-hidden="true" className="absolute inset-0" style={{ background: overlay }} />

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { FocusPullHero, PrismReveal } from "@/components/SolutionsFX";
 import {
   Code2,
   Plug,
@@ -12,7 +14,6 @@ import {
   Network,
   ChevronDown,
   CheckCircle,
-  ArrowRight,
   Zap,
   Shield,
   GitBranch,
@@ -26,7 +27,6 @@ import {
   Star,
 } from "lucide-react";
 import Section from "@/components/Section";
-import Card from "@/components/Card";
 import ContactForm from "@/components/ContactForm";
 
 interface FaqItem {
@@ -211,6 +211,104 @@ const trustIndicators = [
   },
 ];
 
+const ecosystemItems = [
+  {
+    icon: Bot,
+    title: "AI Marketing Employee",
+    desc: "Custom data pipelines and API connectors feed directly into the AI Marketing Employee for intelligent, automated campaign management.",
+    image: "/user-people-network-circuit-board-link-connection-technology-100kb.jpg",
+  },
+  {
+    icon: Database,
+    title: "CRM Automation",
+    desc: "Bespoke middleware and webhooks extend CRM functionality, triggering automations and syncing data across your entire sales stack.",
+    image: "/3d-graph-computer-illustration-100kb.jpg",
+  },
+  {
+    icon: LayoutDashboard,
+    title: "Reporting Dashboards",
+    desc: "Custom-built data aggregation layers power the Echo5 reporting dashboard, giving you unified visibility across every marketing channel.",
+    image: "/dash.jpg",
+  },
+];
+
+function EcosystemList() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  return (
+    <div style={{ borderTop: "1px solid rgba(124,58,237,0.25)" }}>
+      {ecosystemItems.map(({ icon: Icon, title, desc, image }, i) => {
+        const isActive = activeIndex === i;
+        return (
+          <motion.div
+            key={title}
+            className="group relative flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10 py-10 md:py-12 cursor-pointer"
+            style={{ borderBottom: "1px solid rgba(124,58,237,0.25)" }}
+            onMouseEnter={() => setActiveIndex(i)}
+            onMouseLeave={() => setActiveIndex(null)}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10% 0px" }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.12 }}
+          >
+            {/* Thumbnail — always visible on mobile, expands into the row on hover on desktop */}
+            <div className="sm:hidden overflow-hidden rounded-2xl flex-shrink-0 w-full h-48" style={{ border: "1px solid rgba(168,85,247,0.3)" }}>
+              <img src={image} alt={title} className="w-full h-full object-cover" />
+            </div>
+            <div
+              className="hidden sm:block overflow-hidden rounded-2xl flex-shrink-0 transition-all duration-500 ease-out h-36 md:h-40"
+              style={{
+                width: isActive ? 220 : 0,
+                border: isActive ? "1px solid rgba(168,85,247,0.3)" : "none",
+                boxShadow: isActive ? "0 20px 45px -15px rgba(91,63,163,0.5)" : "none",
+              }}
+            >
+              <img
+                src={image}
+                alt={title}
+                className="w-[220px] h-full object-cover"
+                style={{ transform: isActive ? "scale(1)" : "scale(1.15)", transition: "transform 0.6s ease-out" }}
+              />
+            </div>
+
+            <div
+              className="flex items-center justify-center w-14 h-14 rounded-2xl flex-shrink-0 transition-all duration-300"
+              style={{
+                background: isActive
+                  ? "linear-gradient(135deg, #7C3AED, #A855F7)"
+                  : "linear-gradient(135deg, rgba(124,58,237,0.25), rgba(168,85,247,0.1))",
+                border: "1px solid rgba(168,85,247,0.3)",
+              }}
+            >
+              <Icon size={26} style={{ color: isActive ? "#fff" : "#A855F7" }} />
+            </div>
+
+            <div className="min-w-0">
+              <h3
+                className="font-bold transition-all duration-300 mb-3"
+                style={{
+                  fontFamily: "Space Grotesk, sans-serif",
+                  color: isActive ? "#A855F7" : "#E5E7EB",
+                  fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {title}
+              </h3>
+              <p
+                style={{ fontFamily: "Inter, sans-serif", color: "rgba(229,231,235,0.6)" }}
+                className="text-base md:text-lg leading-relaxed max-w-xl"
+              >
+                {desc}
+              </p>
+            </div>
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function CustomProgrammingClient({ faqData }: Props) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -220,124 +318,108 @@ export default function CustomProgrammingClient({ faqData }: Props) {
 
   return (
     <>
-      {/* ── HERO ── */}
-      <Section background="gradient" spacing="xl" id="hero">
-        {/* Decorative orbs */}
+      {/* ── HERO — full-bleed background image that racks into focus on load ── */}
+      <FocusPullHero
+        src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1200&w=1800"
+        className="min-h-screen flex items-center pt-[72px]"
+        bgPositionClassName="bg-[position:center_30%] sm:bg-center"
+        overlay="linear-gradient(180deg, rgba(10,8,26,0.75) 0%, rgba(10,8,26,0.82) 55%, rgba(10,8,26,0.95) 100%)"
+      >
+        {/* Ambient glow orb on top of the photo overlay */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 overflow-hidden"
-        >
-          <div
-            className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-20 blur-3xl"
-            style={{
-              background:
-                "radial-gradient(circle, #7C3AED 0%, #A855F7 40%, transparent 70%)",
-            }}
-          />
-          <div
-            className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full opacity-10 blur-3xl"
-            style={{
-              background:
-                "radial-gradient(circle, #A855F7 0%, transparent 70%)",
-            }}
-          />
-        </div>
+          className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-20 blur-3xl"
+          style={{
+            background: "radial-gradient(circle, #7C3AED 0%, #A855F7 40%, transparent 70%)",
+          }}
+        />
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest mb-6"
-            style={{
-              background: "rgba(124,58,237,0.15)",
-              border: "1px solid rgba(168,85,247,0.35)",
-              color: "#A855F7",
-              fontFamily: "Inter, sans-serif",
-            }}
-          >
-            <Code2 size={14} />
-            Custom Programming Services
+        <div className="relative z-10 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+          <div className="inline-flex items-center gap-2 mb-8 px-5 py-2.5 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
+            <Code2 size={16} className="text-purple-400" />
+            <span
+              className="text-sm font-semibold uppercase tracking-widest text-purple-400"
+              style={{ fontFamily: "Space Grotesk, sans-serif" }}
+            >
+              Custom Programming Services
+            </span>
           </div>
 
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-bold leading-[1.05] mb-8"
+            style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.03em", color: "#E5E7EB" }}
           >
-            Software Built
-            <br />
+            <PrismReveal text="Software Built" />
             <span
+              className="block"
               style={{
-                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                background: "linear-gradient(135deg, #A855F7, #7C3AED)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
               }}
             >
-              Exactly for Your Business
+              <PrismReveal text="Exactly for Your Business" delay={0.6} />
             </span>
           </h1>
 
           <p
-            className="text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto"
-            style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
+            className="text-xl md:text-2xl max-w-4xl mx-auto mb-12 leading-relaxed"
+            style={{ color: "rgba(229,231,235,0.9)", fontFamily: "Inter, sans-serif", textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}
           >
             Off-the-shelf tools weren't built for your specific workflows. Echo5 Digital
             engineers bespoke software, API integrations, and automation solutions that solve
             your exact business problems — nothing more, nothing less.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110 active:scale-95"
+              className="px-10 py-5 rounded-full font-semibold text-white text-lg transition-all duration-200 hover:brightness-110"
               style={{
                 background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                boxShadow:
-                  "0 0 24px rgba(124,58,237,0.55), 0 4px 16px rgba(0,0,0,0.3)",
+                boxShadow: "0 0 28px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
                 fontFamily: "Inter, sans-serif",
               }}
             >
               Discuss Your Project
-              <ArrowRight size={18} />
             </a>
             <a
               href="#what-we-build"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:bg-purple-900/20"
-              style={{
-                border: "1px solid rgba(124,58,237,0.5)",
-                color: "#A855F7",
-                fontFamily: "Inter, sans-serif",
-              }}
+              className="px-10 py-5 rounded-full font-semibold text-white text-lg border border-white/40 transition-all duration-200 hover:bg-white/10 hover:border-white/70 backdrop-blur-sm"
+              style={{ fontFamily: "Inter, sans-serif" }}
             >
               See What We Build
             </a>
           </div>
-        </div>
 
-        {/* Hero image */}
-        <div className="relative z-10 mt-16 max-w-5xl mx-auto rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(124,58,237,0.25)" }}>
-          <img
-            src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            alt="Custom software development team working on bespoke business solutions"
-            className="w-full object-cover h-64 md:h-96"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(to top, rgba(10,15,30,0.85) 0%, transparent 60%)",
-            }}
-          />
+          {/* Scroll cue */}
+          <motion.div
+            aria-hidden="true"
+            className="mt-20 w-7 h-11 rounded-full border-2 border-white/30 flex items-start justify-center p-1.5"
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <motion.div
+              className="w-2 h-2 rounded-full bg-white/80"
+              animate={{ y: [0, 16, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
         </div>
-      </Section>
+      </FocusPullHero>
 
       {/* ── QUICK ANSWER BLOCK ── */}
-      <Section background="elevated" spacing="md" withDivider id="quick-answer">
-        <div
+      <Section background="lavender" spacing="md" withDivider id="quick-answer">
+        <motion.div
           className="max-w-3xl mx-auto rounded-2xl p-8"
           style={{
-            background:
-              "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.06) 100%)",
-            border: "1px solid rgba(124,58,237,0.3)",
+            background: "linear-gradient(135deg, #EDE6FB 0%, #E4D9F7 100%)",
+            border: "1px solid rgba(124,58,237,0.2)",
           }}
+          initial={{ opacity: 0, scale: 0.96, y: 16 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10% 0px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="flex items-center gap-3 mb-4">
             <div
@@ -350,14 +432,14 @@ export default function CustomProgrammingClient({ faqData }: Props) {
             </div>
             <span
               className="text-xs font-bold uppercase tracking-widest"
-              style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
+              style={{ color: "#6D28D9", fontFamily: "Inter, sans-serif" }}
             >
               Quick Answer
             </span>
           </div>
           <p
             className="text-base md:text-lg leading-relaxed"
-            style={{ color: "#E5E7EB", fontFamily: "Inter, sans-serif" }}
+            style={{ color: "rgba(30,23,56,0.85)", fontFamily: "Inter, sans-serif" }}
           >
             Echo5 Digital offers custom programming services for businesses that need bespoke
             software solutions, API integrations, automation tools, and internal business
@@ -365,12 +447,18 @@ export default function CustomProgrammingClient({ faqData }: Props) {
             solutions using modern web technologies that connect systems, automate workflows,
             and support marketing and operational goals for U.S. clients nationwide.
           </p>
-        </div>
+        </motion.div>
       </Section>
 
       {/* ── WHAT WE BUILD ── */}
       <Section background="default" spacing="lg" id="what-we-build" withDivider>
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10% 0px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
@@ -384,80 +472,132 @@ export default function CustomProgrammingClient({ faqData }: Props) {
             From lightweight automation scripts to full-stack business applications, Echo5
             Digital's custom programming scope covers a broad range of technical challenges.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {whatWeBuild.map((item) => (
-            <Card
-              key={item.title}
-              title={item.title}
-              description={item.description}
-              icon={item.icon}
-              badge={item.badge || undefined}
-              variant="service"
-            />
-          ))}
+          {whatWeBuild.map((item, i) => {
+            const IconComp = item.icon;
+            return (
+              <motion.div
+                key={item.title}
+                className="relative p-6 rounded-2xl"
+                style={{
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(124,58,237,0.2)",
+                }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10% 0px" }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: (i % 4) * 0.1 }}
+              >
+                <div className="flex items-start justify-between gap-3 mb-4">
+                  <div
+                    className="flex items-center justify-center w-11 h-11 rounded-xl shrink-0"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
+                      border: "1px solid rgba(168,85,247,0.3)",
+                    }}
+                  >
+                    <IconComp size={20} style={{ color: "#A855F7" }} />
+                  </div>
+                  {item.badge && (
+                    <span
+                      className="text-xs font-semibold px-3 py-1 rounded-full"
+                      style={{ background: "rgba(124,58,237,0.15)", color: "#A855F7", border: "1px solid rgba(168,85,247,0.3)" }}
+                    >
+                      {item.badge}
+                    </span>
+                  )}
+                </div>
+                <h3
+                  className="text-base font-semibold mb-2"
+                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                >
+                  {item.title}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}>
+                  {item.description}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
       </Section>
 
       {/* ── USE CASES ── */}
-      <Section background="gradient" spacing="lg" withDivider id="use-cases">
-        <div className="text-center mb-12">
+      <Section background="lavender" spacing="lg" withDivider id="use-cases" className="relative">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full opacity-30 blur-3xl"
+          style={{ background: "radial-gradient(circle, #C4B5FD 0%, #E9D5FF 45%, transparent 70%)" }}
+        />
+        <motion.div
+          className="relative text-center mb-12"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10% 0px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
           >
             Real-World Use Cases
           </h2>
           <p
             className="text-base md:text-lg max-w-2xl mx-auto"
-            style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
+            style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
           >
             Custom programming delivers the most value when it solves a specific, repeatable
             business problem. Here's where clients find the biggest wins.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {useCases.map((uc) => {
+        <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
+          {useCases.map((uc, i) => {
             const IconComp = uc.icon;
             return (
-              <div
+              <motion.div
                 key={uc.title}
-                className="flex gap-5 p-6 rounded-2xl"
+                className="flex gap-5 p-6 rounded-2xl bg-white transition-all duration-300 hover:-translate-y-1"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(124,58,237,0.2)",
+                  border: "1px solid rgba(124,58,237,0.15)",
+                  boxShadow: "0 4px 16px rgba(124,58,237,0.08)",
                 }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(124,58,237,0.4)";
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 36px rgba(124,58,237,0.2)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(124,58,237,0.15)";
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 16px rgba(124,58,237,0.08)";
+                }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10% 0px" }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: (i % 2) * 0.1 }}
               >
                 <div
                   className="flex items-center justify-center w-12 h-12 rounded-xl shrink-0"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-                    border: "1px solid rgba(168,85,247,0.3)",
-                  }}
+                  style={{ background: "linear-gradient(135deg, #7C3AED, #A855F7)", boxShadow: "0 0 20px rgba(124,58,237,0.3)" }}
                 >
-                  <IconComp size={22} style={{ color: "#A855F7" }} />
+                  <IconComp size={22} color="#fff" />
                 </div>
                 <div>
                   <h3
                     className="text-lg font-semibold mb-2"
-                    style={{
-                      fontFamily: "Space Grotesk, sans-serif",
-                      color: "#E5E7EB",
-                    }}
+                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
                   >
                     {uc.title}
                   </h3>
                   <p
                     className="text-sm leading-relaxed"
-                    style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
+                    style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
                   >
                     {uc.description}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -466,7 +606,12 @@ export default function CustomProgrammingClient({ faqData }: Props) {
       {/* ── TECHNOLOGY & APPROACH ── */}
       <Section background="elevated" spacing="lg" withDivider id="technology">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-10% 0px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
             <h2
               className="text-3xl md:text-4xl font-bold mb-4"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
@@ -506,9 +651,14 @@ export default function CustomProgrammingClient({ faqData }: Props) {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-10% 0px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+          >
             <h3
               className="text-lg font-semibold mb-6"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
@@ -543,80 +693,98 @@ export default function CustomProgrammingClient({ faqData }: Props) {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </Section>
 
       {/* ── HOW IT WORKS ── */}
-      <Section background="default" spacing="lg" withDivider id="how-it-works">
-        <div className="text-center mb-12">
+      <Section background="lavender" spacing="lg" withDivider id="how-it-works">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10% 0px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
           >
             How It Works
           </h2>
           <p
             className="text-base md:text-lg max-w-2xl mx-auto"
-            style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
+            style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
           >
             A clear, repeatable process from first conversation to final delivery — so you
             always know where your project stands.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {processSteps.map((step) => {
+          {processSteps.map((step, i) => {
             const IconComp = step.icon;
+            const glows = [
+              "radial-gradient(circle at 100% 0%, rgba(16,185,129,0.35), transparent 55%), #10182B",
+              "radial-gradient(circle at 100% 0%, rgba(34,211,238,0.35), transparent 55%), #10182B",
+              "radial-gradient(circle at 100% 0%, rgba(168,85,247,0.35), transparent 55%), #10182B",
+              "radial-gradient(circle at 100% 0%, rgba(59,130,246,0.35), transparent 55%), #10182B",
+              "radial-gradient(circle at 100% 0%, rgba(217,119,6,0.35), transparent 55%), #10182B",
+              "radial-gradient(circle at 100% 0%, rgba(236,72,153,0.35), transparent 55%), #10182B",
+            ];
+            const accents = ["#34D399", "#22D3EE", "#C084FC", "#60A5FA", "#F59E0B", "#F472B6"];
+            const accent = accents[i % accents.length];
             return (
-              <div
+              <motion.div
                 key={step.step}
-                className="relative p-6 rounded-2xl"
+                className="group relative flex flex-col p-6 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(124,58,237,0.2)",
+                  background: glows[i % glows.length],
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  boxShadow: "0 8px 30px rgba(10,15,30,0.25)",
                 }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.borderColor = accent;
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 0 1px ${accent}, 0 16px 40px ${accent}40`;
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.08)";
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 30px rgba(10,15,30,0.25)";
+                }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10% 0px" }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: (i % 3) * 0.1 }}
               >
+                <span
+                  aria-hidden="true"
+                  className="absolute top-4 right-6 w-1.5 h-1.5 rounded-full"
+                  style={{ background: accent, boxShadow: `0 0 8px ${accent}` }}
+                />
                 <div className="flex items-start gap-4 mb-4">
                   <span
                     className="text-4xl font-bold leading-none"
-                    style={{
-                      fontFamily: "Space Grotesk, sans-serif",
-                      background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
-                    }}
+                    style={{ fontFamily: "Space Grotesk, sans-serif", color: accent }}
                   >
                     {step.step}
                   </span>
                   <div
-                    className="flex items-center justify-center w-10 h-10 rounded-xl"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-                      border: "1px solid rgba(168,85,247,0.3)",
-                    }}
+                    className="flex items-center justify-center w-10 h-10 rounded-xl transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6"
+                    style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)" }}
                   >
-                    <IconComp size={18} style={{ color: "#A855F7" }} />
+                    <IconComp size={18} style={{ color: accent }} strokeWidth={1.8} />
                   </div>
                 </div>
                 <h3
                   className="text-base font-semibold mb-2"
-                  style={{
-                    fontFamily: "Space Grotesk, sans-serif",
-                    color: "#E5E7EB",
-                  }}
+                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#F1F5F9" }}
                 >
                   {step.title}
                 </h3>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
-                >
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(226,232,240,0.65)", fontFamily: "Inter, sans-serif" }}>
                   {step.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -624,125 +792,91 @@ export default function CustomProgrammingClient({ faqData }: Props) {
 
       {/* ── INTEGRATION WITH ECHO5 SYSTEMS ── */}
       <Section background="gradient" spacing="lg" withDivider id="echo5-integration">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="order-2 lg:order-1 rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(124,58,237,0.25)" }}>
-            <img
-              src="https://images.pexels.com/photos/27141316/pexels-photo-27141316.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt="Echo5 Digital integrated marketing and programming ecosystem"
-              className="w-full object-cover h-72 md:h-80"
-            />
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10% 0px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest mb-6"
+            style={{
+              background: "rgba(124,58,237,0.15)",
+              border: "1px solid rgba(168,85,247,0.35)",
+              color: "#A855F7",
+              fontFamily: "Inter, sans-serif",
+            }}
+          >
+            <Layers size={14} />
+            The Echo5 Ecosystem
           </div>
-          <div className="order-1 lg:order-2">
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest mb-6"
-              style={{
-                background: "rgba(124,58,237,0.15)",
-                border: "1px solid rgba(168,85,247,0.35)",
-                color: "#A855F7",
-                fontFamily: "Inter, sans-serif",
-              }}
-            >
-              <Layers size={14} />
-              The Echo5 Ecosystem
-            </div>
-            <h2
-              className="text-3xl md:text-4xl font-bold mb-4"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-            >
-              Integrated with the Full Echo5 Stack
-            </h2>
-            <p
-              className="text-base leading-relaxed mb-6"
-              style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
-            >
-              Custom programming work doesn't live in isolation at Echo5 Digital. Every solution
-              we build is designed to integrate with our broader AI Marketing Employee system,
-              CRM automation layer, and custom reporting dashboards — creating a fully connected
-              growth stack.
-            </p>
-            <div className="space-y-4">
-              {[
-                {
-                  title: "AI Marketing Employee",
-                  desc: "Custom data pipelines and API connectors feed directly into the AI Marketing Employee for intelligent, automated campaign management.",
-                },
-                {
-                  title: "CRM Automation",
-                  desc: "Bespoke middleware and webhooks extend CRM functionality, triggering automations and syncing data across your entire sales stack.",
-                },
-                {
-                  title: "Reporting Dashboards",
-                  desc: "Custom-built data aggregation layers power the Echo5 reporting dashboard, giving you unified visibility across every marketing channel.",
-                },
-              ].map((item) => (
-                <div key={item.title} className="flex gap-3">
-                  <ArrowRight
-                    size={18}
-                    className="shrink-0 mt-0.5"
-                    style={{ color: "#A855F7" }}
-                  />
-                  <div>
-                    <span
-                      className="text-sm font-semibold"
-                      style={{
-                        fontFamily: "Space Grotesk, sans-serif",
-                        color: "#E5E7EB",
-                      }}
-                    >
-                      {item.title}:{" "}
-                    </span>
-                    <span
-                      className="text-sm"
-                      style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
-                    >
-                      {item.desc}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* ── TRUST INDICATORS ── */}
-      <Section background="elevated" spacing="lg" withDivider id="trust">
-        <div className="text-center mb-12">
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+          >
+            Integrated with the Full Echo5 Stack
+          </h2>
+          <p
+            className="text-base leading-relaxed max-w-2xl mx-auto"
+            style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
+          >
+            Custom programming work doesn't live in isolation at Echo5 Digital. Every solution
+            we build is designed to integrate with our broader AI Marketing Employee system,
+            CRM automation layer, and custom reporting dashboards — creating a fully connected
+            growth stack.
+          </p>
+        </motion.div>
+
+        <EcosystemList />
+      </Section>
+
+      {/* ── TRUST INDICATORS ── */}
+      <Section background="lavender" spacing="lg" withDivider id="trust" className="relative">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-24 -left-24 w-[420px] h-[420px] rounded-full opacity-30 blur-3xl"
+          style={{ background: "radial-gradient(circle, #C4B5FD 0%, #E9D5FF 45%, transparent 70%)" }}
+        />
+        <motion.div
+          className="relative text-center mb-12"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10% 0px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h2
+            className="text-3xl md:text-4xl font-bold mb-4"
+            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
           >
             Why Businesses Trust Echo5 Digital
           </h2>
           <p
             className="text-base max-w-2xl mx-auto"
-            style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
+            style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
           >
             Credibility built through delivered results — not promises.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {trustIndicators.map((item) => {
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {trustIndicators.map((item, i) => {
             const IconComp = item.icon;
             return (
-              <div
+              <motion.div
                 key={item.metric}
-                className="text-center p-6 rounded-2xl"
-                style={{
-                  background: "rgba(124,58,237,0.08)",
-                  border: "1px solid rgba(124,58,237,0.2)",
-                }}
+                className="text-center p-6 rounded-2xl bg-white transition-all duration-300 hover:-translate-y-1"
+                style={{ border: "1px solid rgba(124,58,237,0.15)", boxShadow: "0 4px 16px rgba(124,58,237,0.08)" }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10% 0px" }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
               >
                 <div
                   className="flex items-center justify-center w-12 h-12 rounded-xl mx-auto mb-4"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-                    border: "1px solid rgba(168,85,247,0.3)",
-                  }}
+                  style={{ background: "linear-gradient(135deg, #7C3AED, #A855F7)", boxShadow: "0 0 20px rgba(124,58,237,0.3)" }}
                 >
-                  <IconComp size={22} style={{ color: "#A855F7" }} />
+                  <IconComp size={22} color="#fff" />
                 </div>
                 <div
                   className="text-3xl font-bold mb-1"
@@ -758,58 +892,49 @@ export default function CustomProgrammingClient({ faqData }: Props) {
                 </div>
                 <div
                   className="text-sm font-semibold mb-1"
-                  style={{
-                    fontFamily: "Space Grotesk, sans-serif",
-                    color: "#E5E7EB",
-                  }}
+                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
                 >
                   {item.metric}
                 </div>
-                <div
-                  className="text-xs"
-                  style={{ color: "#6B7280", fontFamily: "Inter, sans-serif" }}
-                >
+                <div className="text-xs" style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}>
                   {item.note}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
         {/* Case Study Placeholder */}
-        <div
-          className="rounded-2xl p-8 md:p-10"
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.06) 100%)",
-            border: "1px solid rgba(124,58,237,0.25)",
-          }}
+        <motion.div
+          className="relative rounded-2xl p-8 md:p-10 bg-white"
+          style={{ border: "1px solid rgba(124,58,237,0.15)", boxShadow: "0 4px 16px rgba(124,58,237,0.08)" }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10% 0px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="flex flex-col md:flex-row gap-8 items-start">
             <div className="flex-1">
               <div
                 className="inline-block text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4"
                 style={{
-                  background: "rgba(124,58,237,0.2)",
-                  color: "#A855F7",
+                  background: "rgba(124,58,237,0.1)",
+                  color: "#7C3AED",
                   fontFamily: "Inter, sans-serif",
-                  border: "1px solid rgba(168,85,247,0.3)",
+                  border: "1px solid rgba(124,58,237,0.25)",
                 }}
               >
                 Case Study
               </div>
               <h3
                 className="text-xl md:text-2xl font-bold mb-3"
-                style={{
-                  fontFamily: "Space Grotesk, sans-serif",
-                  color: "#E5E7EB",
-                }}
+                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
               >
                 Houston Services Firm: 80% Reduction in Manual Data Work
               </h3>
               <p
                 className="text-sm leading-relaxed mb-4"
-                style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
+                style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
               >
                 A Sugar Land-based professional services company engaged Echo5 Digital to
                 automate their client onboarding process. By building a custom integration
@@ -823,10 +948,10 @@ export default function CustomProgrammingClient({ faqData }: Props) {
                       key={tag}
                       className="text-xs px-3 py-1 rounded-full"
                       style={{
-                        background: "rgba(124,58,237,0.15)",
-                        color: "#A855F7",
+                        background: "rgba(124,58,237,0.1)",
+                        color: "#7C3AED",
                         fontFamily: "Inter, sans-serif",
-                        border: "1px solid rgba(168,85,247,0.25)",
+                        border: "1px solid rgba(124,58,237,0.25)",
                       }}
                     >
                       {tag}
@@ -838,10 +963,7 @@ export default function CustomProgrammingClient({ faqData }: Props) {
             <div className="md:w-48 shrink-0">
               <div
                 className="rounded-xl p-5 text-center"
-                style={{
-                  background: "rgba(124,58,237,0.1)",
-                  border: "1px solid rgba(124,58,237,0.2)",
-                }}
+                style={{ background: "linear-gradient(135deg, #EDE6FB 0%, #E4D9F7 100%)", border: "1px solid rgba(124,58,237,0.2)" }}
               >
                 <div
                   className="text-4xl font-bold mb-1"
@@ -855,22 +977,25 @@ export default function CustomProgrammingClient({ faqData }: Props) {
                 >
                   80%
                 </div>
-                <div
-                  className="text-xs"
-                  style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
-                >
+                <div className="text-xs" style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}>
                   Reduction in manual data work
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </Section>
 
       {/* ── FAQ ACCORDION ── */}
       <Section background="default" spacing="lg" withDivider id="faq">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-10">
+          <motion.div
+            className="text-center mb-10"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10% 0px" }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
             <h2
               className="text-3xl md:text-4xl font-bold mb-4"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
@@ -883,11 +1008,11 @@ export default function CustomProgrammingClient({ faqData }: Props) {
             >
               Common questions about custom programming projects with Echo5 Digital.
             </p>
-          </div>
+          </motion.div>
 
           <div className="space-y-3">
             {faqData.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="rounded-2xl overflow-hidden"
                 style={{
@@ -898,6 +1023,10 @@ export default function CustomProgrammingClient({ faqData }: Props) {
                       : "rgba(255,255,255,0.02)",
                   transition: "border-color 0.2s ease, background 0.2s ease",
                 }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10% 0px" }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: (index % 6) * 0.06 }}
               >
                 <button
                   className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
@@ -945,38 +1074,38 @@ export default function CustomProgrammingClient({ faqData }: Props) {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </Section>
 
       {/* ── CTA / LEAD FORM ── */}
-      <Section background="gradient" spacing="xl" withDivider id="contact">
+      <Section background="transparent" spacing="xl" maxWidth="3xl" withDivider id="contact" className="!bg-[#EEECFB]">
         {/* Hidden UTM fields rendered as data attributes for tracking */}
         <input type="hidden" name="utm_source" value="" aria-hidden="true" className="sr-only" />
         <input type="hidden" name="utm_medium" value="" aria-hidden="true" className="sr-only" />
         <input type="hidden" name="utm_campaign" value="custom-programming" aria-hidden="true" className="sr-only" />
         <input type="hidden" name="page_source" value="/services/custom-programming" aria-hidden="true" className="sr-only" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
           {/* Left: CTA copy */}
-          <div className="pt-4">
+          <motion.div
+            className="flex-1 lg:pt-6"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-10% 0px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
             <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest mb-6"
-              style={{
-                background: "rgba(124,58,237,0.15)",
-                border: "1px solid rgba(168,85,247,0.35)",
-                color: "#A855F7",
-                fontFamily: "Inter, sans-serif",
-              }}
+              className="inline-flex items-center gap-2 text-xs font-semibold mb-5"
+              style={{ color: "#6B4EF0" }}
             >
-              <Zap size={14} />
               Start Your Custom Project
             </div>
             <h2
-              className="text-3xl md:text-4xl font-bold mb-4"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+              className="font-black leading-[1.04] tracking-tight mb-4"
+              style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#15172B" }}
             >
               Let's Build Something{" "}
               <span
@@ -984,22 +1113,18 @@ export default function CustomProgrammingClient({ faqData }: Props) {
                   background: "linear-gradient(135deg, #7C3AED, #A855F7)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
                 }}
               >
                 Made for You
               </span>
             </h2>
-            <p
-              className="text-base leading-relaxed mb-8"
-              style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
-            >
+            <p className="text-base leading-relaxed mb-8" style={{ color: "#5B5F73" }}>
               Tell us about your business challenge and we'll outline a technical approach. No
               obligation, no fluff — just a straight conversation about what's possible and
               what it would take to build it.
             </p>
 
-            <div className="space-y-4">
+            <div className="space-y-4 mb-8">
               {[
                 "Requirements discovery call — no charge",
                 "Written scope and timeline estimate",
@@ -1008,59 +1133,41 @@ export default function CustomProgrammingClient({ faqData }: Props) {
                 "Full documentation on delivery",
               ].map((point) => (
                 <div key={point} className="flex items-center gap-3">
-                  <CheckCircle size={18} style={{ color: "#A855F7", flexShrink: 0 }} />
-                  <span
-                    className="text-sm"
-                    style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
-                  >
+                  <CheckCircle size={16} style={{ color: "#6B4EF0", flexShrink: 0 }} />
+                  <span className="text-sm" style={{ color: "#15172B" }}>
                     {point}
                   </span>
                 </div>
               ))}
             </div>
 
-            <div
-              className="mt-10 p-5 rounded-2xl"
-              style={{
-                background: "rgba(124,58,237,0.1)",
-                border: "1px solid rgba(124,58,237,0.2)",
-              }}
-            >
-              <p
-                className="text-sm font-semibold mb-1"
-                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-              >
-                Prefer to reach out directly?
-              </p>
-              <div className="flex flex-col gap-2 mt-2">
-                {/* Phone — verified fact */}
-                <a
-                  href="tel:713-489-7004"
-                  className="text-sm hover:text-white transition-colors"
-                  style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
-                >
-                  📞 713-489-7004
-                </a>
-                <a
-                  href="mailto:hello@echo5digital.com"
-                  className="text-sm hover:text-white transition-colors"
-                  style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
-                >
-                  ✉️ hello@echo5digital.com
-                </a>
-              </div>
+            {/* NAP */}
+            <div className="space-y-2 text-sm">
+              <p style={{ color: "#5B5F73" }}>Or reach us directly:</p>
+              <a href="tel:713-489-7004" className="block" style={{ color: "#4F32D9" }}>
+                📞 713-489-7004
+              </a>
+              <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
+                ✉️ hello@echo5digital.com
+              </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: Contact Form */}
-          <div>
+          <motion.div
+            className="flex-1 w-full"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-10% 0px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+          >
             <ContactForm
               heading="Discuss Your Custom Project"
               subheading="Describe your project and we'll get back to you within 24 hours with initial thoughts and next steps."
               submitLabel="Send Project Details"
               showAppointmentNote={true}
             />
-          </div>
+          </motion.div>
         </div>
       </Section>
     </>

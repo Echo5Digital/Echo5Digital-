@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import CustomProgrammingClient from "./CustomProgrammingClient";
 
 export const metadata: Metadata = {
@@ -81,12 +80,6 @@ const serviceJsonLd = {
   url: "https://echo5digital.com/services/custom-programming",
 };
 
-const breadcrumbItems = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/solutions" },
-  { label: "Custom Programming", href: "/services/custom-programming" },
-];
-
 export default function CustomProgrammingPage() {
   return (
     <>
@@ -99,7 +92,6 @@ export default function CustomProgrammingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
       <Header />
-      <Breadcrumbs items={breadcrumbItems} />
       <main>
         <CustomProgrammingClient faqData={faqData} />
 

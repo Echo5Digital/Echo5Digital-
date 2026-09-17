@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
+import GetInTouchMarquee from "@/components/GetInTouchMarquee";
 import SocialMediaMarketingClient from "./SocialMediaMarketingClient";
 
 export const metadata: Metadata = {
@@ -63,14 +63,8 @@ export default function SocialMediaMarketingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Header />
-      <Breadcrumbs
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/solutions" },
-          { label: "Social Media Marketing", href: "/services/social-media-marketing" },
-        ]}
-      />
       <SocialMediaMarketingClient faqData={faqData} />
+      <GetInTouchMarquee variant="light" />
       <Footer
         email="hello@echo5digital.com"
         // Verified phone number from business facts
