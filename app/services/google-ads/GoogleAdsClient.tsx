@@ -6,6 +6,9 @@ import Section from "@/components/Section";
 import Card from "@/components/Card";
 import ContactForm from "@/components/ContactForm";
 import Button from "@/components/Button";
+import { LavenderField, FloatDrift, PeelCard, FocusPullHero, PrismReveal } from "@/components/SolutionsFX";
+import { TiltCard, DiagonalWipe, BlurIn, ScrollProgressRail } from "@/components/ScrollFX";
+import { motion } from "framer-motion";
 import {
   Search,
   Target,
@@ -48,114 +51,117 @@ interface Props {
 
 export default function GoogleAdsClient({ faqData }: Props) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [activeRelatedRow, setActiveRelatedRow] = useState<number | null>(null);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  const pulseRelatedRow = (index: number) => {
+    setActiveRelatedRow(index);
+    window.setTimeout(() => {
+      setActiveRelatedRow((current) => (current === index ? null : current));
+    }, 900);
+  };
+
   return (
     <>
-      {/* ── HERO ───────────────────────────────────────────────── */}
-      <Section background="gradient" spacing="xl" id="hero">
-        {/* Background grid decoration */}
+      {/* ── HERO — full-bleed background image that racks into focus on load ── */}
+      <FocusPullHero
+        src="/crop-hands-using-laptop-office-80kb.jpg"
+        className="min-h-screen flex items-center pt-[72px]"
+        bgPositionClassName="bg-right sm:bg-center"
+      >
+        {/* Ambient glow orb on top of the photo overlay */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-10"
+          className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-20 blur-3xl"
           style={{
-            backgroundImage:
-              "linear-gradient(rgba(124,58,237,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,0.3) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-        {/* Glow orb */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full opacity-20 blur-3xl"
-          style={{
-            background:
-              "radial-gradient(circle, #7C3AED 0%, #A855F7 40%, transparent 70%)",
+            background: "radial-gradient(circle, #7C3AED 0%, #A855F7 40%, transparent 70%)",
           }}
         />
 
-        <div className="relative z-10 flex flex-col items-center text-center gap-6 lg:gap-8">
-          {/* Badge */}
-          <span
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest border"
-            style={{
-              background: "rgba(124,58,237,0.15)",
-              borderColor: "rgba(168,85,247,0.4)",
-              color: "#A855F7",
-            }}
-          >
-            <Zap size={12} />
-            AI-Powered PPC Management
-          </span>
+        <div className="relative z-10 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+          <div className="inline-flex items-center gap-2 mb-8 px-5 py-2.5 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
+            <Zap size={16} className="text-purple-400" />
+            <span
+              className="text-sm font-semibold uppercase tracking-widest text-purple-400"
+              style={{ fontFamily: "Space Grotesk, sans-serif" }}
+            >
+              AI-Powered PPC Management
+            </span>
+          </div>
 
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight max-w-4xl"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-bold leading-[1.05] mb-8"
+            style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.03em", color: "#E5E7EB" }}
           >
-            Google Ads That{" "}
+            <PrismReveal text="Google Ads That Convert" />
             <span
+              className="block"
               style={{
-                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                background: "linear-gradient(135deg, #A855F7, #7C3AED)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Convert Clicks
-            </span>{" "}
-            Into Customers
+              <PrismReveal text="Clicks Into Customers" delay={0.6} />
+            </span>
           </h1>
 
           <p
-            className="text-base sm:text-lg leading-relaxed max-w-2xl"
-            style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
+            className="text-xl md:text-2xl max-w-4xl mx-auto mb-12 leading-relaxed"
+            style={{ color: "rgba(229,231,235,0.9)", fontFamily: "Inter, sans-serif", textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}
           >
             Echo5 Digital combines agentic AI automation with expert human strategy to
             deliver high-performance Google Ads campaigns for small and mid-sized
             businesses in Houston, Texas and nationwide.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 mt-2">
-            <Link href="#lead-form">
-              <Button size="lg" variant="primary" rightIcon={<ArrowRight size={18} />}>
-                Book a Free Demo
-              </Button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <Link
+              href="#lead-form"
+              className="px-10 py-5 rounded-full font-semibold text-white text-lg transition-all duration-200 hover:brightness-110"
+              style={{
+                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                boxShadow: "0 0 28px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
+                fontFamily: "Inter, sans-serif",
+              }}
+            >
+              Book a Free Demo
             </Link>
-            <Link href="#how-it-works">
-              <Button size="lg" variant="outline">
-                See How It Works
-              </Button>
+            <Link
+              href="#how-it-works"
+              className="px-10 py-5 rounded-full font-semibold text-white text-lg border border-white/40 transition-all duration-200 hover:bg-white/10 hover:border-white/70 backdrop-blur-sm"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              See How It Works →
             </Link>
           </div>
 
-          {/* Hero image */}
-          <div className="relative mt-8 w-full max-w-4xl rounded-2xl overflow-hidden border border-purple-800/30 shadow-2xl shadow-purple-900/40">
-            <img
-              src="https://images.pexels.com/photos/6476580/pexels-photo-6476580.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt="Google Ads campaign dashboard showing performance analytics and conversion metrics"
-              className="w-full h-64 sm:h-80 lg:h-96 object-cover"
+          {/* Scroll cue */}
+          <motion.div
+            aria-hidden="true"
+            className="mt-20 w-7 h-11 rounded-full border-2 border-white/30 flex items-start justify-center p-1.5"
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <motion.div
+              className="w-2 h-2 rounded-full bg-white/80"
+              animate={{ y: [0, 16, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(to bottom, transparent 50%, rgba(10,15,30,0.9) 100%)",
-              }}
-            />
-          </div>
+          </motion.div>
         </div>
-      </Section>
+      </FocusPullHero>
 
       {/* ── QUICK ANSWER BLOCK ────────────────────────────────── */}
-      <Section background="elevated" spacing="md" withDivider id="quick-answer">
+      <Section background="transparent" spacing="md" withDivider id="quick-answer" className="!bg-white">
         <div
           className="rounded-2xl p-6 sm:p-8 border"
           style={{
-            background:
-              "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.07) 100%)",
-            borderColor: "rgba(168,85,247,0.3)",
+            background: "#EEECFB",
+            borderColor: "rgba(124,58,237,0.15)",
           }}
         >
           <div className="flex items-start gap-4">
@@ -171,19 +177,19 @@ export default function GoogleAdsClient({ faqData }: Props) {
             <div>
               <p
                 className="text-xs font-semibold uppercase tracking-widest mb-2"
-                style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
+                style={{ color: "#6B4EF0", fontFamily: "Inter, sans-serif" }}
               >
                 Quick Answer
               </p>
               <h2
                 className="text-lg sm:text-xl font-bold mb-3"
-                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
               >
                 What Is Google Ads Management?
               </h2>
               <p
                 className="text-sm sm:text-base leading-relaxed"
-                style={{ color: "rgba(229,231,235,0.75)", fontFamily: "Inter, sans-serif" }}
+                style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
               >
                 Google Ads management is the ongoing strategy, setup, optimization, and
                 reporting of paid search campaigns on Google to drive qualified traffic
@@ -228,28 +234,30 @@ export default function GoogleAdsClient({ faqData }: Props) {
       </Section>
 
       {/* ── WHAT IS GOOGLE ADS MANAGEMENT ────────────────────── */}
-      <Section background="gradient" spacing="lg" withDivider id="what-is-google-ads">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
+      <Section background="transparent" spacing="lg" withDivider id="what-is-google-ads" className="relative !bg-white overflow-hidden">
+        <LavenderField variant="c" />
+
+        <div className="relative z-10 max-w-3xl mx-auto text-center mb-16">
+          <DiagonalWipe>
             <span
               className="inline-block text-xs font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border"
               style={{
-                color: "#A855F7",
-                borderColor: "rgba(168,85,247,0.3)",
-                background: "rgba(124,58,237,0.1)",
+                color: "#6B4EF0",
+                borderColor: "rgba(124,58,237,0.25)",
+                background: "rgba(124,58,237,0.08)",
               }}
             >
               PPC Education
             </span>
             <h2
               className="text-3xl sm:text-4xl font-bold mb-5 leading-tight"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
             >
               What Is Google Ads Management &amp; Why Does It Matter?
             </h2>
             <p
-              className="text-sm sm:text-base leading-relaxed mb-5"
-              style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
+              className="text-sm sm:text-base leading-relaxed mb-4"
+              style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
             >
               Google Ads (formerly Google AdWords) is Google's pay-per-click (PPC)
               advertising platform. Businesses bid on keywords, and their ads appear at
@@ -258,106 +266,129 @@ export default function GoogleAdsClient({ faqData }: Props) {
               capture high-intent buyers.
             </p>
             <p
-              className="text-sm sm:text-base leading-relaxed mb-6"
-              style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
+              className="text-sm sm:text-base leading-relaxed"
+              style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
             >
               Without professional management, campaigns quickly drain budget on
               irrelevant clicks. Expert management ensures your ads reach the right
               people, at the right time, with the right message — maximizing return on
               ad spend (ROAS) for small and mid-sized businesses.
             </p>
+          </DiagonalWipe>
+        </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {/* Numbered scroll-timeline of campaign types, alternating image side per step */}
+        <div className="relative z-10 max-w-5xl mx-auto">
+          <ScrollProgressRail>
+            <div className="space-y-16 md:space-y-24 md:pl-14">
               {[
                 {
-                  icon: <Search size={20} />,
+                  number: "01",
+                  icon: <Search size={22} />,
                   title: "Search Campaigns",
-                  desc: "Text ads on Google's search results pages targeting active buyers.",
+                  desc: "Text ads placed directly on Google's search results pages, shown to people actively typing in the keywords your business wants to be found for. Because intent is already there, these clicks convert at the highest rate of any PPC format.",
+                  image: "/search-find-view-information-data-graphic-symbol-icon-100kb.jpg",
+                  alt: "Laptop showing a Google-style search engine results page",
+                  stat: { label: "Best For", value: "High-Intent Buyers" },
                 },
                 {
-                  icon: <Eye size={20} />,
+                  number: "02",
+                  icon: <Eye size={22} />,
                   title: "Display Campaigns",
-                  desc: "Visual banner ads across millions of websites in the Google Display Network.",
+                  desc: "Visual banner ads placed across millions of partner websites, apps, and video content in the Google Display Network — built for staying visible while your audience browses, reads, and researches elsewhere.",
+                  image: "/team-reviewing-marketing-strategies-digital-screen-100kb.jpg",
+                  alt: "Marketing team reviewing display campaign performance on a large screen",
+                  stat: { label: "Best For", value: "Brand Awareness" },
                 },
                 {
-                  icon: <Layers size={20} />,
+                  number: "03",
+                  icon: <Layers size={22} />,
                   title: "Performance Max",
-                  desc: "AI-driven campaigns across Search, Display, YouTube, Gmail and Maps.",
+                  desc: "Google's AI-driven campaign type that automatically finds and bids on the best-converting placements across Search, Display, YouTube, Gmail, and Maps — all from a single goal-based campaign.",
+                  image: "/laptop-displaying-business-analytics-90kb.jpg",
+                  alt: "Business analytics dashboard showing leads, negotiations, and signed contracts",
+                  stat: { label: "Best For", value: "Cross-Channel Reach" },
                 },
               ].map((item, i) => (
-                <div
-                  key={i}
-                  className="rounded-xl p-4 border"
-                  style={{
-                    background: "rgba(124,58,237,0.08)",
-                    borderColor: "rgba(124,58,237,0.25)",
-                  }}
-                >
+                <BlurIn key={item.number} delay={i * 0.08}>
                   <div
-                    className="w-9 h-9 rounded-lg flex items-center justify-center mb-3"
-                    style={{
-                      background: "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-                      border: "1px solid rgba(168,85,247,0.3)",
-                    }}
+                    className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center ${
+                      i % 2 === 1 ? "md:[direction:rtl]" : ""
+                    }`}
                   >
-                    <span style={{ color: "#A855F7" }}>{item.icon}</span>
+                    <div style={{ direction: "ltr" }}>
+                      <div className="flex items-center gap-3 mb-4">
+                        <span
+                          className="text-4xl font-black"
+                          style={{
+                            fontFamily: "Space Grotesk, sans-serif",
+                            background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                          }}
+                        >
+                          {item.number}
+                        </span>
+                        <div
+                          className="w-10 h-10 rounded-xl flex items-center justify-center"
+                          style={{
+                            background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                            boxShadow: "0 6px 16px rgba(124,58,237,0.35)",
+                          }}
+                        >
+                          <span style={{ color: "#fff" }}>{item.icon}</span>
+                        </div>
+                      </div>
+                      <h3
+                        className="text-2xl font-bold mb-3"
+                        style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
+                      >
+                        {item.title}
+                      </h3>
+                      <p
+                        className="text-sm sm:text-base leading-relaxed mb-4"
+                        style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
+                      >
+                        {item.desc}
+                      </p>
+                      <div
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
+                        style={{ background: "#EEECFB" }}
+                      >
+                        <span
+                          className="text-xs font-semibold uppercase tracking-wider"
+                          style={{ color: "#6B4EF0", fontFamily: "Inter, sans-serif" }}
+                        >
+                          {item.stat.label}:
+                        </span>
+                        <span
+                          className="text-xs font-bold"
+                          style={{ color: "#15172B", fontFamily: "Inter, sans-serif" }}
+                        >
+                          {item.stat.value}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div style={{ direction: "ltr" }}>
+                      <TiltCard index={i}>
+                        <img
+                          src={item.image}
+                          alt={item.alt}
+                          className="w-full rounded-2xl object-cover"
+                          style={{
+                            height: "280px",
+                            border: "1px solid rgba(124,58,237,0.15)",
+                            boxShadow: "0 20px 50px -12px rgba(91,63,163,0.35)",
+                          }}
+                        />
+                      </TiltCard>
+                    </div>
                   </div>
-                  <h3
-                    className="text-sm font-semibold mb-1"
-                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p
-                    className="text-xs leading-relaxed"
-                    style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
-                  >
-                    {item.desc}
-                  </p>
-                </div>
+                </BlurIn>
               ))}
             </div>
-          </div>
-
-          <div className="relative">
-            <img
-              src="https://images.pexels.com/photos/6986455/pexels-photo-6986455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt="Small business owner reviewing Google Ads search campaign results on a laptop"
-              className="w-full rounded-2xl object-cover"
-              style={{
-                height: "420px",
-                border: "1px solid rgba(124,58,237,0.3)",
-                boxShadow: "0 0 60px rgba(124,58,237,0.2)",
-              }}
-            />
-            <div
-              className="absolute -bottom-4 -left-4 rounded-xl p-4 border shadow-xl hidden sm:block"
-              style={{
-                background: "#0D1226",
-                borderColor: "rgba(168,85,247,0.3)",
-                minWidth: "180px",
-              }}
-            >
-              <p
-                className="text-xs font-semibold uppercase tracking-wider mb-1"
-                style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
-              >
-                Avg. Click Quality
-              </p>
-              <p
-                className="text-2xl font-bold"
-                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-              >
-                High-Intent
-              </p>
-              <p
-                className="text-xs mt-0.5"
-                style={{ color: "rgba(229,231,235,0.5)", fontFamily: "Inter, sans-serif" }}
-              >
-                Buyers actively searching
-              </p>
-            </div>
-          </div>
+          </ScrollProgressRail>
         </div>
       </Section>
 
@@ -452,80 +483,164 @@ export default function GoogleAdsClient({ faqData }: Props) {
       </Section>
 
       {/* ── AI-POWERED OPTIMIZATION ───────────────────────────── */}
-      <Section background="gradient" spacing="lg" withDivider id="ai-optimization">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative order-2 lg:order-1">
-            <img
-              src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt="AI-powered marketing automation dashboard with real-time campaign optimization signals"
-              className="w-full rounded-2xl object-cover"
-              style={{
-                height: "400px",
-                border: "1px solid rgba(124,58,237,0.3)",
-                boxShadow: "0 0 60px rgba(124,58,237,0.2)",
-              }}
-            />
-            {/* Floating badge */}
-            <div
-              className="absolute -top-4 -right-4 rounded-xl p-3 border shadow-xl hidden sm:flex items-center gap-3"
-              style={{
-                background: "#0D1226",
-                borderColor: "rgba(168,85,247,0.3)",
-              }}
-            >
-              <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                style={{
-                  background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                  boxShadow: "0 0 16px rgba(124,58,237,0.5)",
-                }}
-              >
-                <Cpu size={16} color="#fff" />
-              </div>
-              <div>
-                <p
-                  className="text-xs font-bold"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-                >
-                  Agentic AI
-                </p>
-                <p
-                  className="text-xs"
-                  style={{ color: "rgba(229,231,235,0.5)", fontFamily: "Inter, sans-serif" }}
-                >
-                  Always optimizing
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="order-1 lg:order-2">
+      <Section background="transparent" spacing="lg" withDivider id="ai-optimization" className="!bg-white relative overflow-hidden">
+        <LavenderField variant="b" />
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* ── Text intro (heading + paragraph) ── */}
+          <div className="order-1 lg:order-2 lg:col-start-2 lg:row-start-1">
             <span
               className="inline-block text-xs font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border"
               style={{
-                color: "#A855F7",
-                borderColor: "rgba(168,85,247,0.3)",
-                background: "rgba(124,58,237,0.1)",
+                color: "#6B4EF0",
+                borderColor: "rgba(124,58,237,0.25)",
+                background: "rgba(124,58,237,0.08)",
               }}
             >
               AI + Human Intelligence
             </span>
             <h2
               className="text-3xl sm:text-4xl font-bold mb-5 leading-tight"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
             >
-              AI-Powered Campaign Optimization
+              AI-Powered Campaign{" "}
+              <span
+                style={{
+                  background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Optimization
+              </span>
             </h2>
             <p
-              className="text-sm sm:text-base leading-relaxed mb-6"
-              style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
+              className="text-sm sm:text-base leading-relaxed"
+              style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
             >
               Echo5 Digital's agentic AI system works 24/7 alongside our human
               strategists — automating the time-intensive optimizations that manual
               management misses, while keeping expert oversight at the core of every
               campaign decision.
             </p>
+          </div>
 
+          {/* ── Photo collage: three overlapping, tilting frames ── */}
+          <div className="relative order-2 lg:order-1 lg:col-start-1 lg:row-start-1 lg:row-span-2 h-[460px] sm:h-[520px]">
+            <PeelCard
+              index={0}
+              className="absolute left-0 top-6 w-[62%] sm:w-[58%] z-10"
+            >
+              <TiltCard index={0}>
+                <div
+                  className="rounded-[1.75rem] overflow-hidden"
+                  style={{
+                    boxShadow: "0 30px 70px -20px rgba(91,63,163,0.45)",
+                    border: "6px solid #fff",
+                    transform: "rotate(-4deg)",
+                  }}
+                >
+                  <img
+                    src="/laptop-displaying-business-analytics-90kb.jpg"
+                    alt="Laptop displaying real-time Google Ads business analytics dashboard"
+                    className="w-full object-cover"
+                    style={{ height: "320px" }}
+                  />
+                </div>
+              </TiltCard>
+            </PeelCard>
+
+            <PeelCard
+              index={1}
+              className="absolute right-0 top-0 w-[52%] sm:w-[50%] z-20"
+            >
+              <TiltCard index={1}>
+                <div
+                  className="rounded-[1.75rem] overflow-hidden"
+                  style={{
+                    boxShadow: "0 30px 70px -18px rgba(91,63,163,0.4)",
+                    border: "6px solid #fff",
+                    transform: "rotate(5deg)",
+                  }}
+                >
+                  <img
+                    src="/corporate-employee-working-night-time-startup-office-90kb.jpg"
+                    alt="Paid search strategist monitoring campaign performance late at night"
+                    className="w-full object-cover"
+                    style={{ height: "260px" }}
+                  />
+                </div>
+              </TiltCard>
+            </PeelCard>
+
+            <PeelCard
+              index={2}
+              className="absolute left-[14%] sm:left-[18%] bottom-0 w-[56%] sm:w-[52%] z-30"
+            >
+              <TiltCard index={2}>
+                <div
+                  className="rounded-[1.75rem] overflow-hidden"
+                  style={{
+                    boxShadow: "0 30px 70px -16px rgba(91,63,163,0.5)",
+                    border: "6px solid #fff",
+                    transform: "rotate(3deg)",
+                  }}
+                >
+                  <img
+                    src="/person-using-laptop-table-90kb.jpg"
+                    alt="Marketer reviewing keyword and bid strategy on a laptop"
+                    className="w-full object-cover"
+                    style={{ height: "230px" }}
+                  />
+                </div>
+              </TiltCard>
+            </PeelCard>
+
+            {/* Floating badge */}
+            <FloatDrift duration={3.8} className="absolute -top-2 right-[6%] sm:right-[10%] z-40 hidden sm:block">
+              <div
+                className="rounded-2xl px-4 py-3 flex items-center gap-3"
+                style={{
+                  background: "linear-gradient(135deg, #ffffff, #F3F0FD)",
+                  border: "1px solid rgba(124,58,237,0.18)",
+                  boxShadow: "0 18px 40px -12px rgba(91,63,163,0.35)",
+                }}
+              >
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{
+                    background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                    boxShadow: "0 0 18px rgba(124,58,237,0.5)",
+                  }}
+                >
+                  <Cpu size={17} color="#fff" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold" style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}>
+                    Agentic AI
+                  </p>
+                  <p className="text-xs" style={{ color: "#6B4EF0", fontFamily: "Inter, sans-serif" }}>
+                    Always optimizing
+                  </p>
+                </div>
+              </div>
+            </FloatDrift>
+
+            {/* Accent glow ring behind the collage */}
+            <div
+              aria-hidden="true"
+              className="absolute -z-10 rounded-full blur-3xl"
+              style={{
+                width: 340,
+                height: 340,
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+                background: "radial-gradient(circle, rgba(168,85,247,0.22) 0%, transparent 70%)",
+              }}
+            />
+          </div>
+
+          <div className="order-3 lg:order-3 lg:col-start-2 lg:row-start-2">
             <div className="space-y-4">
               {[
                 {
@@ -551,31 +666,31 @@ export default function GoogleAdsClient({ faqData }: Props) {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="flex gap-4 p-4 rounded-xl border"
+                  className="group flex gap-4 p-4 rounded-xl border transition-all duration-300 hover:-translate-y-0.5"
                   style={{
-                    background: "rgba(124,58,237,0.06)",
-                    borderColor: "rgba(124,58,237,0.2)",
+                    background: "linear-gradient(135deg, #F5F3FE 0%, #EEECFB 100%)",
+                    borderColor: "rgba(124,58,237,0.15)",
                   }}
                 >
                   <div
-                    className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5"
+                    className="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center mt-0.5 transition-transform duration-300 group-hover:scale-110"
                     style={{
-                      background: "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-                      border: "1px solid rgba(168,85,247,0.3)",
+                      background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                      boxShadow: "0 6px 16px rgba(124,58,237,0.35)",
                     }}
                   >
-                    <span style={{ color: "#A855F7" }}>{item.icon}</span>
+                    <span style={{ color: "#fff" }}>{item.icon}</span>
                   </div>
                   <div>
                     <h3
                       className="text-sm font-semibold mb-1"
-                      style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                      style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
                     >
                       {item.title}
                     </h3>
                     <p
                       className="text-xs leading-relaxed"
-                      style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
+                      style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
                     >
                       {item.desc}
                     </p>
@@ -705,6 +820,128 @@ export default function GoogleAdsClient({ faqData }: Props) {
         </div>
       </Section>
 
+      {/* ── INTERNAL LINKS ────────────────────────────────────── */}
+      <Section background="transparent" spacing="lg" withDivider id="related-services" className="relative !bg-white overflow-hidden">
+        {/* Ambient background glow */}
+        <div
+          aria-hidden="true"
+          className="hidden lg:block absolute top-1/4 right-0 w-[440px] h-[440px] rounded-full pointer-events-none"
+          style={{
+            background: "radial-gradient(circle, rgba(168,85,247,0.22) 0%, transparent 70%)",
+            filter: "blur(20px)",
+          }}
+        />
+
+        <div className="relative z-10 mb-10">
+          <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: "#6B4EF0", fontFamily: "Space Grotesk, sans-serif" }}>
+            Related Services
+          </p>
+          <h2
+            className="text-2xl md:text-3xl font-bold"
+            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B", letterSpacing: "-0.02em" }}
+          >
+            Explore More Echo5 Digital Services
+          </h2>
+        </div>
+
+        <div className="relative z-10">
+          {[
+            {
+              href: "/services/meta-ads",
+              title: "Meta Ads",
+              desc: "Facebook & Instagram paid campaigns to reach audiences at every stage of the funnel.",
+              image: "https://images.pexels.com/photos/14158915/pexels-photo-14158915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+            },
+            {
+              href: "/services/seo",
+              title: "SEO Services",
+              desc: "Organic search ranking to complement your paid traffic and reduce long-term acquisition costs.",
+              image: "/3d-graph-computer-illustration-100kb.jpg",
+            },
+            {
+              href: "/services/local-seo",
+              title: "Local SEO",
+              desc: "Dominate local search in Houston, Sugar Land, and nearby markets with geo-targeted optimization.",
+              image: "https://images.pexels.com/photos/18462227/pexels-photo-18462227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+            },
+            {
+              href: "/ai-marketing-employee",
+              title: "AI Marketing Employee",
+              desc: "An always-on AI marketing system that powers and coordinates all your digital channels.",
+              image: "https://images.pexels.com/photos/8438979/pexels-photo-8438979.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+            },
+          ].map((link, idx) => (
+            <DiagonalWipe
+              key={link.title}
+              delay={idx * 0.12}
+              className="border-t border-[rgba(124,58,237,0.15)] last:border-b"
+            >
+              <Link
+                href={link.href}
+                className="group flex items-center gap-4 sm:gap-6 md:gap-10 py-6 md:py-8"
+                onTouchStart={() => pulseRelatedRow(idx)}
+              >
+                <BlurIn delay={idx * 0.12 + 0.1} className="flex-shrink-0">
+                  <div
+                    className={`relative w-20 h-16 sm:w-28 sm:h-20 md:w-36 md:h-24 rounded-xl md:rounded-2xl overflow-hidden transition-all duration-500 ease-out group-hover:-translate-y-2 ${
+                      activeRelatedRow === idx ? "-translate-y-2" : ""
+                    }`}
+                    style={{ boxShadow: "0 12px 32px rgba(91,63,163,0.25)", border: "1px solid rgba(124,58,237,0.2)" }}
+                  >
+                    <img
+                      src={link.image}
+                      alt={`Team reviewing ${link.title} performance data`}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Diagonal light sweep on hover (desktop) / tap (mobile) */}
+                    <div
+                      aria-hidden="true"
+                      className={`absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none ${
+                        activeRelatedRow === idx ? "translate-x-full" : ""
+                      }`}
+                      style={{
+                        background:
+                          "linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.55) 50%, transparent 70%)",
+                      }}
+                    />
+                  </div>
+                </BlurIn>
+
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-4">
+                    <h3
+                      className={`font-bold tracking-tight transition-colors duration-300 group-hover:text-transparent ${
+                        activeRelatedRow === idx ? "text-transparent" : ""
+                      }`}
+                      style={{
+                        fontFamily: "Space Grotesk, sans-serif",
+                        fontSize: "clamp(1.5rem, 3.5vw, 2.75rem)",
+                        color: "#15172B",
+                        backgroundImage: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                        WebkitBackgroundClip: "text",
+                      }}
+                    >
+                      {link.title}
+                    </h3>
+                    <span
+                      className={`hidden md:flex flex-shrink-0 items-center gap-2 text-sm font-medium opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 ${
+                        activeRelatedRow === idx ? "opacity-100 translate-x-0" : ""
+                      }`}
+                      style={{ color: "#6B4EF0", fontFamily: "Inter, sans-serif" }}
+                    >
+                      Learn more <ArrowRight size={16} />
+                    </span>
+                  </div>
+                  <p className="mt-1 max-w-xl text-sm leading-relaxed" style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}>
+                    {link.desc}
+                  </p>
+                </div>
+              </Link>
+            </DiagonalWipe>
+          ))}
+        </div>
+      </Section>
+
       {/* ── INDUSTRIES ────────────────────────────────────────── */}
       <Section background="gradient" spacing="lg" withDivider id="industries">
         <div className="text-center mb-10">
@@ -779,106 +1016,13 @@ export default function GoogleAdsClient({ faqData }: Props) {
         </div>
       </Section>
 
-      {/* ── INTERNAL LINKS ────────────────────────────────────── */}
-      <Section background="elevated" spacing="md" withDivider id="related-services">
-        <div className="text-center mb-8">
-          <h2
-            className="text-2xl sm:text-3xl font-bold mb-3"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-          >
-            Related Digital Marketing Services
-          </h2>
-          <p
-            className="text-sm max-w-xl mx-auto"
-            style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
-          >
-            Google Ads works best as part of a complete digital strategy. Explore our
-            complementary services.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {[
-            {
-              label: "Meta Ads",
-              href: "/services/meta-ads",
-              desc: "Facebook & Instagram paid campaigns to reach audiences at every stage of the funnel.",
-              icon: <Target size={20} />,
-            },
-            {
-              label: "SEO Services",
-              href: "/services/seo",
-              desc: "Organic search ranking to complement your paid traffic and reduce long-term acquisition costs.",
-              icon: <TrendingUp size={20} />,
-            },
-            {
-              label: "Local SEO",
-              href: "/services/local-seo",
-              desc: "Dominate local search in Houston, Sugar Land, and nearby markets with geo-targeted optimization.",
-              icon: <MapPin size={20} />,
-            },
-            {
-              label: "AI Marketing Employee",
-              href: "/ai-marketing-employee",
-              desc: "An always-on AI marketing system that powers and coordinates all your digital channels.",
-              icon: <Brain size={20} />,
-            },
-          ].map((service, i) => (
-            <Link key={i} href={service.href} className="group">
-              <div
-                className="h-full p-5 rounded-xl border transition-all duration-300 group-hover:-translate-y-1"
-                style={{
-                  background: "rgba(124,58,237,0.06)",
-                  borderColor: "rgba(124,58,237,0.2)",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(168,85,247,0.5)";
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 30px rgba(124,58,237,0.2)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(124,58,237,0.2)";
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-                }}
-              >
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-3"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-                    border: "1px solid rgba(168,85,247,0.3)",
-                  }}
-                >
-                  <span style={{ color: "#A855F7" }}>{service.icon}</span>
-                </div>
-                <h3
-                  className="text-base font-semibold mb-2 flex items-center gap-2"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-                >
-                  {service.label}
-                  <ArrowRight
-                    size={14}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity"
-                    style={{ color: "#A855F7" }}
-                  />
-                </h3>
-                <p
-                  className="text-xs leading-relaxed"
-                  style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
-                >
-                  {service.desc}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </Section>
-
       {/* ── LOCAL RELEVANCE ───────────────────────────────────── */}
-      <Section background="gradient" spacing="md" withDivider id="local-service">
+      <Section background="transparent" spacing="md" withDivider id="local-service" className="!bg-white">
         <div
           className="rounded-2xl p-6 sm:p-8 border"
           style={{
-            background: "linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(168,85,247,0.06) 100%)",
-            borderColor: "rgba(168,85,247,0.25)",
+            background: "#EEECFB",
+            borderColor: "rgba(124,58,237,0.15)",
           }}
         >
           <div className="flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
@@ -895,13 +1039,13 @@ export default function GoogleAdsClient({ faqData }: Props) {
               <div>
                 <h2
                   className="text-xl sm:text-2xl font-bold mb-2"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
                 >
                   Serving Houston &amp; Sugar Land, Texas
                 </h2>
                 <p
                   className="text-sm leading-relaxed max-w-2xl"
-                  style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
+                  style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}
                 >
                   Echo5 Digital runs Google Ads campaigns for businesses in Houston and
                   Sugar Land, Texas, targeting geo-specific search queries to deliver
@@ -912,7 +1056,7 @@ export default function GoogleAdsClient({ faqData }: Props) {
                   <a
                     href="tel:713-489-7004"
                     className="flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-80"
-                    style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
+                    style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}
                   >
                     <Phone size={15} />
                     {/* Verified phone number */}
@@ -921,7 +1065,7 @@ export default function GoogleAdsClient({ faqData }: Props) {
                   <a
                     href="mailto:hello@echo5digital.com"
                     className="flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-80"
-                    style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
+                    style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}
                   >
                     <Mail size={15} />
                     hello@echo5digital.com
@@ -1029,27 +1173,29 @@ export default function GoogleAdsClient({ faqData }: Props) {
       </Section>
 
       {/* ── LEAD FORM CTA ─────────────────────────────────────── */}
-      <Section background="gradient" spacing="xl" withDivider id="lead-form">
-        {/* Hidden UTM fields note: UTM values are typically passed via query params
-            and captured via JS; the ContactForm component handles form state */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Left side: CTA copy */}
-          <div className="lg:pt-8">
-            <span
-              className="inline-block text-xs font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border"
-              style={{
-                color: "#A855F7",
-                borderColor: "rgba(168,85,247,0.3)",
-                background: "rgba(124,58,237,0.1)",
-              }}
+      <Section
+        background="transparent"
+        spacing="xl"
+        maxWidth="3xl"
+        id="lead-form"
+        withDivider
+        className="!bg-[#EEECFB]"
+      >
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+          {/* Left: copy */}
+          <div className="flex-1 lg:pt-6">
+            <p
+              className="text-xs font-semibold uppercase tracking-widest mb-5"
+              style={{ color: "#6B4EF0", fontFamily: "Inter, sans-serif" }}
             >
               Get Started
-            </span>
+            </p>
             <h2
-              className="text-3xl sm:text-4xl font-bold mb-5 leading-tight"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+              className="font-black leading-[1.04] tracking-tight mb-4"
+              style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#15172B" }}
             >
-              Ready to Drive More Leads with{" "}
+              Ready to Drive More Leads
+              <br />
               <span
                 style={{
                   background: "linear-gradient(135deg, #7C3AED, #A855F7)",
@@ -1057,70 +1203,44 @@ export default function GoogleAdsClient({ faqData }: Props) {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                Google Ads?
+                with Google Ads?
               </span>
             </h2>
-            <p
-              className="text-base leading-relaxed mb-8"
-              style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
-            >
+            <p className="text-base leading-relaxed mb-8" style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}>
               Book a free paid search consultation with Echo5 Digital. We'll audit your
               current campaigns (or build one from scratch), identify growth
               opportunities, and show you exactly how AI-powered management can lower
               your cost per lead.
             </p>
-
-            <div className="space-y-4">
+            <div className="space-y-4 mb-8">
               {[
-                { icon: <CheckCircle size={16} />, text: "Free account audit for existing campaigns" },
-                { icon: <CheckCircle size={16} />, text: "Custom strategy aligned to your budget" },
-                { icon: <CheckCircle size={16} />, text: "AI + human management from day one" },
-                { icon: <CheckCircle size={16} />, text: "Full conversion tracking setup included" },
-                { icon: <CheckCircle size={16} />, text: "Transparent monthly reporting" },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <span style={{ color: "#A855F7" }}>{item.icon}</span>
-                  <span
-                    className="text-sm"
-                    style={{ color: "rgba(229,231,235,0.8)", fontFamily: "Inter, sans-serif" }}
-                  >
-                    {item.text}
+                "Free account audit for existing campaigns",
+                "Custom strategy aligned to your budget",
+                "AI + human management from day one",
+                "Full conversion tracking setup included",
+                "Transparent monthly reporting",
+              ].map((pt) => (
+                <div key={pt} className="flex items-center gap-3">
+                  <CheckCircle size={16} style={{ color: "#6B4EF0", flexShrink: 0 }} />
+                  <span className="text-sm" style={{ color: "#15172B", fontFamily: "Inter, sans-serif" }}>
+                    {pt}
                   </span>
                 </div>
               ))}
             </div>
-
-            <div className="mt-8 pt-6 border-t" style={{ borderColor: "rgba(124,58,237,0.2)" }}>
-              <p
-                className="text-sm mb-3"
-                style={{ color: "rgba(229,231,235,0.5)", fontFamily: "Inter, sans-serif" }}
-              >
-                Or reach us directly:
-              </p>
-              <div className="flex flex-col gap-3">
-                <a
-                  href="tel:713-489-7004"
-                  className="flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-80"
-                  style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
-                >
-                  <Phone size={15} />
-                  {/* Verified phone number */}
-                  713-489-7004
-                </a>
-                <a
-                  href="mailto:hello@echo5digital.com"
-                  className="flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-80"
-                  style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
-                >
-                  <Mail size={15} />
-                  hello@echo5digital.com
-                </a>
-              </div>
+            <div className="space-y-2 text-sm">
+              <p style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}>Or reach us directly:</p>
+              <a href="tel:713-489-7004" className="block" style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}>
+                📞 713-489-7004
+              </a>
+              <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}>
+                ✉️ hello@echo5digital.com
+              </a>
             </div>
           </div>
 
-          {/* Right side: Contact form */}
-          <div>
+          {/* Right: form */}
+          <div className="flex-1 w-full">
             <ContactForm
               heading="Book a Free Google Ads Demo"
               subheading="Tell us about your business and goals. We'll respond within 24 hours with a tailored paid search strategy."

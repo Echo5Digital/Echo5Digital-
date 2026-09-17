@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import MetaAdsClient from "./MetaAdsClient";
 
 export const metadata: Metadata = {
@@ -63,13 +62,6 @@ export default function MetaAdsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Header />
-      <Breadcrumbs
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/solutions" },
-          { label: "Meta Ads", href: "/services/meta-ads" },
-        ]}
-      />
       <MetaAdsClient faqData={faqData} />
       <Footer
         email="hello@echo5digital.com"

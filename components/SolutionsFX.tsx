@@ -86,11 +86,13 @@ export function FocusPullHero({
   children,
   className = "",
   overlay = "linear-gradient(180deg, rgba(10,8,26,0.5) 0%, rgba(10,8,26,0.65) 55%, rgba(10,8,26,0.9) 100%)",
+  bgPositionClassName = "bg-center",
 }: {
   src: string;
   children: ReactNode;
   className?: string;
   overlay?: string;
+  bgPositionClassName?: string;
 }) {
   const [focused, setFocused] = useState(false);
 
@@ -103,7 +105,7 @@ export function FocusPullHero({
     <div className={`relative overflow-hidden ${className}`}>
       <motion.div
         aria-hidden="true"
-        className="absolute inset-0 bg-cover bg-center"
+        className={`absolute inset-0 bg-cover ${bgPositionClassName}`}
         style={{ backgroundImage: `url('${src}')` }}
         initial={{ filter: "blur(28px) saturate(0.3) brightness(0.8)", scale: 1.12 }}
         animate={

@@ -849,6 +849,7 @@ export default function LocalSEOClient({ faqData }: Props) {
               href: "/services/google-business-profile",
               title: "Google Business Profile",
               desc: "Full GBP optimization and management to maximize map pack visibility and local credibility.",
+              image: "https://images.pexels.com/photos/5444631/pexels-photo-5444631.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
             },
             {
               href: "/services/seo",
@@ -860,20 +861,36 @@ export default function LocalSEOClient({ faqData }: Props) {
               href: "/services/content-marketing",
               title: "Content Marketing",
               desc: "AI-assisted content strategies that build local authority and drive qualified traffic to your Houston or Sugar Land business.",
+              image: "https://images.pexels.com/photos/97080/pexels-photo-97080.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
             },
           ].map((link, idx) => (
             <ClipRow key={link.title} index={idx} className="list-none border-t border-[rgba(124,58,237,0.15)] last:border-b">
               <Link href={link.href} className="group flex items-center gap-6 md:gap-10 py-6 md:py-8">
                 {link.image && (
                   <div
-                    className="hidden sm:block flex-shrink-0 w-28 h-20 md:w-36 md:h-24 rounded-xl md:rounded-2xl overflow-hidden transition-transform duration-300 group-hover:-rotate-2 group-hover:scale-105"
-                    style={{ boxShadow: "0 12px 32px rgba(91,63,163,0.25)", border: "1px solid rgba(124,58,237,0.2)" }}
+                    className="hidden sm:block flex-shrink-0 w-0 group-hover:w-28 md:group-hover:w-36 h-20 md:h-24 rounded-xl md:rounded-2xl overflow-hidden transition-[width] duration-500"
+                    style={{
+                      transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                      perspective: "600px",
+                    }}
                   >
-                    <img
-                      src={link.image}
-                      alt={`Team reviewing ${link.title} performance data`}
-                      className="w-full h-full object-cover"
-                    />
+                    <div
+                      className="w-28 h-20 md:w-36 md:h-24 origin-left transition-transform duration-500 [transform:rotateY(-100deg)] group-hover:[transform:rotateY(0deg)]"
+                      style={{
+                        transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                        transformStyle: "preserve-3d",
+                        borderRadius: "inherit",
+                        boxShadow: "0 12px 32px rgba(91,63,163,0.25)",
+                        border: "1px solid rgba(124,58,237,0.2)",
+                      }}
+                    >
+                      <img
+                        src={link.image}
+                        alt={`Team reviewing ${link.title} performance data`}
+                        className="w-full h-full object-cover"
+                        style={{ borderRadius: "inherit" }}
+                      />
+                    </div>
                   </div>
                 )}
 
