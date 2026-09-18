@@ -172,7 +172,7 @@ export default function BlogClient({ faqData }: Props) {
   return (
     <>
       {/* ── Blog Hero ── */}
-      <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#0A0F1E] via-[#110D2E] to-[#0A0F1E] flex items-center py-16 sm:py-20 md:min-h-screen md:py-36">
+      <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#0A0F1E] via-[#110D2E] to-[#0A0F1E] flex items-center py-16 sm:py-20 md:min-h-screen md:min-h-[100svh] md:py-36">
         {/* Full-width, full-height banner background image — racks into focus on load, like the About Us hero */}
         <motion.div
           aria-hidden="true"

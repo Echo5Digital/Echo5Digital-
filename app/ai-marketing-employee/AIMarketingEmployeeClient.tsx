@@ -242,7 +242,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
       {/* ── HERO: full-bleed background image that racks into focus on load ── */}
       <FocusPullHero
         src="https://images.pexels.com/photos/8438979/pexels-photo-8438979.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1600"
-        className="min-h-screen flex items-center pt-[72px]"
+        className="flex items-center py-16 sm:py-20 md:min-h-screen md:min-h-[100svh] md:py-0 pt-[72px]"
       >
         {/* Ambient glow orbs on top of the photo overlay */}
         <div
@@ -254,10 +254,10 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
         />
 
         <div className="relative z-10 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-          <CurtainBadge className="inline-flex items-center gap-2 mb-8 px-5 py-2.5 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
+          <CurtainBadge className="inline-flex items-center gap-2 mb-6 md:mb-8 px-4 py-2 md:px-5 md:py-2.5 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
             <Bot size={16} className="text-purple-400" />
             <span
-              className="text-sm font-semibold uppercase tracking-widest text-purple-400"
+              className="text-xs md:text-sm font-semibold uppercase tracking-widest text-purple-400"
               style={{ fontFamily: "Space Grotesk, sans-serif" }}
             >
               Agentic AI Growth System
@@ -265,7 +265,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
           </CurtainBadge>
 
           <h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-8"
+            className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-6 md:mb-8"
             style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.03em" }}
           >
             <FlipUpReveal text="Your AI Marketing Employee" delay={0.3} />
@@ -282,7 +282,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
           </h1>
 
           <motion.p
-            className="text-xl md:text-2xl max-w-4xl mx-auto mb-12 leading-relaxed"
+            className="text-base sm:text-lg md:text-2xl max-w-4xl mx-auto mb-8 md:mb-12 leading-relaxed"
             style={{ color: "rgba(229,231,235,0.9)", fontFamily: "Inter, sans-serif", textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -310,7 +310,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
             >
               <Link
                 href="/pricing"
-                className="inline-block px-10 py-5 rounded-full font-semibold text-white text-lg transition-all duration-200 hover:brightness-110 hover:scale-105"
+                className="inline-block px-8 py-3.5 md:px-10 md:py-5 rounded-full font-semibold text-white text-base md:text-lg transition-all duration-200 hover:brightness-110 hover:scale-105"
                 style={{
                   background: "linear-gradient(135deg, #7C3AED, #A855F7)",
                   boxShadow: "0 0 28px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
@@ -329,7 +329,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
             >
               <Link
                 href="/contact"
-                className="inline-block px-10 py-5 rounded-full font-semibold text-white text-lg border border-white/40 transition-all duration-200 hover:bg-white/10 hover:border-white/70 hover:scale-105 backdrop-blur-sm"
+                className="inline-block px-8 py-3.5 md:px-10 md:py-5 rounded-full font-semibold text-white text-base md:text-lg border border-white/40 transition-all duration-200 hover:bg-white/10 hover:border-white/70 hover:scale-105 backdrop-blur-sm"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 Book a Demo
