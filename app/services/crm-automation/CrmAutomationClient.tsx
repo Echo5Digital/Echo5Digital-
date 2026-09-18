@@ -672,8 +672,8 @@ export default function CrmAutomationClient({ faqData }: Props) {
                   icon: <Wrench size={22} />,
                   title: "Workflow Design",
                   desc: "Our team designs a custom automation map, covering lead capture, nurture sequences, pipeline stages, and handoff triggers specific to your business.",
-                  image: "/focused-businessman-showing-corporate-graphs-presentation-using-tablet-working-company-ideas-100kb.jpg",
-                  alt: "Team reviewing a custom automation map on a tablet",
+                  image: "/team-reviewing-marketing-strategies-digital-screen-100kb.jpg",
+                  alt: "Team reviewing marketing strategy projections on a digital screen",
                   stat: { label: "Outcome", value: "Custom Automation Map" },
                 },
                 {
