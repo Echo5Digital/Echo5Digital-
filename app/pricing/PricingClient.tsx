@@ -25,7 +25,7 @@ import { motion, useInView } from "framer-motion";
 import Section from "@/components/Section";
 import ContactForm from "@/components/ContactForm";
 import { BlurIn, StickyImageScrollList } from "@/components/ScrollFX";
-import { FocusPullHero, FlipUpReveal, CurtainBadge } from "@/components/SolutionsFX";
+import { FocusPullHero, PrismReveal } from "@/components/SolutionsFX";
 
 interface FaqItem {
   question: string;
@@ -457,7 +457,7 @@ export default function PricingClient({ faqData }: PricingClientProps) {
         />
 
         <div className="relative z-10 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-          <CurtainBadge className="inline-flex items-center gap-2 mb-8 px-5 py-2.5 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 mb-8 px-5 py-2.5 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
             <Sparkles size={16} className="text-purple-400" />
             <span
               className="text-sm font-semibold uppercase tracking-widest text-purple-400"
@@ -465,7 +465,7 @@ export default function PricingClient({ faqData }: PricingClientProps) {
             >
               Transparent, Value-Based Pricing
             </span>
-          </CurtainBadge>
+          </div>
 
           <h1
             className="text-4xl sm:text-6xl md:text-7xl font-bold leading-[1.05] mb-6 sm:mb-8"
@@ -476,7 +476,7 @@ export default function PricingClient({ faqData }: PricingClientProps) {
               textShadow: "0 4px 24px rgba(0,0,0,0.5)",
             }}
           >
-            <FlipUpReveal text="Real Marketing Results." delay={0.3} />
+            <PrismReveal text="Real Marketing Results." />
             <span
               className="block"
               style={{
@@ -485,66 +485,39 @@ export default function PricingClient({ faqData }: PricingClientProps) {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              <FlipUpReveal text="Predictable Pricing." delay={0.9} />
+              <PrismReveal text="Predictable Pricing." delay={0.6} />
             </span>
           </h1>
 
-          <motion.p
+          <p
             className="text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed"
             style={{ color: "rgba(229,231,235,0.9)", fontFamily: "Inter, sans-serif", textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >
             No opaque retainers. No guesswork. Echo5 Digital's AI Marketing Employee plans are
             built around transparent, value-based pricing — so you always know exactly what
             you're getting and what it costs.
-          </motion.p>
+          </p>
 
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-5"
-            initial="hidden"
-            animate="show"
-            variants={{
-              hidden: {},
-              show: { transition: { staggerChildren: 0.15, delayChildren: 1.75 } },
-            }}
-          >
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, scale: 0.5 },
-                show: { opacity: 1, scale: 1 },
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <a
+              href="#plans"
+              className="inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110"
+              style={{
+                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                boxShadow: "0 0 28px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
+                fontFamily: "Inter, sans-serif",
               }}
-              transition={{ type: "spring", stiffness: 260, damping: 14 }}
             >
-              <a
-                href="#plans"
-                className="inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110 hover:scale-105"
-                style={{
-                  background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                  boxShadow: "0 0 28px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
-                  fontFamily: "Inter, sans-serif",
-                }}
-              >
-                View Plans <ArrowRight size={16} />
-              </a>
-            </motion.div>
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, scale: 0.5 },
-                show: { opacity: 1, scale: 1 },
-              }}
-              transition={{ type: "spring", stiffness: 260, damping: 14 }}
+              View Plans <ArrowRight size={16} />
+            </a>
+            <a
+              href="#custom-quote"
+              className="inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-base border border-white/40 text-white transition-all duration-200 hover:bg-white/10 hover:border-white/70 backdrop-blur-sm"
+              style={{ fontFamily: "Inter, sans-serif" }}
             >
-              <a
-                href="#custom-quote"
-                className="inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-base border border-white/40 text-white transition-all duration-200 hover:bg-white/10 hover:border-white/70 hover:scale-105 backdrop-blur-sm"
-                style={{ fontFamily: "Inter, sans-serif" }}
-              >
-                Get a Custom Quote
-              </a>
-            </motion.div>
-          </motion.div>
+              Get a Custom Quote
+            </a>
+          </div>
 
           {/* Scroll cue */}
           <motion.div

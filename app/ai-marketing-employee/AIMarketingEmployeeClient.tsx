@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Section from "@/components/Section";
 import ContactForm from "@/components/ContactForm";
-import { FocusPullHero, FlipUpReveal, CurtainBadge, CircleReveal, MagnetPop, FloatDrift, LavenderField } from "@/components/SolutionsFX";
+import { FocusPullHero, PrismReveal, CircleReveal, MagnetPop, FloatDrift, LavenderField } from "@/components/SolutionsFX";
 import { TiltCard, BlurIn } from "@/components/ScrollFX";
 import {
   Bot,
@@ -254,7 +254,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
         />
 
         <div className="relative z-10 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-          <CurtainBadge className="inline-flex items-center gap-2 mb-6 md:mb-8 px-4 py-2 md:px-5 md:py-2.5 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 mb-6 md:mb-8 px-4 py-2 md:px-5 md:py-2.5 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
             <Bot size={16} className="text-purple-400" />
             <span
               className="text-xs md:text-sm font-semibold uppercase tracking-widest text-purple-400"
@@ -262,13 +262,13 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
             >
               Agentic AI Growth System
             </span>
-          </CurtainBadge>
+          </div>
 
           <h1
             className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-6 md:mb-8"
             style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.03em" }}
           >
-            <FlipUpReveal text="Your AI Marketing Employee" delay={0.3} />
+            <PrismReveal text="Your AI Marketing Employee" />
             <span
               className="block"
               style={{
@@ -277,65 +277,38 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              <FlipUpReveal text="Never Clocks Out" delay={0.9} />
+              <PrismReveal text="Never Clocks Out" delay={0.6} />
             </span>
           </h1>
 
-          <motion.p
+          <p
             className="text-base sm:text-lg md:text-2xl max-w-4xl mx-auto mb-8 md:mb-12 leading-relaxed"
             style={{ color: "rgba(229,231,235,0.9)", fontFamily: "Inter, sans-serif", textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >
             Done-for-you agentic AI that continuously manages your SEO, AEO, Google Ads, social
             media, and content, with expert human oversight from Echo5 Digital's team.
-          </motion.p>
+          </p>
 
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-5"
-            initial="hidden"
-            animate="show"
-            variants={{
-              hidden: {},
-              show: { transition: { staggerChildren: 0.15, delayChildren: 1.75 } },
-            }}
-          >
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, scale: 0.5 },
-                show: { opacity: 1, scale: 1 },
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <Link
+              href="/pricing"
+              className="px-8 py-3.5 md:px-10 md:py-5 rounded-full font-semibold text-white text-base md:text-lg transition-all duration-200 hover:brightness-110"
+              style={{
+                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                boxShadow: "0 0 28px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
+                fontFamily: "Inter, sans-serif",
               }}
-              transition={{ type: "spring", stiffness: 260, damping: 14 }}
             >
-              <Link
-                href="/pricing"
-                className="inline-block px-8 py-3.5 md:px-10 md:py-5 rounded-full font-semibold text-white text-base md:text-lg transition-all duration-200 hover:brightness-110 hover:scale-105"
-                style={{
-                  background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                  boxShadow: "0 0 28px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
-                  fontFamily: "Inter, sans-serif",
-                }}
-              >
-                Explore Plans
-              </Link>
-            </motion.div>
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, scale: 0.5 },
-                show: { opacity: 1, scale: 1 },
-              }}
-              transition={{ type: "spring", stiffness: 260, damping: 14 }}
+              Explore Plans
+            </Link>
+            <Link
+              href="/contact"
+              className="px-8 py-3.5 md:px-10 md:py-5 rounded-full font-semibold text-white text-base md:text-lg border border-white/40 transition-all duration-200 hover:bg-white/10 hover:border-white/70 backdrop-blur-sm"
+              style={{ fontFamily: "Inter, sans-serif" }}
             >
-              <Link
-                href="/contact"
-                className="inline-block px-8 py-3.5 md:px-10 md:py-5 rounded-full font-semibold text-white text-base md:text-lg border border-white/40 transition-all duration-200 hover:bg-white/10 hover:border-white/70 hover:scale-105 backdrop-blur-sm"
-                style={{ fontFamily: "Inter, sans-serif" }}
-              >
-                Book a Demo
-              </Link>
-            </motion.div>
-          </motion.div>
+              Book a Demo
+            </Link>
+          </div>
 
           {/* Scroll cue */}
           <motion.div

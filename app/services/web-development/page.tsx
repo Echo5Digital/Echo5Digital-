@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import WebDevelopmentClient from "./WebDevelopmentClient";
 
 export const metadata: Metadata = {
@@ -83,12 +82,6 @@ const faqSchema = {
   })),
 };
 
-const breadcrumbItems = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/solutions" },
-  { label: "Web Development", href: "/services/web-development" },
-];
-
 export default function WebDevelopmentPage() {
   return (
     <>
@@ -101,7 +94,6 @@ export default function WebDevelopmentPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Header />
-      <Breadcrumbs items={breadcrumbItems} />
       <WebDevelopmentClient faqData={faqData} />
       <Footer
         email="hello@echo5digital.com"

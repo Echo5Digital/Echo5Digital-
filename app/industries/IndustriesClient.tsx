@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Section from "@/components/Section";
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
-import { FocusPullHero, SoftFadeUp, CurtainBadge, LavenderField, MagnetPop } from "@/components/SolutionsFX";
+import { FocusPullHero, PrismReveal, LavenderField, MagnetPop } from "@/components/SolutionsFX";
 import { BlurIn, TiltCard, CountUp, WordStagger } from "@/components/ScrollFX";
 import {
   Stethoscope,
@@ -262,7 +262,7 @@ export default function IndustriesClient() {
         />
 
         <div className="relative z-10 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-          <CurtainBadge className="inline-flex items-center gap-2 mb-8 px-5 py-2.5 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 mb-8 px-5 py-2.5 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
             <Zap size={16} className="text-purple-400" />
             <span
               className="text-sm font-semibold uppercase tracking-widest text-purple-400"
@@ -270,24 +270,23 @@ export default function IndustriesClient() {
             >
               AI-Powered Industry Specialists
             </span>
-          </CurtainBadge>
+          </div>
 
           <h1
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-8"
             style={{ fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.03em", color: "#F5F3FF" }}
           >
-            <SoftFadeUp text="Marketing Built for" />
-            <SoftFadeUp
-              text="Your Industry"
-              delay={0.35}
+            <PrismReveal text="Marketing Built for" />
+            <span
               className="block"
               style={{
                 background: "linear-gradient(135deg, #A855F7, #7C3AED)",
                 WebkitBackgroundClip: "text",
-                backgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
-            />
+            >
+              <PrismReveal text="Your Industry" delay={0.6} />
+            </span>
           </h1>
 
           <p
@@ -299,44 +298,26 @@ export default function IndustriesClient() {
             your industry. No generic playbooks, only precision growth.
           </p>
 
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-5"
-            initial="hidden"
-            animate="show"
-            variants={{
-              hidden: {},
-              show: { transition: { staggerChildren: 0.15, delayChildren: 1.1 } },
-            }}
-          >
-            <motion.div
-              variants={{ hidden: { opacity: 0, scale: 0.5 }, show: { opacity: 1, scale: 1 } }}
-              transition={{ type: "spring", stiffness: 260, damping: 14 }}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <Link
+              href="#industries-grid"
+              className="px-10 py-5 rounded-full font-semibold text-white text-lg transition-all duration-200 hover:brightness-110"
+              style={{
+                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                boxShadow: "0 0 28px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
+                fontFamily: "Inter, sans-serif",
+              }}
             >
-              <Link
-                href="#industries-grid"
-                className="inline-block px-10 py-5 rounded-full font-semibold text-white text-lg transition-all duration-200 hover:brightness-110 hover:scale-105"
-                style={{
-                  background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                  boxShadow: "0 0 28px rgba(124,58,237,0.55), 0 4px 14px rgba(0,0,0,0.3)",
-                  fontFamily: "Inter, sans-serif",
-                }}
-              >
-                Explore Industries
-              </Link>
-            </motion.div>
-            <motion.div
-              variants={{ hidden: { opacity: 0, scale: 0.5 }, show: { opacity: 1, scale: 1 } }}
-              transition={{ type: "spring", stiffness: 260, damping: 14 }}
+              Explore Industries
+            </Link>
+            <Link
+              href="/contact"
+              className="px-10 py-5 rounded-full font-semibold text-white text-lg border border-white/40 transition-all duration-200 hover:bg-white/10 hover:border-white/70 backdrop-blur-sm"
+              style={{ fontFamily: "Inter, sans-serif" }}
             >
-              <Link
-                href="/contact"
-                className="inline-block px-10 py-5 rounded-full font-semibold text-white text-lg border border-white/40 transition-all duration-200 hover:bg-white/10 hover:border-white/70 hover:scale-105 backdrop-blur-sm"
-                style={{ fontFamily: "Inter, sans-serif" }}
-              >
-                Book a Strategy Call
-              </Link>
-            </motion.div>
-          </motion.div>
+              Book a Strategy Call
+            </Link>
+          </div>
 
           {/* Scroll cue */}
           <motion.div

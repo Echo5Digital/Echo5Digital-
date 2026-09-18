@@ -88,6 +88,7 @@ export function FocusPullHero({
   className = "",
   overlay = "linear-gradient(180deg, rgba(10,8,26,0.5) 0%, rgba(10,8,26,0.65) 55%, rgba(10,8,26,0.9) 100%)",
   bgPositionClassName = "bg-center",
+  mobileBgSizeClassName = "bg-cover",
 }: {
   src: string;
   mobileSrc?: string;
@@ -95,6 +96,7 @@ export function FocusPullHero({
   className?: string;
   overlay?: string;
   bgPositionClassName?: string;
+  mobileBgSizeClassName?: string;
 }) {
   const [focused, setFocused] = useState(false);
 
@@ -112,7 +114,7 @@ export function FocusPullHero({
       {mobileSrc && (
         <motion.div
           aria-hidden="true"
-          className={`absolute inset-0 bg-cover ${bgPositionClassName} sm:hidden`}
+          className={`absolute inset-0 ${mobileBgSizeClassName} ${bgPositionClassName} sm:hidden`}
           style={{ backgroundImage: `url('${mobileSrc}')` }}
           initial={{ filter: "blur(28px) saturate(0.3) brightness(0.8)", scale: 1.12 }}
           animate={focusAnim}
