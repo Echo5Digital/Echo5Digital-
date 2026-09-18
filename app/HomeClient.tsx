@@ -158,6 +158,14 @@ export default function HomeClient({ faqData }: HomeClientProps) {
             .hero-banner {
               background-color: #ffffff;
             }
+            @media (max-width: 1023px) {
+              .hero-banner {
+                background-image: url("/bhh.png");
+                background-size: 100% auto;
+                background-position: top center;
+                background-repeat: no-repeat;
+              }
+            }
             @media (min-width: 1024px) {
               .hero-banner {
                 background-image: url("/banners.png");

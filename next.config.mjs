@@ -25,7 +25,17 @@ const nextConfig = {
       },
       {
         source: "/seo-agency-in-houston",
-        destination: "/contact",
+        destination: "/services/seo",
+        permanent: true,
+      },
+      {
+        source: "/social-media-marketing-agency-in-houston",
+        destination: "/social-media-marketing",
+        permanent: true,
+      },
+      {
+        source: "/website-design-company-in-houston",
+        destination: "/web-design",
         permanent: true,
       },
     ];
