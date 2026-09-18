@@ -158,15 +158,6 @@ export default function HomeClient({ faqData }: HomeClientProps) {
             .hero-banner {
               background-color: #ffffff;
             }
-            @media (max-width: 1023px) {
-              .hero-banner {
-                background-image: url("/bhh.png");
-                background-size: 100% auto;
-                background-position: top center;
-                background-repeat: no-repeat;
-                min-height: 155.8vw;
-              }
-            }
             @media (min-width: 1024px) {
               .hero-banner {
                 background-image: url("/banners.png");
@@ -176,6 +167,12 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               }
             }
           `}</style>
+          <img
+            src="/bhh.png"
+            alt=""
+            aria-hidden="true"
+            className="lg:hidden absolute inset-0 w-full h-full object-cover object-top"
+          />
           <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 sm:px-8 lg:px-12 pt-14 pb-14 md:pt-16 md:pb-20 lg:min-h-[min(41.3vw,787px)] lg:flex lg:items-center">
             <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-8">
               {/* Text */}
@@ -206,7 +203,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 </BlurIn>
                 <BlurIn delay={0.2}>
                   <p
-                    className="text-lg leading-relaxed mb-9 max-w-xl"
+                    className="text-lg leading-relaxed mb-9 max-w-[78%] sm:max-w-[85%] lg:max-w-xl"
                     style={{ color: "#5B5F73" }}
                   >
                     Your AI Marketing Employee monitors performance and finds opportunities. Our marketing team turns them into completed work — from SEO and content to ads and website improvements.
