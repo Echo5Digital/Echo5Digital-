@@ -181,7 +181,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               <div className="w-full lg:w-[100%] lg:flex-shrink-0">
                 <BlurIn>
                   <p
-                    className="text-xs font-bold uppercase mb-5 text-white lg:text-[#6B4EF0]"
+                    className="text-xs font-bold uppercase mb-5 text-[rgb(135,65,240)] lg:text-[#6B4EF0]"
                     style={{ letterSpacing: "2px", textShadow: "0 2px 8px rgba(0,0,0,0.45)" }}
                   >
                     Done-For-You Marketing For Local Businesses
