@@ -158,6 +158,14 @@ export default function HomeClient({ faqData }: HomeClientProps) {
             .hero-banner {
               background-color: #ffffff;
             }
+            @media (max-width: 1023px) {
+              .hero-banner {
+                background-image: url("/3d-render-abstract-background-with-flowing-particles-100kb.jpg");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+              }
+            }
             @media (min-width: 1024px) {
               .hero-banner {
                 background-image: url("/banners.png");
@@ -167,27 +175,21 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               }
             }
           `}</style>
-          <img
-            src="/bhh.png"
-            alt=""
-            aria-hidden="true"
-            className="lg:hidden absolute inset-0 w-full h-full object-cover object-top"
-          />
           <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 sm:px-8 lg:px-12 pt-14 pb-14 md:pt-16 md:pb-20 lg:min-h-[min(41.3vw,787px)] lg:flex lg:items-center">
             <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-8">
               {/* Text */}
               <div className="w-full lg:w-[100%] lg:flex-shrink-0">
                 <BlurIn>
                   <p
-                    className="text-xs font-bold uppercase mb-5"
-                    style={{ color: "#6B4EF0", letterSpacing: "2px" }}
+                    className="text-xs font-bold uppercase mb-5 text-white lg:text-[#6B4EF0]"
+                    style={{ letterSpacing: "2px", textShadow: "0 2px 8px rgba(0,0,0,0.45)" }}
                   >
                     Done-For-You Marketing For Local Businesses
                   </p>
                 </BlurIn>
                 <h1
-                  className="font-black leading-[1.05] tracking-tight mb-5"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 6.5vw, 4.25rem)", color: "#15172B" }}
+                  className="font-black leading-[1.05] tracking-tight mb-5 text-white lg:text-[#15172B]"
+                  style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 6.5vw, 4.25rem)", textShadow: "0 2px 12px rgba(0,0,0,0.45)" }}
                 >
                   <RevealMask>We Run Your</RevealMask>
                   <br />
@@ -195,25 +197,25 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 </h1>
                 <BlurIn delay={0.15}>
                   <p
-                    className="font-bold leading-snug mb-6"
-                    style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.25rem, 2.6vw, 1.75rem)", color: "rgb(148, 73, 242)" }}
+                    className="font-bold leading-snug mb-6 text-white lg:text-[rgb(148,73,242)]"
+                    style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.25rem, 2.6vw, 1.75rem)", textShadow: "0 2px 10px rgba(0,0,0,0.45)" }}
                   >
                     AI keeps watch. Our experts take action.
                   </p>
                 </BlurIn>
                 <BlurIn delay={0.2}>
                   <p
-                    className="text-lg leading-relaxed mb-9 max-w-[78%] sm:max-w-[85%] lg:max-w-xl"
-                    style={{ color: "#5B5F73" }}
+                    className="text-lg leading-relaxed mb-9 max-w-xl text-white lg:text-[#5B5F73]"
+                    style={{ textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}
                   >
                     Your AI Marketing Employee monitors performance and finds opportunities. Our marketing team turns them into completed work, from SEO and content to ads and website improvements.
                   </p>
                 </BlurIn>
                 <BlurIn delay={0.3}>
-                  <div className="flex flex-col items-start sm:flex-row sm:items-center gap-4 mb-6">
+                  <div className="flex flex-col sm:flex-row gap-4 mb-6">
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 lg:px-8 lg:py-4 rounded-full font-semibold text-white text-sm lg:text-base whitespace-nowrap transition-all duration-200 hover:brightness-110 active:scale-95"
+                      className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-base whitespace-nowrap transition-all duration-200 hover:brightness-110 active:scale-95"
                       style={{
                         background: "rgb(135, 65, 240)",
                         boxShadow: "0 8px 24px rgba(135,65,240,0.35)",
@@ -224,10 +226,10 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                     </Link>
                     <Link
                       href="/pricing"
-                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 lg:px-8 lg:py-4 rounded-full font-semibold text-sm lg:text-base whitespace-nowrap transition-all duration-200"
+                      className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap transition-all duration-200 border-white/40 text-white lg:border-[rgba(21,23,43,0.15)] lg:text-[#15172B]"
                       style={{
-                        border: "2px solid rgba(21,23,43,0.15)",
-                        color: "#15172B",
+                        borderWidth: "2px",
+                        borderStyle: "solid",
                         fontFamily: "Space Grotesk, sans-serif",
                       }}
                     >
@@ -235,23 +237,19 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                     </Link>
                   </div>
                 </BlurIn>
-                <p
-                  className="hidden lg:block text-sm"
-                  style={{ color: "#5B5F73" }}
-                >
-                  AI-powered monitoring. Human-managed delivery.
-                </p>
+                <BlurIn delay={0.35}>
+                  <p
+                    className="text-sm text-white lg:text-[#8B8FA3]"
+                    style={{ textShadow: "0 1px 6px rgba(0,0,0,0.4)" }}
+                  >
+                    AI-powered monitoring. Human-managed delivery.
+                  </p>
+                </BlurIn>
               </div>
 
               <div className="hidden lg:block lg:flex-1" aria-hidden="true" />
             </div>
           </div>
-          <p
-            className="lg:hidden absolute bottom-6 left-0 right-0 text-center text-sm px-6"
-            style={{ color: "#5B5F73" }}
-          >
-            AI-powered monitoring. Human-managed delivery.
-          </p>
         </section>
 
         {/* ── TRUSTED BY (ANIMATED LOGO) — mobile only, shown above trust bar ── */}
