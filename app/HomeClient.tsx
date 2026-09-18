@@ -158,6 +158,15 @@ export default function HomeClient({ faqData }: HomeClientProps) {
             .hero-banner {
               background-color: #ffffff;
             }
+            @media (max-width: 1023px) {
+              .hero-banner {
+                background-image: url("/bhh.png");
+                background-size: 100% auto;
+                background-position: top center;
+                background-repeat: no-repeat;
+                min-height: 155.8vw;
+              }
+            }
             @media (min-width: 1024px) {
               .hero-banner {
                 background-image: url("/banners.png");
@@ -204,10 +213,10 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   </p>
                 </BlurIn>
                 <BlurIn delay={0.3}>
-                  <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                  <div className="flex flex-col items-start sm:flex-row sm:items-center gap-4 mb-6">
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-base whitespace-nowrap transition-all duration-200 hover:brightness-110 active:scale-95"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 lg:px-8 lg:py-4 rounded-full font-semibold text-white text-sm lg:text-base whitespace-nowrap transition-all duration-200 hover:brightness-110 active:scale-95"
                       style={{
                         background: "rgb(135, 65, 240)",
                         boxShadow: "0 8px 24px rgba(135,65,240,0.35)",
@@ -218,7 +227,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                     </Link>
                     <Link
                       href="/pricing"
-                      className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap transition-all duration-200"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 lg:px-8 lg:py-4 rounded-full font-semibold text-sm lg:text-base whitespace-nowrap transition-all duration-200"
                       style={{
                         border: "2px solid rgba(21,23,43,0.15)",
                         color: "#15172B",
@@ -230,7 +239,10 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   </div>
                 </BlurIn>
                 <BlurIn delay={0.35}>
-                  <p className="text-sm" style={{ color: "#8B8FA3" }}>
+                  <p
+                    className="text-sm inline-block px-3 py-1 rounded-full lg:px-0 lg:py-0 lg:rounded-none"
+                    style={{ color: "#5B5F73", background: "rgba(255,255,255,0.75)" }}
+                  >
                     AI-powered monitoring. Human-managed delivery.
                   </p>
                 </BlurIn>
