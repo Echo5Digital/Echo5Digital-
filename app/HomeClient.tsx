@@ -238,14 +238,12 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                     </Link>
                   </div>
                 </BlurIn>
-                <BlurIn delay={0.35}>
-                  <p
-                    className="text-sm inline-block px-3 py-1 rounded-full lg:px-0 lg:py-0 lg:rounded-none"
-                    style={{ color: "#5B5F73", background: "rgba(255,255,255,0.75)" }}
-                  >
-                    AI-powered monitoring. Human-managed delivery.
-                  </p>
-                </BlurIn>
+                <p
+                  className="text-sm inline-block px-3 py-1 rounded-full lg:px-0 lg:py-0 lg:rounded-none"
+                  style={{ color: "#5B5F73", background: "rgba(255,255,255,0.75)" }}
+                >
+                  AI-powered monitoring. Human-managed delivery.
+                </p>
               </div>
 
               <div className="hidden lg:block lg:flex-1" aria-hidden="true" />
