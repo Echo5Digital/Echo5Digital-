@@ -206,7 +206,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                     className="text-lg leading-relaxed mb-9 max-w-[78%] sm:max-w-[85%] lg:max-w-xl"
                     style={{ color: "#5B5F73" }}
                   >
-                    Your AI Marketing Employee monitors performance and finds opportunities. Our marketing team turns them into completed work — from SEO and content to ads and website improvements.
+                    Your AI Marketing Employee monitors performance and finds opportunities. Our marketing team turns them into completed work, from SEO and content to ads and website improvements.
                   </p>
                 </BlurIn>
                 <BlurIn delay={0.3}>
@@ -236,8 +236,8 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   </div>
                 </BlurIn>
                 <p
-                  className="text-sm inline-block px-3 py-1 rounded-full lg:px-0 lg:py-0 lg:rounded-none"
-                  style={{ color: "#5B5F73", background: "rgba(255,255,255,0.75)" }}
+                  className="hidden lg:block text-sm"
+                  style={{ color: "#5B5F73" }}
                 >
                   AI-powered monitoring. Human-managed delivery.
                 </p>
@@ -246,6 +246,12 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               <div className="hidden lg:block lg:flex-1" aria-hidden="true" />
             </div>
           </div>
+          <p
+            className="lg:hidden absolute bottom-6 left-0 right-0 text-center text-sm px-6"
+            style={{ color: "#5B5F73" }}
+          >
+            AI-powered monitoring. Human-managed delivery.
+          </p>
         </section>
 
         {/* ── TRUSTED BY (ANIMATED LOGO) — mobile only, shown above trust bar ── */}
