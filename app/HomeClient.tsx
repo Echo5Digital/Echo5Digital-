@@ -334,7 +334,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         </section>
 
         {/* ── CORE SERVICES ────────────────────────────────────────── */}
-        <section className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <section className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-20 md:pt-10">
           <div className="flex flex-col items-center text-center gap-4 mb-12">
             <span
               className="inline-flex items-center gap-2 rounded-full text-xs font-semibold"
