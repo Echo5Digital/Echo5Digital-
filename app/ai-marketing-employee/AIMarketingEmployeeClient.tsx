@@ -521,7 +521,7 @@ export default function AIMarketingEmployeeClient({ faqData }: Props) {
           <div className="relative">
             <TiltCard>
               <CircleReveal
-                src="/abc.jpeg"
+                src="/html-css-collage-concept-with-person-100kb.jpg"
                 alt="Agentic AI system managing multiple marketing channels simultaneously for business growth"
                 className="rounded-2xl"
                 imgClassName="w-full h-full object-cover min-h-[320px] rounded-2xl"

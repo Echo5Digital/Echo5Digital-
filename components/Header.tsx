@@ -323,20 +323,11 @@ export default function Header({
           position: relative;
         }
         .echo5-nav-dropdown-trigger {
-          font-family: Inter, sans-serif;
-          font-size: 0.8125rem;
-          font-weight: 400;
-          color: #E5E7EB;
-          background: transparent;
-          border: none;
-          cursor: pointer;
-          text-decoration: none;
-          padding: 0.4rem 0.65rem;
-          border-radius: 0.5rem;
-          white-space: nowrap;
           display: flex;
           align-items: center;
-          gap: 0.25rem;
+          border-radius: 0.5rem;
+          white-space: nowrap;
+          color: #E5E7EB;
           transition: color 0.2s ease, background-color 0.2s ease;
         }
         .echo5-nav-dropdown-trigger:hover {
@@ -348,10 +339,28 @@ export default function Header({
           font-weight: 600;
           background-color: rgba(124,58,237,0.12);
         }
-        .echo5-nav-dropdown-trigger svg {
+        .echo5-nav-dropdown-trigger-label {
+          font-family: Inter, sans-serif;
+          font-size: 0.8125rem;
+          font-weight: inherit;
+          color: inherit;
+          text-decoration: none;
+          padding: 0.4rem 0 0.4rem 0.65rem;
+        }
+        .echo5-nav-dropdown-toggle {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          color: inherit;
+          padding: 0.4rem 0.65rem 0.4rem 0.3rem;
+        }
+        .echo5-nav-dropdown-toggle svg {
           transition: transform 0.2s ease;
         }
-        .echo5-nav-dropdown-trigger svg.open {
+        .echo5-nav-dropdown-toggle svg.open {
           transform: rotate(180deg);
         }
 
@@ -524,17 +533,22 @@ export default function Header({
             {navLinks.slice(0, 8).map((link) =>
               link.children && link.children.length > 0 ? (
                 <div className="echo5-nav-item" key={link.route}>
-                  <button
-                    type="button"
-                    className={`echo5-nav-dropdown-trigger${isParentActive(link) ? ' active' : ''}`}
-                    onClick={() =>
-                      setOpenDesktopDropdown((prev) => (prev === link.route ? null : link.route))
-                    }
-                    aria-expanded={openDesktopDropdown === link.route}
-                  >
-                    {link.label}
-                    <ChevronDown size={14} className={openDesktopDropdown === link.route ? 'open' : ''} />
-                  </button>
+                  <div className={`echo5-nav-dropdown-trigger${isParentActive(link) ? ' active' : ''}`}>
+                    <Link href={link.route} className="echo5-nav-dropdown-trigger-label">
+                      {link.label}
+                    </Link>
+                    <button
+                      type="button"
+                      className="echo5-nav-dropdown-toggle"
+                      onClick={() =>
+                        setOpenDesktopDropdown((prev) => (prev === link.route ? null : link.route))
+                      }
+                      aria-expanded={openDesktopDropdown === link.route}
+                      aria-label={`${openDesktopDropdown === link.route ? 'Collapse' : 'Expand'} ${link.label} submenu`}
+                    >
+                      <ChevronDown size={14} className={openDesktopDropdown === link.route ? 'open' : ''} />
+                    </button>
+                  </div>
                   <div
                     className={`echo5-nav-dropdown-menu${link.children.length > 8 ? ' wide' : ''}${
                       openDesktopDropdown === link.route ? ' open' : ''

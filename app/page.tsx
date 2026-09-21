@@ -22,7 +22,7 @@ export default function HomePage() {
     {
       question: "How does the AI Marketing Employee work?",
       answer:
-        "The AI Marketing Employee is Echo5 Digital's agentic AI growth system that continuously executes marketing tasks — from content creation to ad optimization — under the oversight of a human team. Clients get a dedicated dashboard to monitor performance.",
+        "The AI Marketing Employee is Echo5 Digital's agentic AI growth system that continuously executes marketing tasks, from content creation to ad optimization, under the oversight of a human team. Clients get a dedicated dashboard to monitor performance.",
     },
     {
       question: "Who does Echo5 Digital serve?",

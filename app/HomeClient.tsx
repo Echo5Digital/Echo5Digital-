@@ -8,7 +8,7 @@ import ContactForm from "@/components/ContactForm";
 import TeamSection from "@/components/TeamSection";
 import IndustriesWeGrow from "@/components/IndustriesWeGrow";
 import TrustedByShowcase from "@/components/TrustedByShowcase";
-import { RevealMask, BlurIn, ProcessStepsRail, ProcessStepCard, DiagonalWipe, SplitClash, ClipRow } from "@/components/ScrollFX";
+import { RevealMask, BlurIn, ProcessStepsRail, ProcessStepCard, DiagonalWipe, SplitClash, DropInRow } from "@/components/ScrollFX";
 import {
   Bot,
   Search,
@@ -37,6 +37,10 @@ import {
   XCircle,
   FileText,
   Settings,
+  Globe,
+  Code2,
+  Target,
+  ArrowUpRight,
 } from "lucide-react";
 
 interface FAQItem {
@@ -55,7 +59,8 @@ const coreServiceCards = [
     href: "/services/seo",
     image: "/SEO.png",
     badge: null as string | null,
-    color: "#7c3aed",
+    icon: Search,
+    gradient: "linear-gradient(135deg, #7C3AED 0%, #A855F7 100%)",
     points: ["Rank Tracking", "Content Creation", "Backlink Building", "Technical Fixes"],
   },
   {
@@ -64,7 +69,8 @@ const coreServiceCards = [
     href: "/services/social-media-marketing",
     image: "/Social Media.png",
     badge: "Most Popular",
-    color: "#2563eb",
+    icon: Megaphone,
+    gradient: "linear-gradient(135deg, #6D5CF0 0%, #8B7CF6 100%)",
     points: ["Content Calendars", "Campaigns", "Analytics & Reporting", "Audience Growth"],
   },
   {
@@ -73,7 +79,8 @@ const coreServiceCards = [
     href: "/services/google-ads",
     image: "/Google Ads copy.png",
     badge: null as string | null,
-    color: "#ea580c",
+    icon: Target,
+    gradient: "linear-gradient(135deg, #9333EA 0%, #C084FC 100%)",
     points: ["Campaign Management", "Ad Optimization", "A/B Testing", "ROI Tracking"],
   },
   {
@@ -82,7 +89,8 @@ const coreServiceCards = [
     href: "/services/crm-automation",
     image: "/super growth copy.png",
     badge: "New",
-    color: "#16a34a",
+    icon: Settings,
+    gradient: "linear-gradient(135deg, #5B4FE8 0%, #7C6FF0 100%)",
     points: ["Pipeline Automation", "Lead Scoring", "Workflow Building", "Integrations"],
   },
   {
@@ -91,16 +99,18 @@ const coreServiceCards = [
     href: "/services/web-design",
     image: "/dash.jpg",
     badge: null as string | null,
-    color: "#0891b2",
+    icon: Globe,
+    gradient: "linear-gradient(135deg, #7E3FF2 0%, #A66BF5 100%)",
     points: ["UI/UX Design", "Fast Performance", "CMS Builds", "Conversion Focused"],
   },
   {
     title: "Custom Programming",
     desc: "Bespoke software, integrations and automation tools tailored to your business.",
     href: "/services/custom-programming",
-    image: "/airobo.png",
+    image: "/pexels-photo-1181675-100kb.jpg",
     badge: null as string | null,
-    color: "#9333ea",
+    gradient: "linear-gradient(135deg, #6B4EF0 0%, #9D7BF0 100%)",
+    icon: Code2,
     points: ["Custom Software", "API Integrations", "AI Tooling", "Automation"],
   },
 ];
@@ -289,12 +299,13 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         </div>
 
         {/* ── MARKETING WORK WE HANDLE — desktop only ─────────────────── */}
-        <section className="hidden lg:block max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <section className="hidden lg:block w-full">
           <div
-            className="rounded-2xl px-6 py-10"
+            className="w-full px-6 py-10"
             style={{
               background: "rgba(255,255,255,0.6)",
-              border: "1px solid rgba(107,78,240,0.1)",
+              borderTop: "1px solid rgba(107,78,240,0.1)",
+              borderBottom: "1px solid rgba(107,78,240,0.1)",
             }}
           >
             <h2
@@ -334,8 +345,11 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         </section>
 
         {/* ── CORE SERVICES ────────────────────────────────────────── */}
-        <section className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-20 md:pt-10">
-          <div className="flex flex-col items-center text-center gap-4 mb-12">
+        <section
+          className="relative overflow-hidden bg-cover bg-center bg-no-repeat px-4 sm:px-6 lg:px-8 pt-14 pb-20 md:pt-10"
+          style={{ backgroundImage: "url('/bg (2).png')" }}
+        >
+          <div className="relative flex flex-col items-center text-center gap-4 mb-12">
             <span
               className="inline-flex items-center gap-2 rounded-full text-xs font-semibold"
               style={{ color: "#6B4EF0", letterSpacing: "2px" }}
@@ -354,33 +368,35 @@ export default function HomeClient({ faqData }: HomeClientProps) {
 
           </div>
 
-          <div
-            className="grid grid-cols-1 lg:grid-cols-3"
-            style={{ gap: 16 }}
-          >
-            {/* card 0 — wide (col 1-2, row 1) */}
-            <div className="lg:col-span-2 lg:row-start-1">
-              <CoreServiceCard card={coreServiceCards[0]} size="wide" />
-            </div>
-            {/* card 1 — tall (col 3, row 1-2) */}
-            <div className="lg:col-start-3 lg:row-start-1 lg:row-span-2">
-              <CoreServiceCard card={coreServiceCards[1]} size="tall" />
-            </div>
-            {/* card 2 — small (col 1, row 2) */}
-            <div className="lg:col-start-1 lg:row-start-2">
-              <CoreServiceCard card={coreServiceCards[2]} size="small" />
-            </div>
-            {/* card 3 — small (col 2, row 2) */}
-            <div className="lg:col-start-2 lg:row-start-2">
-              <CoreServiceCard card={coreServiceCards[3]} size="small" />
-            </div>
-            {/* card 4 — half (col 1-2, row 3) */}
-            <div className="lg:col-span-2 lg:row-start-3">
-              <CoreServiceCard card={coreServiceCards[4]} size="wide" />
-            </div>
-            {/* card 5 — tall (col 3, row 3) */}
-            <div className="lg:col-start-3 lg:row-start-3">
-              <CoreServiceCard card={coreServiceCards[5]} size="small" />
+          <div className="relative max-w-[1300px] mx-auto">
+            <div
+              className="grid grid-cols-1 lg:grid-cols-3"
+              style={{ gap: 16 }}
+            >
+              {/* card 0 — wide (col 1-2, row 1) */}
+              <div className="lg:col-span-2 lg:row-start-1">
+                <CoreServiceCard card={coreServiceCards[0]} size="wide" />
+              </div>
+              {/* card 1 — tall (col 3, row 1-2) */}
+              <div className="lg:col-start-3 lg:row-start-1 lg:row-span-2">
+                <CoreServiceCard card={coreServiceCards[1]} size="tall" />
+              </div>
+              {/* card 2 — small (col 1, row 2) */}
+              <div className="lg:col-start-1 lg:row-start-2">
+                <CoreServiceCard card={coreServiceCards[2]} size="small" />
+              </div>
+              {/* card 3 — small (col 2, row 2) */}
+              <div className="lg:col-start-2 lg:row-start-2">
+                <CoreServiceCard card={coreServiceCards[3]} size="small" />
+              </div>
+              {/* card 4 — half (col 1-2, row 3) */}
+              <div className="lg:col-span-2 lg:row-start-3">
+                <CoreServiceCard card={coreServiceCards[4]} size="wide" />
+              </div>
+              {/* card 5 — tall (col 3, row 3) */}
+              <div className="lg:col-start-3 lg:row-start-3">
+                <CoreServiceCard card={coreServiceCards[5]} size="small" />
+              </div>
             </div>
           </div>
         </section>
@@ -545,7 +561,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   Let&apos;s Create Something Extraordinary
                 </h2>
                 <p className="text-base leading-relaxed mb-8" style={{ color: "#B4B7C9" }}>
-                  From AI systems and automation to custom software and digital growth — we
+                  From AI systems and automation to custom software and digital growth, we
                   build technology around your business.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -597,7 +613,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   </span>
                 </div>
                 <p className="text-xs mt-2" style={{ color: "#8B8FA3" }}>
-                  — Happy Client
+                  Happy Client
                 </p>
               </div>
             </div>
@@ -753,19 +769,26 @@ export default function HomeClient({ faqData }: HomeClientProps) {
 
         {/* ── TRADITIONAL AGENCY VS ECHO5 DIGITAL ─────────────────────── */}
         <Section background="transparent" spacing="sm" maxWidth="3xl" withDivider className="relative !bg-[#0A0616]">
-          {/* Background image (network/circuit tech visual) */}
+          {/* Background image (purple light-streak visual) — breaks out of Section's
+              inner max-width wrapper via viewport-relative left/width so it spans full
+              browser width instead of being capped at the content max-width. */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute top-0 bottom-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage:
-                "url('/user-people-network-circuit-board-link-connection-technology-100kb.jpg')",
+              left: "50%",
+              width: "100vw",
+              transform: "translateX(-50%)",
+              backgroundImage: "url('/8a9cd2fa791497fc3d5ca01f42445d81.jpg')",
             }}
           />
           <div
             aria-hidden="true"
-            className="absolute inset-0"
+            className="absolute top-0 bottom-0"
             style={{
+              left: "50%",
+              width: "100vw",
+              transform: "translateX(-50%)",
               background:
                 "linear-gradient(180deg, rgba(10,6,22,0.55) 0%, rgba(10,6,22,0.75) 50%, rgba(10,6,22,0.92) 100%)",
             }}
@@ -867,14 +890,14 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   <ul>
                     {[
                       "Human team with limited capacity",
-                      "Slow execution — weeks to go live",
+                      "Slow execution, weeks to go live",
                       "Monthly vanity metric reports",
                       "Disconnected tools and platforms",
                       "No lead intelligence or attribution",
                       "AI as an afterthought",
                       "Scales by hiring more people",
                     ].map((item, i, arr) => (
-                      <ClipRow
+                      <DropInRow
                         key={item}
                         index={i}
                         className="flex items-center gap-3 py-2.5"
@@ -891,7 +914,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                         <span className="text-sm leading-relaxed" style={{ color: "#B4B7C9" }}>
                           {item}
                         </span>
-                      </ClipRow>
+                      </DropInRow>
                     ))}
                   </ul>
                 </div>
@@ -933,7 +956,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   </div>
                   <ul>
                     {[
-                      "AI employees — unlimited capacity",
+                      "AI employees, unlimited capacity",
                       "Same-day execution and deployment",
                       "Real-time business intelligence dashboard",
                       "One unified AI platform for everything",
@@ -941,7 +964,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                       "AI is the core, not a feature",
                       "Scales infinitely without headcount",
                     ].map((item, i, arr) => (
-                      <ClipRow
+                      <DropInRow
                         key={item}
                         index={i}
                         className="flex items-center gap-3 py-2.5"
@@ -962,7 +985,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                         <span className="text-sm leading-relaxed font-medium" style={{ color: "#F5F3FF" }}>
                           {item}
                         </span>
-                      </ClipRow>
+                      </DropInRow>
                     ))}
                   </ul>
                 </div>
@@ -987,7 +1010,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
               >
                 Our AI systems, human team, and your client dashboard work together in a
-                closed-loop growth engine — continuously learning and improving.
+                closed-loop growth engine, continuously learning and improving.
               </p>
             </div>
 
@@ -1078,7 +1101,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         <Section background="transparent" spacing="lg" maxWidth="3xl" withDivider className="!bg-[#EEECFB] min-h-[90vh] flex items-center">
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,280px)_1fr] gap-10 items-start">
             {/* Left intro copy */}
-            <div>
+            <BlurIn>
               <div className="text-xs font-bold tracking-widest mb-3" style={{ color: "#6B4EF0" }}>
                 REPRESENTATIVE EXAMPLES
               </div>
@@ -1103,7 +1126,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               >
                 View All Results <ArrowRight size={14} />
               </Link>
-            </div>
+            </BlurIn>
 
             {/* Right result cards */}
             <div>
@@ -1112,7 +1135,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   {
                     industry: "Dental Practice",
                     location: "Houston, TX",
-                    image: "/dental.jpg",
+                    image: "/nurse-typing-computer-making-appointments-while-dental-specialist-talking-patient-stomatology-chair-before-examination-dentist-nurse-working-together-modern-stomatological-clinic-80kb.jpg",
                     metric: "+320%",
                     metricLabel: "organic traffic",
                     desc: "After 6 months of AI-driven SEO + AEO, a local dental practice saw a dramatic increase in search visibility and new patient inquiries.",
@@ -1121,7 +1144,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   {
                     industry: "Home Services Company",
                     location: "Sugar Land, TX",
-                    image: "/homeservice.jpg",
+                    image: "/furniture-assembly-worker-uses-laptop-consult-instructions-handyman-doing-good-job-100kb.jpg",
                     metric: "4.5×",
                     metricLabel: "Google Ads ROAS",
                     desc: "An AI-optimized Google Ads campaign for a home services company resulted in a 4.5× return on ad spend within the first 90 days.",
@@ -1130,59 +1153,68 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   {
                     industry: "Fitness Studio",
                     location: "National",
-                    image: "/fitness.jpg",
+                    image: "/friends-using-smartphones-together-outdoors-100kb.jpg",
                     metric: "+180%",
                     metricLabel: "social engagement",
                     desc: "AI-generated social content and paid social campaigns drove a 180% uplift in engagement and a measurable increase in membership sign-ups.",
                     tags: ["Social Media", "Meta Ads"],
                   },
-                ].map((cs) => (
-                  <div
-                    key={cs.industry}
-                    className="flex flex-col rounded-2xl overflow-hidden bg-white"
-                    style={{
-                      border: "1px solid rgba(107,78,240,0.15)",
-                      boxShadow: "0 4px 20px rgba(79,50,217,0.08)",
-                    }}
-                  >
-                    <div className="relative w-full aspect-[16/10]">
-                      <Image
-                        src={cs.image}
-                        alt={`${cs.industry} — ${cs.location}`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="flex flex-col flex-1 p-5">
-                      <p
-                        className="text-2xl font-bold mb-0.5"
-                        style={{ fontFamily: "Space Grotesk, sans-serif", color: "#6B4EF0" }}
-                      >
-                        {cs.metric}
-                      </p>
-                      <p className="text-sm font-semibold mb-3" style={{ color: "#6B4EF0" }}>
-                        {cs.metricLabel}
-                      </p>
-                      <p className="text-sm leading-relaxed flex-1 mb-4" style={{ color: "#5B5F73" }}>
-                        {cs.desc}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {cs.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-xs px-2.5 py-1 rounded-md font-medium"
-                            style={{
-                              background: "rgba(107,78,240,0.1)",
-                              color: "#4F32D9",
-                            }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
+                ].map((cs, i) => (
+                  <ProcessStepCard key={cs.industry} index={i}>
+                    <div
+                      className="group flex flex-col rounded-2xl overflow-hidden bg-white transition-all duration-300 ease-out hover:-translate-y-1.5"
+                      style={{
+                        border: "1px solid rgba(107,78,240,0.15)",
+                        boxShadow: "0 4px 20px rgba(79,50,217,0.08)",
+                      }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLDivElement).style.boxShadow = "0 20px 48px rgba(79,50,217,0.2)";
+                        (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(107,78,240,0.35)";
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 20px rgba(79,50,217,0.08)";
+                        (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(107,78,240,0.15)";
+                      }}
+                    >
+                      <div className="relative w-full aspect-[16/10] overflow-hidden">
+                        <Image
+                          src={cs.image}
+                          alt={`${cs.industry}, ${cs.location}`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="flex flex-col flex-1 p-5">
+                        <p
+                          className="text-2xl font-bold mb-0.5"
+                          style={{ fontFamily: "Space Grotesk, sans-serif", color: "#6B4EF0" }}
+                        >
+                          {cs.metric}
+                        </p>
+                        <p className="text-sm font-semibold mb-3" style={{ color: "#6B4EF0" }}>
+                          {cs.metricLabel}
+                        </p>
+                        <p className="text-sm leading-relaxed flex-1 mb-4" style={{ color: "#5B5F73" }}>
+                          {cs.desc}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {cs.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="text-xs px-2.5 py-1 rounded-md font-medium transition-colors duration-300 group-hover:bg-[#6B4EF0] group-hover:text-white"
+                              style={{
+                                background: "rgba(107,78,240,0.1)",
+                                color: "#4F32D9",
+                              }}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </ProcessStepCard>
                 ))}
               </div>
               <p className="text-xs mt-6" style={{ color: "#8A8FA3" }}>
@@ -1452,13 +1484,13 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               </h2>
               <p className="text-base leading-relaxed mb-8" style={{ color: "#5B5F73" }}>
                 Book a free strategy demo and discover exactly how Echo5 Digital&apos;s AI Marketing
-                Employee can grow your business — no commitment required.
+                Employee can grow your business, no commitment required.
               </p>
               <div className="space-y-4 mb-8">
                 {[
                   "Free 30-minute strategy demo",
                   "No contracts, cancel anytime",
-                  "Results-focused — we win when you win",
+                  "Results-focused, we win when you win",
                 ].map((pt) => (
                   <div key={pt} className="flex items-center gap-3">
                     <CheckCircle size={16} style={{ color: "#6B4EF0", flexShrink: 0 }} />
@@ -1511,18 +1543,20 @@ function CoreServiceCard({
 }) {
   const isTall = size === "tall";
   const minHeight = isTall ? 420 : 220;
+  const Icon = card.icon;
 
   return (
     <Link
       href={card.href}
+      className="group"
       style={{
         position: "relative",
         minHeight,
         height: "100%",
         borderRadius: 20,
         overflow: "hidden",
-        background: `linear-gradient(135deg, ${card.color}ee 0%, ${card.color}99 100%)`,
-        boxShadow: `0 8px 40px ${card.color}44, 0 2px 8px rgba(0,0,0,0.15)`,
+        background: card.gradient,
+        boxShadow: "0 8px 30px rgba(107,78,240,0.18)",
         display: "flex",
         flexDirection: "column",
         textDecoration: "none",
@@ -1531,52 +1565,53 @@ function CoreServiceCard({
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-4px)";
-        (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 16px 60px ${card.color}66, 0 4px 16px rgba(0,0,0,0.2)`;
+        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 20px 48px rgba(107,78,240,0.3)";
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
-        (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 8px 40px ${card.color}44, 0 2px 8px rgba(0,0,0,0.15)`;
+        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 30px rgba(107,78,240,0.18)";
       }}
     >
-      {/* Glassmorphism overlay */}
+      {/* AI Employee badge */}
       <div
         style={{
           position: "absolute",
-          inset: 0,
-          background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.03) 100%)",
-          pointerEvents: "none",
+          top: 20,
+          left: 20,
+          zIndex: 3,
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 6,
+          background: "rgba(255,255,255,0.2)",
+          border: "1px solid rgba(255,255,255,0.35)",
+          color: "#fff",
+          fontSize: "10px",
+          fontWeight: 700,
+          padding: "5px 12px 5px 8px",
+          borderRadius: "999px",
+          letterSpacing: "0.5px",
         }}
-      />
-
-      {/* Grid pattern */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-          pointerEvents: "none",
-        }}
-      />
+      >
+        <Icon size={12} />
+        AI EMPLOYEE
+      </div>
 
       {/* Badge */}
       {card.badge && (
         <span
           style={{
             position: "absolute",
-            top: 16,
-            right: 16,
+            top: 20,
+            right: 20,
             zIndex: 3,
-            background: "rgba(255,255,255,0.25)",
-            backdropFilter: "blur(8px)",
-            border: "1px solid rgba(255,255,255,0.4)",
-            color: "#fff",
+            background: "rgba(255,255,255,0.95)",
+            border: "1px solid rgba(107,78,240,0.2)",
+            color: "#6B4EF0",
             fontSize: "10px",
             fontWeight: 700,
-            padding: "4px 12px",
+            padding: "5px 12px",
             borderRadius: "999px",
-            letterSpacing: "1px",
+            letterSpacing: "0.5px",
           }}
         >
           {card.badge === "New" ? "✦ New" : "★ " + card.badge}
@@ -1589,33 +1624,23 @@ function CoreServiceCard({
           position: "relative",
           zIndex: 2,
           padding: 24,
+          paddingTop: 56,
+          paddingRight: 64,
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
           marginTop: "auto",
         }}
       >
-        <span
-          style={{
-            fontSize: "10px",
-            fontWeight: 700,
-            letterSpacing: "2px",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.7)",
-            marginBottom: 8,
-            display: "block",
-          }}
-        >
-          AI Employee
-        </span>
-
         <h3
           style={{
+            fontFamily: "Space Grotesk, sans-serif",
             fontSize: isTall ? "1.3rem" : "1.1rem",
             fontWeight: 800,
             color: "#fff",
             lineHeight: 1.2,
             marginBottom: 10,
+            maxWidth: isTall ? "100%" : "60%",
           }}
         >
           {card.title}
@@ -1624,9 +1649,10 @@ function CoreServiceCard({
         <p
           style={{
             fontSize: "13px",
-            color: "rgba(255,255,255,0.8)",
+            color: "rgba(255,255,255,0.85)",
             lineHeight: 1.5,
             marginBottom: 16,
+            maxWidth: isTall ? "100%" : "60%",
           }}
         >
           {card.desc}
@@ -1643,9 +1669,8 @@ function CoreServiceCard({
             <span
               key={point}
               style={{
-                background: "rgba(255,255,255,0.15)",
-                backdropFilter: "blur(4px)",
-                border: "1px solid rgba(255,255,255,0.25)",
+                background: "rgba(255,255,255,0.16)",
+                border: "1px solid rgba(255,255,255,0.28)",
                 color: "#fff",
                 fontSize: "11px",
                 fontWeight: 600,
@@ -1681,9 +1706,31 @@ function CoreServiceCard({
             height: "100%",
             objectFit: "contain",
             borderRadius: card.image.endsWith(".jpg") ? 10 : 0,
-            filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.3)) brightness(1.05)",
+            filter: "drop-shadow(0 8px 24px rgba(21,23,43,0.25))",
           }}
         />
+      </div>
+
+      {/* Arrow button */}
+      <div
+        className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        style={{
+          position: "absolute",
+          bottom: 20,
+          right: 20,
+          zIndex: 3,
+          width: 36,
+          height: 36,
+          borderRadius: "50%",
+          background: "#fff",
+          border: "1px solid rgba(107,78,240,0.15)",
+          boxShadow: "0 4px 12px rgba(107,78,240,0.15)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <ArrowUpRight size={16} style={{ color: "#6B4EF0" }} />
       </div>
     </Link>
   );

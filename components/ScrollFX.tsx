@@ -718,6 +718,38 @@ export function ClipRow({
 }
 
 /**
+ * DropInRow — list row that falls into place from above with a springy bounce, as if
+ * dropped into a container, rather than fading or wiping in. Each row's own inView
+ * trigger with an index-based delay gives a cascading "stacking up" feel.
+ */
+export function DropInRow({
+  children,
+  index = 0,
+  className = "",
+  style,
+}: {
+  children: ReactNode;
+  index?: number;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  const ref = useRef<HTMLLIElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-10% 0px" });
+  return (
+    <motion.li
+      ref={ref}
+      className={className}
+      style={style}
+      initial={{ y: -48, opacity: 0, scale: 0.9 }}
+      animate={inView ? { y: 0, opacity: 1, scale: 1 } : {}}
+      transition={{ type: "spring", stiffness: 380, damping: 22, delay: index * 0.09 }}
+    >
+      {children}
+    </motion.li>
+  );
+}
+
+/**
  * TextMarquee — continuously scrolling row of repeated text, for a "keep moving" banner
  * embedded inside a section (as opposed to GetInTouchMarquee, which is a full standalone
  * page section). Optionally wraps in a Link when href is given.

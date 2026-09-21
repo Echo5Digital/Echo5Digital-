@@ -20,18 +20,18 @@ const INDUSTRIES = [
 ];
 
 const INDUSTRY_CONTENT: Record<string, string> = {
-  Healthcare: "They read patient records, schedule visits and follow up on care — so your front desk doesn't have to.",
-  Legal: "They draft documents, track deadlines and manage client intake — so your paralegals don't have to.",
-  "Real Estate": "They qualify leads, schedule showings and follow up with buyers — so your agents don't have to.",
-  Dental: "They confirm appointments, handle insurance claims and follow up with patients — so your front office doesn't have to.",
-  eCommerce: "They answer order questions, process returns and follow up on carts — so your support team doesn't have to.",
-  Finance: "They reconcile transactions, flag anomalies and prepare reports — so your analysts don't have to.",
-  Automotive: "They schedule service visits, follow up on quotes and manage inventory — so your service desk doesn't have to.",
-  Education: "They answer enrollment questions, schedule tours and follow up with families — so your admissions team doesn't have to.",
-  Fitness: "They book classes, follow up on memberships and manage waitlists — so your front desk doesn't have to.",
-  Manufacturing: "They track orders, flag delays and follow up with suppliers — so your ops team doesn't have to.",
-  Travel: "They confirm bookings, handle changes and follow up with travelers — so your agents don't have to.",
-  Restaurants: "They take reservations, manage waitlists and follow up on feedback — so your host stand doesn't have to.",
+  Healthcare: "They read patient records, schedule visits and follow up on care, so your front desk doesn't have to.",
+  Legal: "They draft documents, track deadlines and manage client intake, so your paralegals don't have to.",
+  "Real Estate": "They qualify leads, schedule showings and follow up with buyers, so your agents don't have to.",
+  Dental: "They confirm appointments, handle insurance claims and follow up with patients, so your front office doesn't have to.",
+  eCommerce: "They answer order questions, process returns and follow up on carts, so your support team doesn't have to.",
+  Finance: "They reconcile transactions, flag anomalies and prepare reports, so your analysts don't have to.",
+  Automotive: "They schedule service visits, follow up on quotes and manage inventory, so your service desk doesn't have to.",
+  Education: "They answer enrollment questions, schedule tours and follow up with families, so your admissions team doesn't have to.",
+  Fitness: "They book classes, follow up on memberships and manage waitlists, so your front desk doesn't have to.",
+  Manufacturing: "They track orders, flag delays and follow up with suppliers, so your ops team doesn't have to.",
+  Travel: "They confirm bookings, handle changes and follow up with travelers, so your agents don't have to.",
+  Restaurants: "They take reservations, manage waitlists and follow up on feedback, so your host stand doesn't have to.",
 };
 
 // stagger positions evenly around the 26s loop, one every ~2.17s
