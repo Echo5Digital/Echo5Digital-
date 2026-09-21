@@ -632,7 +632,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               browser width instead of being capped at the content max-width. */}
           <div
             aria-hidden="true"
-            className="absolute top-0 bottom-0 bg-cover bg-center bg-no-repeat"
+            className="absolute -top-8 -bottom-8 md:-top-12 md:-bottom-12 bg-cover bg-center bg-no-repeat"
             style={{
               left: "50%",
               width: "100vw",
@@ -642,7 +642,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
           />
           <div
             aria-hidden="true"
-            className="absolute top-0 bottom-0"
+            className="absolute -top-8 -bottom-8 md:-top-12 md:-bottom-12"
             style={{
               left: "50%",
               width: "100vw",

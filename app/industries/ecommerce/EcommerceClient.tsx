@@ -25,10 +25,7 @@ import {
   ShieldCheck,
   CreditCard,
   Monitor,
-  Brain,
   TrendingUp,
-  Headset,
-  BarChart3,
   ChevronDown,
   ChevronUp,
   ArrowRight,
@@ -71,13 +68,6 @@ const processSteps = [
   { icon: Code2, title: "Coding", desc: "Clean, fast, scalable development on your platform of choice." },
   { icon: Award, title: "Branding", desc: "Cohesive visual identity across your storefront, ads, and social presence." },
   { icon: Search, title: "SEO", desc: "Technical and content SEO built into the foundation, not bolted on after launch." },
-];
-
-const aiSolutions = [
-  { icon: Brain, title: "AI-Driven Product Recommendations", desc: "Personalized cross-sell and upsell suggestions that increase average order value." },
-  { icon: TrendingUp, title: "Dynamic Pricing Strategies", desc: "AI-informed pricing that responds to demand, competition, and inventory in real time." },
-  { icon: Headset, title: "Automated Customer Support", desc: "AI chat and support automation that resolves common questions instantly, any hour." },
-  { icon: BarChart3, title: "Advanced Analytics", desc: "Deep visibility into shopper behavior, funnel drop-off, and revenue attribution." },
 ];
 
 const industryStudies = [
@@ -454,59 +444,6 @@ export default function EcommerceClient({ faqData }: Props) {
                   </li>
                 ))}
               </ul>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══════════════════════ AI-POWERED SOLUTIONS ═══════════════════════ */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <Reveal variant="left">
-            <div
-              className="relative rounded-3xl overflow-hidden aspect-[4/3]"
-              style={{ border: "1px solid rgba(124,58,237,0.25)", boxShadow: "0 0 60px rgba(124,58,237,0.15)" }}
-            >
-              <Image
-                src="https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=700&w=940"
-                alt="Shopper using a mobile app with AI-personalized recommendations"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
-          </Reveal>
-          <Reveal variant="right" delay={0.1}>
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#A855F7" }}>
-                AI-Powered Growth
-              </p>
-              <h2 className="text-3xl md:text-4xl font-black mb-5 leading-tight" style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}>
-                AI-Powered E-commerce Solutions
-              </h2>
-              <div className="space-y-5">
-                {aiSolutions.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={item.title} className="flex gap-4">
-                      <div
-                        className="shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
-                        style={{ background: "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))", border: "1px solid rgba(168,85,247,0.3)" }}
-                      >
-                        <Icon size={18} style={{ color: "#A855F7" }} />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-semibold mb-1" style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}>
-                          {item.title}
-                        </h4>
-                        <p className="text-xs leading-relaxed" style={{ color: "rgba(229,231,235,0.6)" }}>
-                          {item.desc}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
             </div>
           </Reveal>
         </div>
