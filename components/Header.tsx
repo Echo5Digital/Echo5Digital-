@@ -1,13 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X, Zap, ChevronDown } from 'lucide-react';
 
 interface NavLink {
   label: string;
   route: string;
+  children?: NavLink[];
 }
 
 interface HeaderProps {
@@ -18,12 +19,40 @@ interface HeaderProps {
   logoSrc?: string;
 }
 
+const servicesSubLinks: NavLink[] = [
+  { label: 'All Services', route: '/solutions' },
+  { label: 'SEO', route: '/services/seo' },
+  { label: 'AEO & GEO', route: '/services/aeo-geo' },
+  { label: 'Google Ads', route: '/services/google-ads' },
+  { label: 'Meta Ads', route: '/services/meta-ads' },
+  { label: 'Social Media Marketing', route: '/services/social-media-marketing' },
+  { label: 'Local SEO', route: '/services/local-seo' },
+];
+
+const industriesSubLinks: NavLink[] = [
+  { label: 'All Industries', route: '/industries' },
+  { label: 'Dental', route: '/industries/dental' },
+  { label: 'Healthcare', route: '/industries/healthcare' },
+  { label: 'Education SEO', route: '/industries/education' },
+  { label: 'Financial Services SEO', route: '/industries/financial-services' },
+  { label: 'Fashion & Apparel SEO', route: '/industries/fashion' },
+  { label: 'Fitness', route: '/industries/fitness' },
+  { label: 'Travel and Tourism SEO', route: '/industries/travel' },
+  { label: 'Real Estate', route: '/industries/real-estate' },
+  { label: 'Professional Services', route: '/industries/professional-services' },
+  { label: 'eCommerce', route: '/industries/ecommerce' },
+  { label: 'Automotive', route: '/industries/automotive' },
+  { label: 'Law Firms', route: '/industries/law-firm-marketing' },
+  { label: 'Entertainment and Media SEO', route: '/industries/entertainment-media' },
+  { label: 'Manufacturing and Industrial SEO', route: '/industries/manufacturing-industrial' },
+];
+
 const defaultNavLinks: NavLink[] = [
   { label: 'Home', route: '/' },
   { label: 'About Us', route: '/about-us' },
   { label: 'AI Marketing Employee', route: '/ai-marketing-employee' },
-  { label: 'Services', route: '/solutions' },
-  { label: 'Industries', route: '/industries' },
+  { label: 'Services', route: '/solutions', children: servicesSubLinks },
+  { label: 'Industries', route: '/industries', children: industriesSubLinks },
   { label: 'Pricing', route: '/pricing' },
   { label: 'Results', route: '/results' },
   { label: 'Blog', route: '/blog' },
@@ -39,7 +68,10 @@ export default function Header({
 }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [openDesktopDropdown, setOpenDesktopDropdown] = useState<string | null>(null);
+  const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(null);
   const pathname = usePathname();
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -49,6 +81,8 @@ export default function Header({
 
   useEffect(() => {
     setMobileOpen(false);
+    setOpenMobileSubmenu(null);
+    setOpenDesktopDropdown(null);
   }, [pathname]);
 
   useEffect(() => {
@@ -56,7 +90,20 @@ export default function Header({
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  useEffect(() => {
+    if (!openDesktopDropdown) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenDesktopDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [openDesktopDropdown]);
+
   const isActive = (route: string) => pathname === route;
+  const isParentActive = (link: NavLink) =>
+    isActive(link.route) || (link.children?.some((child) => isActive(child.route)) ?? false);
 
   return (
     <>
@@ -149,6 +196,111 @@ export default function Header({
           background-color: rgba(124,58,237,0.15);
         }
 
+        .echo5-mobile-parent-row {
+          display: flex;
+          align-items: center;
+          border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .echo5-mobile-parent-row .echo5-mobile-link {
+          flex: 1;
+          border-bottom: none;
+        }
+        .echo5-mobile-submenu-toggle {
+          background: transparent;
+          border: none;
+          color: #E5E7EB;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 48px;
+          height: 48px;
+          flex-shrink: 0;
+          transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .echo5-mobile-submenu-toggle:hover {
+          color: #A855F7;
+        }
+        .echo5-mobile-submenu-toggle.open {
+          transform: rotate(180deg);
+          color: #A855F7;
+        }
+
+        .echo5-mobile-submenu {
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          max-height: 0;
+          transition: max-height 0.3s ease;
+          background-color: rgba(124,58,237,0.05);
+          border-radius: 0.5rem;
+        }
+        .echo5-mobile-submenu.open {
+          max-height: 500px;
+        }
+        .echo5-mobile-sublink {
+          font-family: Inter, sans-serif;
+          font-weight: 500;
+          font-size: 1rem;
+          color: #C4C9D4;
+          text-decoration: none;
+          padding: 0.75rem 1rem 0.75rem 2rem;
+          display: block;
+          transition: color 0.2s ease, background-color 0.2s ease;
+        }
+        .echo5-mobile-sublink:hover {
+          color: #A855F7;
+          background-color: rgba(124,58,237,0.08);
+        }
+        .echo5-mobile-sublink.active {
+          color: #A855F7;
+          font-weight: 700;
+        }
+
+        .echo5-mobile-chip-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 0.5rem;
+          overflow: hidden;
+          max-height: 0;
+          opacity: 0;
+          padding: 0 0.25rem;
+          transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.35s ease;
+        }
+        .echo5-mobile-chip-grid.open {
+          max-height: 1200px;
+          opacity: 1;
+          padding: 0.75rem 0.25rem 1rem;
+        }
+        .echo5-mobile-chip {
+          font-family: Inter, sans-serif;
+          font-weight: 500;
+          font-size: 0.85rem;
+          line-height: 1.25;
+          color: #C4C9D4;
+          text-decoration: none;
+          text-align: center;
+          padding: 0.75rem 0.5rem;
+          border-radius: 0.65rem;
+          background-color: rgba(124,58,237,0.08);
+          border: 1px solid rgba(124,58,237,0.18);
+          transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+        }
+        .echo5-mobile-chip:hover {
+          color: #A855F7;
+          background-color: rgba(124,58,237,0.16);
+          border-color: rgba(124,58,237,0.4);
+        }
+        .echo5-mobile-chip.active {
+          color: #A855F7;
+          font-weight: 700;
+          background-color: rgba(124,58,237,0.2);
+          border-color: #A855F7;
+        }
+        .echo5-mobile-chip.full-width {
+          grid-column: 1 / -1;
+        }
+
         .echo5-mobile-cta {
           font-family: Inter, sans-serif;
           font-weight: 700;
@@ -165,6 +317,94 @@ export default function Header({
         }
         .echo5-mobile-cta:hover {
           filter: brightness(1.15);
+        }
+
+        .echo5-nav-item {
+          position: relative;
+        }
+        .echo5-nav-dropdown-trigger {
+          font-family: Inter, sans-serif;
+          font-size: 0.8125rem;
+          font-weight: 400;
+          color: #E5E7EB;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          text-decoration: none;
+          padding: 0.4rem 0.65rem;
+          border-radius: 0.5rem;
+          white-space: nowrap;
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+          transition: color 0.2s ease, background-color 0.2s ease;
+        }
+        .echo5-nav-dropdown-trigger:hover {
+          color: #A855F7;
+          background-color: rgba(124,58,237,0.08);
+        }
+        .echo5-nav-dropdown-trigger.active {
+          color: #A855F7;
+          font-weight: 600;
+          background-color: rgba(124,58,237,0.12);
+        }
+        .echo5-nav-dropdown-trigger svg {
+          transition: transform 0.2s ease;
+        }
+        .echo5-nav-dropdown-trigger svg.open {
+          transform: rotate(180deg);
+        }
+
+        .echo5-nav-dropdown-menu {
+          position: absolute;
+          top: calc(100% + 0.5rem);
+          left: 0;
+          min-width: 240px;
+          background-color: rgba(15,20,38,0.98);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border: 1px solid rgba(124,58,237,0.25);
+          border-radius: 0.75rem;
+          box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+          padding: 0.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.15rem;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-6px);
+          transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+          z-index: 1001;
+        }
+        .echo5-nav-dropdown-menu.open {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+        .echo5-nav-dropdown-menu.wide {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          min-width: 480px;
+        }
+        .echo5-nav-dropdown-link {
+          font-family: Inter, sans-serif;
+          font-size: 0.85rem;
+          font-weight: 500;
+          color: #E5E7EB;
+          text-decoration: none;
+          padding: 0.55rem 0.75rem;
+          border-radius: 0.5rem;
+          white-space: nowrap;
+          transition: color 0.2s ease, background-color 0.2s ease;
+        }
+        .echo5-nav-dropdown-link:hover {
+          color: #A855F7;
+          background-color: rgba(124,58,237,0.1);
+        }
+        .echo5-nav-dropdown-link.active {
+          color: #A855F7;
+          font-weight: 700;
+          background-color: rgba(124,58,237,0.15);
         }
 
         .desktop-nav {
@@ -270,6 +510,7 @@ export default function Header({
 
           {/* Desktop Nav */}
           <nav
+            ref={navRef}
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -280,15 +521,47 @@ export default function Header({
             }}
             className="desktop-nav"
           >
-            {navLinks.slice(0, 8).map((link) => (
-              <Link
-                key={link.route}
-                href={link.route}
-                className={`echo5-header-nav-link${isActive(link.route) ? ' active' : ''}`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.slice(0, 8).map((link) =>
+              link.children && link.children.length > 0 ? (
+                <div className="echo5-nav-item" key={link.route}>
+                  <button
+                    type="button"
+                    className={`echo5-nav-dropdown-trigger${isParentActive(link) ? ' active' : ''}`}
+                    onClick={() =>
+                      setOpenDesktopDropdown((prev) => (prev === link.route ? null : link.route))
+                    }
+                    aria-expanded={openDesktopDropdown === link.route}
+                  >
+                    {link.label}
+                    <ChevronDown size={14} className={openDesktopDropdown === link.route ? 'open' : ''} />
+                  </button>
+                  <div
+                    className={`echo5-nav-dropdown-menu${link.children.length > 8 ? ' wide' : ''}${
+                      openDesktopDropdown === link.route ? ' open' : ''
+                    }`}
+                  >
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.route}
+                        href={child.route}
+                        className={`echo5-nav-dropdown-link${isActive(child.route) ? ' active' : ''}`}
+                        onClick={() => setOpenDesktopDropdown(null)}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={link.route}
+                  href={link.route}
+                  className={`echo5-header-nav-link${isActive(link.route) ? ' active' : ''}`}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </nav>
 
           {/* CTA + Mobile Toggle */}
@@ -365,26 +638,81 @@ export default function Header({
             zIndex: 1,
           }}
         >
-          {navLinks.map((link) => (
-            <Link
-              key={link.route}
-              href={link.route}
-              className={`echo5-mobile-link${isActive(link.route) ? ' active' : ''}`}
-            >
-              {link.label}
-              {isActive(link.route) && (
-                <span
-                  style={{
-                    width: '6px',
-                    height: '6px',
-                    borderRadius: '50%',
-                    backgroundColor: '#A855F7',
-                    boxShadow: '0 0 8px #A855F7',
-                  }}
-                />
-              )}
-            </Link>
-          ))}
+          {navLinks.map((link) =>
+            link.children && link.children.length > 0 ? (
+              <div key={link.route}>
+                <div className="echo5-mobile-parent-row">
+                  <Link
+                    href={link.route}
+                    className={`echo5-mobile-link${isParentActive(link) ? ' active' : ''}`}
+                  >
+                    {link.label}
+                  </Link>
+                  <button
+                    type="button"
+                    aria-label={openMobileSubmenu === link.route ? `Collapse ${link.label} submenu` : `Expand ${link.label} submenu`}
+                    aria-expanded={openMobileSubmenu === link.route}
+                    className={`echo5-mobile-submenu-toggle${openMobileSubmenu === link.route ? ' open' : ''}`}
+                    onClick={() =>
+                      setOpenMobileSubmenu((prev) => (prev === link.route ? null : link.route))
+                    }
+                  >
+                    <ChevronDown size={20} />
+                  </button>
+                </div>
+                {link.children.length > 8 ? (
+                  <div
+                    className={`echo5-mobile-chip-grid${openMobileSubmenu === link.route ? ' open' : ''}`}
+                  >
+                    {link.children.map((child, index) => {
+                      const isLastOdd =
+                        link.children!.length % 2 !== 0 && index === link.children!.length - 1;
+                      return (
+                        <Link
+                          key={child.route}
+                          href={child.route}
+                          className={`echo5-mobile-chip${isActive(child.route) ? ' active' : ''}${isLastOdd ? ' full-width' : ''}`}
+                        >
+                          {child.label}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className={`echo5-mobile-submenu${openMobileSubmenu === link.route ? ' open' : ''}`}>
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.route}
+                        href={child.route}
+                        className={`echo5-mobile-sublink${isActive(child.route) ? ' active' : ''}`}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={link.route}
+                href={link.route}
+                className={`echo5-mobile-link${isActive(link.route) ? ' active' : ''}`}
+              >
+                {link.label}
+                {isActive(link.route) && (
+                  <span
+                    style={{
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      backgroundColor: '#A855F7',
+                      boxShadow: '0 0 8px #A855F7',
+                    }}
+                  />
+                )}
+              </Link>
+            )
+          )}
 
           <div style={{ marginTop: '1.5rem' }}>
             <Link

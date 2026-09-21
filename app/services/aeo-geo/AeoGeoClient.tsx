@@ -54,7 +54,8 @@ export default function AeoGeoClient({ faqData }: Props) {
       {/* ── HERO — full-bleed background image that racks into focus on load ── */}
       <FocusPullHero
         src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1600"
-        className="min-h-screen flex items-center pt-[72px]"
+        className="flex items-center py-16 sm:py-20 md:min-h-screen md:min-h-[100svh] md:py-0 pt-[72px]"
+        bgPositionClassName="bg-bottom"
       >
         {/* Glow orbs */}
         <div
@@ -74,9 +75,9 @@ export default function AeoGeoClient({ faqData }: Props) {
           }}
         />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-16 text-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-16 text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 mb-4 md:mb-6 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-sm">
             <Bot size={16} className="text-purple-400" />
             <span className="text-purple-300 text-sm font-semibold tracking-wide font-[Inter]">
               AI Visibility Specialists
@@ -84,7 +85,7 @@ export default function AeoGeoClient({ faqData }: Props) {
           </div>
 
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-6"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-4 md:mb-6"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
           >
             <PrismReveal text="Get Cited by" />
@@ -101,7 +102,7 @@ export default function AeoGeoClient({ faqData }: Props) {
           </h1>
 
           <p
-            className="text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed"
+            className="text-base md:text-xl max-w-3xl mx-auto mb-6 md:mb-10 leading-relaxed"
             style={{ color: "rgba(229,231,235,0.9)", fontFamily: "Inter, sans-serif", textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}
           >
             Echo5 Digital is a specialist{" "}
@@ -134,7 +135,7 @@ export default function AeoGeoClient({ faqData }: Props) {
           </div>
 
           {/* Stats strip */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="mt-8 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
             {[
               { value: "AI-First", label: "Strategy" },
               { value: "3 Platforms", label: "SGE, ChatGPT, Bing" },
@@ -167,7 +168,7 @@ export default function AeoGeoClient({ faqData }: Props) {
           {/* Scroll cue */}
           <motion.div
             aria-hidden="true"
-            className="mt-16 mx-auto w-7 h-11 rounded-full border-2 border-white/30 flex items-start justify-center p-1.5"
+            className="hidden md:flex mt-16 mx-auto w-7 h-11 rounded-full border-2 border-white/30 items-start justify-center p-1.5"
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >

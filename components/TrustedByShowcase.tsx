@@ -2,7 +2,6 @@
 
 import { useRef, useEffect, useCallback, useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 // ─── constants ────────────────────────────────────────────────────────────────
 const LOGO_SIZE = 1100;
@@ -286,12 +285,22 @@ export default function TrustedByShowcase() {
             >
               {ALL_LOGOS.map((logo, i) => (
                 <div key={i} style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", height: 48, padding: "0 16px" }}>
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={130}
-                    height={44}
-                    style={{ maxHeight: 40, width: "auto", objectFit: "contain", opacity: 0.45, filter: "brightness(0) invert(1)" }}
+                  <div
+                    role="img"
+                    aria-label={logo.alt}
+                    style={{
+                      height: 40,
+                      width: 110,
+                      backgroundColor: "#fff",
+                      WebkitMaskImage: `url(${logo.src})`,
+                      maskImage: `url(${logo.src})`,
+                      WebkitMaskRepeat: "no-repeat",
+                      maskRepeat: "no-repeat",
+                      WebkitMaskPosition: "center",
+                      maskPosition: "center",
+                      WebkitMaskSize: "contain",
+                      maskSize: "contain",
+                    }}
                   />
                 </div>
               ))}

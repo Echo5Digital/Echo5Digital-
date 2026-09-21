@@ -12,9 +12,7 @@ import { RevealMask, BlurIn, ProcessStepsRail, ProcessStepCard, DiagonalWipe, Sp
 import {
   Bot,
   Search,
-  Globe,
   Megaphone,
-  BarChart3,
   Users,
   Zap,
   ChevronDown,
@@ -22,11 +20,9 @@ import {
   Star,
   CheckCircle,
   ArrowRight,
-  Brain,
   Eye,
   TrendingUp,
   Shield,
-  ShoppingBag,
   Play,
   UserCog,
   LineChart,
@@ -39,6 +35,8 @@ import {
   Sparkles,
   Rocket,
   XCircle,
+  FileText,
+  Settings,
 } from "lucide-react";
 
 interface FAQItem {
@@ -104,6 +102,24 @@ const coreServiceCards = [
     badge: null as string | null,
     color: "#9333ea",
     points: ["Custom Software", "API Integrations", "AI Tooling", "Automation"],
+  },
+];
+
+const runBusinessSteps = [
+  {
+    step: "01",
+    title: "AI monitors",
+    desc: "Tracks your connected marketing channels and flags opportunities.",
+  },
+  {
+    step: "02",
+    title: "Experts prioritize",
+    desc: "Your team reviews recommendations and decides what matters most.",
+  },
+  {
+    step: "03",
+    title: "We do the work",
+    desc: "Approved improvements are completed, checked, and reported to you.",
   },
 ];
 
@@ -174,6 +190,23 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 background-repeat: no-repeat;
               }
             }
+            @media (max-width: 1023px) {
+              .hero-text-shadow-sm {
+                text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+              }
+              .hero-text-shadow-md {
+                text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+              }
+              .hero-text-shadow-lg {
+                text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+              }
+              .hero-text-shadow-xl {
+                text-shadow: 0 2px 10px rgba(0,0,0,0.45);
+              }
+              .hero-text-shadow-2xl {
+                text-shadow: 0 2px 12px rgba(0,0,0,0.45);
+              }
+            }
           `}</style>
           <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 sm:px-8 lg:px-12 pt-14 pb-14 md:pt-16 md:pb-20 lg:min-h-[min(41.3vw,787px)] lg:flex lg:items-center">
             <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-8">
@@ -181,15 +214,15 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               <div className="w-full lg:w-[100%] lg:flex-shrink-0">
                 <BlurIn>
                   <p
-                    className="text-xs font-bold uppercase mb-5 text-[rgb(135,65,240)] lg:text-[#6B4EF0]"
-                    style={{ letterSpacing: "2px", textShadow: "0 2px 8px rgba(0,0,0,0.45)" }}
+                    className="hero-text-shadow-lg text-xs font-bold uppercase mb-5 text-[rgb(135,65,240)] lg:text-[#6B4EF0]"
+                    style={{ letterSpacing: "2px" }}
                   >
                     Done-For-You Marketing For Local Businesses
                   </p>
                 </BlurIn>
                 <h1
-                  className="font-black leading-[1.05] tracking-tight mb-5 text-white lg:text-[#15172B]"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 6.5vw, 4.25rem)", textShadow: "0 2px 12px rgba(0,0,0,0.45)" }}
+                  className="hero-text-shadow-2xl font-black leading-[1.05] tracking-tight mb-5 text-white lg:text-[#15172B]"
+                  style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 6.5vw, 4.25rem)" }}
                 >
                   <RevealMask>We Run Your</RevealMask>
                   <br />
@@ -197,16 +230,15 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 </h1>
                 <BlurIn delay={0.15}>
                   <p
-                    className="font-bold leading-snug mb-6 text-white lg:text-[rgb(148,73,242)]"
-                    style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.25rem, 2.6vw, 1.75rem)", textShadow: "0 2px 10px rgba(0,0,0,0.45)" }}
+                    className="hero-text-shadow-xl font-bold leading-snug mb-6 text-white lg:text-[rgb(148,73,242)]"
+                    style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.25rem, 2.6vw, 1.75rem)" }}
                   >
                     AI keeps watch. Our experts take action.
                   </p>
                 </BlurIn>
                 <BlurIn delay={0.2}>
                   <p
-                    className="text-lg leading-relaxed mb-9 max-w-xl text-white lg:text-[#5B5F73]"
-                    style={{ textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}
+                    className="hero-text-shadow-md text-lg leading-relaxed mb-9 max-w-xl text-white lg:text-[#5B5F73]"
                   >
                     Your AI Marketing Employee monitors performance and finds opportunities. Our marketing team turns them into completed work, from SEO and content to ads and website improvements.
                   </p>
@@ -239,8 +271,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 </BlurIn>
                 <BlurIn delay={0.35}>
                   <p
-                    className="text-sm text-white lg:text-[#8B8FA3]"
-                    style={{ textShadow: "0 1px 6px rgba(0,0,0,0.4)" }}
+                    className="hero-text-shadow-sm text-sm text-white lg:text-[#8B8FA3]"
                   >
                     AI-powered monitoring. Human-managed delivery.
                   </p>
@@ -257,34 +288,43 @@ export default function HomeClient({ faqData }: HomeClientProps) {
           <TrustedByShowcase />
         </div>
 
-        {/* ── TRUST BAR ────────────────────────────────────────────── */}
-        <section className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        {/* ── MARKETING WORK WE HANDLE — desktop only ─────────────────── */}
+        <section className="hidden lg:block max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
           <div
-            className="rounded-2xl px-6 py-8"
+            className="rounded-2xl px-6 py-10"
             style={{
               background: "rgba(255,255,255,0.6)",
               border: "1px solid rgba(107,78,240,0.1)",
             }}
           >
-            <p
-              className="text-center text-xs font-semibold uppercase tracking-widest mb-7"
-              style={{ color: "#8B8FA3" }}
+            <h2
+              className="text-center font-black leading-tight mb-8"
+              style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#15172B" }}
             >
-              Trusted Platforms &amp; Technologies
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14">
+              The marketing work we handle for you
+            </h2>
+            <div className="flex flex-wrap items-start justify-center gap-x-10 gap-y-8 md:gap-x-16">
               {[
-                { label: "Google Ads", icon: <BarChart3 size={20} style={{ color: "#6B4EF0" }} /> },
-                { label: "Meta Business", icon: <Megaphone size={20} style={{ color: "#6B4EF0" }} /> },
-                { label: "WordPress", icon: <Globe size={20} style={{ color: "#6B4EF0" }} /> },
-                { label: "HubSpot", icon: <Users size={20} style={{ color: "#6B4EF0" }} /> },
-                { label: "OpenAI", icon: <Brain size={20} style={{ color: "#6B4EF0" }} /> },
-                { label: "Semrush", icon: <Search size={20} style={{ color: "#6B4EF0" }} /> },
-                { label: "Shopify", icon: <ShoppingBag size={20} style={{ color: "#6B4EF0" }} /> },
+                { label: "SEO & AI Search", icon: Search },
+                { label: "Google Business Profile", icon: MapPin },
+                { label: "Social Media", icon: Users },
+                { label: "Google & Meta Ads", icon: Megaphone },
+                { label: "Content Creation", icon: FileText },
+                { label: "Website Improvements", icon: Settings },
               ].map((item) => (
-                <div key={item.label} className="flex items-center gap-2">
-                  {item.icon}
-                  <span className="text-sm font-medium" style={{ color: "#4B4F63" }}>
+                <div key={item.label} className="flex flex-col items-center gap-3 max-w-[130px] text-center">
+                  <div
+                    className="flex items-center justify-center rounded-full"
+                    style={{
+                      width: 56,
+                      height: 56,
+                      background: "linear-gradient(135deg, rgba(107,78,240,0.12), rgba(139,92,246,0.12))",
+                      border: "1px solid rgba(107,78,240,0.18)",
+                    }}
+                  >
+                    <item.icon size={24} style={{ color: "#6B4EF0" }} />
+                  </div>
+                  <span className="text-sm font-semibold" style={{ color: "#15172B" }}>
                     {item.label}
                   </span>
                 </div>
@@ -345,69 +385,37 @@ export default function HomeClient({ faqData }: HomeClientProps) {
           </div>
         </section>
 
-        {/* ── AI MARKETING EMPLOYEE TEASER ────────────────────────── */}
-        <section className="w-full pb-20">
-          <div
-            className="relative overflow-hidden flex items-center"
-            style={{
-              borderTop: "1px solid rgba(107,78,240,0.12)",
-              borderBottom: "1px solid rgba(107,78,240,0.12)",
-              minHeight: "50vh",
-              background: "#F2EFFC",
-            }}
-          >
-            <Image
-              src="/banner.jpg"
-              alt=""
-              fill
-              sizes="100vw"
-              className="object-cover hidden md:block"
-              aria-hidden="true"
-            />
-            <div className="relative w-full mx-auto py-8 md:py-14 px-5 sm:px-10 md:pl-[100px] md:pr-5">
-              <div className="flex-1 max-w-xl">
-                <div
-                  className="inline-flex items-center gap-2 rounded-full text-xs font-semibold mb-4"
+        {/* ── YOU RUN YOUR BUSINESS. WE HANDLE THE MARKETING. ────────── */}
+        <section className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-28">
+          <BlurIn>
+            <h2
+              className="text-center font-black leading-tight mb-16 md:mb-20"
+              style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2rem, 4vw, 3rem)", color: "#15172B" }}
+            >
+              You run your business. We handle the marketing.
+            </h2>
+          </BlurIn>
 
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-14 sm:gap-10 max-w-5xl mx-auto">
+            {runBusinessSteps.map((step, i) => (
+              <BlurIn key={step.step} delay={i * 0.12}>
+                <span
+                  className="block font-black leading-none mb-4"
+                  style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "3.25rem", color: "#C9BFF5" }}
                 >
-                  OUR FLAGSHIP PRODUCT
-                </div>
-                <h2
-                  className="font-black leading-[1.04] tracking-tight mb-4"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.6rem, 2.6vw, 2.75rem)", color: "#15172B" }}
+                  {step.step}
+                </span>
+                <h3
+                  className="text-2xl font-bold mb-3"
+                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#15172B" }}
                 >
-                  Meet the AI Marketing Employee
-                </h2>
-                <p className="text-base leading-relaxed mb-6 max-w-md" style={{ color: "#5B5F73" }}>
-                  A tireless marketing expert working for your business 24/7 — executing SEO,
-                  content, ads, social media and more, with real human oversight.
+                  {step.title}
+                </h3>
+                <p className="text-base leading-relaxed" style={{ color: "#5B5F73" }}>
+                  {step.desc}
                 </p>
-                <ul className="flex flex-col gap-2.5 mb-8">
-                  {[
-                    "Fully done-for-you",
-                    "AI that adapts and improves",
-                    "Human strategists oversee",
-                    "One unified dashboard",
-                  ].map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm" style={{ color: "#3D4157" }}>
-                      <CheckCircle size={16} style={{ color: "#6B4EF0" }} />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/ai-marketing-employee"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-white text-sm"
-                  style={{
-                    background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
-                    boxShadow: "0 8px 20px rgba(107,78,240,0.3)",
-                    fontFamily: "Space Grotesk, sans-serif",
-                  }}
-                >
-                  Learn More <ArrowRight size={14} />
-                </Link>
-              </div>
-            </div>
+              </BlurIn>
+            ))}
           </div>
         </section>
 
@@ -603,17 +611,19 @@ export default function HomeClient({ faqData }: HomeClientProps) {
       <div style={{ backgroundColor: "#0A0F1E", color: "#E5E7EB" }}>
         {/* ── AI MARKETING EMPLOYEE PRODUCT TIERS ─────────────────────── */}
         <Section background="gradient" spacing="lg" maxWidth="3xl" withDivider>
-          <div className="text-center mb-12">
-            <h2
-              className="font-black leading-[1.04] tracking-tight mb-4"
-              style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#E5E7EB" }}
-            >
-              AI Marketing Employee Tiers
-            </h2>
-            <p className="text-base max-w-xl mx-auto" style={{ color: "#9CA3AF" }}>
-              Choose the growth level that fits your business. All plans include AI execution and human oversight.
-            </p>
-          </div>
+          <BlurIn>
+            <div className="text-center mb-12">
+              <h2
+                className="font-black leading-[1.04] tracking-tight mb-4"
+                style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#E5E7EB" }}
+              >
+                AI Marketing Employee Tiers
+              </h2>
+              <p className="text-base max-w-xl mx-auto" style={{ color: "#9CA3AF" }}>
+                Choose the growth level that fits your business. All plans include AI execution and human oversight.
+              </p>
+            </div>
+          </BlurIn>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
@@ -658,59 +668,78 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 cta: "Go Full Scale",
                 popular: false,
               },
-            ].map((tier) => (
-              <div
-                key={tier.name}
-                className="relative flex flex-col rounded-2xl p-7"
-                style={{
-                  background: tier.popular
-                    ? "linear-gradient(135deg, rgba(124,58,237,0.22) 0%, rgba(168,85,247,0.14) 100%)"
-                    : "rgba(255,255,255,0.04)",
-                  border: tier.popular
-                    ? "2px solid rgba(168,85,247,0.55)"
-                    : "1px solid rgba(124,58,237,0.25)",
-                  boxShadow: tier.popular ? "0 0 40px rgba(124,58,237,0.3)" : "none",
-                }}
-              >
-                {tier.popular && (
-                  <div
-                    className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold text-white"
-                    style={{ background: "linear-gradient(135deg, #7C3AED, #A855F7)" }}
-                  >
-                    Most Popular
-                  </div>
-                )}
-                <h3
-                  className="text-xl font-bold mb-1"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-                >
-                  {tier.name}
-                </h3>
-                <p className="text-sm mb-6" style={{ color: "#A855F7" }}>
-                  {tier.tagline}
-                </p>
-                <ul className="space-y-3 flex-1 mb-8">
-                  {tier.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2">
-                      <CheckCircle size={15} style={{ color: "#A855F7", flexShrink: 0, marginTop: 2 }} />
-                      <span className="text-sm" style={{ color: "#D1D5DB" }}>
-                        {f}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/pricing"
-                  className="w-full py-3 rounded-full text-center text-sm font-semibold text-white transition-all duration-200 hover:brightness-110 block"
+            ].map((tier, i) => (
+              <BlurIn key={tier.name} delay={i * 0.1}>
+                <div
+                  className="group relative flex flex-col rounded-2xl p-7 h-full transition-all duration-300 hover:-translate-y-2"
                   style={{
-                    background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                    boxShadow: "0 0 18px rgba(124,58,237,0.4)",
-                    fontFamily: "Space Grotesk, sans-serif",
+                    background: tier.popular
+                      ? "linear-gradient(135deg, rgba(124,58,237,0.22) 0%, rgba(168,85,247,0.14) 100%)"
+                      : "rgba(255,255,255,0.04)",
+                    border: tier.popular
+                      ? "2px solid rgba(168,85,247,0.55)"
+                      : "1px solid rgba(124,58,237,0.25)",
+                    boxShadow: tier.popular ? "0 0 40px rgba(124,58,237,0.3)" : "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.borderColor = `${tier.color}90`;
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = tier.popular
+                      ? "0 20px 55px rgba(124,58,237,0.45)"
+                      : `0 20px 45px -8px ${tier.color}55`;
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.borderColor = tier.popular
+                      ? "rgba(168,85,247,0.55)"
+                      : "rgba(124,58,237,0.25)";
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = tier.popular
+                      ? "0 0 40px rgba(124,58,237,0.3)"
+                      : "none";
                   }}
                 >
-                  {tier.cta} →
-                </Link>
-              </div>
+                  {tier.popular && (
+                    <div
+                      className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold text-white"
+                      style={{ background: "linear-gradient(135deg, #7C3AED, #A855F7)" }}
+                    >
+                      Most Popular
+                    </div>
+                  )}
+                  <h3
+                    className="text-xl font-bold mb-1"
+                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                  >
+                    {tier.name}
+                  </h3>
+                  <p className="text-sm mb-6" style={{ color: "#A855F7" }}>
+                    {tier.tagline}
+                  </p>
+                  <ul className="space-y-3 flex-1 mb-8">
+                    {tier.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2">
+                        <CheckCircle
+                          size={15}
+                          className="transition-transform duration-200 group-hover:scale-125"
+                          style={{ color: "#A855F7", flexShrink: 0, marginTop: 2 }}
+                        />
+                        <span className="text-sm" style={{ color: "#D1D5DB" }}>
+                          {f}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="/pricing"
+                    className="w-full py-3 rounded-full text-center text-sm font-semibold text-white transition-all duration-200 hover:brightness-110 hover:scale-[1.03] block"
+                    style={{
+                      background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                      boxShadow: "0 0 18px rgba(124,58,237,0.4)",
+                      fontFamily: "Space Grotesk, sans-serif",
+                    }}
+                  >
+                    {tier.cta} →
+                  </Link>
+                </div>
+              </BlurIn>
             ))}
           </div>
           <p className="text-center text-xs mt-6" style={{ color: "#6B7280" }}>
