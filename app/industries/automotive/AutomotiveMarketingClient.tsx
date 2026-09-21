@@ -856,7 +856,7 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
             <span className="hidden sm:block" style={{ color: "rgba(124,58,237,0.4)" }}>|</span>
             {/* Phone number */}
             <a
-              href="tel:713-489-7004"
+              href="tel:+17134897004"
               className="flex items-center gap-2 hover:text-white transition-colors"
             >
               <Phone size={14} style={{ color: "#7C3AED" }} />
@@ -864,10 +864,10 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
             </a>
             <span className="hidden sm:block" style={{ color: "rgba(124,58,237,0.4)" }}>|</span>
             <a
-              href="mailto:hello@echo5digital.com"
+              href="mailto:sales@echo5digital.com"
               className="flex items-center gap-2 hover:text-white transition-colors"
             >
-              hello@echo5digital.com
+              sales@echo5digital.com
             </a>
           </div>
         </Reveal>
@@ -1015,7 +1015,7 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
               >
                 {/* Phone */}
                 <a
-                  href="tel:713-489-7004"
+                  href="tel:+17134897004"
                   className="flex items-center gap-2 hover:text-white transition-colors"
                   style={{ color: "rgba(229,231,235,0.55)" }}
                 >
@@ -1023,12 +1023,12 @@ export default function AutomotiveMarketingClient({ faqData }: Props) {
                   713-489-7004
                 </a>
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="flex items-center gap-2 hover:text-white transition-colors"
                   style={{ color: "rgba(229,231,235,0.55)" }}
                 >
                   <span style={{ color: "#7C3AED" }}>✉</span>
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
               </div>
             </div>

@@ -941,14 +941,14 @@ export default function WebsiteMaintenanceClient({ faqData }: Props) {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 text-sm" style={{ fontFamily: "Inter, sans-serif" }}>
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="flex items-center gap-2 transition-colors hover:text-white"
                   style={{ color: "#A855F7" }}
                 >
-                  <span>hello@echo5digital.com</span>
+                  <span>sales@echo5digital.com</span>
                 </a>
                 <a
-                  href="tel:7134897004"
+                  href="tel:+17134897004"
                   className="flex items-center gap-2 transition-colors hover:text-white"
                   style={{ color: "#A855F7" }}
                 >
@@ -1108,15 +1108,15 @@ export default function WebsiteMaintenanceClient({ faqData }: Props) {
               </p>
               {/* Email */}
               <a
-                href="mailto:hello@echo5digital.com"
+                href="mailto:sales@echo5digital.com"
                 className="text-sm transition-colors hover:text-white"
                 style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
               >
-                hello@echo5digital.com
+                sales@echo5digital.com
               </a>
               {/* Phone */}
               <a
-                href="tel:7134897004"
+                href="tel:+17134897004"
                 className="text-sm transition-colors hover:text-white"
                 style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
               >

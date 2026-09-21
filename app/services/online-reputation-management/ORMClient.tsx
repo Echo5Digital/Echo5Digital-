@@ -793,14 +793,14 @@ export default function ORMClient({ faqData }: ORMClientProps) {
         </div>
         {/* NAP — real HTML text, never in image */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-[#9CA3AF]" style={{ fontFamily: "Inter, sans-serif" }}>
-          <a href="tel:713-489-7004" className="flex items-center gap-2 hover:text-[#A855F7] transition-colors">
+          <a href="tel:+17134897004" className="flex items-center gap-2 hover:text-[#A855F7] transition-colors">
             {/* Phone number */}
             <CheckCircle size={14} color="#7C3AED" />
             <span>713-489-7004</span>
           </a>
-          <a href="mailto:hello@echo5digital.com" className="flex items-center gap-2 hover:text-[#A855F7] transition-colors">
+          <a href="mailto:sales@echo5digital.com" className="flex items-center gap-2 hover:text-[#A855F7] transition-colors">
             <CheckCircle size={14} color="#7C3AED" />
-            <span>hello@echo5digital.com</span>
+            <span>sales@echo5digital.com</span>
           </a>
           <span className="flex items-center gap-2">
             <CheckCircle size={14} color="#7C3AED" />

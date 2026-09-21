@@ -65,6 +65,7 @@ export default function ContentMarketingClient({ faqData }: Props) {
         src="/media-marketing-internet-digital-global-100kb.jpg"
         className="min-h-screen flex items-center pt-[72px]"
         overlay="linear-gradient(180deg, rgba(10,8,26,0.72) 0%, rgba(10,8,26,0.82) 55%, rgba(10,8,26,0.95) 100%)"
+        bgPositionClassName="bg-[30%_center] sm:bg-center"
       >
         {/* Ambient glow orb on top of the photo overlay */}
         <div
@@ -981,7 +982,7 @@ export default function ContentMarketingClient({ faqData }: Props) {
             <div className="flex flex-col sm:flex-row gap-4">
               {/* Verified phone from business facts */}
               <a
-                href="tel:7134897004"
+                href="tel:+17134897004"
                 className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-80"
                 style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}
               >
@@ -989,12 +990,12 @@ export default function ContentMarketingClient({ faqData }: Props) {
                 <span>713-489-7004</span>
               </a>
               <a
-                href="mailto:hello@echo5digital.com"
+                href="mailto:sales@echo5digital.com"
                 className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-80"
                 style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}
               >
                 <span>✉️</span>
-                <span>hello@echo5digital.com</span>
+                <span>sales@echo5digital.com</span>
               </a>
             </div>
           </div>
@@ -1249,11 +1250,11 @@ export default function ContentMarketingClient({ faqData }: Props) {
             </p>
             <div className="space-y-2 text-sm">
               <p style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}>Or reach us directly:</p>
-              <a href="tel:7134897004" className="block" style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}>
+              <a href="tel:+17134897004" className="block" style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}>
                 📞 713-489-7004
               </a>
-              <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}>
-                ✉️ hello@echo5digital.com
+              <a href="mailto:sales@echo5digital.com" className="block" style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}>
+                ✉️ sales@echo5digital.com
               </a>
             </div>
           </div>

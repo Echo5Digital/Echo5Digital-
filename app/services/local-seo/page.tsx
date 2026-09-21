@@ -37,7 +37,7 @@ const faqData = [
   {
     question: "How do I get started with local SEO at Echo5 Digital?",
     answer:
-      "You can reach Echo5 Digital by calling 713-489-7004, emailing hello@echo5digital.com, or filling out the lead form on this page to book a demo.",
+      "You can reach Echo5 Digital by calling 713-489-7004, emailing sales@echo5digital.com, or filling out the lead form on this page to book a demo.",
   },
 ];
 
@@ -65,7 +65,7 @@ export default function LocalSEOPage() {
       <LocalSEOClient faqData={faqData} />
       <GetInTouchMarquee variant="light" />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

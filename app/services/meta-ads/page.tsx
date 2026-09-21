@@ -38,7 +38,7 @@ const faqData = [
   {
     question: "How can I get started with Meta Ads through Echo5 Digital?",
     answer:
-      "Call 713-489-7004, email hello@echo5digital.com, or complete the lead form on this page to schedule a paid social strategy consultation.",
+      "Call 713-489-7004, email sales@echo5digital.com, or complete the lead form on this page to schedule a paid social strategy consultation.",
   },
 ];
 
@@ -66,7 +66,7 @@ export default function MetaAdsPage() {
       <MetaAdsClient faqData={faqData} />
       <GetInTouchMarquee variant="light" />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

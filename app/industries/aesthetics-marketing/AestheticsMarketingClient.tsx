@@ -960,7 +960,7 @@ export default function AestheticsMarketingClient({ faqData }: Props) {
               <div className="flex items-center gap-2">
                 <PhoneCall size={15} className="text-purple-400 flex-shrink-0" />
                 <a
-                  href="tel:7134897004"
+                  href="tel:+17134897004"
                   className="text-sm text-gray-300 hover:text-purple-400 transition-colors"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
@@ -970,11 +970,11 @@ export default function AestheticsMarketingClient({ faqData }: Props) {
               <div className="flex items-center gap-2">
                 <Globe size={15} className="text-purple-400 flex-shrink-0" />
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="text-sm text-gray-300 hover:text-purple-400 transition-colors"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
               </div>
             </address>
@@ -1097,7 +1097,7 @@ export default function AestheticsMarketingClient({ faqData }: Props) {
                 Book a Free Strategy Demo
               </Link>
               <a
-                href="tel:7134897004"
+                href="tel:+17134897004"
                 className="px-10 py-4 rounded-full font-semibold text-purple-400 text-base border border-purple-500/40 hover:border-purple-400 hover:bg-purple-500/10 transition-all duration-200 flex items-center gap-2"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >

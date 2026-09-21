@@ -18,7 +18,7 @@ const faqData = [
   {
     question: "Are there setup or onboarding fees?",
     answer:
-      "Specific onboarding fee details are outlined on the pricing page for each plan tier. Visitors are encouraged to review the plan cards or contact Echo5 Digital directly at hello@echo5digital.com for a full cost breakdown.",
+      "Specific onboarding fee details are outlined on the pricing page for each plan tier. Visitors are encouraged to review the plan cards or contact Echo5 Digital directly at sales@echo5digital.com for a full cost breakdown.",
   },
   {
     question: "Can I change plans after I start?",
@@ -28,7 +28,7 @@ const faqData = [
   {
     question: "Is there a long-term contract required?",
     answer:
-      "Contract terms vary by plan tier and are detailed on the pricing page. Echo5 Digital encourages prospects to reach out at hello@echo5digital.com or call 713-489-7004 for specifics before committing.",
+      "Contract terms vary by plan tier and are detailed on the pricing page. Echo5 Digital encourages prospects to reach out at sales@echo5digital.com or call 713-489-7004 for specifics before committing.",
   },
   {
     question: "What if I only need one service, not a full plan?",
@@ -63,7 +63,7 @@ export default function PricingPage() {
       </main>
       <GetInTouchMarquee />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

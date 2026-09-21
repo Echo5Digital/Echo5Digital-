@@ -9,7 +9,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Terms of Service | Echo5 Digital",
   description:
-    "Review Echo5 Digital's terms of service governing use of our website, digital marketing services, and client engagements. Questions? Contact us at hello@echo5digital.com.",
+    "Review Echo5 Digital's terms of service governing use of our website, digital marketing services, and client engagements. Questions? Contact us at sales@echo5digital.com.",
   alternates: {
     canonical: "/terms-of-service",
   },
@@ -517,7 +517,7 @@ export default function TermsOfServicePage() {
 
                   <address className="not-italic space-y-3">
                     <a
-                      href="mailto:hello@echo5digital.com"
+                      href="mailto:sales@echo5digital.com"
                       className="tos-contact-link flex items-center gap-3 text-sm transition-colors duration-200"
                       style={{
                         fontFamily: "Inter, sans-serif",
@@ -530,11 +530,11 @@ export default function TermsOfServicePage() {
                         style={{ color: "#7C3AED", flexShrink: 0 }}
                       />
                       {/* Email address */}
-                      hello@echo5digital.com
+                      sales@echo5digital.com
                     </a>
 
                     <a
-                      href="tel:7134897004"
+                      href="tel:+17134897004"
                       className="tos-contact-link flex items-center gap-3 text-sm transition-colors duration-200"
                       style={{
                         fontFamily: "Inter, sans-serif",
@@ -616,7 +616,7 @@ export default function TermsOfServicePage() {
       </Section>
 
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

@@ -680,7 +680,7 @@ export default function HomeServicesMarketingClient({ faqData }: Props) {
           <div className="mt-5 flex flex-wrap gap-4 text-sm">
             {/* Phone — verified fact */}
             <a
-              href="tel:7134897004"
+              href="tel:+17134897004"
               className="flex items-center gap-2 transition-colors hover:text-white"
               style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
             >
@@ -688,12 +688,12 @@ export default function HomeServicesMarketingClient({ faqData }: Props) {
               713-489-7004
             </a>
             <a
-              href="mailto:hello@echo5digital.com"
+              href="mailto:sales@echo5digital.com"
               className="flex items-center gap-2 transition-colors hover:text-white"
               style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
             >
               <Zap size={15} style={{ color: "#7C3AED" }} />
-              hello@echo5digital.com
+              sales@echo5digital.com
             </a>
             <span
               className="flex items-center gap-2"
@@ -1027,7 +1027,7 @@ export default function HomeServicesMarketingClient({ faqData }: Props) {
             <div className="flex flex-col gap-3 text-sm">
               {/* Phone — verified fact */}
               <a
-                href="tel:7134897004"
+                href="tel:+17134897004"
                 className="flex items-center gap-3 transition-colors hover:text-white"
                 style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
               >
@@ -1040,7 +1040,7 @@ export default function HomeServicesMarketingClient({ faqData }: Props) {
                 713-489-7004
               </a>
               <a
-                href="mailto:hello@echo5digital.com"
+                href="mailto:sales@echo5digital.com"
                 className="flex items-center gap-3 transition-colors hover:text-white"
                 style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
               >
@@ -1050,7 +1050,7 @@ export default function HomeServicesMarketingClient({ faqData }: Props) {
                 >
                   <Zap size={14} style={{ color: "#A855F7" }} />
                 </div>
-                hello@echo5digital.com
+                sales@echo5digital.com
               </a>
               <span
                 className="flex items-center gap-3"

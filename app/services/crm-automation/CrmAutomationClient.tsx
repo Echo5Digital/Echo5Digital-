@@ -1093,7 +1093,7 @@ export default function CrmAutomationClient({ faqData }: Props) {
                     <span style={{ color: "#7C3AED", fontWeight: 600 }}>Location:</span> Houston / Sugar Land, Texas
                   </address>
                   <a
-                    href="tel:713-489-7004"
+                    href="tel:+17134897004"
                     style={{ color: "#5B5F73" }}
                     className="hover:text-[#15172B] transition-colors"
                   >
@@ -1101,11 +1101,11 @@ export default function CrmAutomationClient({ faqData }: Props) {
                     <span style={{ color: "#7C3AED", fontWeight: 600 }}>Phone:</span> 713-489-7004
                   </a>
                   <a
-                    href="mailto:hello@echo5digital.com"
+                    href="mailto:sales@echo5digital.com"
                     style={{ color: "#5B5F73" }}
                     className="hover:text-[#15172B] transition-colors"
                   >
-                    <span style={{ color: "#7C3AED", fontWeight: 600 }}>Email:</span> hello@echo5digital.com
+                    <span style={{ color: "#7C3AED", fontWeight: 600 }}>Email:</span> sales@echo5digital.com
                   </a>
                 </div>
               </div>
@@ -1262,11 +1262,11 @@ export default function CrmAutomationClient({ faqData }: Props) {
 
               <div className="mt-8 space-y-2 text-sm">
                 <p style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}>Or reach us directly:</p>
-                <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
-                  ✉️ hello@echo5digital.com
+                <a href="mailto:sales@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
+                  ✉️ sales@echo5digital.com
                 </a>
                 {/* verified phone */}
-                <a href="tel:713-489-7004" className="block" style={{ color: "#4F32D9" }}>
+                <a href="tel:+17134897004" className="block" style={{ color: "#4F32D9" }}>
                   📞 713-489-7004
                 </a>
               </div>

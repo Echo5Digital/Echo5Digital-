@@ -64,7 +64,7 @@ const serviceJsonLd = {
     "@type": "Organization",
     name: "Echo5 Digital",
     telephone: "713-489-7004",
-    email: "hello@echo5digital.com",
+    email: "sales@echo5digital.com",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Houston",
@@ -118,7 +118,7 @@ export default function CustomProgrammingPage() {
                 {/* Phone — verified fact */}
                 <span style={{ color: "#A855F7" }}>📞</span>
                 <a
-                  href="tel:713-489-7004"
+                  href="tel:+17134897004"
                   className="hover:text-white transition-colors"
                   style={{ color: "#9CA3AF" }}
                 >
@@ -128,11 +128,11 @@ export default function CustomProgrammingPage() {
               <span className="flex items-center gap-2">
                 <span style={{ color: "#A855F7" }}>✉️</span>
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="hover:text-white transition-colors"
                   style={{ color: "#9CA3AF" }}
                 >
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
               </span>
               <span className="flex items-center gap-2">
@@ -144,7 +144,7 @@ export default function CustomProgrammingPage() {
         </Section>
       </main>
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

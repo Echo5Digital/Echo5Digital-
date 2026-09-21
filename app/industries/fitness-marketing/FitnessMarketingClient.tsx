@@ -879,7 +879,7 @@ export default function FitnessMarketingClient({ faqData }: Props) {
                 <Phone size={14} style={{ color: "#7C3AED" }} />
                 {/* Phone number from verified facts */}
                 <a
-                  href="tel:7134897004"
+                  href="tel:+17134897004"
                   className="text-sm hover:text-white transition-colors"
                   style={{ color: "rgba(229,231,235,0.65)", fontFamily: "Inter, sans-serif" }}
                 >
@@ -889,11 +889,11 @@ export default function FitnessMarketingClient({ faqData }: Props) {
               <div className="flex items-center gap-2">
                 <Mail size={14} style={{ color: "#7C3AED" }} />
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="text-sm hover:text-white transition-colors"
                   style={{ color: "rgba(229,231,235,0.65)", fontFamily: "Inter, sans-serif" }}
                 >
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
               </div>
               <div className="flex items-center gap-2">

@@ -691,13 +691,13 @@ export default function EntertainmentMediaClient({ faqData }: Props) {
                 credibility and attract more of the right audience.
               </p>
               <div className="flex flex-col gap-3">
-                <a href="tel:7134897004" className="inline-flex items-center gap-2 text-sm transition-colors hover:text-white" style={{ color: "rgba(229,231,235,0.7)" }}>
+                <a href="tel:+17134897004" className="inline-flex items-center gap-2 text-sm transition-colors hover:text-white" style={{ color: "rgba(229,231,235,0.7)" }}>
                   <Phone size={15} style={{ color: "#A855F7" }} />
                   713-489-7004
                 </a>
-                <a href="mailto:hello@echo5digital.com" className="inline-flex items-center gap-2 text-sm transition-colors hover:text-white" style={{ color: "rgba(229,231,235,0.7)" }}>
+                <a href="mailto:sales@echo5digital.com" className="inline-flex items-center gap-2 text-sm transition-colors hover:text-white" style={{ color: "rgba(229,231,235,0.7)" }}>
                   <Mail size={15} style={{ color: "#A855F7" }} />
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
               </div>
             </div>

@@ -26,7 +26,7 @@ const serviceSchema = {
       addressCountry: "US",
     },
     telephone: "713-489-7004",
-    email: "hello@echo5digital.com",
+    email: "sales@echo5digital.com",
   },
   serviceType: "SEO",
   areaServed: [
@@ -52,7 +52,7 @@ export default function HealthcareMarketingPage() {
         <HealthcareMarketingClient />
       </main>
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         // placeholder phone number below
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"

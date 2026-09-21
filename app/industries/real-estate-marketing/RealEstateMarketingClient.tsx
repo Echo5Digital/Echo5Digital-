@@ -902,7 +902,7 @@ export default function RealEstateMarketingClient({ faqData }: Props) {
                   <PhoneCall size={14} className="text-purple-400 flex-shrink-0" />
                   {/* Verified phone */}
                   <a
-                    href="tel:7134897004"
+                    href="tel:+17134897004"
                     className="hover:text-purple-300 transition-colors"
                   >
                     713-489-7004
@@ -912,10 +912,10 @@ export default function RealEstateMarketingClient({ faqData }: Props) {
                   <span className="text-purple-400 flex-shrink-0">✉</span>
                   {/* Verified email */}
                   <a
-                    href="mailto:hello@echo5digital.com"
+                    href="mailto:sales@echo5digital.com"
                     className="hover:text-purple-300 transition-colors"
                   >
-                    hello@echo5digital.com
+                    sales@echo5digital.com
                   </a>
                 </div>
               </div>

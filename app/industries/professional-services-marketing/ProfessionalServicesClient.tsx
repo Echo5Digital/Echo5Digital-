@@ -1029,7 +1029,7 @@ export default function ProfessionalServicesClient({ faqData }: Props) {
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               <a
-                href="tel:713-489-7004"
+                href="tel:+17134897004"
                 className="inline-flex items-center gap-2 text-sm transition-colors hover:text-white"
                 style={{ color: "rgba(229,231,235,0.6)" }}
               >
@@ -1037,12 +1037,12 @@ export default function ProfessionalServicesClient({ faqData }: Props) {
                 713-489-7004
               </a>
               <a
-                href="mailto:hello@echo5digital.com"
+                href="mailto:sales@echo5digital.com"
                 className="inline-flex items-center gap-2 text-sm transition-colors hover:text-white"
                 style={{ color: "rgba(229,231,235,0.6)" }}
               >
                 <Mail size={15} style={{ color: "#7C3AED" }} />
-                hello@echo5digital.com
+                sales@echo5digital.com
               </a>
               <span
                 className="inline-flex items-center gap-2 text-sm"
@@ -1104,7 +1104,7 @@ export default function ProfessionalServicesClient({ faqData }: Props) {
               <ArrowRight size={18} />
             </Link>
             <a
-              href="mailto:hello@echo5digital.com"
+              href="mailto:sales@echo5digital.com"
               className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:bg-purple-900/20"
               style={{
                 border: "2px solid rgba(124,58,237,0.5)",

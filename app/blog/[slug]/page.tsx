@@ -116,7 +116,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       </Section>
       <BlogPostClient post={samplePost} />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         // placeholder — replace with verified number
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"

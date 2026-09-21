@@ -46,7 +46,7 @@ const collectionPageSchema = {
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "713-489-7004",
-      email: "hello@echo5digital.com",
+      email: "sales@echo5digital.com",
       areaServed: ["Houston, TX", "Sugar Land, TX", "United States"],
     },
   },
@@ -80,7 +80,7 @@ export default function ResultsPage() {
       <ResultsClient faqData={faqData} />
       <GetInTouchMarquee />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         // placeholder phone — replace with verified number if different
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Phone, MapPin, Twitter, Linkedin, Instagram, Facebook, Youtube, Zap } from "lucide-react";
+import { Mail, Phone, MapPin, AtSign, Linkedin, Instagram, Facebook, Youtube, Zap, Rocket, ArrowRight } from "lucide-react";
 
 interface FooterLink {
   label: string;
@@ -18,7 +18,7 @@ interface FooterProps {
   links?: FooterLink[];
   logoSrc?: string;
   socialLinks?: {
-    twitter?: string;
+    threads?: string;
     linkedin?: string;
     instagram?: string;
     facebook?: string;
@@ -79,17 +79,17 @@ export default function Footer({
   businessName = "Echo5 Digital",
   tagline = "AI-Powered Growth Engine",
   description = "We blend artificial intelligence with cutting-edge digital marketing, web development, and custom programming to accelerate your business growth.",
-  email = "hello@echo5digital.com",
+  email = "sales@echo5digital.com",
   phone = "+1 (800) 555-0199",
   address = "Los Angeles, CA, United States",
   links = defaultLinks,
   logoSrc = "/logo.png",
   socialLinks = {
-    twitter: "#",
-    linkedin: "#",
-    instagram: "#",
-    facebook: "#",
-    youtube: "#",
+    threads: "#",
+    linkedin: "https://www.linkedin.com/company/echo5digital",
+    instagram: "https://www.instagram.com/echo5.digital/",
+    facebook: "https://www.facebook.com/echo5digitalventures/",
+    youtube: "https://www.youtube.com/channel/UC4zr-6ArzhU2sVsOOEbQf1A",
   },
 }: FooterProps) {
   const linkMap = new Map(links.map((l) => [l.label, l.route]));
@@ -126,10 +126,10 @@ export default function Footer({
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-8">
-        {/* Top section: brand + links */}
-        <div className="grid grid-cols-1 lg:grid-cols-6 gap-12 mb-14">
+        {/* Top section: brand + links + CTA */}
+        <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1.4fr)_minmax(0,3fr)_minmax(0,1.1fr)] gap-10 xl:gap-10 mb-10">
           {/* Brand column */}
-          <div className="lg:col-span-2 flex flex-col gap-5">
+          <div className="flex flex-col gap-5">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group w-fit">
               {logoSrc ? (
@@ -187,7 +187,7 @@ export default function Footer({
                 {email}
               </a>
               <a
-                href={`tel:${phone.replace(/\s/g, "")}`}
+                href={`tel:+${phone.replace(/\D/g, "").replace(/^1?/, "1")}`}
                 className="flex items-center gap-2 text-sm transition-colors hover:text-white group"
                 style={{ color: "#9CA3AF" }}
               >
@@ -209,9 +209,9 @@ export default function Footer({
 
             {/* Social icons */}
             <div className="flex items-center gap-3 mt-2">
-              {socialLinks.twitter && (
-                <SocialIcon href={socialLinks.twitter} label="Twitter">
-                  <Twitter size={15} />
+              {socialLinks.threads && (
+                <SocialIcon href={socialLinks.threads} label="Threads">
+                  <AtSign size={15} />
                 </SocialIcon>
               )}
               {socialLinks.linkedin && (
@@ -238,14 +238,18 @@ export default function Footer({
           </div>
 
           {/* Link columns */}
-          <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-8 gap-y-10">
             {columnConfig.map((col) => (
               <div key={col.heading} className="flex flex-col gap-3">
                 <h4
                   style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-                  className="text-sm font-semibold uppercase tracking-widest mb-1"
+                  className="text-sm font-semibold uppercase tracking-widest mb-1 relative pb-2"
                 >
                   {col.heading}
+                  <span
+                    className="absolute bottom-0 left-0 h-0.5 w-6"
+                    style={{ background: "linear-gradient(90deg, #7C3AED, #A855F7)" }}
+                  />
                 </h4>
                 {col.labels.map((label) => {
                   const route = linkMap.get(label);
@@ -270,55 +274,71 @@ export default function Footer({
               </div>
             ))}
           </div>
+
+          {/* CTA card */}
+          <div
+            className="flex flex-col gap-4 rounded-2xl p-6 h-fit"
+            style={{
+              background: "linear-gradient(135deg, rgba(124,58,237,0.18) 0%, rgba(168,85,247,0.1) 100%)",
+              border: "1px solid rgba(124,58,237,0.3)",
+            }}
+          >
+            <div
+              className="flex items-center justify-center rounded-xl flex-shrink-0"
+              style={{
+                width: "40px",
+                height: "40px",
+                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                boxShadow: "0 0 16px rgba(124,58,237,0.5)",
+              }}
+            >
+              <Rocket size={18} color="#fff" />
+            </div>
+            <div>
+              <p
+                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                className="font-semibold text-base leading-snug"
+              >
+                Ready to grow with AI-powered marketing?
+              </p>
+              <p style={{ color: "#9CA3AF" }} className="text-sm mt-1.5 leading-relaxed">
+                Let&apos;s build your digital growth engine together.
+              </p>
+            </div>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-full transition-all duration-200 hover:brightness-110 active:scale-95 w-fit"
+              style={{
+                background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                boxShadow: "0 0 20px rgba(124,58,237,0.5), 0 4px 14px rgba(124,58,237,0.3)",
+                fontFamily: "Space Grotesk, sans-serif",
+              }}
+            >
+              Get Started Today
+              <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
 
         {/* Divider */}
         <div
-          className="h-px w-full mb-8"
+          className="h-px w-full mb-6"
           style={{
             background: "linear-gradient(90deg, transparent, rgba(124,58,237,0.4) 30%, rgba(168,85,247,0.4) 70%, transparent)",
           }}
         />
 
-        {/* CTA strip */}
-        <div
-          className="flex flex-col sm:flex-row items-center justify-between gap-6 rounded-2xl p-6 mb-10"
-          style={{
-            background: "linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(168,85,247,0.1) 100%)",
-            border: "1px solid rgba(124,58,237,0.25)",
-          }}
-        >
-          <div>
-            <p
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-              className="font-semibold text-base"
-            >
-              Ready to grow with AI-powered marketing?
-            </p>
-            <p style={{ color: "#9CA3AF" }} className="text-sm mt-0.5">
-              Let&apos;s build your digital growth engine together.
-            </p>
-          </div>
-          <Link
-            href="/contact"
-            className="flex-shrink-0 px-7 py-3 text-sm font-semibold text-white rounded-full transition-all duration-200 hover:brightness-110 active:scale-95"
-            style={{
-              background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-              boxShadow: "0 0 20px rgba(124,58,237,0.5), 0 4px 14px rgba(124,58,237,0.3)",
-              fontFamily: "Space Grotesk, sans-serif",
-            }}
-          >
-            Get Started Today
-          </Link>
-        </div>
-
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p style={{ color: "#6B7280" }} className="text-xs text-center sm:text-left">
             © {currentYear}{" "}
-            <span style={{ color: "#A855F7" }} className="font-medium">
+            <a
+              href="https://www.echo5digital.com/"
+              style={{ color: "#A855F7" }}
+              className="font-medium transition-colors duration-200 hover:text-white"
+            >
               {businessName}
-            </span>
+            </a>
             . All rights reserved.
           </p>
           <div className="flex items-center gap-5">

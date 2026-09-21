@@ -1013,7 +1013,7 @@ export default function IndustriesClient() {
                 <div className="flex items-center gap-2">
                   <span style={{ color: "#6B4EF0" }}>📞</span>
                   <a
-                    href="tel:7134897004"
+                    href="tel:+17134897004"
                     style={{ color: "#5B5F73" }}
                     className="hover:text-[#15172B] transition-colors"
                   >
@@ -1023,11 +1023,11 @@ export default function IndustriesClient() {
                 <div className="flex items-center gap-2">
                   <span style={{ color: "#6B4EF0" }}>✉️</span>
                   <a
-                    href="mailto:hello@echo5digital.com"
+                    href="mailto:sales@echo5digital.com"
                     style={{ color: "#5B5F73" }}
                     className="hover:text-[#15172B] transition-colors"
                   >
-                    hello@echo5digital.com
+                    sales@echo5digital.com
                   </a>
                 </div>
               </div>
@@ -1182,11 +1182,11 @@ export default function IndustriesClient() {
             <div className="space-y-2 text-sm mb-10">
               <p style={{ color: "#5B5F73" }}>Or reach us directly:</p>
               {/* Verified phone */}
-              <a href="tel:7134897004" className="block" style={{ color: "#4F32D9" }}>
+              <a href="tel:+17134897004" className="block" style={{ color: "#4F32D9" }}>
                 📞 713-489-7004
               </a>
-              <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
-                ✉️ hello@echo5digital.com
+              <a href="mailto:sales@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
+                ✉️ sales@echo5digital.com
               </a>
             </div>
 
@@ -1261,7 +1261,7 @@ export default function IndustriesClient() {
                   Book a Free Strategy Call <ArrowRight size={15} />
                 </Link>
                 <a
-                  href="tel:7134897004"
+                  href="tel:+17134897004"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-200 hover:bg-white active:scale-95"
                   style={{
                     border: "1px solid rgba(124,58,237,0.3)",

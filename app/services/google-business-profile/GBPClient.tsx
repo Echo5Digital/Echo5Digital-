@@ -231,7 +231,7 @@ export default function GBPClient({ faqData }: GBPClientProps) {
                 Book a Free Demo
               </a>
               <a
-                href="tel:713-489-7004"
+                href="tel:+17134897004"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-purple-300 text-base transition-all duration-200 hover:text-white hover:bg-purple-700/20"
                 style={{
                   fontFamily: "Inter, sans-serif",
@@ -768,7 +768,7 @@ export default function GBPClient({ faqData }: GBPClientProps) {
               </h3>
               <div className="space-y-2">
                 <a
-                  href="tel:713-489-7004"
+                  href="tel:+17134897004"
                   className="flex items-center gap-3 text-sm text-gray-400 hover:text-purple-300 transition-colors"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
@@ -777,13 +777,13 @@ export default function GBPClient({ faqData }: GBPClientProps) {
                   713-489-7004
                 </a>
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="flex items-center gap-3 text-sm text-gray-400 hover:text-purple-300 transition-colors"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
                   <Mail size={14} className="text-purple-400 shrink-0" />
                   {/* Email: verified business fact */}
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
                 <div className="flex items-center gap-3 text-sm text-gray-400">
                   <MapPin size={14} className="text-purple-400 shrink-0" />
@@ -1057,7 +1057,7 @@ export default function GBPClient({ faqData }: GBPClientProps) {
               </p>
               <div className="space-y-2">
                 <a
-                  href="tel:713-489-7004"
+                  href="tel:+17134897004"
                   className="flex items-center gap-3 text-sm text-gray-400 hover:text-purple-300 transition-colors"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
@@ -1065,12 +1065,12 @@ export default function GBPClient({ faqData }: GBPClientProps) {
                   713-489-7004
                 </a>
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="flex items-center gap-3 text-sm text-gray-400 hover:text-purple-300 transition-colors"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
                   <Mail size={14} className="text-purple-400 shrink-0" />
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
               </div>
             </div>

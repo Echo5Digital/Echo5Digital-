@@ -1028,7 +1028,7 @@ export default function SuperGrowthClient({ faqData }: Props) {
               Houston / Sugar Land, Texas
             </address>
             <a
-              href="tel:713-489-7004"
+              href="tel:+17134897004"
               className="flex items-center gap-2 text-purple-300 hover:text-white transition-colors"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
@@ -1037,12 +1037,12 @@ export default function SuperGrowthClient({ faqData }: Props) {
               713-489-7004
             </a>
             <a
-              href="mailto:hello@echo5digital.com"
+              href="mailto:sales@echo5digital.com"
               className="flex items-center gap-2 text-purple-300 hover:text-white transition-colors"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               <Mail size={15} />
-              hello@echo5digital.com
+              sales@echo5digital.com
             </a>
           </div>
         </div>
@@ -1169,7 +1169,7 @@ export default function SuperGrowthClient({ faqData }: Props) {
                 30 minutes with an Echo5 Digital AI marketing strategist. No obligation, no pitch deck — just a direct conversation about your growth goals.
               </p>
               <a
-                href="tel:713-489-7004"
+                href="tel:+17134897004"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white text-sm transition-all duration-200 hover:brightness-110"
                 style={{
                   background: "linear-gradient(135deg, #7C3AED, #A855F7)",

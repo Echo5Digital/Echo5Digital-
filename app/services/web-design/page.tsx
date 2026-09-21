@@ -51,7 +51,7 @@ const serviceSchema = {
     "@type": "Organization",
     name: "Echo5 Digital",
     telephone: "713-489-7004",
-    email: "hello@echo5digital.com",
+    email: "sales@echo5digital.com",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Houston",
@@ -99,7 +99,7 @@ export default function WebDesignPage() {
       </main>
       <GetInTouchMarquee variant="light" />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

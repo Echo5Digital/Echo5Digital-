@@ -546,11 +546,11 @@ export default function PrivacyPolicyPage() {
                   If you have any questions about this Privacy Policy or our data practices, please
                   contact us at{" "}
                   <a
-                    href="mailto:hello@echo5digital.com"
+                    href="mailto:sales@echo5digital.com"
                     className="underline underline-offset-2 transition-colors hover:text-white"
                     style={{ color: "#A855F7" }}
                   >
-                    hello@echo5digital.com
+                    sales@echo5digital.com
                   </a>
                   .
                 </p>
@@ -679,13 +679,13 @@ export default function PrivacyPolicyPage() {
                       >
                         Email
                       </p>
-                      {/* hello@echo5digital.com */}
+                      {/* sales@echo5digital.com */}
                       <a
-                        href="mailto:hello@echo5digital.com"
+                        href="mailto:sales@echo5digital.com"
                         className="text-sm font-medium transition-colors hover:text-white"
                         style={{ color: "#A855F7" }}
                       >
-                        hello@echo5digital.com
+                        sales@echo5digital.com
                       </a>
                       <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
                         For all privacy-related inquiries
@@ -719,7 +719,7 @@ export default function PrivacyPolicyPage() {
                       </p>
                       {/* 713-489-7004 */}
                       <a
-                        href="tel:7134897004"
+                        href="tel:+17134897004"
                         className="text-sm font-medium transition-colors hover:text-white"
                         style={{ color: "#A855F7" }}
                       >
@@ -773,7 +773,7 @@ export default function PrivacyPolicyPage() {
       </main>
 
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

@@ -247,7 +247,7 @@ export default function SitemapPage() {
       "@type": "Organization",
       name: "Echo5 Digital",
       url: "https://echo5digital.com",
-      email: "hello@echo5digital.com",
+      email: "sales@echo5digital.com",
       telephone: "713-489-7004",
       address: {
         "@type": "PostalAddress",
@@ -727,7 +727,7 @@ export default function SitemapPage() {
       </main>
 
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

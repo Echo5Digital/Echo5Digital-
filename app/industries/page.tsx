@@ -28,7 +28,7 @@ const collectionPageSchema = {
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "713-489-7004",
-      email: "hello@echo5digital.com",
+      email: "sales@echo5digital.com",
       contactType: "customer service",
       areaServed: ["Houston, TX", "Sugar Land, TX", "US"],
     },
@@ -46,7 +46,7 @@ export default function IndustriesPage() {
       <IndustriesClient />
       <GetInTouchMarquee />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

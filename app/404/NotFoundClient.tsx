@@ -332,7 +332,7 @@ export default function NotFoundClient() {
               {/* Phone CTA */}
               {/* Phone number: 713-489-7004 (verified business phone) */}
               <a
-                href="tel:7134897004"
+                href="tel:+17134897004"
                 className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full transition-all duration-200 hover:brightness-110 active:scale-95 w-full sm:w-auto justify-center"
                 style={{
                   background: "transparent",
@@ -374,11 +374,11 @@ export default function NotFoundClient() {
             >
               Or email us at{" "}
               <a
-                href="mailto:hello@echo5digital.com"
+                href="mailto:sales@echo5digital.com"
                 className="underline underline-offset-2 transition-colors hover:text-white"
                 style={{ color: "rgba(168,85,247,0.8)" }}
               >
-                hello@echo5digital.com
+                sales@echo5digital.com
               </a>
             </p>
           </div>

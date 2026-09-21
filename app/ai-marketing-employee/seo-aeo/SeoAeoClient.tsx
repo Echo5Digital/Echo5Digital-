@@ -663,7 +663,7 @@ export default function SeoAeoClient({ faqData }: Props) {
                   <span className="text-purple-400 text-xs">✆</span>
                   {/* Phone from verified facts */}
                   <a
-                    href="tel:7134897004"
+                    href="tel:+17134897004"
                     className="hover:text-white transition-colors"
                   >
                     713-489-7004
@@ -672,10 +672,10 @@ export default function SeoAeoClient({ faqData }: Props) {
                 <p className="flex items-center gap-2">
                   <span className="text-purple-400 text-xs">✉</span>
                   <a
-                    href="mailto:hello@echo5digital.com"
+                    href="mailto:sales@echo5digital.com"
                     className="hover:text-white transition-colors"
                   >
-                    hello@echo5digital.com
+                    sales@echo5digital.com
                   </a>
                 </p>
               </address>

@@ -929,14 +929,14 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
             {[
               {
                 label: "Email Us",
-                value: "hello@echo5digital.com",
-                href: "mailto:hello@echo5digital.com",
+                value: "sales@echo5digital.com",
+                href: "mailto:sales@echo5digital.com",
               },
               {
                 label: "Call Us",
                 // verified phone from business facts
                 value: "713-489-7004",
-                href: "tel:7134897004",
+                href: "tel:+17134897004",
               },
             ].map((c) => (
               <a

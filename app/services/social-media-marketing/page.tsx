@@ -38,7 +38,7 @@ const faqData = [
   {
     question: "How do I start social media marketing with Echo5 Digital?",
     answer:
-      "Contact Echo5 Digital at 713-489-7004, email hello@echo5digital.com, or complete the lead form on this page to schedule a social media strategy consultation.",
+      "Contact Echo5 Digital at 713-489-7004, email sales@echo5digital.com, or complete the lead form on this page to schedule a social media strategy consultation.",
   },
 ];
 
@@ -66,7 +66,7 @@ export default function SocialMediaMarketingPage() {
       <SocialMediaMarketingClient faqData={faqData} />
       <GetInTouchMarquee variant="light" />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         // Verified phone number from business facts
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"

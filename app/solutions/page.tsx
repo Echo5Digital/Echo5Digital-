@@ -49,7 +49,7 @@ const collectionPageSchema = {
       addressCountry: "US",
     },
     telephone: "713-489-7004",
-    email: "hello@echo5digital.com",
+    email: "sales@echo5digital.com",
     areaServed: ["Houston, TX", "Sugar Land, TX", "United States"],
   },
 };
@@ -82,7 +82,7 @@ export default function SolutionsPage() {
       <SolutionsClient faqData={faqData} />
       <GetInTouchMarquee />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         // placeholder phone number used per business facts
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"

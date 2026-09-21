@@ -1128,7 +1128,7 @@ export default function GoogleAdsClient({ faqData }: Props) {
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-purple-500 inline-block" />
-                <a href="tel:713-489-7004" className="hover:text-white transition-colors">
+                <a href="tel:+17134897004" className="hover:text-white transition-colors">
                   713-489-7004
                 </a>
               </span>
@@ -1138,10 +1138,10 @@ export default function GoogleAdsClient({ faqData }: Props) {
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-purple-500 inline-block" />
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="hover:text-white transition-colors"
                 >
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
               </span>
             </div>
@@ -1264,7 +1264,7 @@ export default function GoogleAdsClient({ faqData }: Props) {
               </p>
               {/* Phone — verified fact */}
               <a
-                href="tel:713-489-7004"
+                href="tel:+17134897004"
                 className="inline-flex items-center gap-2 text-purple-400 hover:text-white transition-colors text-sm font-medium"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
@@ -1276,14 +1276,14 @@ export default function GoogleAdsClient({ faqData }: Props) {
               </a>
               {/* Email — verified fact */}
               <a
-                href="mailto:hello@echo5digital.com"
+                href="mailto:sales@echo5digital.com"
                 className="inline-flex items-center gap-2 text-purple-400 hover:text-white transition-colors text-sm font-medium"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 <span className="w-5 h-5 rounded flex items-center justify-center" style={{ background: "rgba(124,58,237,0.2)" }}>
                   <ArrowRight size={12} className="text-purple-400" />
                 </span>
-                hello@echo5digital.com
+                sales@echo5digital.com
               </a>
             </div>
 

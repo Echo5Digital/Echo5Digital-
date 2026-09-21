@@ -921,16 +921,16 @@ export default function ContentClient({ faqData }: ContentClientProps) {
                   <Mail size={14} className="text-purple-400 flex-shrink-0" />
                   {/* Email — verified fact */}
                   <a
-                    href="mailto:hello@echo5digital.com"
+                    href="mailto:sales@echo5digital.com"
                     className="hover:text-white transition-colors"
                   >
-                    hello@echo5digital.com
+                    sales@echo5digital.com
                   </a>
                 </div>
                 <div className="flex items-center gap-2" style={{ color: "#9CA3AF" }}>
                   {/* Phone — verified fact */}
                   <a
-                    href="tel:7134897004"
+                    href="tel:+17134897004"
                     className="hover:text-white transition-colors"
                   >
                     713-489-7004

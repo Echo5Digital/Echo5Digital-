@@ -898,7 +898,7 @@ export default function ReportingDashboardsClient({ faqData }: Props) {
             </p>
             <div className="flex flex-wrap gap-4 mt-4 text-sm" style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}>
               <a
-                href="tel:713-489-7004"
+                href="tel:+17134897004"
                 className="flex items-center gap-2 hover:text-white transition-colors"
                 aria-label="Call Echo5 Digital at 713-489-7004"
               >
@@ -907,12 +907,12 @@ export default function ReportingDashboardsClient({ faqData }: Props) {
                 713-489-7004
               </a>
               <a
-                href="mailto:hello@echo5digital.com"
+                href="mailto:sales@echo5digital.com"
                 className="flex items-center gap-2 hover:text-white transition-colors"
                 aria-label="Email Echo5 Digital"
               >
                 <Mail size={14} className="text-purple-400" />
-                hello@echo5digital.com
+                sales@echo5digital.com
               </a>
               <span className="flex items-center gap-2">
                 <MapPin size={14} className="text-purple-400" />
@@ -1055,7 +1055,7 @@ export default function ReportingDashboardsClient({ faqData }: Props) {
               </p>
               <div className="space-y-2">
                 <a
-                  href="tel:713-489-7004"
+                  href="tel:+17134897004"
                   className="flex items-center gap-2 text-sm hover:text-white transition-colors"
                   style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
                   aria-label="Call Echo5 Digital at 713-489-7004"
@@ -1065,13 +1065,13 @@ export default function ReportingDashboardsClient({ faqData }: Props) {
                   713-489-7004
                 </a>
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="flex items-center gap-2 text-sm hover:text-white transition-colors"
                   style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}
-                  aria-label="Email Echo5 Digital at hello@echo5digital.com"
+                  aria-label="Email Echo5 Digital at sales@echo5digital.com"
                 >
                   <Mail size={14} className="text-purple-400" />
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
                 <span className="flex items-center gap-2 text-sm" style={{ color: "#9CA3AF", fontFamily: "Inter, sans-serif" }}>
                   <MapPin size={14} className="text-purple-400" />

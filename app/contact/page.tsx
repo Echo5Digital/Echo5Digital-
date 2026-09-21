@@ -7,7 +7,7 @@ import ContactClient from "./ContactClient";
 export const metadata: Metadata = {
   title: "Contact Echo5 Digital | Houston AI Marketing Agency",
   description:
-    "Get in touch with Echo5 Digital at 713-489-7004 or hello@echo5digital.com. Serving Houston, Sugar Land, TX businesses and national clients with AI-powered marketing.",
+    "Get in touch with Echo5 Digital at 713-489-7004 or sales@echo5digital.com. Serving Houston, Sugar Land, TX businesses and national clients with AI-powered marketing.",
   alternates: {
     canonical: "https://echo5digital.com/contact",
   },
@@ -17,7 +17,7 @@ const faqData = [
   {
     question: "How can I contact Echo5 Digital?",
     answer:
-      "You can reach Echo5 Digital by phone at 713-489-7004, by email at hello@echo5digital.com, or by submitting the contact form on this page.",
+      "You can reach Echo5 Digital by phone at 713-489-7004, by email at sales@echo5digital.com, or by submitting the contact form on this page.",
   },
   {
     question: "What areas does Echo5 Digital serve?",
@@ -55,7 +55,7 @@ const contactPageSchema = {
     "@type": "Organization",
     name: "Echo5 Digital",
     telephone: "713-489-7004",
-    email: "hello@echo5digital.com",
+    email: "sales@echo5digital.com",
     areaServed: [
       { "@type": "City", name: "Houston", containedInPlace: { "@type": "State", name: "Texas" } },
       { "@type": "City", name: "Sugar Land", containedInPlace: { "@type": "State", name: "Texas" } },
@@ -78,7 +78,7 @@ export default function ContactPage() {
       <Header />
       <ContactClient faqData={faqData} />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

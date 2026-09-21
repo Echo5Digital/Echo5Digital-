@@ -38,7 +38,7 @@ const faqData = [
   {
     question: "How do I get started with Google Ads management?",
     answer:
-      "Contact Echo5 Digital at 713-489-7004, email hello@echo5digital.com, or fill out the lead form on this page to schedule a paid search consultation.",
+      "Contact Echo5 Digital at 713-489-7004, email sales@echo5digital.com, or fill out the lead form on this page to schedule a paid search consultation.",
   },
 ];
 
@@ -68,7 +68,7 @@ export default function GoogleAdsPage() {
       </main>
       <GetInTouchMarquee variant="light" />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

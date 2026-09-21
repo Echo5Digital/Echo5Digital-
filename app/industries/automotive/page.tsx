@@ -70,7 +70,7 @@ const serviceSchema = {
       addressCountry: "US",
     },
     telephone: "713-489-7004",
-    email: "hello@echo5digital.com",
+    email: "sales@echo5digital.com",
   },
   serviceType: "SEO",
   areaServed: ["Houston, TX", "Sugar Land, TX", "United States"],
@@ -95,7 +95,7 @@ export default function AutomotiveMarketingPage() {
         <AutomotiveMarketingClient faqData={faqData} />
       </div>
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

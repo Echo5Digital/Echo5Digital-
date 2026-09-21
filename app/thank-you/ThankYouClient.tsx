@@ -256,7 +256,7 @@ export default function ThankYouClient() {
           <div className="flex flex-col sm:flex-row gap-5 w-full max-w-xl">
             {/* Phone */}
             <a
-              href="tel:7134897004"
+              href="tel:+17134897004"
               className="flex-1 flex items-center gap-4 p-5 rounded-[0.75rem] transition-all duration-300 group"
               style={{
                 backgroundColor: "rgba(124,58,237,0.08)",
@@ -314,7 +314,7 @@ export default function ThankYouClient() {
 
             {/* Email */}
             <a
-              href="mailto:hello@echo5digital.com"
+              href="mailto:sales@echo5digital.com"
               className="flex-1 flex items-center gap-4 p-5 rounded-[0.75rem] transition-all duration-300 group"
               style={{
                 backgroundColor: "rgba(124,58,237,0.08)",
@@ -357,7 +357,7 @@ export default function ThankYouClient() {
                 >
                   Email Us
                 </p>
-                {/* Email — verified fact: hello@echo5digital.com */}
+                {/* Email — verified fact: sales@echo5digital.com */}
                 <p
                   className="text-sm font-semibold"
                   style={{
@@ -366,7 +366,7 @@ export default function ThankYouClient() {
                     wordBreak: "break-all",
                   }}
                 >
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </p>
               </div>
             </a>

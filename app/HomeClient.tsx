@@ -625,148 +625,6 @@ export default function HomeClient({ faqData }: HomeClientProps) {
           DARK THEME CONTINUATION — existing detailed sections
       ══════════════════════════════════════════════════════════════ */}
       <div style={{ backgroundColor: "#0A0F1E", color: "#E5E7EB" }}>
-        {/* ── AI MARKETING EMPLOYEE PRODUCT TIERS ─────────────────────── */}
-        <Section background="gradient" spacing="lg" maxWidth="3xl" withDivider>
-          <BlurIn>
-            <div className="text-center mb-12">
-              <h2
-                className="font-black leading-[1.04] tracking-tight mb-4"
-                style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#E5E7EB" }}
-              >
-                AI Marketing Employee Tiers
-              </h2>
-              <p className="text-base max-w-xl mx-auto" style={{ color: "#9CA3AF" }}>
-                Choose the growth level that fits your business. All plans include AI execution and human oversight.
-              </p>
-            </div>
-          </BlurIn>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                name: "Starter",
-                tagline: "SEO + AEO Foundation",
-                color: "#7C3AED",
-                features: [
-                  "AI-driven on-page SEO",
-                  "Answer Engine Optimization",
-                  "Monthly content publishing",
-                  "Performance dashboard",
-                  "Human strategy review",
-                ],
-                cta: "Get Started",
-                popular: false,
-              },
-              {
-                name: "Growth",
-                tagline: "SEO + Social + Google Ads",
-                color: "#A855F7",
-                features: [
-                  "Everything in Starter",
-                  "AI social media management",
-                  "Google Ads management",
-                  "Weekly reporting",
-                  "Dedicated account manager",
-                ],
-                cta: "Most Popular",
-                popular: true,
-              },
-              {
-                name: "Scale",
-                tagline: "Full AI Growth System",
-                color: "#7C3AED",
-                features: [
-                  "Everything in Growth",
-                  "Meta Ads management",
-                  "CRM & automation setup",
-                  "Custom content strategy",
-                  "Priority human support",
-                ],
-                cta: "Go Full Scale",
-                popular: false,
-              },
-            ].map((tier, i) => (
-              <BlurIn key={tier.name} delay={i * 0.1}>
-                <div
-                  className="group relative flex flex-col rounded-2xl p-7 h-full transition-all duration-300 hover:-translate-y-2"
-                  style={{
-                    background: tier.popular
-                      ? "linear-gradient(135deg, rgba(124,58,237,0.22) 0%, rgba(168,85,247,0.14) 100%)"
-                      : "rgba(255,255,255,0.04)",
-                    border: tier.popular
-                      ? "2px solid rgba(168,85,247,0.55)"
-                      : "1px solid rgba(124,58,237,0.25)",
-                    boxShadow: tier.popular ? "0 0 40px rgba(124,58,237,0.3)" : "none",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLDivElement).style.borderColor = `${tier.color}90`;
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = tier.popular
-                      ? "0 20px 55px rgba(124,58,237,0.45)"
-                      : `0 20px 45px -8px ${tier.color}55`;
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLDivElement).style.borderColor = tier.popular
-                      ? "rgba(168,85,247,0.55)"
-                      : "rgba(124,58,237,0.25)";
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = tier.popular
-                      ? "0 0 40px rgba(124,58,237,0.3)"
-                      : "none";
-                  }}
-                >
-                  {tier.popular && (
-                    <div
-                      className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold text-white"
-                      style={{ background: "linear-gradient(135deg, #7C3AED, #A855F7)" }}
-                    >
-                      Most Popular
-                    </div>
-                  )}
-                  <h3
-                    className="text-xl font-bold mb-1"
-                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-                  >
-                    {tier.name}
-                  </h3>
-                  <p className="text-sm mb-6" style={{ color: "#A855F7" }}>
-                    {tier.tagline}
-                  </p>
-                  <ul className="space-y-3 flex-1 mb-8">
-                    {tier.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2">
-                        <CheckCircle
-                          size={15}
-                          className="transition-transform duration-200 group-hover:scale-125"
-                          style={{ color: "#A855F7", flexShrink: 0, marginTop: 2 }}
-                        />
-                        <span className="text-sm" style={{ color: "#D1D5DB" }}>
-                          {f}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href="/pricing"
-                    className="w-full py-3 rounded-full text-center text-sm font-semibold text-white transition-all duration-200 hover:brightness-110 hover:scale-[1.03] block"
-                    style={{
-                      background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                      boxShadow: "0 0 18px rgba(124,58,237,0.4)",
-                      fontFamily: "Space Grotesk, sans-serif",
-                    }}
-                  >
-                    {tier.cta} →
-                  </Link>
-                </div>
-              </BlurIn>
-            ))}
-          </div>
-          <p className="text-center text-xs mt-6" style={{ color: "#6B7280" }}>
-            Full pricing and plan details available on the{" "}
-            <Link href="/pricing" style={{ color: "#A855F7" }}>
-              Pricing page
-            </Link>
-            .
-          </p>
-        </Section>
-
         {/* ── TRADITIONAL AGENCY VS ECHO5 DIGITAL ─────────────────────── */}
         <Section background="transparent" spacing="sm" maxWidth="3xl" withDivider className="relative !bg-[#0A0616]">
           {/* Background image (purple light-streak visual) — breaks out of Section's
@@ -992,6 +850,148 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               </SplitClash>
             </div>
           </div>
+        </Section>
+
+        {/* ── AI MARKETING EMPLOYEE PRODUCT TIERS ─────────────────────── */}
+        <Section background="gradient" spacing="lg" maxWidth="3xl" withDivider>
+          <BlurIn>
+            <div className="text-center mb-12">
+              <h2
+                className="font-black leading-[1.04] tracking-tight mb-4"
+                style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#E5E7EB" }}
+              >
+                AI Marketing Employee Tiers
+              </h2>
+              <p className="text-base max-w-xl mx-auto" style={{ color: "#9CA3AF" }}>
+                Choose the growth level that fits your business. All plans include AI execution and human oversight.
+              </p>
+            </div>
+          </BlurIn>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                name: "Starter",
+                tagline: "SEO + AEO Foundation",
+                color: "#7C3AED",
+                features: [
+                  "AI-driven on-page SEO",
+                  "Answer Engine Optimization",
+                  "Monthly content publishing",
+                  "Performance dashboard",
+                  "Human strategy review",
+                ],
+                cta: "Get Started",
+                popular: false,
+              },
+              {
+                name: "Growth",
+                tagline: "SEO + Social + Google Ads",
+                color: "#A855F7",
+                features: [
+                  "Everything in Starter",
+                  "AI social media management",
+                  "Google Ads management",
+                  "Weekly reporting",
+                  "Dedicated account manager",
+                ],
+                cta: "Most Popular",
+                popular: true,
+              },
+              {
+                name: "Scale",
+                tagline: "Full AI Growth System",
+                color: "#7C3AED",
+                features: [
+                  "Everything in Growth",
+                  "Meta Ads management",
+                  "CRM & automation setup",
+                  "Custom content strategy",
+                  "Priority human support",
+                ],
+                cta: "Go Full Scale",
+                popular: false,
+              },
+            ].map((tier, i) => (
+              <BlurIn key={tier.name} delay={i * 0.1}>
+                <div
+                  className="group relative flex flex-col rounded-2xl p-7 h-full transition-all duration-300 hover:-translate-y-2"
+                  style={{
+                    background: tier.popular
+                      ? "linear-gradient(135deg, rgba(124,58,237,0.22) 0%, rgba(168,85,247,0.14) 100%)"
+                      : "rgba(255,255,255,0.04)",
+                    border: tier.popular
+                      ? "2px solid rgba(168,85,247,0.55)"
+                      : "1px solid rgba(124,58,237,0.25)",
+                    boxShadow: tier.popular ? "0 0 40px rgba(124,58,237,0.3)" : "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.borderColor = `${tier.color}90`;
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = tier.popular
+                      ? "0 20px 55px rgba(124,58,237,0.45)"
+                      : `0 20px 45px -8px ${tier.color}55`;
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.borderColor = tier.popular
+                      ? "rgba(168,85,247,0.55)"
+                      : "rgba(124,58,237,0.25)";
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = tier.popular
+                      ? "0 0 40px rgba(124,58,237,0.3)"
+                      : "none";
+                  }}
+                >
+                  {tier.popular && (
+                    <div
+                      className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold text-white"
+                      style={{ background: "linear-gradient(135deg, #7C3AED, #A855F7)" }}
+                    >
+                      Most Popular
+                    </div>
+                  )}
+                  <h3
+                    className="text-xl font-bold mb-1"
+                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                  >
+                    {tier.name}
+                  </h3>
+                  <p className="text-sm mb-6" style={{ color: "#A855F7" }}>
+                    {tier.tagline}
+                  </p>
+                  <ul className="space-y-3 flex-1 mb-8">
+                    {tier.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2">
+                        <CheckCircle
+                          size={15}
+                          className="transition-transform duration-200 group-hover:scale-125"
+                          style={{ color: "#A855F7", flexShrink: 0, marginTop: 2 }}
+                        />
+                        <span className="text-sm" style={{ color: "#D1D5DB" }}>
+                          {f}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="/pricing"
+                    className="w-full py-3 rounded-full text-center text-sm font-semibold text-white transition-all duration-200 hover:brightness-110 hover:scale-[1.03] block"
+                    style={{
+                      background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+                      boxShadow: "0 0 18px rgba(124,58,237,0.4)",
+                      fontFamily: "Space Grotesk, sans-serif",
+                    }}
+                  >
+                    {tier.cta} →
+                  </Link>
+                </div>
+              </BlurIn>
+            ))}
+          </div>
+          <p className="text-center text-xs mt-6" style={{ color: "#6B7280" }}>
+            Full pricing and plan details available on the{" "}
+            <Link href="/pricing" style={{ color: "#A855F7" }}>
+              Pricing page
+            </Link>
+            .
+          </p>
         </Section>
 
         {/* ── INTERNAL GROWTH SYSTEM DIAGRAM ───────────────────────────── */}
@@ -1272,8 +1272,8 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 <address className="not-italic px-5 pt-5 pb-1">
                   {[
                     { icon: MapPin, label: "Location", value: "Houston / Sugar Land, Texas, USA", href: null },
-                    { icon: Phone, label: "Phone", value: "713-489-7004", href: "tel:713-489-7004" },
-                    { icon: Mail, label: "Email", value: "hello@echo5digital.com", href: "mailto:hello@echo5digital.com" },
+                    { icon: Phone, label: "Phone", value: "713-489-7004", href: "tel:+17134897004" },
+                    { icon: Mail, label: "Email", value: "sales@echo5digital.com", href: "mailto:sales@echo5digital.com" },
                   ].map((row, i) => {
                     const RowIcon = row.icon;
                     const content = (
@@ -1341,8 +1341,8 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   <div className="flex flex-col">
                     {[
                       { icon: MapPin, label: "Location", value: "Houston / Sugar Land, Texas, USA", href: null },
-                      { icon: Phone, label: "Phone", value: "713-489-7004", href: "tel:713-489-7004" },
-                      { icon: Mail, label: "Email", value: "hello@echo5digital.com", href: "mailto:hello@echo5digital.com" },
+                      { icon: Phone, label: "Phone", value: "713-489-7004", href: "tel:+17134897004" },
+                      { icon: Mail, label: "Email", value: "sales@echo5digital.com", href: "mailto:sales@echo5digital.com" },
                     ].map((row, i) => {
                       const RowIcon = row.icon;
                       const content = (
@@ -1506,11 +1506,11 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   Or reach us directly:
                 </p>
                 {/* Verified phone */}
-                <a href="tel:713-489-7004" className="block" style={{ color: "#4F32D9" }}>
+                <a href="tel:+17134897004" className="block" style={{ color: "#4F32D9" }}>
                   📞 713-489-7004
                 </a>
-                <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
-                  ✉️ hello@echo5digital.com
+                <a href="mailto:sales@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
+                  ✉️ sales@echo5digital.com
                 </a>
               </div>
             </div>

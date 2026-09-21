@@ -822,7 +822,7 @@ export default function SocialMediaClient({ faqData }: SocialMediaClientProps) {
                   Houston / Sugar Land, Texas
                 </span>
                 <a
-                  href="tel:713-489-7004"
+                  href="tel:+17134897004"
                   className="flex items-center gap-2 hover:text-white transition-colors"
                 >
                   <Phone size={14} style={{ color: "#7C3AED" }} />
@@ -830,12 +830,12 @@ export default function SocialMediaClient({ faqData }: SocialMediaClientProps) {
                   713-489-7004
                 </a>
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="flex items-center gap-2 hover:text-white transition-colors"
                 >
                   <Mail size={14} style={{ color: "#7C3AED" }} />
                   {/* Email from verified facts */}
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
               </div>
             </div>
@@ -968,7 +968,7 @@ export default function SocialMediaClient({ faqData }: SocialMediaClientProps) {
               </p>
               <div className="space-y-2">
                 <a
-                  href="tel:713-489-7004"
+                  href="tel:+17134897004"
                   className="flex items-center gap-2 text-sm hover:text-white transition-colors"
                   style={{ color: "rgba(229,231,235,0.65)", fontFamily: "Inter, sans-serif" }}
                 >
@@ -977,13 +977,13 @@ export default function SocialMediaClient({ faqData }: SocialMediaClientProps) {
                   713-489-7004
                 </a>
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="flex items-center gap-2 text-sm hover:text-white transition-colors"
                   style={{ color: "rgba(229,231,235,0.65)", fontFamily: "Inter, sans-serif" }}
                 >
                   <Mail size={14} style={{ color: "#7C3AED" }} />
                   {/* Email from verified facts */}
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
               </div>
             </div>

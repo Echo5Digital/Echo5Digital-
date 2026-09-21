@@ -714,18 +714,18 @@ export default function TeamPage() {
                 <span>Houston / Sugar Land, Texas</span>
                 {/* phone: 713-489-7004 */}
                 <a
-                  href="tel:7134897004"
+                  href="tel:+17134897004"
                   className="hover:text-purple-400 transition-colors"
                   style={{ color: "rgba(229,231,235,0.5)" }}
                 >
                   713-489-7004
                 </a>
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="hover:text-purple-400 transition-colors"
                   style={{ color: "rgba(229,231,235,0.5)" }}
                 >
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
               </address>
             </div>
@@ -809,7 +809,7 @@ export default function TeamPage() {
       <Footer
         address="Houston / Sugar Land, Texas"
         phone="713-489-7004"
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
       />
     </>
   );

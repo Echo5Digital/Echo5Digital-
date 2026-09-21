@@ -18,7 +18,7 @@ export default function ThankYouPage() {
       <Header />
       <ThankYouClient />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

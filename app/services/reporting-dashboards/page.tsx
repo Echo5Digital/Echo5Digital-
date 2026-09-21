@@ -71,7 +71,7 @@ const serviceSchema = {
       addressCountry: "US",
     },
     telephone: "713-489-7004",
-    email: "hello@echo5digital.com",
+    email: "sales@echo5digital.com",
   },
   areaServed: [
     { "@type": "City", name: "Houston" },
@@ -102,7 +102,7 @@ export default function ReportingDashboardsPage() {
       <Breadcrumbs items={breadcrumbItems} />
       <ReportingDashboardsClient faqData={faqData} />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

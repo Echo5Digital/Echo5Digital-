@@ -350,7 +350,7 @@ export default function HealthcareMarketingClient() {
       {/* ── GET STARTED TODAY ── */}
       <Section background="gradient" spacing="xl" withDivider centered>
         <div
-          className="rounded-3xl p-10 sm:p-14 border relative overflow-hidden"
+          className="rounded-3xl p-5 sm:p-14 border relative overflow-hidden"
           style={{
             background: "linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(168,85,247,0.08) 100%)",
             borderColor: "rgba(124,58,237,0.3)",
@@ -389,7 +389,7 @@ export default function HealthcareMarketingClient() {
 
             <div className="flex flex-wrap justify-center gap-4 mb-10">
               <a
-                href="tel:7134897004"
+                href="tel:+17134897004"
                 className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
@@ -397,12 +397,12 @@ export default function HealthcareMarketingClient() {
                 713-489-7004
               </a>
               <a
-                href="mailto:hello@echo5digital.com"
+                href="mailto:sales@echo5digital.com"
                 className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 <Mail size={16} className="text-purple-400" />
-                hello@echo5digital.com
+                sales@echo5digital.com
               </a>
               <span className="flex items-center gap-2 text-gray-300" style={{ fontFamily: "Inter, sans-serif" }}>
                 <MapPin size={16} className="text-purple-400" />

@@ -725,7 +725,7 @@ export default function PricingClient({ faqData }: PricingClientProps) {
         >
           All prices shown in USD. Contact us for custom enterprise pricing.{" "}
           {/* Phone placeholder — verified business number */}
-          <a href="tel:7134897004" className="underline hover:text-purple-600 transition-colors" style={{ color: "#7C3AED" }}>
+          <a href="tel:+17134897004" className="underline hover:text-purple-600 transition-colors" style={{ color: "#7C3AED" }}>
             713-489-7004
           </a>
         </p>
@@ -1066,16 +1066,16 @@ export default function PricingClient({ faqData }: PricingClientProps) {
         >
           Still have questions?{" "}
           <a
-            href="mailto:hello@echo5digital.com"
+            href="mailto:sales@echo5digital.com"
             className="underline hover:text-purple-400 transition-colors"
             style={{ color: "rgba(168,85,247,0.8)" }}
           >
-            hello@echo5digital.com
+            sales@echo5digital.com
           </a>{" "}
           or call{" "}
           {/* Verified business phone number */}
           <a
-            href="tel:7134897004"
+            href="tel:+17134897004"
             className="underline hover:text-purple-400 transition-colors"
             style={{ color: "rgba(168,85,247,0.8)" }}
           >
@@ -1135,11 +1135,11 @@ export default function PricingClient({ faqData }: PricingClientProps) {
             {/* NAP */}
             <div className="space-y-2 text-sm">
               <p style={{ color: "#5B5F73" }}>Or reach us directly:</p>
-              <a href="tel:713-489-7004" className="block" style={{ color: "#4F32D9" }}>
+              <a href="tel:+17134897004" className="block" style={{ color: "#4F32D9" }}>
                 📞 713-489-7004
               </a>
-              <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
-                ✉️ hello@echo5digital.com
+              <a href="mailto:sales@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
+                ✉️ sales@echo5digital.com
               </a>
             </div>
           </BlurIn>

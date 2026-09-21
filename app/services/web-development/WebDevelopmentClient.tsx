@@ -837,7 +837,7 @@ export default function WebDevelopmentClient({ faqData }: WebDevelopmentClientPr
                       </p>
                       {/* Real NAP data */}
                       <a
-                        href="tel:713-489-7004"
+                        href="tel:+17134897004"
                         className="text-xs transition-colors hover:text-white"
                         style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}
                       >
@@ -845,11 +845,11 @@ export default function WebDevelopmentClient({ faqData }: WebDevelopmentClientPr
                       </a>
                       {" · "}
                       <a
-                        href="mailto:hello@echo5digital.com"
+                        href="mailto:sales@echo5digital.com"
                         className="text-xs transition-colors hover:text-white"
                         style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}
                       >
-                        hello@echo5digital.com
+                        sales@echo5digital.com
                       </a>
                     </div>
                   </div>
@@ -1184,11 +1184,11 @@ export default function WebDevelopmentClient({ faqData }: WebDevelopmentClientPr
               {/* NAP */}
               <div className="space-y-2 text-sm">
                 <p style={{ color: "#5B5F73" }}>Or reach us directly:</p>
-                <a href="tel:713-489-7004" className="block" style={{ color: "#4F32D9" }}>
+                <a href="tel:+17134897004" className="block" style={{ color: "#4F32D9" }}>
                   📞 713-489-7004
                 </a>
-                <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
-                  ✉️ hello@echo5digital.com
+                <a href="mailto:sales@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
+                  ✉️ sales@echo5digital.com
                 </a>
               </div>
             </div>

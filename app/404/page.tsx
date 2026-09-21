@@ -28,7 +28,7 @@ export default function NotFoundPage() {
       </main>
       <Footer
         phone="713-489-7004"
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         address="Houston / Sugar Land, Texas"
       />
     </div>

@@ -1165,7 +1165,7 @@ export default function SEOClient({ faqItems }: SEOClientProps) {
                 <div className="space-y-3">
                   {/* Phone — verified fact */}
                   <a
-                    href="tel:7134897004"
+                    href="tel:+17134897004"
                     className="flex items-center gap-3 text-sm transition-colors hover:opacity-80"
                     style={{ color: "#15172B", fontFamily: "Inter, sans-serif" }}
                   >
@@ -1182,7 +1182,7 @@ export default function SEOClient({ faqItems }: SEOClientProps) {
                   </a>
                   {/* Email — verified fact */}
                   <a
-                    href="mailto:hello@echo5digital.com"
+                    href="mailto:sales@echo5digital.com"
                     className="flex items-center gap-3 text-sm transition-colors hover:opacity-80"
                     style={{ color: "#15172B", fontFamily: "Inter, sans-serif" }}
                   >
@@ -1195,7 +1195,7 @@ export default function SEOClient({ faqItems }: SEOClientProps) {
                     >
                       <Mail size={15} color="#6B4EF0" />
                     </div>
-                    <span>hello@echo5digital.com</span>
+                    <span>sales@echo5digital.com</span>
                   </a>
                   {/* Address — verified fact */}
                   <div

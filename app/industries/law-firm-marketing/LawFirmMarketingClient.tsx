@@ -1189,7 +1189,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
               >
                 <Phone size={16} className="text-purple-400 shrink-0" />
                 <a
-                  href="tel:7134897004"
+                  href="tel:+17134897004"
                   className="text-sm text-gray-300 hover:text-purple-300 transition-colors"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
@@ -1205,11 +1205,11 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
               >
                 <Mail size={16} className="text-purple-400 shrink-0" />
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="text-sm text-gray-300 hover:text-purple-300 transition-colors"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
               </div>
             </div>
@@ -1375,7 +1375,7 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
             {/* Direct contact */}
             <div className="mt-8 flex flex-col gap-3">
               <a
-                href="tel:7134897004"
+                href="tel:+17134897004"
                 className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-purple-300 transition-colors"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
@@ -1384,12 +1384,12 @@ export default function LawFirmMarketingClient({ faqData }: Props) {
                 713-489-7004
               </a>
               <a
-                href="mailto:hello@echo5digital.com"
+                href="mailto:sales@echo5digital.com"
                 className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-purple-300 transition-colors"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 <Mail size={15} className="text-purple-400" />
-                hello@echo5digital.com
+                sales@echo5digital.com
               </a>
             </div>
           </div>

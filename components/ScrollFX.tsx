@@ -183,7 +183,7 @@ export function TiltCard({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <motion.div style={{ rotateX: springX, rotateY: springY, transformStyle: "preserve-3d", position: "relative" }}>
+      <motion.div className="h-full" style={{ rotateX: springX, rotateY: springY, transformStyle: "preserve-3d", position: "relative" }}>
         <motion.div
           aria-hidden="true"
           style={{
@@ -199,7 +199,7 @@ export function TiltCard({
             ),
           }}
         />
-        {children}
+        <div className="h-full">{children}</div>
       </motion.div>
     </motion.div>
   );

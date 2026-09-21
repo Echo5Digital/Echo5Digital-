@@ -1095,8 +1095,8 @@ export default function AeoGeoClient({ faqData }: Props) {
               }}
             >
               {[
-                { icon: Phone, label: "Call us", value: "713-489-7004", href: "tel:7134897004" },
-                { icon: Mail, label: "Email us", value: "hello@echo5digital.com", href: "mailto:hello@echo5digital.com" },
+                { icon: Phone, label: "Call us", value: "713-489-7004", href: "tel:+17134897004" },
+                { icon: Mail, label: "Email us", value: "sales@echo5digital.com", href: "mailto:sales@echo5digital.com" },
                 { icon: MapPin, label: "Where we work", value: "Houston / Sugar Land, TX — National U.S. Coverage", href: undefined },
               ].map((item, i, arr) => (
                 <a

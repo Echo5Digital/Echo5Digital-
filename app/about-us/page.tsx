@@ -28,7 +28,7 @@ const faqData = [
   {
     question: "How can I contact Echo5 Digital?",
     answer:
-      "You can reach Echo5 Digital by email at hello@echo5digital.com or by phone at 713-489-7004.",
+      "You can reach Echo5 Digital by email at sales@echo5digital.com or by phone at 713-489-7004.",
   },
   {
     question: "Is Echo5 Digital a fully automated agency?",
@@ -48,7 +48,7 @@ const aboutPageSchema = {
     "@type": "Organization",
     name: "Echo5 Digital",
     url: "https://echo5digital.com",
-    email: "hello@echo5digital.com",
+    email: "sales@echo5digital.com",
     telephone: "713-489-7004",
     address: {
       "@type": "PostalAddress",
@@ -105,7 +105,7 @@ export default function AboutPage() {
       <AboutClient faqData={faqData} />
       <GetInTouchMarquee />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

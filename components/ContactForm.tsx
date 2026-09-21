@@ -121,7 +121,7 @@ export default function ContactForm({
       >
         {/* Header */}
         <div
-          className="px-8 pt-8 pb-6 border-b border-[#7C3AED]/10"
+          className="px-5 sm:px-8 pt-8 pb-6 border-b border-[#7C3AED]/10"
           style={{
             background:
               'linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.06) 100%)',
@@ -145,7 +145,7 @@ export default function ContactForm({
         </div>
 
         {/* Form */}
-        <div className="px-8 py-8">
+        <div className="px-5 sm:px-8 py-8">
           {isSuccess ? (
             <div className="flex flex-col items-center justify-center py-12 text-center gap-4">
               <div

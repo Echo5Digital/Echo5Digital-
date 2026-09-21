@@ -153,7 +153,7 @@ export default function ContactClient({ faqData }: ContactClientProps) {
             <div className="flex flex-col gap-4">
               {/* Phone */}
               <a
-                href="tel:7134897004"
+                href="tel:+17134897004"
                 className="group flex items-center gap-4 p-4 rounded-[0.75rem] transition-all duration-200"
                 style={{
                   background: "rgba(255,255,255,0.6)",
@@ -201,7 +201,7 @@ export default function ContactClient({ faqData }: ContactClientProps) {
 
               {/* Email */}
               <a
-                href="mailto:hello@echo5digital.com"
+                href="mailto:sales@echo5digital.com"
                 className="group flex items-center gap-4 p-4 rounded-[0.75rem] transition-all duration-200"
                 style={{
                   background: "rgba(255,255,255,0.6)",
@@ -219,7 +219,7 @@ export default function ContactClient({ faqData }: ContactClientProps) {
                   (e.currentTarget as HTMLAnchorElement).style.background =
                     "rgba(255,255,255,0.6)";
                 }}
-                aria-label="Email Echo5 Digital at hello@echo5digital.com"
+                aria-label="Email Echo5 Digital at sales@echo5digital.com"
               >
                 <div
                   className="flex items-center justify-center w-11 h-11 rounded-[0.75rem] shrink-0"
@@ -242,7 +242,7 @@ export default function ContactClient({ faqData }: ContactClientProps) {
                     className="text-[#15172B] font-semibold text-sm group-hover:text-[#6B4EF0] transition-colors break-all"
                     style={{ fontFamily: "Space Grotesk, sans-serif" }}
                   >
-                    hello@echo5digital.com
+                    sales@echo5digital.com
                   </p>
                 </div>
               </a>
@@ -340,17 +340,17 @@ export default function ContactClient({ faqData }: ContactClientProps) {
                 out for a discovery call about AI-powered digital marketing
                 services. Contact us at{" "}
                 <a
-                  href="tel:7134897004"
+                  href="tel:+17134897004"
                   className="text-[#6B4EF0] hover:text-[#4F32D9] transition-colors underline underline-offset-2"
                 >
                   713-489-7004
                 </a>{" "}
                 or{" "}
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="text-[#6B4EF0] hover:text-[#4F32D9] transition-colors underline underline-offset-2"
                 >
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
                 .
               </p>
@@ -472,7 +472,7 @@ export default function ContactClient({ faqData }: ContactClientProps) {
 
               {/* Secondary: Call directly */}
               <a
-                href="tel:7134897004"
+                href="tel:+17134897004"
                 className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-200"
                 style={{
                   background: "transparent",
@@ -645,14 +645,14 @@ export default function ContactClient({ faqData }: ContactClientProps) {
           >
             Still have questions?{" "}
             <a
-              href="mailto:hello@echo5digital.com"
+              href="mailto:sales@echo5digital.com"
               className="text-[#A855F7] hover:text-white transition-colors underline underline-offset-2"
             >
               Email us directly
             </a>{" "}
             or call{" "}
             <a
-              href="tel:7134897004"
+              href="tel:+17134897004"
               className="text-[#A855F7] hover:text-white transition-colors underline underline-offset-2"
             >
               713-489-7004

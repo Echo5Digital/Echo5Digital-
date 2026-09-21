@@ -482,7 +482,7 @@ export default function RealEstateSeoClient({ faqData }: Props) {
               </span>
               <span className="flex items-center gap-2">
                 <PhoneCall size={15} className="text-purple-400" />
-                <a href="tel:7134897004" className="hover:text-purple-300 transition-colors">
+                <a href="tel:+17134897004" className="hover:text-purple-300 transition-colors">
                   713-489-7004 (US)
                 </a>
               </span>

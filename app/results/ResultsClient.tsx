@@ -753,7 +753,7 @@ export default function ResultsClient({ faqData }: Props) {
           <div className="flex flex-col gap-2 shrink-0 text-center md:text-right">
             {/* Phone — verified */}
             <a
-              href="tel:7134897004"
+              href="tel:+17134897004"
               className="flex items-center gap-2 text-sm hover:text-white transition-colors"
               style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
             >
@@ -763,12 +763,12 @@ export default function ResultsClient({ faqData }: Props) {
             </a>
             {/* Email — verified */}
             <a
-              href="mailto:hello@echo5digital.com"
+              href="mailto:sales@echo5digital.com"
               className="flex items-center gap-2 text-sm hover:text-white transition-colors"
               style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
             >
               <Mail size={15} style={{ color: "#7C3AED" }} />
-              hello@echo5digital.com
+              sales@echo5digital.com
             </a>
           </div>
         </div>
@@ -919,11 +919,11 @@ export default function ResultsClient({ faqData }: Props) {
             {/* NAP */}
             <div className="space-y-2 text-sm">
               <p style={{ color: "#5B5F73" }}>Or reach us directly:</p>
-              <a href="tel:713-489-7004" className="block" style={{ color: "#4F32D9" }}>
+              <a href="tel:+17134897004" className="block" style={{ color: "#4F32D9" }}>
                 📞 713-489-7004
               </a>
-              <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
-                ✉️ hello@echo5digital.com
+              <a href="mailto:sales@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
+                ✉️ sales@echo5digital.com
               </a>
             </div>
           </InkReveal>

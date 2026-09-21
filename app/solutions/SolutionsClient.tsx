@@ -425,10 +425,10 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {aiMarketingServices.map((service, i) => (
-            <MagnetPop key={service.title} index={i}>
+            <MagnetPop key={service.title} index={i} className="h-full">
               <Link
                 href={service.href}
-                className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-[0.75rem]"
+                className="block h-full group focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-[0.75rem]"
                 aria-label={`Learn more about ${service.title}`}
               >
                 <Card
@@ -437,6 +437,7 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
                   icon={service.icon}
                   badge={service.badge ?? undefined}
                   variant="service"
+                  className="h-full"
                 />
               </Link>
             </MagnetPop>
@@ -856,7 +857,7 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
               </p>
               <div className="flex flex-wrap gap-4 text-sm" style={{ fontFamily: "Inter, sans-serif" }}>
                 <a
-                  href="tel:713-489-7004"
+                  href="tel:+17134897004"
                   className="flex items-center gap-2 hover:text-purple-400 transition-colors"
                   style={{ color: "#E5E7EB" }}
                 >
@@ -865,12 +866,12 @@ export default function SolutionsClient({ faqData }: SolutionsClientProps) {
                   713-489-7004
                 </a>
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="flex items-center gap-2 hover:text-purple-400 transition-colors"
                   style={{ color: "#E5E7EB" }}
                 >
                   <span style={{ color: "#A855F7" }}>✉</span>
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
                 <span className="flex items-center gap-2" style={{ color: "#E5E7EB" }}>
                   <span style={{ color: "#A855F7" }}>📍</span>

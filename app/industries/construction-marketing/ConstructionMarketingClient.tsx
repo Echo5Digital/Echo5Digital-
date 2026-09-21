@@ -905,7 +905,7 @@ export default function ConstructionMarketingClient({ faqData }: Props) {
               </p>
               <address className="not-italic flex flex-col gap-2">
                 <a
-                  href="tel:713-489-7004"
+                  href="tel:+17134897004"
                   className="flex items-center gap-2 text-sm transition-colors hover:text-white"
                   style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
                 >
@@ -914,12 +914,12 @@ export default function ConstructionMarketingClient({ faqData }: Props) {
                   713-489-7004
                 </a>
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="flex items-center gap-2 text-sm transition-colors hover:text-white"
                   style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
                 >
                   <Mail size={14} style={{ color: "#A855F7" }} />
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
                 <span
                   className="flex items-center gap-2 text-sm"
@@ -995,7 +995,7 @@ export default function ConstructionMarketingClient({ faqData }: Props) {
                 <ArrowRight size={18} />
               </Link>
               <a
-                href="tel:713-489-7004"
+                href="tel:+17134897004"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:brightness-110 active:scale-95"
                 style={{
                   background: "transparent",

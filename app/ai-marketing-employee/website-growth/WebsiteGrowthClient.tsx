@@ -670,7 +670,7 @@ export default function WebsiteGrowthClient({ faqData }: Props) {
               <div className="mt-4 flex flex-wrap gap-4">
                 {/* Phone — real number from verified facts */}
                 <a
-                  href="tel:7134897004"
+                  href="tel:+17134897004"
                   className="inline-flex items-center gap-2 text-purple-300 text-sm hover:text-white transition-colors"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
@@ -680,12 +680,12 @@ export default function WebsiteGrowthClient({ faqData }: Props) {
                 </a>
                 {/* Email — real from verified facts */}
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="inline-flex items-center gap-2 text-purple-300 text-sm hover:text-white transition-colors"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
                   <span className="text-purple-500">✉</span>
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
                 {/* Address — real from verified facts */}
                 <span className="inline-flex items-center gap-2 text-gray-400 text-sm" style={{ fontFamily: "Inter, sans-serif" }}>
@@ -867,7 +867,7 @@ export default function WebsiteGrowthClient({ faqData }: Props) {
               </p>
               <div className="space-y-2">
                 <a
-                  href="tel:7134897004"
+                  href="tel:+17134897004"
                   className="flex items-center gap-2 text-purple-300 text-sm hover:text-white transition-colors"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
@@ -876,12 +876,12 @@ export default function WebsiteGrowthClient({ faqData }: Props) {
                   713-489-7004
                 </a>
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="flex items-center gap-2 text-purple-300 text-sm hover:text-white transition-colors"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
                   <span>✉</span>
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
                 <span className="flex items-center gap-2 text-gray-500 text-sm" style={{ fontFamily: "Inter, sans-serif" }}>
                   <span>📍</span>

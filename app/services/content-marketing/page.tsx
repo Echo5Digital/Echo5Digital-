@@ -36,7 +36,7 @@ const faqData = [
   {
     question: "How do I start a content marketing program with Echo5 Digital?",
     answer:
-      "Call 713-489-7004, email hello@echo5digital.com, or complete the contact form on this page to begin with a content strategy consultation.",
+      "Call 713-489-7004, email sales@echo5digital.com, or complete the contact form on this page to begin with a content strategy consultation.",
   },
 ];
 
@@ -63,7 +63,7 @@ export default function ContentMarketingPage() {
       <Header />
       <ContentMarketingClient faqData={faqData} />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

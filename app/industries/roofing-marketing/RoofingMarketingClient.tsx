@@ -906,7 +906,7 @@ export default function RoofingMarketingClient({ faqData }: Props) {
               </p>
               <div className="flex flex-wrap gap-4 text-sm">
                 <a
-                  href="tel:713-489-7004"
+                  href="tel:+17134897004"
                   className="flex items-center gap-2 transition-colors hover:text-white"
                   style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
                 >
@@ -915,12 +915,12 @@ export default function RoofingMarketingClient({ faqData }: Props) {
                   713-489-7004
                 </a>
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="flex items-center gap-2 transition-colors hover:text-white"
                   style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
                 >
                   <Mail size={15} style={{ color: "#A855F7" }} />
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
                 <span
                   className="flex items-center gap-2"
@@ -1076,7 +1076,7 @@ export default function RoofingMarketingClient({ faqData }: Props) {
               </p>
               <div className="flex flex-col gap-2">
                 <a
-                  href="tel:713-489-7004"
+                  href="tel:+17134897004"
                   className="flex items-center gap-2 text-sm transition-colors hover:text-white"
                   style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
                 >
@@ -1085,12 +1085,12 @@ export default function RoofingMarketingClient({ faqData }: Props) {
                   713-489-7004
                 </a>
                 <a
-                  href="mailto:hello@echo5digital.com"
+                  href="mailto:sales@echo5digital.com"
                   className="flex items-center gap-2 text-sm transition-colors hover:text-white"
                   style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
                 >
                   <Mail size={14} style={{ color: "#A855F7" }} />
-                  hello@echo5digital.com
+                  sales@echo5digital.com
                 </a>
               </div>
             </div>

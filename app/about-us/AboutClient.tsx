@@ -326,14 +326,14 @@ export default function AboutClient({ faqData }: Props) {
             deliver SEO, paid media, content, web design, and development
             services at scale. Echo5 Digital can be reached at{" "}
             <a
-              href="mailto:hello@echo5digital.com"
+              href="mailto:sales@echo5digital.com"
               style={{ color: "#8B5CF6", textDecoration: "underline" }}
             >
-              hello@echo5digital.com
+              sales@echo5digital.com
             </a>{" "}
             or{" "}
             <a
-              href="tel:7134897004"
+              href="tel:+17134897004"
               style={{ color: "#8B5CF6", textDecoration: "underline" }}
             >
               713-489-7004
@@ -864,13 +864,13 @@ export default function AboutClient({ faqData }: Props) {
               {
                 label: "Phone",
                 value: "713-489-7004",
-                href: "tel:7134897004",
+                href: "tel:+17134897004",
                 icon: Phone,
               },
               {
                 label: "Email",
-                value: "hello@echo5digital.com",
-                href: "mailto:hello@echo5digital.com",
+                value: "sales@echo5digital.com",
+                href: "mailto:sales@echo5digital.com",
                 icon: Mail,
               },
               {
@@ -1286,8 +1286,8 @@ export default function AboutClient({ faqData }: Props) {
 
             <div className="flex flex-col gap-3 pt-2">
               {[
-                { icon: Mail, label: "hello@echo5digital.com", href: "mailto:hello@echo5digital.com" },
-                { icon: Phone, label: "713-489-7004", href: "tel:7134897004" },
+                { icon: Mail, label: "sales@echo5digital.com", href: "mailto:sales@echo5digital.com" },
+                { icon: Phone, label: "713-489-7004", href: "tel:+17134897004" },
                 { icon: MapPin, label: "Houston & Sugar Land, Texas", href: null },
               ].map((item, i) => (
                 <MagnetPop key={item.label} index={i}>

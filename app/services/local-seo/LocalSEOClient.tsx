@@ -800,7 +800,7 @@ export default function LocalSEOClient({ faqData }: Props) {
               <span>Houston / Sugar Land, Texas</span>
             </address>
             <a
-              href="tel:713-489-7004"
+              href="tel:+17134897004"
               className="flex items-center gap-2 hover:text-white transition-colors"
               style={{ color: "#9CA3AF" }}
             >
@@ -808,12 +808,12 @@ export default function LocalSEOClient({ faqData }: Props) {
               <span>713-489-7004</span>
             </a>
             <a
-              href="mailto:hello@echo5digital.com"
+              href="mailto:sales@echo5digital.com"
               className="flex items-center gap-2 hover:text-white transition-colors"
               style={{ color: "#9CA3AF" }}
             >
               <RefreshCw size={14} className="text-purple-400 flex-shrink-0" />
-              <span>hello@echo5digital.com</span>
+              <span>sales@echo5digital.com</span>
             </a>
           </div>
         </div>
@@ -1050,11 +1050,11 @@ export default function LocalSEOClient({ faqData }: Props) {
             </div>
             <div className="space-y-2 text-sm">
               <p style={{ color: "#5B5F73", fontFamily: "Inter, sans-serif" }}>Or reach us directly:</p>
-              <a href="tel:713-489-7004" className="block" style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}>
+              <a href="tel:+17134897004" className="block" style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}>
                 📞 713-489-7004
               </a>
-              <a href="mailto:hello@echo5digital.com" className="block" style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}>
-                ✉️ hello@echo5digital.com
+              <a href="mailto:sales@echo5digital.com" className="block" style={{ color: "#4F32D9", fontFamily: "Inter, sans-serif" }}>
+                ✉️ sales@echo5digital.com
               </a>
             </div>
           </div>

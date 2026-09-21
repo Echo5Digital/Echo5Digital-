@@ -60,7 +60,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "Organization",
     name: "Echo5 Digital",
-    email: "hello@echo5digital.com",
+    email: "sales@echo5digital.com",
     telephone: "713-489-7004",
     address: {
       "@type": "PostalAddress",
@@ -102,7 +102,7 @@ export default function AestheticsMarketingPage() {
         <AestheticsMarketingClient faqData={faqData} />
       </main>
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

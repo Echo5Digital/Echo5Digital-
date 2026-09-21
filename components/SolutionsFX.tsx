@@ -313,7 +313,7 @@ export function MagnetPop({
   return (
     <motion.div
       ref={ref}
-      className={`relative ${className}`}
+      className={`relative h-full ${className}`}
       style={style}
       initial={{ opacity: 0, scale: 0.4, y: 22 }}
       animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}

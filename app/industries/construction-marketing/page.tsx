@@ -53,7 +53,7 @@ const serviceSchema = {
     },
     // Verified phone number
     telephone: "713-489-7004",
-    email: "hello@echo5digital.com",
+    email: "sales@echo5digital.com",
   },
   serviceType: "Digital Marketing",
   areaServed: [
@@ -96,7 +96,7 @@ export default function ConstructionMarketingPage() {
       </main>
       <Footer
         // Verified contact details
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

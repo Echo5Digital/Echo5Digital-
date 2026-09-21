@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 // Sitewide JSON-LD (Organization/LocalBusiness + WebSite). Injected as a literal
 // object by project-writer.ts from verified facts only — never from AI output —
 // so this can never contain a fabricated address, phone, or credential.
-const SITEWIDE_SCHEMA = [{"@context":"https://schema.org","@type":"LocalBusiness","name":"Echo5 Digital","url":"https://example.com","address":{"@type":"PostalAddress","streetAddress":"Houston / Sugar Land, Texas"},"telephone":"713-489-7004","email":"hello@echo5digital.com","areaServed":"Houston, Sugar Land, Texas (primary); National U.S. (secondary); Operations Support: Kochi, Kerala, India"},{"@context":"https://schema.org","@type":"WebSite","name":"Echo5 Digital","url":"https://example.com"}];
+const SITEWIDE_SCHEMA = [{"@context":"https://schema.org","@type":"LocalBusiness","name":"Echo5 Digital","url":"https://example.com","address":{"@type":"PostalAddress","streetAddress":"Houston / Sugar Land, Texas"},"telephone":"713-489-7004","email":"sales@echo5digital.com","areaServed":"Houston, Sugar Land, Texas (primary); National U.S. (secondary); Operations Support: Kochi, Kerala, India"},{"@context":"https://schema.org","@type":"WebSite","name":"Echo5 Digital","url":"https://example.com"}];
 
 export default function RootLayout({
   children,

@@ -38,7 +38,7 @@ const faqData = [
   {
     question: "How do I report an issue with my website?",
     answer:
-      "Echo5 Digital provides a defined client communication workflow as part of every maintenance plan. Reach out via email at hello@echo5digital.com or by phone at 713-489-7004 to report urgent issues.",
+      "Echo5 Digital provides a defined client communication workflow as part of every maintenance plan. Reach out via email at sales@echo5digital.com or by phone at 713-489-7004 to report urgent issues.",
   },
 ];
 
@@ -52,7 +52,7 @@ const serviceSchema = {
     "@type": "Organization",
     name: "Echo5 Digital",
     telephone: "713-489-7004",
-    email: "hello@echo5digital.com",
+    email: "sales@echo5digital.com",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Houston",
@@ -107,7 +107,7 @@ export default function WebsiteMaintenancePage() {
         <WebsiteMaintenanceClient faqData={faqData} />
       </div>
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

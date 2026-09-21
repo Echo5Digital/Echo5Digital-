@@ -32,7 +32,7 @@ export default function HomePage() {
     {
       question: "How do I get started with Echo5 Digital?",
       answer:
-        "You can book a demo or fill out the contact form on the Echo5 Digital website. You can also reach them by phone at 713-489-7004 or by email at hello@echo5digital.com.",
+        "You can book a demo or fill out the contact form on the Echo5 Digital website. You can also reach them by phone at 713-489-7004 or by email at sales@echo5digital.com.",
     },
   ];
 
@@ -53,7 +53,7 @@ export default function HomePage() {
         addressCountry: "US",
       },
       telephone: "713-489-7004",
-      email: "hello@echo5digital.com",
+      email: "sales@echo5digital.com",
     },
   };
 
@@ -83,7 +83,7 @@ export default function HomePage() {
       <Header />
       <HomeClient faqData={faqData} />
       <Footer
-        email="hello@echo5digital.com"
+        email="sales@echo5digital.com"
         phone="713-489-7004"
         address="Houston / Sugar Land, Texas"
       />

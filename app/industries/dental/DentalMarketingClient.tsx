@@ -780,7 +780,7 @@ export default function DentalMarketingClient({ faqData }: Props) {
               </address>
               {/* Phone number — verified from business facts */}
               <a
-                href="tel:7134897004"
+                href="tel:+17134897004"
                 className="flex items-center gap-2 text-sm hover:text-white transition-colors"
                 style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
               >
@@ -788,12 +788,12 @@ export default function DentalMarketingClient({ faqData }: Props) {
                 713-489-7004
               </a>
               <a
-                href="mailto:hello@echo5digital.com"
+                href="mailto:sales@echo5digital.com"
                 className="flex items-center gap-2 text-sm hover:text-white transition-colors"
                 style={{ color: "rgba(229,231,235,0.6)", fontFamily: "Inter, sans-serif" }}
               >
                 <Mail size={15} style={{ color: "#7C3AED" }} />
-                hello@echo5digital.com
+                sales@echo5digital.com
               </a>
             </div>
 
@@ -959,7 +959,7 @@ export default function DentalMarketingClient({ faqData }: Props) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               {/* Phone — verified */}
               <a
-                href="tel:7134897004"
+                href="tel:+17134897004"
                 className="inline-flex items-center gap-2 text-sm font-semibold hover:text-white transition-colors"
                 style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
               >
@@ -967,12 +967,12 @@ export default function DentalMarketingClient({ faqData }: Props) {
                 713-489-7004
               </a>
               <a
-                href="mailto:hello@echo5digital.com"
+                href="mailto:sales@echo5digital.com"
                 className="inline-flex items-center gap-2 text-sm font-semibold hover:text-white transition-colors"
                 style={{ color: "#A855F7", fontFamily: "Inter, sans-serif" }}
               >
                 <Mail size={15} />
-                hello@echo5digital.com
+                sales@echo5digital.com
               </a>
             </div>
           </div>
