@@ -148,24 +148,28 @@ export default function RealEstateSeoClient({ faqData }: Props) {
       href: "/industries/law-firms",
       image:
         "https://images.pexels.com/photos/5669619/pexels-photo-5669619.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=300&w=400",
+      alt: "Brass justice scale and gavel on a wooden desk",
     },
     {
       title: "Dental SEO",
       href: "/industries/dental",
       image:
         "https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=300&w=400",
+      alt: "Smiling dentist and patient during a dental checkup",
     },
     {
       title: "Automotive SEO",
       href: "/industries/automotive",
       image:
         "https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=300&w=400",
+      alt: "White luxury SUV parked on a road surrounded by greenery",
     },
     {
       title: "Healthcare SEO",
       href: "/industries/healthcare",
       image:
         "https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=300&w=400",
+      alt: "Smiling doctor with a stethoscope standing in a hospital corridor",
     },
   ];
 
@@ -716,7 +720,7 @@ export default function RealEstateSeoClient({ faqData }: Props) {
                 <div className="relative h-28 overflow-hidden">
                   <img
                     src={industry.image}
-                    alt={industry.title}
+                    alt={industry.alt}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div

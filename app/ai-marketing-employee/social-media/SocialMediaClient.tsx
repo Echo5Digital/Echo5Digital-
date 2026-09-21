@@ -61,8 +61,9 @@ export default function SocialMediaClient({ faqData }: SocialMediaClientProps) {
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.pexels.com/photos/6253568/pexels-photo-6253568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            alt="AI-powered social media management dashboard"
+            alt=""
             className="w-full h-full object-cover opacity-20"
+            aria-hidden="true"
           />
           <div
             className="absolute inset-0"

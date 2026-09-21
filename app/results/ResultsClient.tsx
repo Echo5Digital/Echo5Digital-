@@ -435,7 +435,7 @@ export default function ResultsClient({ faqData }: Props) {
               <div className="relative h-44 overflow-hidden">
                 <img
                   src={cs.image}
-                  alt={`${cs.industry} case study – client outcome`}
+                  alt={`${cs.industry} workplace scene from a case study achieving ${cs.metric} ${cs.metricLabel.toLowerCase()}`}
                   className="w-full h-full object-cover"
                 />
                 <div

@@ -96,6 +96,7 @@ const institutionTypes = [
     title: "Technical Schools",
     desc: "Technical schools require targeted SEO strategies that focus on attracting students interested in specific trades or certifications. We optimize your site to capture search traffic related to technical programs.",
     image: "https://images.pexels.com/photos/5427674/pexels-photo-5427674.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Student practicing a hands-on trade skill in a technical school workshop",
   },
   {
     number: "02",
@@ -103,6 +104,7 @@ const institutionTypes = [
     title: "Community Colleges",
     desc: "Community colleges offer a wide range of programs and need to reach a diverse student population. We focus on local SEO, content that highlights your programs, and optimized service pages.",
     image: "https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Community college campus building with students walking outside",
   },
   {
     number: "03",
@@ -110,6 +112,7 @@ const institutionTypes = [
     title: "Engineering Colleges",
     desc: "Engineering colleges attract students seeking specialized education in fields like computer science, civil engineering, and mechanical engineering. We implement SEO strategies built around high-converting keywords.",
     image: "https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Engineering students collaborating on a project in a lab setting",
   },
   {
     number: "04",
@@ -117,6 +120,7 @@ const institutionTypes = [
     title: "Private Schools",
     desc: "Private schools often emphasize their unique educational philosophies, small class sizes, and personalized attention. We help attract students by optimizing for local searches and valuable curriculum content.",
     image: "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Small group of private school students receiving personalized attention from a teacher",
   },
   {
     number: "05",
@@ -124,6 +128,7 @@ const institutionTypes = [
     title: "Vocational Schools",
     desc: "Vocational schools offer hands-on training for specific careers. We tailor our SEO strategies to reach individuals seeking career-focused education, ensuring your school is a top choice for the workforce-bound.",
     image: "https://images.pexels.com/photos/5088179/pexels-photo-5088179.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Vocational school student in protective gear training for a hands-on career",
   },
   {
     number: "06",
@@ -131,6 +136,7 @@ const institutionTypes = [
     title: "Online Colleges",
     desc: "Online education is growing rapidly, and online colleges need to be highly visible to attract students from across the country or globally. We optimize for broad, location-agnostic keywords and site authority.",
     image: "https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Student attending an online college class on a laptop",
   },
   {
     number: "07",
@@ -138,6 +144,7 @@ const institutionTypes = [
     title: "K-12 Schools",
     desc: "K-12 schools must appeal to parents seeking the best educational opportunities for their children. We focus on local SEO, content that builds trust, and pages that highlight academics and student support.",
     image: "https://images.pexels.com/photos/5212320/pexels-photo-5212320.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Teacher in front of a classroom whiteboard with K-12 students",
   },
   {
     number: "08",
@@ -145,6 +152,7 @@ const institutionTypes = [
     title: "Language Schools",
     desc: "Language schools attract students looking to learn new languages for personal or professional reasons. We optimize your site to rank for language-learning searches and highlight your teaching methods.",
     image: "https://images.pexels.com/photos/5940841/pexels-photo-5940841.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Language school students practicing conversation in a classroom",
   },
 ];
 
@@ -184,16 +192,19 @@ const relatedIndustries = [
     label: "Real Estate SEO",
     href: "/industries/real-estate",
     image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Real estate agent showing a property to clients",
   },
   {
     label: "Law Firm SEO",
     href: "/industries/law-firm-marketing",
     image: "https://images.pexels.com/photos/5668772/pexels-photo-5668772.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Law firm team meeting with a client in an office",
   },
   {
     label: "Healthcare & Hospital SEO",
     href: "/industries/healthcare",
     image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Healthcare provider consulting with a patient in a hospital setting",
   },
 ];
 
@@ -228,7 +239,7 @@ function StickyScrollSection() {
                   <Image
                     key={item.title}
                     src={item.image}
-                    alt={item.title}
+                    alt={item.alt}
                     fill
                     sizes="50vw"
                     className="object-cover transition-opacity duration-700"
@@ -256,7 +267,7 @@ function StickyScrollSection() {
               return (
                 <ScrollTrackedCard key={item.title} index={i} onActive={setActiveIndex}>
                   <div className="lg:hidden relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-5" style={{ border: "1px solid rgba(124,58,237,0.25)" }}>
-                    <Image src={item.image} alt={item.title} fill sizes="100vw" className="object-cover" />
+                    <Image src={item.image} alt={item.alt} fill sizes="100vw" className="object-cover" />
                   </div>
                   <div
                     className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
@@ -679,7 +690,7 @@ export default function EducationClient({ faqData }: Props) {
                 <Image
                   key={industry.label}
                   src={industry.image}
-                  alt={industry.label}
+                  alt={industry.alt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 480px"
                   className="object-cover transition-opacity duration-500"

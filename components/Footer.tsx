@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Phone, MapPin, AtSign, Linkedin, Instagram, Facebook, Youtube, Zap, Rocket, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook, Youtube, Zap, Rocket, ArrowRight } from "lucide-react";
 
 interface FooterLink {
   label: string;
@@ -18,7 +18,6 @@ interface FooterProps {
   links?: FooterLink[];
   logoSrc?: string;
   socialLinks?: {
-    threads?: string;
     linkedin?: string;
     instagram?: string;
     facebook?: string;
@@ -85,7 +84,6 @@ export default function Footer({
   links = defaultLinks,
   logoSrc = "/logo.png",
   socialLinks = {
-    threads: "#",
     linkedin: "https://www.linkedin.com/company/echo5digital",
     instagram: "https://www.instagram.com/echo5.digital/",
     facebook: "https://www.facebook.com/echo5digitalventures/",
@@ -209,11 +207,6 @@ export default function Footer({
 
             {/* Social icons */}
             <div className="flex items-center gap-3 mt-2">
-              {socialLinks.threads && (
-                <SocialIcon href={socialLinks.threads} label="Threads">
-                  <AtSign size={15} />
-                </SocialIcon>
-              )}
               {socialLinks.linkedin && (
                 <SocialIcon href={socialLinks.linkedin} label="LinkedIn">
                   <Linkedin size={15} />

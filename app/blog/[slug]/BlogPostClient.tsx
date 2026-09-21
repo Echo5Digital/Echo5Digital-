@@ -47,6 +47,15 @@ interface BlogPostClientProps {
   post: Post;
 }
 
+// Keeps alt text concise (screen readers read it in full) while still
+// describing the specific post's content instead of a generic label.
+function toAltText(text: string, maxLength = 150): string {
+  if (text.length <= maxLength) return text;
+  const truncated = text.slice(0, maxLength);
+  const lastSpace = truncated.lastIndexOf(" ");
+  return `${truncated.slice(0, lastSpace > 0 ? lastSpace : maxLength).trimEnd()}…`;
+}
+
 export default function BlogPostClient({ post }: BlogPostClientProps) {
   const [tocOpen, setTocOpen] = useState(true);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -138,7 +147,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
           >
             <img
               src={post.heroImage}
-              alt="Futuristic AI digital marketing dashboard illustrating automated campaign management"
+              alt={toAltText(post.quickAnswer) || post.title}
               className="w-full object-cover"
               style={{ height: "380px" }}
             />
@@ -773,7 +782,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
                 <div className="relative overflow-hidden h-44">
                   <img
                     src={related.image}
-                    alt={`Illustration for article: ${related.title}`}
+                    alt={toAltText(related.excerpt) || related.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div

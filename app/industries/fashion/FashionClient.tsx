@@ -91,6 +91,7 @@ const brandTypes = [
     title: "E-commerce Fashion Brands",
     desc: "Online-first apparel brands need SEO built around product discovery, category pages, and checkout conversion across every platform — Shopify, WooCommerce, Magento, or custom.",
     image: "https://images.pexels.com/photos/1884581/pexels-photo-1884581.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Folded apparel and accessories styled for an online fashion store",
   },
   {
     number: "02",
@@ -98,6 +99,7 @@ const brandTypes = [
     title: "Boutique & Retail Stores",
     desc: "Brick-and-mortar boutiques depend on local discovery. We focus on Google My Business optimization, local citations, and content that drives foot traffic from nearby shoppers.",
     image: "https://images.pexels.com/photos/1078958/pexels-photo-1078958.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Clothing racks and displays inside a boutique retail store",
   },
   {
     number: "03",
@@ -105,6 +107,7 @@ const brandTypes = [
     title: "Emerging & Independent Labels",
     desc: "Independent designers need storytelling-driven content and lookbook optimization that builds brand identity fast, competing for attention against established names.",
     image: "https://images.pexels.com/photos/5709661/pexels-photo-5709661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Independent fashion designer working on a new clothing design",
   },
   {
     number: "04",
@@ -112,6 +115,7 @@ const brandTypes = [
     title: "Menswear & Accessories",
     desc: "Menswear and accessory brands convert on craftsmanship and detail. We build content and technical SEO that showcases quality and drives high-intent purchase searches.",
     image: "https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Close-up of menswear accessories showcasing craftsmanship and detail",
   },
 ];
 
@@ -151,16 +155,19 @@ const relatedIndustries = [
     label: "eCommerce SEO",
     href: "/industries/ecommerce",
     image: "https://images.pexels.com/photos/1884581/pexels-photo-1884581.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Folded apparel and accessories styled for an online store",
   },
   {
     label: "Professional Services SEO",
     href: "/industries/professional-services",
     image: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Consultant presenting a strategy to a professional services client",
   },
   {
     label: "Real Estate SEO",
     href: "/industries/real-estate",
     image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Real estate agent showing a property to clients",
   },
 ];
 
@@ -195,7 +202,7 @@ function StickyScrollSection() {
                   <Image
                     key={item.title}
                     src={item.image}
-                    alt={item.title}
+                    alt={item.alt}
                     fill
                     sizes="50vw"
                     className="object-cover transition-opacity duration-700"
@@ -223,7 +230,7 @@ function StickyScrollSection() {
               return (
                 <ScrollTrackedCard key={item.title} index={i} onActive={setActiveIndex}>
                   <div className="lg:hidden relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-5" style={{ border: "1px solid rgba(124,58,237,0.25)" }}>
-                    <Image src={item.image} alt={item.title} fill sizes="100vw" className="object-cover" />
+                    <Image src={item.image} alt={item.alt} fill sizes="100vw" className="object-cover" />
                   </div>
                   <div
                     className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
@@ -630,7 +637,7 @@ export default function FashionClient({ faqData }: Props) {
                 <Image
                   key={industry.label}
                   src={industry.image}
-                  alt={industry.label}
+                  alt={industry.alt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 480px"
                   className="object-cover transition-opacity duration-500"

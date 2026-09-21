@@ -41,6 +41,7 @@ const strategyPillars = [
     title: "In-Depth Keyword Research",
     desc: "We identify industry-specific B2B search terms that target your potential clients' actual queries, so your site ranks for the terms buyers are searching.",
     image: "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Analyst reviewing keyword research data on a computer screen",
   },
   {
     number: "02",
@@ -48,6 +49,7 @@ const strategyPillars = [
     title: "Content Optimization for Industry Relevance",
     desc: "We enhance your service pages, product descriptions, case studies, and blog content with targeted optimization built for your industry.",
     image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Writer editing industrial product content on a laptop",
   },
   {
     number: "03",
@@ -55,6 +57,7 @@ const strategyPillars = [
     title: "Technical SEO",
     desc: "We focus on site architecture, loading speeds, and mobile responsiveness so your site performs the way B2B buyers expect.",
     image: "https://images.pexels.com/photos/3862627/pexels-photo-3862627.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Developer inspecting website performance metrics on a monitor",
   },
   {
     number: "04",
@@ -62,6 +65,7 @@ const strategyPillars = [
     title: "Local SEO for Manufacturers",
     desc: "We optimize geographic targeting to help you reach region-specific clientele in the markets you serve.",
     image: "https://images.pexels.com/photos/4491881/pexels-photo-4491881.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Industrial facility exterior representing a regional manufacturing plant",
   },
   {
     number: "05",
@@ -69,6 +73,7 @@ const strategyPillars = [
     title: "Link Building and Authority",
     desc: "We establish credibility through backlinks from industry publications and partners, strengthening your site's authority.",
     image: "https://images.pexels.com/photos/8112172/pexels-photo-8112172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Business partners shaking hands over a partnership agreement",
   },
   {
     number: "06",
@@ -76,6 +81,7 @@ const strategyPillars = [
     title: "Social Media Management and Marketing",
     desc: "We emphasize LinkedIn's importance for reaching industrial decision-makers with strategic content and campaigns.",
     image: "https://images.pexels.com/photos/5439381/pexels-photo-5439381.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Marketer managing a LinkedIn campaign on a laptop screen",
   },
   {
     number: "07",
@@ -83,6 +89,7 @@ const strategyPillars = [
     title: "Google Ads and PPC Campaigns",
     desc: "We deliver immediate visibility through targeted paid search advertising that complements your organic strategy.",
     image: "https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Marketing team reviewing a paid ad campaign dashboard",
   },
   {
     number: "08",
@@ -90,6 +97,7 @@ const strategyPillars = [
     title: "Branding and Web Development",
     desc: "We create conversion-focused websites that communicate your unique value proposition clearly to B2B buyers.",
     image: "https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Designer sketching website layouts and branding concepts",
   },
   {
     number: "09",
@@ -97,6 +105,7 @@ const strategyPillars = [
     title: "Ongoing Analysis and Optimization",
     desc: "We provide continuous monitoring and data-driven adjustments to keep your strategy performing.",
     image: "https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Analyst monitoring performance analytics charts on a dashboard",
   },
 ];
 
@@ -141,7 +150,7 @@ function StickyScrollSection() {
               <Image
                 key={item.title}
                 src={item.image}
-                alt={item.title}
+                alt={item.alt}
                 fill
                 sizes="50vw"
                 className="object-cover transition-opacity duration-700"
@@ -169,7 +178,7 @@ function StickyScrollSection() {
           return (
             <ScrollTrackedCard key={item.title} index={i} onActive={setActiveIndex}>
               <div className="lg:hidden relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-5" style={{ border: "1px solid rgba(124,58,237,0.25)" }}>
-                <Image src={item.image} alt={item.title} fill sizes="100vw" className="object-cover" />
+                <Image src={item.image} alt={item.alt} fill sizes="100vw" className="object-cover" />
               </div>
               <div
                 className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"

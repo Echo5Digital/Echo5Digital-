@@ -58,6 +58,7 @@ const coreServiceCards = [
     desc: "Rank on Google and AI search with powerful content and technical SEO.",
     href: "/services/seo",
     image: "/SEO.png",
+    alt: "SEO ranking graph showing upward search visibility growth",
     badge: null as string | null,
     icon: Search,
     gradient: "linear-gradient(135deg, #7C3AED 0%, #A855F7 100%)",
@@ -68,6 +69,7 @@ const coreServiceCards = [
     desc: "AI-powered content, community management and paid social for every platform.",
     href: "/services/social-media-marketing",
     image: "/Social Media.png",
+    alt: "Social media app icons and engagement graphics on a phone screen",
     badge: "Most Popular",
     icon: Megaphone,
     gradient: "linear-gradient(135deg, #6D5CF0 0%, #8B7CF6 100%)",
@@ -78,6 +80,7 @@ const coreServiceCards = [
     desc: "Data-driven campaigns that maximize ROI and generate quality leads.",
     href: "/services/google-ads",
     image: "/Google Ads copy.png",
+    alt: "Google Ads campaign dashboard showing click and conversion metrics",
     badge: null as string | null,
     icon: Target,
     gradient: "linear-gradient(135deg, #9333EA 0%, #C084FC 100%)",
@@ -88,6 +91,7 @@ const coreServiceCards = [
     desc: "Streamline your pipeline with AI-powered CRM and automation workflows.",
     href: "/services/crm-automation",
     image: "/super growth copy.png",
+    alt: "Automated CRM workflow diagram with an upward growth arrow",
     badge: "New",
     icon: Settings,
     gradient: "linear-gradient(135deg, #5B4FE8 0%, #7C6FF0 100%)",
@@ -98,6 +102,7 @@ const coreServiceCards = [
     desc: "High-converting, fast and modern websites that perform.",
     href: "/services/web-design",
     image: "/dash.jpg",
+    alt: "Modern website dashboard interface displayed on screen",
     badge: null as string | null,
     icon: Globe,
     gradient: "linear-gradient(135deg, #7E3FF2 0%, #A66BF5 100%)",
@@ -108,6 +113,7 @@ const coreServiceCards = [
     desc: "Bespoke software, integrations and automation tools tailored to your business.",
     href: "/services/custom-programming",
     image: "/pexels-photo-1181675-100kb.jpg",
+    alt: "Close-up of custom software code on a developer's screen",
     badge: null as string | null,
     gradient: "linear-gradient(135deg, #6B4EF0 0%, #9D7BF0 100%)",
     icon: Code2,
@@ -1022,16 +1028,19 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                     label: "AI Engine",
                     sublabel: "Executes SEO, ads, content & social 24/7",
                     image: "/airobo.png",
+                    alt: "Illustration of an AI robot managing marketing tasks",
                   },
                   {
                     label: "Human Team",
                     sublabel: "Strategists & editors review, refine, and guide all outputs",
                     image: "/people-working-html-codes-100kb.jpg",
+                    alt: "Marketing strategists working together at computer screens",
                   },
                   {
                     label: "Client Dashboard",
                     sublabel: "Real-time KPIs, reports, and transparent performance tracking",
                     image: "/dash.jpg",
+                    alt: "Client dashboard displaying real-time marketing performance charts",
                   },
                 ].map((node, i) => (
                   <div key={node.label} className="relative flex flex-col items-center text-center">
@@ -1044,7 +1053,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                     >
                       <Image
                         src={node.image}
-                        alt={node.label}
+                        alt={node.alt}
                         fill
                         sizes="(max-width: 640px) 80vw, 260px"
                         className="object-cover"
@@ -1700,7 +1709,7 @@ function CoreServiceCard({
       >
         <img
           src={card.image}
-          alt={card.title}
+          alt={card.alt}
           style={{
             width: "100%",
             height: "100%",

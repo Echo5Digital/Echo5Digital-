@@ -108,21 +108,25 @@ const relatedIndustries = [
     label: "Law Firm SEO",
     href: "/industries/law-firm-marketing",
     image: "https://images.pexels.com/photos/5668772/pexels-photo-5668772.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Law firm team meeting with a client in an office",
   },
   {
     label: "Automotive SEO",
     href: "/industries/automotive",
     image: "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Car dealership showroom with vehicles on display",
   },
   {
     label: "Education SEO",
     href: "/industries/education",
     image: "https://images.pexels.com/photos/5212320/pexels-photo-5212320.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Teacher in front of a classroom whiteboard with students",
   },
   {
     label: "Dental SEO",
     href: "/industries/dental",
     image: "https://images.pexels.com/photos/6812464/pexels-photo-6812464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Dentist examining a patient in a dental clinic",
   },
 ];
 
@@ -542,7 +546,7 @@ export default function ProfessionalServicesClient({ faqData }: Props) {
                 <Image
                   key={industry.label}
                   src={industry.image}
-                  alt={industry.label}
+                  alt={industry.alt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 480px"
                   className="object-cover transition-opacity duration-500"

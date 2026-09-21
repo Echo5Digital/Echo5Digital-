@@ -851,24 +851,28 @@ export default function GoogleAdsClient({ faqData }: Props) {
               title: "Meta Ads",
               desc: "Facebook & Instagram paid campaigns to reach audiences at every stage of the funnel.",
               image: "https://images.pexels.com/photos/14158915/pexels-photo-14158915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+              alt: "Close-up of a smartphone screen showing social media app icons",
             },
             {
               href: "/services/seo",
               title: "SEO Services",
               desc: "Organic search ranking to complement your paid traffic and reduce long-term acquisition costs.",
               image: "/3d-graph-computer-illustration-100kb.jpg",
+              alt: "Illustrated hand touching floating holographic bar and line charts",
             },
             {
               href: "/services/local-seo",
               title: "Local SEO",
               desc: "Dominate local search in Houston, Sugar Land, and nearby markets with geo-targeted optimization.",
               image: "https://images.pexels.com/photos/18462227/pexels-photo-18462227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+              alt: "Aerial nighttime view of an illuminated downtown city skyline",
             },
             {
               href: "/ai-marketing-employee",
               title: "AI Marketing Employee",
               desc: "An always-on AI marketing system that powers and coordinates all your digital channels.",
               image: "https://images.pexels.com/photos/8438979/pexels-photo-8438979.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+              alt: "Woman interacting with a robotic arm holding a red flower",
             },
           ].map((link, idx) => (
             <DiagonalWipe
@@ -890,7 +894,7 @@ export default function GoogleAdsClient({ faqData }: Props) {
                   >
                     <img
                       src={link.image}
-                      alt={`Team reviewing ${link.title} performance data`}
+                      alt={link.alt}
                       className="w-full h-full object-cover"
                     />
                     {/* Diagonal light sweep on hover (desktop) / tap (mobile) */}

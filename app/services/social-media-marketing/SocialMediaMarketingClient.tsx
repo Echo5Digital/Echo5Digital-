@@ -1063,24 +1063,28 @@ export default function SocialMediaMarketingClient({ faqData }: Props) {
               title: "Meta Ads",
               desc: "Paid social advertising on Facebook and Instagram to amplify reach and drive conversions.",
               image: "https://images.pexels.com/photos/14158915/pexels-photo-14158915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+              alt: "Close-up of a smartphone screen showing social media app icons",
             },
             {
               href: "/services/content-marketing",
               title: "Content Marketing",
               desc: "SEO-driven blog content, articles, and resources that attract and educate your ideal audience.",
               image: "https://images.pexels.com/photos/942331/pexels-photo-942331.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+              alt: "Notebook with handwritten SEO notes resting on a keyboard",
             },
             {
               href: "/services/google-ads",
               title: "Google Ads",
               desc: "Pay-per-click campaigns targeting high-intent searchers ready to take action.",
               image: "https://images.pexels.com/photos/6476580/pexels-photo-6476580.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+              alt: "Office workspace with computer monitors displaying charts and graphs",
             },
             {
               href: "/ai-marketing-employee",
               title: "AI Marketing Employee",
               desc: "A fully autonomous AI marketing employee managing campaigns, content, and reporting for your business.",
               image: "https://images.pexels.com/photos/8438979/pexels-photo-8438979.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+              alt: "Woman interacting with a robotic arm holding a red flower",
             },
           ].map((link, idx) => (
             <DiagonalWipe
@@ -1102,7 +1106,7 @@ export default function SocialMediaMarketingClient({ faqData }: Props) {
                   >
                     <img
                       src={link.image}
-                      alt={`Team reviewing ${link.title} performance data`}
+                      alt={link.alt}
                       className="w-full h-full object-cover"
                     />
                     {/* Diagonal light sweep on hover (desktop) / tap (mobile) */}

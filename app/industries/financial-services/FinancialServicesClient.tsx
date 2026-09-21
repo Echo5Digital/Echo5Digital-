@@ -85,6 +85,7 @@ const institutionTypes = [
     title: "Banks",
     desc: "Retail and community banks need visibility for everyday banking searches while maintaining the compliance and trust signals regulators and customers expect. We build SEO programs around both.",
     image: "https://images.pexels.com/photos/210607/pexels-photo-210607.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Exterior of a bank building with classic architectural columns",
   },
   {
     number: "02",
@@ -92,6 +93,7 @@ const institutionTypes = [
     title: "Credit Unions",
     desc: "Credit unions compete on community trust and member value. We focus on local SEO and content that highlights membership benefits, rates, and the personal service that sets you apart from big banks.",
     image: "https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Credit union representative assisting a member with banking needs",
   },
   {
     number: "03",
@@ -99,6 +101,7 @@ const institutionTypes = [
     title: "Financial Advisors",
     desc: "Prospective clients vet advisors carefully before ever picking up the phone. We build authority-driven content and local SEO that positions individual advisors and RIAs as the trustworthy, qualified choice.",
     image: "https://images.pexels.com/photos/7821486/pexels-photo-7821486.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Financial advisor reviewing investment plans with a client",
   },
   {
     number: "04",
@@ -106,6 +109,7 @@ const institutionTypes = [
     title: "Investment Firms",
     desc: "Investment firms and wealth managers need SEO built around long, high-consideration buying cycles. We target high-intent keywords and build the credibility content sophisticated investors expect.",
     image: "https://images.pexels.com/photos/6802049/pexels-photo-6802049.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Investment firm analyst reviewing market charts on a screen",
   },
 ];
 
@@ -145,16 +149,19 @@ const relatedIndustries = [
     label: "Dental SEO",
     href: "/industries/dental",
     image: "https://images.pexels.com/photos/6812464/pexels-photo-6812464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Dentist examining a patient in a dental clinic",
   },
   {
     label: "Healthcare SEO",
     href: "/industries/healthcare",
     image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Healthcare provider consulting with a patient in a hospital setting",
   },
   {
     label: "Professional Services SEO",
     href: "/industries/professional-services",
     image: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Consultant presenting a strategy to a professional services client",
   },
 ];
 
@@ -189,7 +196,7 @@ function StickyScrollSection() {
                   <Image
                     key={item.title}
                     src={item.image}
-                    alt={item.title}
+                    alt={item.alt}
                     fill
                     sizes="50vw"
                     className="object-cover transition-opacity duration-700"
@@ -217,7 +224,7 @@ function StickyScrollSection() {
               return (
                 <ScrollTrackedCard key={item.title} index={i} onActive={setActiveIndex}>
                   <div className="lg:hidden relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-5" style={{ border: "1px solid rgba(124,58,237,0.25)" }}>
-                    <Image src={item.image} alt={item.title} fill sizes="100vw" className="object-cover" />
+                    <Image src={item.image} alt={item.alt} fill sizes="100vw" className="object-cover" />
                   </div>
                   <div
                     className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
@@ -639,7 +646,7 @@ export default function FinancialServicesClient({ faqData }: Props) {
                 <Image
                   key={industry.label}
                   src={industry.image}
-                  alt={industry.label}
+                  alt={industry.alt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 480px"
                   className="object-cover transition-opacity duration-500"

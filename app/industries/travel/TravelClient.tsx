@@ -91,6 +91,7 @@ const travelCategories = [
     title: "Flights & Booking Platforms",
     desc: "Booking-driven travel businesses need SEO built around real-time search intent, secure payment flows, and conversion-optimized booking pages that turn browsers into confirmed travelers.",
     image: "https://images.pexels.com/photos/62623/wing-plane-flying-airplane-62623.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Airplane wing in flight above the clouds",
   },
   {
     number: "02",
@@ -98,6 +99,7 @@ const travelCategories = [
     title: "Hotels & Resorts",
     desc: "Hospitality brands compete on experience and location. We build local SEO and destination content that puts your property in front of travelers planning their stay.",
     image: "https://images.pexels.com/photos/3155666/pexels-photo-3155666.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Hotel resort pool area with lounge chairs",
   },
   {
     number: "03",
@@ -105,6 +107,7 @@ const travelCategories = [
     title: "Destinations & City Breaks",
     desc: "Destination marketing organizations and city-break operators need content that captures the appeal of a place and ranks for the broad, discovery-stage searches travelers start with.",
     image: "https://images.pexels.com/photos/2506923/pexels-photo-2506923.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "City skyline view popular for destination travel",
   },
   {
     number: "04",
@@ -112,6 +115,7 @@ const travelCategories = [
     title: "Tours & Cultural Experiences",
     desc: "Tour operators and experience providers convert on storytelling and trust. We build content and local SEO that showcases your offerings to travelers ready to book an experience.",
     image: "https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Tourists exploring a cultural landmark on a guided tour",
   },
 ];
 
@@ -151,21 +155,25 @@ const relatedIndustries = [
     label: "Education SEO",
     href: "/industries/education",
     image: "https://images.pexels.com/photos/5212320/pexels-photo-5212320.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Teacher in front of a classroom whiteboard with students",
   },
   {
     label: "Automotive SEO",
     href: "/industries/automotive",
     image: "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Car dealership showroom with vehicles on display",
   },
   {
     label: "Law Firm SEO",
     href: "/industries/law-firm-marketing",
     image: "https://images.pexels.com/photos/5668772/pexels-photo-5668772.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Law firm team meeting with a client in an office",
   },
   {
     label: "Fitness & Wellness SEO",
     href: "/industries/fitness",
     image: "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Person exercising in a fitness studio",
   },
 ];
 
@@ -200,7 +208,7 @@ function StickyScrollSection() {
                   <Image
                     key={item.title}
                     src={item.image}
-                    alt={item.title}
+                    alt={item.alt}
                     fill
                     sizes="50vw"
                     className="object-cover transition-opacity duration-700"
@@ -228,7 +236,7 @@ function StickyScrollSection() {
               return (
                 <ScrollTrackedCard key={item.title} index={i} onActive={setActiveIndex}>
                   <div className="lg:hidden relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-5" style={{ border: "1px solid rgba(124,58,237,0.25)" }}>
-                    <Image src={item.image} alt={item.title} fill sizes="100vw" className="object-cover" />
+                    <Image src={item.image} alt={item.alt} fill sizes="100vw" className="object-cover" />
                   </div>
                   <div
                     className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
@@ -630,7 +638,7 @@ export default function TravelClient({ faqData }: Props) {
                 <Image
                   key={industry.label}
                   src={industry.image}
-                  alt={industry.label}
+                  alt={industry.alt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 480px"
                   className="object-cover transition-opacity duration-500"

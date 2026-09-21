@@ -850,18 +850,21 @@ export default function LocalSEOClient({ faqData }: Props) {
               title: "Google Business Profile",
               desc: "Full GBP optimization and management to maximize map pack visibility and local credibility.",
               image: "https://images.pexels.com/photos/5444631/pexels-photo-5444631.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+              alt: "Close-up of a smartphone screen showing the Google Maps icon",
             },
             {
               href: "/services/seo",
               title: "SEO & AEO",
               desc: "Broader search engine optimization and answer engine optimization to grow organic visibility across Google and AI search.",
               image: "/focused-businessman-showing-corporate-graphs-presentation-using-tablet-working-company-ideas-100kb.jpg",
+              alt: "Presenter holding a tablet showing bar and pie charts to colleagues",
             },
             {
               href: "/services/content-marketing",
               title: "Content Marketing",
               desc: "AI-assisted content strategies that build local authority and drive qualified traffic to your Houston or Sugar Land business.",
               image: "https://images.pexels.com/photos/97080/pexels-photo-97080.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+              alt: "Abstract blue and green pie chart data visualization graphic",
             },
           ].map((link, idx) => (
             <ClipRow key={link.title} index={idx} className="list-none border-t border-[rgba(124,58,237,0.15)] last:border-b">
@@ -886,7 +889,7 @@ export default function LocalSEOClient({ faqData }: Props) {
                     >
                       <img
                         src={link.image}
-                        alt={`Team reviewing ${link.title} performance data`}
+                        alt={link.alt}
                         className="w-full h-full object-cover"
                         style={{ borderRadius: "inherit" }}
                       />

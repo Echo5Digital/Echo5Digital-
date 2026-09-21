@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import GradientBtn from "@/components/ui/GradientBtn";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 const INDUSTRIES = [
@@ -75,9 +75,17 @@ export default function IndustriesWeGrow() {
             <span className="ir-fade-text">{activeName}</span>.
           </h1>
           <p className="ir-sub ir-fade-text">{INDUSTRY_CONTENT[activeName]}</p>
-          <GradientBtn href="/contact">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-7 py-3 mt-6 rounded-full text-sm font-semibold text-white transition-all duration-200 hover:brightness-110 hover:scale-[1.03]"
+            style={{
+              background: "linear-gradient(135deg, #7C3AED, #A855F7)",
+              boxShadow: "0 0 18px rgba(124,58,237,0.4)",
+              fontFamily: "Space Grotesk, sans-serif",
+            }}
+          >
             Contact Us <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
-          </GradientBtn>
+          </Link>
         </div>
 
         <div className="ir-arc-stage">
@@ -141,7 +149,6 @@ export default function IndustriesWeGrow() {
         .ir-h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 900; line-height: 1.04; color: #14141a; margin: 0; letter-spacing: -0.02em; font-family: "Space Grotesk", sans-serif; }
         .ir-sub { margin-top: 16px; font-size: 16px; color: #6b6b6b; line-height: 1.65; max-width: 380px; }
         .ir-fade-text { transition: opacity 0.3s ease; }
-        .ir-content .gbtn-wrapper { margin-top: 26px; }
 
         .ir-arc-stage { position: relative; width: 100%; aspect-ratio: 924 / 683; z-index: 1; overflow: visible; }
 

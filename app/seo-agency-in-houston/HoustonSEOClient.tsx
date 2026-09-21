@@ -118,6 +118,7 @@ const relatedServices = [
     description: "Engage your audience and grow your brand",
     href: "/services/social-media-marketing",
     imageSrc: "/focused-businessman-showing-corporate-graphs-presentation-using-tablet-working-company-ideas-100kb.jpg",
+    imageAlt: "Presenter holding a tablet with colorful graphs to seated colleagues",
     icon: Megaphone,
   },
   {
@@ -126,6 +127,7 @@ const relatedServices = [
     description: "Maximize your ROI with efficient PPC solutions",
     href: "/services/google-ads",
     imageSrc: "/people-office-analyzing-checking-finance-graphs-100kb.jpg",
+    imageAlt: "Office worker reviewing a finance infographic dashboard on a monitor",
     icon: MousePointerClick,
   },
 ];
@@ -666,7 +668,7 @@ export default function HoustonSEOClient({ faqItems }: HoustonSEOClientProps) {
                 <div className="relative w-full h-48 overflow-hidden">
                   <img
                     src={service.imageSrc}
-                    alt={service.title}
+                    alt={service.imageAlt}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div

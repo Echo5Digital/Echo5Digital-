@@ -119,7 +119,7 @@ export default function ArticleClient() {
           <div className="not-prose rounded-2xl overflow-hidden mt-10 mb-6" style={{ border: "1px solid rgba(124,58,237,0.2)" }}>
             <img
               src="/7-Effective-Ways-to-Boost-Your-Visibility-in-ChatGPT-Responses-r8qfbvcv4ab2hkvyv1x4ygy1yxbxihi4gpt2787tl4.webp"
-              alt="Infographic listing effective ways to boost visibility in ChatGPT responses"
+              alt="Person tapping a ChatGPT screen beside SEO ranking charts and a checklist"
               className="w-full h-auto object-cover"
             />
           </div>
@@ -230,7 +230,7 @@ export default function ArticleClient() {
           <div className="not-prose rounded-2xl overflow-hidden mt-12 mb-8" style={{ border: "1px solid rgba(124,58,237,0.2)" }}>
             <img
               src="/7-ways-to-boost-your-visibilty-in-chatgpt-r8qhp59r571js10qwwwo5y9i3d0pty1gusgvkxs13c.webp"
-              alt="Infographic listing effective ways to boost visibility in ChatGPT responses"
+              alt="Glowing human brain connected to a digital circuit network, symbolizing AI-driven search"
               className="w-full h-auto object-cover"
             />
           </div>

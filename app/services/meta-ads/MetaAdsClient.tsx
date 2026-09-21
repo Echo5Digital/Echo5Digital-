@@ -924,24 +924,28 @@ export default function MetaAdsClient({ faqData }: Props) {
               title: "Google Ads",
               desc: "Capture high-intent search traffic alongside your Meta social campaigns for full-funnel paid media coverage.",
               image: "https://images.pexels.com/photos/6476580/pexels-photo-6476580.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+              alt: "Office workspace with computer monitors displaying charts and graphs",
             },
             {
               href: "/services/social-media-marketing",
               title: "Social Media Marketing",
               desc: "Complement paid Meta Ads with organic social strategy to build community and sustain long-term brand awareness.",
               image: "https://images.pexels.com/photos/97080/pexels-photo-97080.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+              alt: "Abstract blue and green pie chart data visualization graphic",
             },
             {
               href: "/services/content-marketing",
               title: "Content Marketing",
               desc: "Fuel your Meta Ads with high-quality content that educates, attracts, and converts your target audience.",
               image: "https://images.pexels.com/photos/942331/pexels-photo-942331.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+              alt: "Notebook with handwritten SEO notes resting on a keyboard",
             },
             {
               href: "/ai-marketing-employee",
               title: "AI Marketing Employee",
               desc: "Our agentic AI marketing system works alongside your team to automate tasks, optimize campaigns, and accelerate growth.",
               image: "https://images.pexels.com/photos/8438979/pexels-photo-8438979.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+              alt: "Woman interacting with a robotic arm holding a red flower",
             },
           ].map((link, idx) => (
             <DiagonalWipe
@@ -963,7 +967,7 @@ export default function MetaAdsClient({ faqData }: Props) {
                   >
                     <img
                       src={link.image}
-                      alt={`Team reviewing ${link.title} performance data`}
+                      alt={link.alt}
                       className="w-full h-full object-cover"
                     />
                     {/* Diagonal light sweep on hover (desktop) / tap (mobile) */}

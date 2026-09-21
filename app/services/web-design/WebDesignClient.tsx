@@ -106,18 +106,21 @@ const trustSignals = [
     title: "Results-First Design",
     desc: "Every design decision is tied to a business outcome. We don't make sites pretty — we make them profitable.",
     image: "/focused-businessman-showing-corporate-graphs-presentation-using-tablet-working-company-ideas-100kb.jpg",
+    alt: "Presenter holding a tablet showing bar and pie charts to colleagues",
   },
   {
     icon: Shield,
     title: "Built to Last",
     desc: "We build on modern tech stacks that scale with your business — no page-builder lock-in, no technical debt.",
     image: "/modern-equipped-computer-lab-100kb.jpg",
+    alt: "Development team working on laptops with a dashboard displayed on a wall monitor",
   },
   {
     icon: CheckCircle2,
     title: "Transparent Process",
     desc: "Regular check-ins, shared project boards, and zero surprise invoices. You're informed at every stage.",
     image: "/crop-hands-using-laptop-office-80kb.jpg",
+    alt: "Close-up of hands typing on a laptop showing a project data chart",
   },
 ];
 
@@ -126,7 +129,7 @@ function TrustSignalsList() {
 
   return (
     <div style={{ borderTop: "1px solid rgba(124,58,237,0.25)" }}>
-      {trustSignals.map(({ icon: Icon, title, desc, image }, i) => {
+      {trustSignals.map(({ icon: Icon, title, desc, image, alt }, i) => {
         const isActive = activeIndex === i;
         return (
           <motion.div
@@ -142,7 +145,7 @@ function TrustSignalsList() {
           >
             {/* Thumbnail — always visible on mobile, expands into the row on hover on desktop */}
             <div className="sm:hidden overflow-hidden rounded-2xl flex-shrink-0 w-full h-48" style={{ border: "1px solid rgba(168,85,247,0.3)" }}>
-              <img src={image} alt={title} className="w-full h-full object-cover" />
+              <img src={image} alt={alt} className="w-full h-full object-cover" />
             </div>
             <div
               className="hidden sm:block overflow-hidden rounded-2xl flex-shrink-0 transition-all duration-500 ease-out h-36 md:h-40"
@@ -154,7 +157,7 @@ function TrustSignalsList() {
             >
               <img
                 src={image}
-                alt={title}
+                alt={alt}
                 className="w-[220px] h-full object-cover"
                 style={{ transform: isActive ? "scale(1)" : "scale(1.15)", transition: "transform 0.6s ease-out" }}
               />

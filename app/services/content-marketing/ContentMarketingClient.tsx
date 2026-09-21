@@ -159,9 +159,9 @@ export default function ContentMarketingClient({ faqData }: Props) {
             border: "1px solid rgba(124,58,237,0.15)",
           }}
         >
-          <div className="flex items-start gap-4">
+          <div className="flex flex-col sm:flex-row items-start gap-4">
             <div
-              className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center mt-1"
+              className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center sm:mt-1"
               style={{
                 background: "linear-gradient(135deg, #7C3AED, #A855F7)",
                 boxShadow: "0 0 16px rgba(124,58,237,0.5)",
@@ -169,7 +169,7 @@ export default function ContentMarketingClient({ faqData }: Props) {
             >
               <Zap size={18} color="#fff" />
             </div>
-            <div>
+            <div className="w-full">
               <p
                 className="text-xs font-semibold uppercase tracking-widest mb-2"
                 style={{ color: "#6B4EF0", fontFamily: "Inter, sans-serif" }}
@@ -209,10 +209,12 @@ export default function ContentMarketingClient({ faqData }: Props) {
             { icon: <CheckCircle2 size={20} />, label: "SEO + AEO Certified Strategy" },
             { icon: <Users size={20} />, label: "Human Editorial Oversight" },
             { icon: <BarChart3 size={20} />, label: "Data-Driven Content Performance" },
-          ].map((item, i) => (
+          ].map((item, i, arr) => (
             <div
               key={i}
-              className="flex flex-col items-center text-center gap-2 p-4 rounded-xl"
+              className={`flex flex-col items-center text-center gap-2 p-4 rounded-xl ${
+                i === arr.length - 1 ? "col-span-2 sm:col-span-1 max-w-[calc(50%-0.5rem)] sm:max-w-none mx-auto sm:mx-0" : ""
+              }`}
               style={{
                 background: "rgba(124,58,237,0.08)",
                 border: "1px solid rgba(124,58,237,0.2)",
@@ -1037,24 +1039,28 @@ export default function ContentMarketingClient({ faqData }: Props) {
               title: "SEO & AEO",
               desc: "Rank in traditional search and AI answer engines with a full-spectrum SEO and AEO strategy.",
               image: "/SEO.png",
+              alt: "3D SEO badge icon with an upward chart arrow and magnifying glass",
             },
             {
               href: "/services/social-media-marketing",
               title: "Social Media Marketing",
               desc: "Amplify your content's reach with strategic social media distribution and community building.",
               image: "/Social Media.png",
+              alt: "3D icons of Facebook, Instagram, and LinkedIn logos around a smartphone",
             },
             {
               href: "/services/web-design",
               title: "Web Design",
               desc: "Give your content the high-converting, SEO-friendly home it deserves with a custom website.",
               image: "/dash.jpg",
+              alt: "Dashboard interface showing balance, earnings, and investment growth chart",
             },
             {
               href: "/ai-marketing-employee",
               title: "AI Marketing Employee",
               desc: "Deploy a full-time AI marketing employee that creates, publishes, and optimizes content autonomously.",
               image: "/airobo.png",
+              alt: "Friendly robot mascot giving a thumbs up while working at a laptop",
             },
           ].map((link, idx) => (
             <DiagonalWipe
@@ -1076,7 +1082,7 @@ export default function ContentMarketingClient({ faqData }: Props) {
                   >
                     <img
                       src={link.image}
-                      alt={`Team reviewing ${link.title} performance data`}
+                      alt={link.alt}
                       className="w-full h-full object-cover"
                     />
                     {/* Diagonal light sweep on hover (desktop) / tap (mobile) */}

@@ -78,6 +78,7 @@ const mediaTypes = [
     title: "Production Companies",
     desc: "Production companies need visibility for their catalog of films, shows, and projects. We optimize for the searches decision-makers and audiences use to discover and evaluate your work.",
     image: "https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Film crew operating a camera on a production set",
   },
   {
     number: "02",
@@ -85,6 +86,7 @@ const mediaTypes = [
     title: "TV & Streaming Networks",
     desc: "TV and streaming brands compete for attention in a crowded content landscape. We focus on content optimization and technical SEO to keep your shows and channels discoverable.",
     image: "https://images.pexels.com/photos/3062541/pexels-photo-3062541.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Television studio control room with streaming broadcast monitors",
   },
   {
     number: "03",
@@ -92,6 +94,7 @@ const mediaTypes = [
     title: "Podcast Networks",
     desc: "Podcast networks rely on discoverability across search and platforms. We optimize show notes, episode pages, and site structure to help new listeners find your content.",
     image: "https://images.pexels.com/photos/3945313/pexels-photo-3945313.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Podcast host recording an episode with a microphone",
   },
   {
     number: "04",
@@ -99,6 +102,7 @@ const mediaTypes = [
     title: "Radio & Broadcast Media",
     desc: "Radio and broadcast outlets depend heavily on local audiences. We prioritize local SEO and citation building to keep your station top of mind in your market.",
     image: "https://images.pexels.com/photos/3945317/pexels-photo-3945317.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Radio host speaking into a microphone in a broadcast booth",
   },
   {
     number: "05",
@@ -106,6 +110,7 @@ const mediaTypes = [
     title: "Music & Artist Brands",
     desc: "Artists and music brands need to rank for their name, releases, and tour dates. We build SEO strategies around releases, press coverage, and fan search behavior.",
     image: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Musician performing on stage with concert lighting",
   },
   {
     number: "06",
@@ -113,6 +118,7 @@ const mediaTypes = [
     title: "Media Agencies & Publishers",
     desc: "Media agencies and publishers compete on speed and authority. We combine technical SEO and link building to strengthen rankings for fast-moving editorial content.",
     image: "https://images.pexels.com/photos/3062545/pexels-photo-3062545.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Editorial team reviewing publication layouts at a media agency",
   },
   {
     number: "07",
@@ -120,6 +126,7 @@ const mediaTypes = [
     title: "Entertainment Venues & Events",
     desc: "Venues and event organizers need to convert local search interest into ticket sales. We optimize event pages and local listings to drive foot traffic and bookings.",
     image: "https://images.pexels.com/photos/258865/pexels-photo-258865.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Crowd of attendees at a live entertainment venue event",
   },
   {
     number: "08",
@@ -127,6 +134,7 @@ const mediaTypes = [
     title: "Content Creators",
     desc: "Independent content creators need to stand out across search and social. We tailor keyword and content strategies to your niche audience and growth goals.",
     image: "https://images.pexels.com/photos/3945318/pexels-photo-3945318.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200",
+    alt: "Independent content creator filming with a camera and ring light",
   },
 ];
 
@@ -166,16 +174,19 @@ const relatedIndustries = [
     label: "Real Estate SEO",
     href: "/industries/real-estate",
     image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Real estate agent showing a property to clients",
   },
   {
     label: "Law Firm SEO",
     href: "/industries/law-firm-marketing",
     image: "https://images.pexels.com/photos/5668772/pexels-photo-5668772.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Law firm team meeting with a client in an office",
   },
   {
     label: "Education SEO",
     href: "/industries/education",
     image: "https://images.pexels.com/photos/5212320/pexels-photo-5212320.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    alt: "Teacher in front of a classroom whiteboard with students",
   },
 ];
 
@@ -210,7 +221,7 @@ function StickyScrollSection() {
                   <Image
                     key={item.title}
                     src={item.image}
-                    alt={item.title}
+                    alt={item.alt}
                     fill
                     sizes="50vw"
                     className="object-cover transition-opacity duration-700"
@@ -238,7 +249,7 @@ function StickyScrollSection() {
               return (
                 <ScrollTrackedCard key={item.title} index={i} onActive={setActiveIndex}>
                   <div className="lg:hidden relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-5" style={{ border: "1px solid rgba(124,58,237,0.25)" }}>
-                    <Image src={item.image} alt={item.title} fill sizes="100vw" className="object-cover" />
+                    <Image src={item.image} alt={item.alt} fill sizes="100vw" className="object-cover" />
                   </div>
                   <div
                     className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
@@ -661,7 +672,7 @@ export default function EntertainmentMediaClient({ faqData }: Props) {
                 <Image
                   key={industry.label}
                   src={industry.image}
-                  alt={industry.label}
+                  alt={industry.alt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 480px"
                   className="object-cover transition-opacity duration-500"

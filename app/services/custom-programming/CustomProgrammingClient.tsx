@@ -217,18 +217,21 @@ const ecosystemItems = [
     title: "AI Marketing Employee",
     desc: "Custom data pipelines and API connectors feed directly into the AI Marketing Employee for intelligent, automated campaign management.",
     image: "/user-people-network-circuit-board-link-connection-technology-100kb.jpg",
+    alt: "Abstract network diagram connecting linked user profile icons",
   },
   {
     icon: Database,
     title: "CRM Automation",
     desc: "Bespoke middleware and webhooks extend CRM functionality, triggering automations and syncing data across your entire sales stack.",
     image: "/3d-graph-computer-illustration-100kb.jpg",
+    alt: "Illustrated hand touching floating holographic bar and line charts",
   },
   {
     icon: LayoutDashboard,
     title: "Reporting Dashboards",
     desc: "Custom-built data aggregation layers power the Echo5 reporting dashboard, giving you unified visibility across every marketing channel.",
     image: "/dash.jpg",
+    alt: "Dashboard interface showing balance, earnings, and investment growth chart",
   },
 ];
 
@@ -237,7 +240,7 @@ function EcosystemList() {
 
   return (
     <div style={{ borderTop: "1px solid rgba(124,58,237,0.25)" }}>
-      {ecosystemItems.map(({ icon: Icon, title, desc, image }, i) => {
+      {ecosystemItems.map(({ icon: Icon, title, desc, image, alt }, i) => {
         const isActive = activeIndex === i;
         return (
           <motion.div
@@ -253,7 +256,7 @@ function EcosystemList() {
           >
             {/* Thumbnail — always visible on mobile, expands into the row on hover on desktop */}
             <div className="sm:hidden overflow-hidden rounded-2xl flex-shrink-0 w-full h-48" style={{ border: "1px solid rgba(168,85,247,0.3)" }}>
-              <img src={image} alt={title} className="w-full h-full object-cover" />
+              <img src={image} alt={alt} className="w-full h-full object-cover" />
             </div>
             <div
               className="hidden sm:block overflow-hidden rounded-2xl flex-shrink-0 transition-all duration-500 ease-out h-36 md:h-40"
@@ -265,7 +268,7 @@ function EcosystemList() {
             >
               <img
                 src={image}
-                alt={title}
+                alt={alt}
                 className="w-[220px] h-full object-cover"
                 style={{ transform: isActive ? "scale(1)" : "scale(1.15)", transition: "transform 0.6s ease-out" }}
               />
