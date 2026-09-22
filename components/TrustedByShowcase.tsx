@@ -311,20 +311,17 @@ export default function TrustedByShowcase() {
                   ) : (
                     // This badge is fully opaque with no alpha channel, so it can't be
                     // silhouetted like the other (transparent, monochrome-friendly)
-                    // logos without losing all its detail. It's shown at real size on
-                    // a small white rounded backing instead, so the crest stays
-                    // recognizable while still reading as a compact mark in the row.
+                    // logos without losing all its detail. It's shown at real size,
+                    // no backing plate, so its own circular border reads directly
+                    // against the section background instead of inside a white box.
                     <div
                       style={{
                         height: 36,
                         width: 36,
-                        borderRadius: 8,
-                        backgroundColor: "#fff",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         flexShrink: 0,
-                        padding: 2,
                       }}
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -335,7 +332,7 @@ export default function TrustedByShowcase() {
                           height: "100%",
                           width: "100%",
                           objectFit: "contain",
-                          borderRadius: 6,
+                          borderRadius: "50%",
                         }}
                       />
                     </div>
