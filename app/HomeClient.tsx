@@ -8,6 +8,7 @@ import ContactForm from "@/components/ContactForm";
 import TeamSection from "@/components/TeamSection";
 import IndustriesWeGrow from "@/components/IndustriesWeGrow";
 import TrustedByShowcase from "@/components/TrustedByShowcase";
+import { LavenderField, MagnetPop } from "@/components/SolutionsFX";
 import { RevealMask, BlurIn, ProcessStepsRail, ProcessStepCard, DiagonalWipe, SplitClash, DropInRow, TiltCard, WordStagger } from "@/components/ScrollFX";
 import {
   Bot,
@@ -1464,70 +1465,109 @@ export default function HomeClient({ faqData }: HomeClientProps) {
         </Section>
 
         {/* ── FINAL CTA / LEAD FORM ────────────────────────────────────── */}
-        <Section background="transparent" spacing="xl" maxWidth="3xl" withDivider className="!bg-[#EEECFB]">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+        <Section
+          background="transparent"
+          spacing="lg"
+          maxWidth="xl"
+          withDivider
+          className="relative !bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F5FD_45%,#EEECFB_100%)]"
+        >
+          <LavenderField variant="b" />
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left: copy */}
-            <div className="flex-1 lg:pt-6">
-              <div
-                className="inline-flex items-center gap-2  rounded-full text-xs font-semibold mb-5"
-                style={{
-                  color: "#6B4EF0",
-                }}
-              >
-                Let&apos;s Grow Together
-              </div>
-              <h2
-                className="font-black leading-[1.04] tracking-tight mb-4"
-                style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#15172B" }}
-              >
-                Ready to Put AI
-                <br />
-                <span
+            <div className="flex flex-col gap-6">
+              <BlurIn>
+                <div
+                  className="inline-flex items-center gap-2 self-start px-4 py-2 rounded-full text-sm font-medium"
                   style={{
-                    background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
+                    background: "rgba(107,78,240,0.1)",
+                    border: "1px solid rgba(107,78,240,0.3)",
+                    color: "#6B4EF0",
+                    fontFamily: "Inter, sans-serif",
                   }}
                 >
-                  to Work for You?
-                </span>
-              </h2>
-              <p className="text-base leading-relaxed mb-8" style={{ color: "#5B5F73" }}>
-                Book a free strategy demo and discover exactly how Echo5 Digital&apos;s AI Marketing
-                Employee can grow your business, no commitment required.
-              </p>
-              <div className="space-y-4 mb-8">
+                  <Zap size={14} />
+                  Let&apos;s Grow Together
+                </div>
+              </BlurIn>
+
+              <BlurIn delay={0.1}>
+                <h2
+                  className="text-3xl md:text-4xl font-bold leading-tight"
+                  style={{
+                    fontFamily: "Space Grotesk, sans-serif",
+                    color: "#15172B",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  <WordStagger text="Ready to Put AI to Work for You?" />
+                </h2>
+              </BlurIn>
+
+              <BlurIn delay={0.2}>
+                <p
+                  className="text-base leading-relaxed"
+                  style={{
+                    color: "#5B5F73",
+                    fontFamily: "Inter, sans-serif",
+                  }}
+                >
+                  Book a free strategy demo and discover exactly how Echo5 Digital&apos;s AI Marketing
+                  Employee can grow your business, no commitment required.
+                </p>
+              </BlurIn>
+
+              <div className="flex flex-col gap-3 pt-2">
                 {[
-                  "Free 30-minute strategy demo",
-                  "No contracts, cancel anytime",
-                  "Results-focused, we win when you win",
-                ].map((pt) => (
-                  <div key={pt} className="flex items-center gap-3">
-                    <CheckCircle size={16} style={{ color: "#6B4EF0", flexShrink: 0 }} />
-                    <span className="text-sm" style={{ color: "#15172B" }}>
-                      {pt}
-                    </span>
-                  </div>
+                  { icon: Mail, label: "sales@echo5digital.com", href: "mailto:sales@echo5digital.com" },
+                  { icon: Phone, label: "713-489-7004", href: "tel:+17134897004" },
+                  { icon: MapPin, label: "Houston / Sugar Land, Texas, USA", href: null },
+                ].map((item, i) => (
+                  <MagnetPop key={item.label} index={i}>
+                    <div
+                      className="flex items-center gap-3 p-3 rounded-xl"
+                      style={{ background: "rgba(255,255,255,0.6)", border: "1px solid rgba(124,58,237,0.1)" }}
+                    >
+                      <div
+                        className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                        style={{ background: "rgba(107,78,240,0.12)", border: "1px solid rgba(124,58,237,0.25)" }}
+                      >
+                        <item.icon size={15} style={{ color: "#6B4EF0" }} />
+                      </div>
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          className="text-sm transition-colors hover:text-[#6B4EF0]"
+                          style={{ color: "#374151", fontFamily: "Inter, sans-serif" }}
+                        >
+                          {item.label}
+                        </a>
+                      ) : (
+                        <span className="text-sm" style={{ color: "#374151", fontFamily: "Inter, sans-serif" }}>
+                          {item.label}
+                        </span>
+                      )}
+                    </div>
+                  </MagnetPop>
                 ))}
               </div>
-              {/* NAP */}
-              <div className="space-y-2 text-sm">
-                <p style={{ color: "#5B5F73" }}>
-                  Or reach us directly:
-                </p>
-                {/* Verified phone */}
-                <a href="tel:+17134897004" className="block" style={{ color: "#4F32D9" }}>
-                  📞 713-489-7004
-                </a>
-                <a href="mailto:sales@echo5digital.com" className="block" style={{ color: "#4F32D9" }}>
-                  ✉️ sales@echo5digital.com
-                </a>
-              </div>
+
+              <a
+                href="#book-demo"
+                className="inline-flex items-center justify-center gap-2 self-start px-8 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:brightness-110 active:scale-95"
+                style={{
+                  background: "linear-gradient(135deg, #6B4EF0, #8B5CF6)",
+                  boxShadow:
+                    "0 0 24px rgba(107,78,240,0.4), 0 4px 14px rgba(91,63,163,0.2)",
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                Book a Free Strategy Call
+              </a>
             </div>
 
-            {/* Right: form */}
-            <div className="flex-1 w-full">
-              {/* Hidden UTM fields would be wired server-side; ContactForm handles the visible form */}
+            {/* Right: contact form */}
+            <div id="book-demo" className="scroll-mt-24">
               <ContactForm
                 heading="Book Your Free Demo"
                 subheading="Tell us about your business and goals. We'll reach out within 24 hours."

@@ -48,7 +48,6 @@ const defaultLinks: FooterLink[] = [
   { label: "Contact", route: "/contact" },
   { label: "Privacy Policy", route: "/privacy-policy" },
   { label: "Terms of Service", route: "/terms-of-service" },
-  { label: "Sitemap", route: "/sitemap" },
 ];
 
 const columnConfig = [
@@ -70,7 +69,7 @@ const columnConfig = [
   },
   {
     heading: "Legal",
-    labels: ["Privacy Policy", "Terms of Service", "Sitemap"],
+    labels: ["Privacy Policy", "Terms of Service"],
   },
 ];
 
@@ -335,7 +334,7 @@ export default function Footer({
             . All rights reserved.
           </p>
           <div className="flex items-center gap-5">
-            {["Privacy Policy", "Terms of Service", "Sitemap"].map((label) => {
+            {["Privacy Policy", "Terms of Service"].map((label) => {
               const route = linkMap.get(label);
               if (!route) return null;
               return (
