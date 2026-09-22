@@ -29,11 +29,16 @@ type Particle = {
 };
 
 // ─── client logos for the trust marquee ──────────────────────────────────────
+// `mono: true` logos are transparent-background wordmarks recolored solid white
+// via CSS mask-image. The VIP GTS logo is an opaque full-color badge — alpha
+// masking it collapses the whole badge into a blank white circle, so it's
+// rendered as-is (with a desaturating filter to keep it visually in line with
+// the monochrome marquee) instead.
 const LOGOS = [
-  { src: "/trust/bb_logo_.png", alt: "BB Logo" },
-  { src: "/trust/logo_foster_care-1.png", alt: "Foster Care Logo" },
-  { src: "/trust/sr_logo.png", alt: "SR Logo" },
-  { src: "/trust/vipgts-connection-logo.png", alt: "VIP GTS Connection Logo" },
+  { src: "/trust/bb_logo_.png", alt: "BB Logo", mono: true },
+  { src: "/trust/logo_foster_care-1.png", alt: "Foster Care Logo", mono: true },
+  { src: "/trust/sr_logo.png", alt: "SR Logo", mono: true },
+  { src: "/trust/vipgts-connection-logo.png", alt: "VIP GTS Connection Logo", mono: false },
 ];
 const ALL_LOGOS = [...LOGOS, ...LOGOS, ...LOGOS];
 
@@ -285,23 +290,56 @@ export default function TrustedByShowcase() {
             >
               {ALL_LOGOS.map((logo, i) => (
                 <div key={i} style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", height: 48, padding: "0 16px" }}>
-                  <div
-                    role="img"
-                    aria-label={logo.alt}
-                    style={{
-                      height: 40,
-                      width: 110,
-                      backgroundColor: "#fff",
-                      WebkitMaskImage: `url(${logo.src})`,
-                      maskImage: `url(${logo.src})`,
-                      WebkitMaskRepeat: "no-repeat",
-                      maskRepeat: "no-repeat",
-                      WebkitMaskPosition: "center",
-                      maskPosition: "center",
-                      WebkitMaskSize: "contain",
-                      maskSize: "contain",
-                    }}
-                  />
+                  {logo.mono ? (
+                    <div
+                      role="img"
+                      aria-label={logo.alt}
+                      style={{
+                        height: 40,
+                        width: 110,
+                        backgroundColor: "#fff",
+                        WebkitMaskImage: `url(${logo.src})`,
+                        maskImage: `url(${logo.src})`,
+                        WebkitMaskRepeat: "no-repeat",
+                        maskRepeat: "no-repeat",
+                        WebkitMaskPosition: "center",
+                        maskPosition: "center",
+                        WebkitMaskSize: "contain",
+                        maskSize: "contain",
+                      }}
+                    />
+                  ) : (
+                    // This badge is fully opaque with no alpha channel, so it can't be
+                    // silhouetted like the other (transparent, monochrome-friendly)
+                    // logos without losing all its detail. It's shown at real size on
+                    // a small white rounded backing instead, so the crest stays
+                    // recognizable while still reading as a compact mark in the row.
+                    <div
+                      style={{
+                        height: 36,
+                        width: 36,
+                        borderRadius: 8,
+                        backgroundColor: "#fff",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                        padding: 2,
+                      }}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={logo.src}
+                        alt={logo.alt}
+                        style={{
+                          height: "100%",
+                          width: "100%",
+                          objectFit: "contain",
+                          borderRadius: 6,
+                        }}
+                      />
+                    </div>
+                  )}
                 </div>
               ))}
             </motion.div>

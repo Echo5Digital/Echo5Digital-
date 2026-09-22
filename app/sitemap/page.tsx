@@ -3,7 +3,6 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import type { LucideProps } from "lucide-react";
 import {
   Home,
@@ -30,11 +29,6 @@ export const metadata: Metadata = {
     canonical: "/sitemap",
   },
 };
-
-const breadcrumbItems = [
-  { label: "Home", href: "/" },
-  { label: "Sitemap", href: "/sitemap" },
-];
 
 interface SitemapLink {
   label: string;
@@ -134,12 +128,12 @@ const legalPages: SitemapLink[] = [
   { label: "Sitemap", href: "/sitemap", description: "Complete list of all pages on Echo5 Digital" },
 ];
 
-function SitemapLinkItem({ link }: { link: SitemapLink }) {
+function SitemapLinkItem({ link, light = false }: { link: SitemapLink; light?: boolean }) {
   return (
     <li>
       <Link
         href={link.href}
-        className="sitemap-link-item group flex items-start gap-3 p-3 rounded-xl transition-all duration-200"
+        className={`${light ? "sitemap-link-item-light" : "sitemap-link-item"} group flex items-start gap-3 p-3 rounded-xl transition-all duration-200`}
         style={{
           border: "1px solid transparent",
         }}
@@ -147,20 +141,20 @@ function SitemapLinkItem({ link }: { link: SitemapLink }) {
         <ChevronRight
           size={15}
           className="mt-0.5 flex-shrink-0 transition-colors duration-200"
-          style={{ color: "#7C3AED" }}
+          style={{ color: light ? "#7C3AED" : "#7C3AED" }}
           aria-hidden="true"
         />
         <span className="flex flex-col gap-0.5">
           <span
             className="text-sm font-medium transition-colors duration-200 group-hover:text-purple-400"
-            style={{ color: "#E5E7EB", fontFamily: "Inter, sans-serif" }}
+            style={{ color: light ? "#1E1B2E" : "#E5E7EB", fontFamily: "Inter, sans-serif" }}
           >
             {link.label}
           </span>
           {link.description && (
             <span
               className="text-xs leading-relaxed"
-              style={{ color: "rgba(229,231,235,0.45)", fontFamily: "Inter, sans-serif" }}
+              style={{ color: light ? "rgba(30,27,46,0.55)" : "rgba(229,231,235,0.45)", fontFamily: "Inter, sans-serif" }}
             >
               {link.description}
             </span>
@@ -175,26 +169,30 @@ function SitemapCard({
   title,
   icon: Icon,
   links,
+  light = false,
 }: {
   title: string;
   icon: LucideIcon;
   links: SitemapLink[];
   accentColor?: string;
+  light?: boolean;
 }) {
   return (
     <div
-      className="flex flex-col rounded-2xl overflow-hidden"
+      className="flex flex-col h-full rounded-2xl overflow-hidden"
       style={{
-        backgroundColor: "rgba(255,255,255,0.03)",
-        border: "1px solid rgba(124,58,237,0.2)",
+        backgroundColor: light ? "rgba(124,58,237,0.04)" : "rgba(255,255,255,0.03)",
+        border: light ? "1px solid rgba(124,58,237,0.15)" : "1px solid rgba(124,58,237,0.2)",
       }}
     >
       {/* Card header */}
       <div
         className="flex items-center gap-3 px-5 py-4"
         style={{
-          borderBottom: "1px solid rgba(124,58,237,0.15)",
-          background: "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.06) 100%)",
+          borderBottom: light ? "1px solid rgba(124,58,237,0.12)" : "1px solid rgba(124,58,237,0.15)",
+          background: light
+            ? "linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(168,85,247,0.05) 100%)"
+            : "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.06) 100%)",
         }}
       >
         <div
@@ -204,19 +202,19 @@ function SitemapCard({
             border: "1px solid rgba(168,85,247,0.3)",
           }}
         >
-          <Icon size={16} style={{ color: "#A855F7" }} aria-hidden="true" />
+          <Icon size={16} style={{ color: light ? "#7C3AED" : "#A855F7" }} aria-hidden="true" />
         </div>
         <h3
           className="text-sm font-semibold uppercase tracking-wider"
-          style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+          style={{ fontFamily: "Space Grotesk, sans-serif", color: light ? "#1E1B2E" : "#E5E7EB" }}
         >
           {title}
         </h3>
         <span
           className="ml-auto text-xs font-medium px-2 py-0.5 rounded-full"
           style={{
-            backgroundColor: "rgba(124,58,237,0.2)",
-            color: "#A855F7",
+            backgroundColor: light ? "rgba(124,58,237,0.14)" : "rgba(124,58,237,0.2)",
+            color: light ? "#6D28D9" : "#A855F7",
             border: "1px solid rgba(168,85,247,0.25)",
           }}
         >
@@ -224,10 +222,10 @@ function SitemapCard({
         </span>
       </div>
       {/* Link list */}
-      <nav aria-label={`${title} pages`}>
+      <nav aria-label={`${title} pages`} className="flex-1">
         <ul className="px-2 py-2 flex flex-col gap-0.5">
           {links.map((link) => (
-            <SitemapLinkItem key={link.href} link={link} />
+            <SitemapLinkItem key={link.href} link={link} light={light} />
           ))}
         </ul>
       </nav>
@@ -279,6 +277,11 @@ export default function SitemapPage() {
           border-color: rgba(168,85,247,0.45) !important;
           box-shadow: 0 4px 20px rgba(124,58,237,0.25);
         }
+        .sitemap-link-item-light:hover {
+          background-color: rgba(124,58,237,0.08) !important;
+          border-color: rgba(124,58,237,0.3) !important;
+          box-shadow: 0 4px 20px rgba(124,58,237,0.12);
+        }
         .sitemap-cta-link:hover {
           filter: brightness(1.15);
           box-shadow: 0 0 32px rgba(124,58,237,0.75), 0 6px 20px rgba(124,58,237,0.4);
@@ -292,11 +295,6 @@ export default function SitemapPage() {
       <Header />
 
       <main style={{ backgroundColor: "#0A0F1E", minHeight: "100vh" }}>
-        {/* Breadcrumbs */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-          <Breadcrumbs items={breadcrumbItems} />
-        </div>
-
         {/* Page Header */}
         <Section background="gradient" spacing="md" maxWidth="xl" centered>
           {/* Decorative glow */}
@@ -390,7 +388,7 @@ export default function SitemapPage() {
         </Section>
 
         {/* Main Pages */}
-        <Section background="default" spacing="sm" maxWidth="xl" withDivider>
+        <Section background="lavender" spacing="sm" maxWidth="xl" withDivider>
           <div className="mb-8 flex items-center gap-3">
             <div
               className="flex items-center justify-center w-10 h-10 rounded-xl flex-shrink-0"
@@ -400,45 +398,45 @@ export default function SitemapPage() {
                 boxShadow: "0 0 20px rgba(124,58,237,0.25)",
               }}
             >
-              <Home size={18} style={{ color: "#A855F7" }} aria-hidden="true" />
+              <Home size={18} style={{ color: "#7C3AED" }} aria-hidden="true" />
             </div>
             <div>
               <h2
                 className="text-xl sm:text-2xl font-bold"
-                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1E1B2E" }}
               >
                 Main Pages
               </h2>
-              <p className="text-sm" style={{ color: "rgba(229,231,235,0.45)", fontFamily: "Inter, sans-serif" }}>
+              <p className="text-sm" style={{ color: "rgba(30,27,46,0.55)", fontFamily: "Inter, sans-serif" }}>
                 Core navigation pages for Echo5 Digital
               </p>
             </div>
           </div>
 
           <nav aria-label="Main pages">
-            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 items-stretch">
               {mainPages.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} className="flex">
                   <Link
                     href={link.href}
-                    className="sitemap-link-item group flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all duration-200"
+                    className="sitemap-link-item-light group flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all duration-200 w-full"
                     style={{
-                      backgroundColor: "rgba(255,255,255,0.03)",
-                      border: "1px solid rgba(124,58,237,0.2)",
+                      backgroundColor: "rgba(124,58,237,0.04)",
+                      border: "1px solid rgba(124,58,237,0.15)",
                     }}
                   >
                     <ChevronRight size={14} style={{ color: "#7C3AED" }} className="flex-shrink-0" aria-hidden="true" />
                     <div>
                       <div
                         className="text-sm font-semibold transition-colors duration-200 group-hover:text-purple-400"
-                        style={{ fontFamily: "Inter, sans-serif", color: "#E5E7EB" }}
+                        style={{ fontFamily: "Inter, sans-serif", color: "#1E1B2E" }}
                       >
                         {link.label}
                       </div>
                       {link.description && (
                         <div
                           className="text-xs mt-0.5"
-                          style={{ color: "rgba(229,231,235,0.4)", fontFamily: "Inter, sans-serif" }}
+                          style={{ color: "rgba(30,27,46,0.5)", fontFamily: "Inter, sans-serif" }}
                         >
                           {link.description}
                         </div>
@@ -478,12 +476,12 @@ export default function SitemapPage() {
           </div>
 
           <nav aria-label="AI Marketing Employee pages">
-            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 items-stretch">
               {aiMarketingPages.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} className="flex">
                   <Link
                     href={link.href}
-                    className="sitemap-link-item-alt group flex items-start gap-3 px-4 py-4 rounded-xl transition-all duration-200"
+                    className="sitemap-link-item-alt group flex items-start gap-3 px-4 py-4 rounded-xl transition-all duration-200 w-full"
                     style={{
                       backgroundColor: "rgba(124,58,237,0.06)",
                       border: "1px solid rgba(124,58,237,0.2)",
@@ -519,7 +517,7 @@ export default function SitemapPage() {
         </Section>
 
         {/* Services Pages */}
-        <Section background="default" spacing="sm" maxWidth="xl" withDivider>
+        <Section background="lavender" spacing="sm" maxWidth="xl" withDivider>
           <div className="mb-8 flex items-center gap-3">
             <div
               className="flex items-center justify-center w-10 h-10 rounded-xl flex-shrink-0"
@@ -529,22 +527,22 @@ export default function SitemapPage() {
                 boxShadow: "0 0 20px rgba(124,58,237,0.25)",
               }}
             >
-              <Wrench size={18} style={{ color: "#A855F7" }} aria-hidden="true" />
+              <Wrench size={18} style={{ color: "#7C3AED" }} aria-hidden="true" />
             </div>
             <div>
               <h2
                 className="text-xl sm:text-2xl font-bold"
-                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1E1B2E" }}
               >
                 Services Pages
               </h2>
-              <p className="text-sm" style={{ color: "rgba(229,231,235,0.45)", fontFamily: "Inter, sans-serif" }}>
+              <p className="text-sm" style={{ color: "rgba(30,27,46,0.55)", fontFamily: "Inter, sans-serif" }}>
                 Full-service digital marketing, advertising, and development offerings
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
             {serviceGroups.map((group) => {
               const GroupIcon: LucideIcon = iconMap[group.title] ?? Wrench;
               return (
@@ -553,6 +551,7 @@ export default function SitemapPage() {
                   title={group.title}
                   icon={GroupIcon}
                   links={group.links}
+                  light
                 />
               );
             })}
@@ -586,12 +585,12 @@ export default function SitemapPage() {
           </div>
 
           <nav aria-label="Industry pages">
-            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 items-stretch">
               {industryPages.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} className="flex">
                   <Link
                     href={link.href}
-                    className="sitemap-link-item group flex items-start gap-3 px-4 py-3.5 rounded-xl transition-all duration-200"
+                    className="sitemap-link-item group flex items-start gap-3 px-4 py-3.5 rounded-xl transition-all duration-200 w-full"
                     style={{
                       backgroundColor: "rgba(255,255,255,0.03)",
                       border: "1px solid rgba(124,58,237,0.18)",
@@ -622,7 +621,7 @@ export default function SitemapPage() {
         </Section>
 
         {/* Legal and Utility Pages */}
-        <Section background="default" spacing="sm" maxWidth="xl" withDivider>
+        <Section background="lavender" spacing="sm" maxWidth="xl" withDivider>
           <div className="mb-8 flex items-center gap-3">
             <div
               className="flex items-center justify-center w-10 h-10 rounded-xl flex-shrink-0"
@@ -632,43 +631,43 @@ export default function SitemapPage() {
                 boxShadow: "0 0 20px rgba(124,58,237,0.25)",
               }}
             >
-              <Shield size={18} style={{ color: "#A855F7" }} aria-hidden="true" />
+              <Shield size={18} style={{ color: "#7C3AED" }} aria-hidden="true" />
             </div>
             <div>
               <h2
                 className="text-xl sm:text-2xl font-bold"
-                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1E1B2E" }}
               >
                 Legal & Utility Pages
               </h2>
-              <p className="text-sm" style={{ color: "rgba(229,231,235,0.45)", fontFamily: "Inter, sans-serif" }}>
+              <p className="text-sm" style={{ color: "rgba(30,27,46,0.55)", fontFamily: "Inter, sans-serif" }}>
                 Important legal documents and site utilities
               </p>
             </div>
           </div>
 
           <nav aria-label="Legal and utility pages">
-            <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl">
+            <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl items-stretch">
               {legalPages.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} className="flex">
                   <Link
                     href={link.href}
-                    className="sitemap-link-item group flex flex-col gap-2 px-5 py-4 rounded-xl transition-all duration-200"
+                    className="sitemap-link-item-light group flex flex-col gap-2 px-5 py-4 rounded-xl transition-all duration-200 w-full"
                     style={{
-                      backgroundColor: "rgba(255,255,255,0.03)",
-                      border: "1px solid rgba(124,58,237,0.2)",
+                      backgroundColor: "rgba(124,58,237,0.04)",
+                      border: "1px solid rgba(124,58,237,0.15)",
                     }}
                   >
                     <span
                       className="text-sm font-semibold transition-colors duration-200 group-hover:text-purple-400"
-                      style={{ fontFamily: "Inter, sans-serif", color: "#E5E7EB" }}
+                      style={{ fontFamily: "Inter, sans-serif", color: "#1E1B2E" }}
                     >
                       {link.label}
                     </span>
                     {link.description && (
                       <span
                         className="text-xs leading-relaxed"
-                        style={{ color: "rgba(229,231,235,0.4)", fontFamily: "Inter, sans-serif" }}
+                        style={{ color: "rgba(30,27,46,0.5)", fontFamily: "Inter, sans-serif" }}
                       >
                         {link.description}
                       </span>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
+import GetInTouchMarquee from "@/components/GetInTouchMarquee";
 import { FileText, Shield, Scale, Code2, RefreshCw, Mail, Phone, AlertTriangle, Lock, Users } from "lucide-react";
 import Link from "next/link";
 
@@ -639,6 +640,8 @@ export default function TermsOfServicePage() {
         </div>
         </div>
       </div>
+
+      <GetInTouchMarquee text="CONNECT WITH US" outlined duration={48} />
 
       <Footer
         email="sales@echo5digital.com"

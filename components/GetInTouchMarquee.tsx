@@ -3,10 +3,19 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-const ROW = Array.from({ length: 8 }, () => "GET IN TOUCH");
-
-export default function GetInTouchMarquee({ variant = "dark" }: { variant?: "dark" | "light" }) {
+export default function GetInTouchMarquee({
+  variant = "dark",
+  text = "GET IN TOUCH",
+  outlined = false,
+  duration = 22,
+}: {
+  variant?: "dark" | "light";
+  text?: string;
+  outlined?: boolean;
+  duration?: number;
+}) {
   const isLight = variant === "light";
+  const ROW = Array.from({ length: 8 }, () => text);
   return (
     <Link
       href="/contact"
@@ -21,18 +30,30 @@ export default function GetInTouchMarquee({ variant = "dark" }: { variant?: "dar
         className="flex items-center whitespace-nowrap py-6 md:py-8"
         style={{ width: "max-content" }}
         animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+        transition={{ duration, repeat: Infinity, ease: "linear" }}
       >
         {[...ROW, ...ROW].map((label, i) => (
           <span key={i} className="flex items-center shrink-0">
             <span
               className={`text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight transition-colors duration-300 ${
-                isLight ? "group-hover:text-[#15172B]" : "group-hover:text-white"
+                outlined
+                  ? ""
+                  : isLight
+                  ? "group-hover:text-[#15172B]"
+                  : "group-hover:text-white"
               }`}
-              style={{
-                fontFamily: "Space Grotesk, sans-serif",
-                color: isLight ? "rgba(21,23,43,0.35)" : "rgba(229,231,235,0.5)",
-              }}
+              style={
+                outlined
+                  ? {
+                      fontFamily: "Space Grotesk, sans-serif",
+                      color: "transparent",
+                      WebkitTextStroke: isLight ? "1px rgba(21,23,43,0.45)" : "1px rgba(229,231,235,0.55)",
+                    }
+                  : {
+                      fontFamily: "Space Grotesk, sans-serif",
+                      color: isLight ? "rgba(21,23,43,0.35)" : "rgba(229,231,235,0.5)",
+                    }
+              }
             >
               {label}
             </span>

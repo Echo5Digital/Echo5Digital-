@@ -27,6 +27,7 @@ const servicesSubLinks: NavLink[] = [
   { label: 'Meta Ads', route: '/services/meta-ads' },
   { label: 'Social Media Marketing', route: '/services/social-media-marketing' },
   { label: 'Local SEO', route: '/services/local-seo' },
+  { label: 'Content Marketing', route: '/services/content-marketing' },
 ];
 
 const industriesSubLinks: NavLink[] = [

@@ -920,12 +920,12 @@ export default function AboutClient({ faqData }: Props) {
       </Section>
 
       {/* ─── LOCAL RELEVANCE ─────────────────────────────────────────────── */}
-      <Section background="default" spacing="md" maxWidth="xl" withDivider>
+      <Section background="lavender" spacing="md" maxWidth="xl" withDivider>
         <div
           className="rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start"
           style={{
-            background: "rgba(255,255,255,0.03)",
-            border: "1px solid rgba(107,78,240,0.2)",
+            background: "rgba(124,58,237,0.06)",
+            border: "1px solid rgba(124,58,237,0.15)",
           }}
         >
           <div
@@ -935,18 +935,18 @@ export default function AboutClient({ faqData }: Props) {
               border: "1px solid rgba(139,92,246,0.3)",
             }}
           >
-            <MapPin size={22} style={{ color: "#8B5CF6" }} />
+            <MapPin size={22} style={{ color: "#7C3AED" }} />
           </div>
           <div>
             <h2
               className="text-xl font-bold mb-3"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1E1B2E" }}
             >
               Serving Houston, Sugar Land, and Beyond
             </h2>
             <p
               className="text-sm leading-relaxed"
-              style={{ color: "rgba(229,231,235,0.7)", fontFamily: "Inter, sans-serif" }}
+              style={{ color: "rgba(30,27,46,0.7)", fontFamily: "Inter, sans-serif" }}
             >
               Echo5 Digital is locally rooted in Houston and Sugar Land, Texas,
               giving it direct familiarity with the competitive dynamics facing

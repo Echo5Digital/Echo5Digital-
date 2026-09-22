@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
+import GetInTouchMarquee from "@/components/GetInTouchMarquee";
 import { BlurIn } from "@/components/ScrollFX";
 import {
   Shield,
@@ -810,6 +811,8 @@ export default function PrivacyPolicyPage() {
           </div>
         </Section>
       </main>
+
+      <GetInTouchMarquee text="CONNECT WITH US" outlined duration={48} />
 
       <Footer
         email="sales@echo5digital.com"
