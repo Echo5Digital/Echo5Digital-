@@ -8,7 +8,7 @@ import ContactForm from "@/components/ContactForm";
 import TeamSection from "@/components/TeamSection";
 import IndustriesWeGrow from "@/components/IndustriesWeGrow";
 import TrustedByShowcase from "@/components/TrustedByShowcase";
-import { RevealMask, BlurIn, ProcessStepsRail, ProcessStepCard, DiagonalWipe, SplitClash, DropInRow } from "@/components/ScrollFX";
+import { RevealMask, BlurIn, ProcessStepsRail, ProcessStepCard, DiagonalWipe, SplitClash, DropInRow, TiltCard, WordStagger } from "@/components/ScrollFX";
 import {
   Bot,
   Search,
@@ -858,22 +858,28 @@ export default function HomeClient({ faqData }: HomeClientProps) {
           </div>
         </Section>
 
-        {/* ── AI MARKETING EMPLOYEE PRODUCT TIERS ─────────────────────── */}
-        <Section background="gradient" spacing="lg" maxWidth="3xl" withDivider>
-          <BlurIn>
-            <div className="text-center mb-12">
-              <h2
-                className="font-black leading-[1.04] tracking-tight mb-4"
-                style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#E5E7EB" }}
-              >
-                AI Marketing Employee Tiers
-              </h2>
-              <p className="text-base max-w-xl mx-auto" style={{ color: "#9CA3AF" }}>
-                Choose the growth level that fits your business. All plans include AI execution and human oversight.
-              </p>
-            </div>
+        {/* ── AI MARKETING EMPLOYEE PRODUCT TIERS (LIGHT STYLE) ────────── */}
+        <Section background="lavender" spacing="xl" maxWidth="3xl">
+          <div className="text-center mb-4">
+            <WordStagger
+              text="AI Marketing Employee Tiers"
+              className="font-black leading-[1.04] tracking-tight [font-family:'Space_Grotesk',sans-serif] text-[clamp(2.4rem,5vw,4rem)] text-[#1E1B2E]"
+              wordClassName="font-black"
+            />
+          </div>
+          <BlurIn delay={0.15}>
+            <p className="text-base max-w-xl mx-auto text-center mb-16" style={{ color: "rgba(30,27,46,0.65)" }}>
+              Choose the growth level that fits your business. All plans include AI execution and human oversight.
+            </p>
           </BlurIn>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <ProcessStepsRail
+            columns={3}
+            lineColor="rgba(124,58,237,0.18)"
+            fillGradient="linear-gradient(90deg, #7C3AED, #A855F7)"
+            dotColor="#8B5CF6"
+            className="grid grid-cols-1 md:grid-cols-3 gap-7"
+          >
             {[
               {
                 name: "Starter",
@@ -918,33 +924,25 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 popular: false,
               },
             ].map((tier, i) => (
-              <BlurIn key={tier.name} delay={i * 0.1}>
+              <TiltCard key={tier.name} index={i} className="h-full">
                 <div
-                  className="group relative flex flex-col rounded-2xl p-7 h-full transition-all duration-300 hover:-translate-y-2"
+                  className="glow-border-card group relative flex flex-col rounded-2xl p-8 h-full transition-shadow duration-300"
                   style={{
-                    background: tier.popular
-                      ? "linear-gradient(135deg, rgba(124,58,237,0.22) 0%, rgba(168,85,247,0.14) 100%)"
-                      : "rgba(255,255,255,0.04)",
-                    border: tier.popular
-                      ? "2px solid rgba(168,85,247,0.55)"
-                      : "1px solid rgba(124,58,237,0.25)",
-                    boxShadow: tier.popular ? "0 0 40px rgba(124,58,237,0.3)" : "none",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLDivElement).style.borderColor = `${tier.color}90`;
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = tier.popular
-                      ? "0 20px 55px rgba(124,58,237,0.45)"
-                      : `0 20px 45px -8px ${tier.color}55`;
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLDivElement).style.borderColor = tier.popular
-                      ? "rgba(168,85,247,0.55)"
-                      : "rgba(124,58,237,0.25)";
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = tier.popular
-                      ? "0 0 40px rgba(124,58,237,0.3)"
-                      : "none";
+                    borderColor: tier.popular ? "rgba(124,58,237,0.35)" : undefined,
+                    boxShadow: tier.popular
+                      ? "0 25px 60px -15px rgba(124,58,237,0.35)"
+                      : "0 10px 35px -12px rgba(30,27,46,0.12)",
                   }}
                 >
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 rounded-2xl overflow-hidden -z-10"
+                    style={{
+                      backgroundImage: "linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.94) 55%, rgba(255,255,255,0.98) 100%), url('/hh.jpeg')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "top center",
+                    }}
+                  />
                   {tier.popular && (
                     <div
                       className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold text-white"
@@ -955,11 +953,11 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                   )}
                   <h3
                     className="text-xl font-bold mb-1"
-                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1E1B2E" }}
                   >
                     {tier.name}
                   </h3>
-                  <p className="text-sm mb-6" style={{ color: "#A855F7" }}>
+                  <p className="text-sm mb-6" style={{ color: "#7C3AED" }}>
                     {tier.tagline}
                   </p>
                   <ul className="space-y-3 flex-1 mb-8">
@@ -968,9 +966,9 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                         <CheckCircle
                           size={15}
                           className="transition-transform duration-200 group-hover:scale-125"
-                          style={{ color: "#A855F7", flexShrink: 0, marginTop: 2 }}
+                          style={{ color: "#7C3AED", flexShrink: 0, marginTop: 2 }}
                         />
-                        <span className="text-sm" style={{ color: "#D1D5DB" }}>
+                        <span className="text-sm" style={{ color: "rgba(30,27,46,0.75)" }}>
                           {f}
                         </span>
                       </li>
@@ -981,23 +979,26 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                     className="w-full py-3 rounded-full text-center text-sm font-semibold text-white transition-all duration-200 hover:brightness-110 hover:scale-[1.03] block"
                     style={{
                       background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-                      boxShadow: "0 0 18px rgba(124,58,237,0.4)",
+                      boxShadow: "0 0 18px rgba(124,58,237,0.35)",
                       fontFamily: "Space Grotesk, sans-serif",
                     }}
                   >
                     {tier.cta} →
                   </Link>
                 </div>
-              </BlurIn>
+              </TiltCard>
             ))}
-          </div>
-          <p className="text-center text-xs mt-6" style={{ color: "#6B7280" }}>
-            Full pricing and plan details available on the{" "}
-            <Link href="/pricing" style={{ color: "#A855F7" }}>
-              Pricing page
-            </Link>
-            .
-          </p>
+          </ProcessStepsRail>
+
+          <BlurIn delay={0.3}>
+            <p className="text-center text-xs mt-6" style={{ color: "rgba(30,27,46,0.55)" }}>
+              Full pricing and plan details available on the{" "}
+              <Link href="/pricing" style={{ color: "#7C3AED" }}>
+                Pricing page
+              </Link>
+              .
+            </p>
+          </BlurIn>
         </Section>
 
         {/* ── INTERNAL GROWTH SYSTEM DIAGRAM ───────────────────────────── */}

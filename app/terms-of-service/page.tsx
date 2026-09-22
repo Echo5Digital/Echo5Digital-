@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
 import { FileText, Shield, Scale, Code2, RefreshCw, Mail, Phone, AlertTriangle, Lock, Users } from "lucide-react";
 import Link from "next/link";
 
@@ -133,11 +132,6 @@ const sections = [
 ];
 
 export default function TermsOfServicePage() {
-  const breadcrumbItems = [
-    { label: "Home", href: "/" },
-    { label: "Terms of Service", href: "/terms-of-service" },
-  ];
-
   return (
     <main style={{ backgroundColor: "#0A0F1E", minHeight: "100vh" }}>
       <style>{`
@@ -153,10 +147,31 @@ export default function TermsOfServicePage() {
         }
       `}</style>
       <Header />
-      <Breadcrumbs items={breadcrumbItems} />
 
       {/* Page Header */}
-      <Section background="gradient" spacing="md" maxWidth="xl" centered>
+      <div className="relative overflow-hidden">
+        {/* Background image, full-bleed across the entire banner */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              "url('/daf6dc925417faff033946b31a0c674b.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: 0.5,
+          }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(10,15,30,0.6) 0%, rgba(10,15,30,0.88) 70%, #0A0F1E 100%)",
+          }}
+        />
+
+        <Section background="transparent" spacing="md" maxWidth="xl" centered className="relative">
         <div className="relative">
           {/* Decorative glow */}
           <div
@@ -261,19 +276,20 @@ export default function TermsOfServicePage() {
             </div>
           </div>
         </div>
-      </Section>
+        </Section>
+      </div>
 
       {/* Main Content */}
-      <Section background="default" spacing="md" maxWidth="xl">
+      <div className="relative w-full py-12 md:py-20 bg-gradient-to-br from-white via-[#F1EDFB] to-[#E9E1FA]">
+        <div className="relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
           {/* Sticky Table of Contents (desktop) */}
           <aside className="hidden lg:block lg:col-span-1">
             <div
               className="sticky top-24 rounded-2xl p-5"
               style={{
-                background: "rgba(255,255,255,0.03)",
+                background: "#0F1017",
                 border: "1px solid rgba(124,58,237,0.2)",
-                backdropFilter: "blur(12px)",
               }}
             >
               <h2
@@ -321,7 +337,16 @@ export default function TermsOfServicePage() {
           </aside>
 
           {/* Terms Sections */}
-          <div className="lg:col-span-3 space-y-8">
+          <div
+            className="lg:col-span-3 space-y-8"
+            style={
+              {
+                "--tos-strong": "#1E1B2E",
+                "--tos-muted": "rgba(30,27,46,0.72)",
+                "--tos-faint": "rgba(30,27,46,0.55)",
+              } as React.CSSProperties
+            }
+          >
             {sections.map((sec) => {
               const Icon = sec.icon;
               return (
@@ -330,9 +355,8 @@ export default function TermsOfServicePage() {
                   id={sec.id}
                   className="rounded-2xl p-7 md:p-8"
                   style={{
-                    background: "rgba(255,255,255,0.025)",
-                    border: "1px solid rgba(124,58,237,0.2)",
-                    backdropFilter: "blur(8px)",
+                    background: "rgba(124,58,237,0.05)",
+                    border: "1px solid rgba(124,58,237,0.15)",
                   }}
                 >
                   <div className="flex items-start gap-4 mb-5">
@@ -350,7 +374,7 @@ export default function TermsOfServicePage() {
                       className="text-xl md:text-2xl font-bold"
                       style={{
                         fontFamily: "Space Grotesk, sans-serif",
-                        color: "#E5E7EB",
+                        color: "var(--tos-strong)",
                         letterSpacing: "-0.01em",
                       }}
                     >
@@ -367,7 +391,7 @@ export default function TermsOfServicePage() {
                           className="text-sm md:text-base leading-relaxed"
                           style={{
                             fontFamily: "Inter, sans-serif",
-                            color: "rgba(229,231,235,0.7)",
+                            color: "var(--tos-muted)",
                           }}
                         >
                           {para}
@@ -383,7 +407,7 @@ export default function TermsOfServicePage() {
                             className="flex items-start gap-3 text-sm md:text-base"
                             style={{
                               fontFamily: "Inter, sans-serif",
-                              color: "rgba(229,231,235,0.7)",
+                              color: "var(--tos-muted)",
                             }}
                           >
                             <span
@@ -404,7 +428,7 @@ export default function TermsOfServicePage() {
                           className="text-sm md:text-base leading-relaxed"
                           style={{
                             fontFamily: "Inter, sans-serif",
-                            color: "rgba(229,231,235,0.7)",
+                            color: "var(--tos-muted)",
                           }}
                         >
                           {para}
@@ -418,7 +442,7 @@ export default function TermsOfServicePage() {
                             className="text-base font-semibold mb-3"
                             style={{
                               fontFamily: "Space Grotesk, sans-serif",
-                              color: "#E5E7EB",
+                              color: "var(--tos-strong)",
                             }}
                           >
                             {sub.heading}
@@ -430,7 +454,7 @@ export default function TermsOfServicePage() {
                                 className="flex items-start gap-3 text-sm md:text-base"
                                 style={{
                                   fontFamily: "Inter, sans-serif",
-                                  color: "rgba(229,231,235,0.7)",
+                                  color: "var(--tos-muted)",
                                 }}
                               >
                                 <span
@@ -477,7 +501,7 @@ export default function TermsOfServicePage() {
                   className="text-xl md:text-2xl font-bold"
                   style={{
                     fontFamily: "Space Grotesk, sans-serif",
-                    color: "#E5E7EB",
+                    color: "var(--tos-strong)",
                     letterSpacing: "-0.01em",
                   }}
                 >
@@ -490,7 +514,7 @@ export default function TermsOfServicePage() {
                   className="text-sm md:text-base leading-relaxed"
                   style={{
                     fontFamily: "Inter, sans-serif",
-                    color: "rgba(229,231,235,0.7)",
+                    color: "var(--tos-muted)",
                   }}
                 >
                   If you have any questions, concerns, or requests regarding
@@ -501,7 +525,7 @@ export default function TermsOfServicePage() {
                 <div
                   className="rounded-xl p-5 space-y-4"
                   style={{
-                    background: "rgba(10,15,30,0.5)",
+                    background: "rgba(255,255,255,0.55)",
                     border: "1px solid rgba(124,58,237,0.2)",
                   }}
                 >
@@ -509,7 +533,7 @@ export default function TermsOfServicePage() {
                     className="text-base font-semibold"
                     style={{
                       fontFamily: "Space Grotesk, sans-serif",
-                      color: "#E5E7EB",
+                      color: "var(--tos-strong)",
                     }}
                   >
                     Echo5 Digital
@@ -521,7 +545,7 @@ export default function TermsOfServicePage() {
                       className="tos-contact-link flex items-center gap-3 text-sm transition-colors duration-200"
                       style={{
                         fontFamily: "Inter, sans-serif",
-                        color: "rgba(229,231,235,0.7)",
+                        color: "var(--tos-muted)",
                         textDecoration: "none",
                       }}
                     >
@@ -538,7 +562,7 @@ export default function TermsOfServicePage() {
                       className="tos-contact-link flex items-center gap-3 text-sm transition-colors duration-200"
                       style={{
                         fontFamily: "Inter, sans-serif",
-                        color: "rgba(229,231,235,0.7)",
+                        color: "var(--tos-muted)",
                         textDecoration: "none",
                       }}
                     >
@@ -556,7 +580,7 @@ export default function TermsOfServicePage() {
                   className="text-sm leading-relaxed"
                   style={{
                     fontFamily: "Inter, sans-serif",
-                    color: "rgba(229,231,235,0.55)",
+                    color: "var(--tos-faint)",
                   }}
                 >
                   You may also reach us through our{" "}
@@ -575,7 +599,7 @@ export default function TermsOfServicePage() {
             <div
               className="rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4"
               style={{
-                background: "rgba(255,255,255,0.02)",
+                background: "rgba(124,58,237,0.05)",
                 border: "1px solid rgba(124,58,237,0.15)",
               }}
             >
@@ -583,7 +607,7 @@ export default function TermsOfServicePage() {
                 className="text-sm"
                 style={{
                   fontFamily: "Inter, sans-serif",
-                  color: "rgba(229,231,235,0.5)",
+                  color: "var(--tos-faint)",
                 }}
               >
                 Also see our{" "}
@@ -613,7 +637,8 @@ export default function TermsOfServicePage() {
             </div>
           </div>
         </div>
-      </Section>
+        </div>
+      </div>
 
       <Footer
         email="sales@echo5digital.com"

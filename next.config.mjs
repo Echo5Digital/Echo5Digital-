@@ -38,6 +38,11 @@ const nextConfig = {
         destination: "/web-design",
         permanent: true,
       },
+      {
+        source: "/influencer-marketing-agency",
+        destination: "/social-media-marketing",
+        permanent: true,
+      },
     ];
   },
 };

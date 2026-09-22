@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import Breadcrumbs from "@/components/Breadcrumbs";
+import { BlurIn } from "@/components/ScrollFX";
 import {
   Shield,
   Database,
@@ -73,8 +73,8 @@ const sections = [
                 style={{ backgroundColor: "#A855F7" }}
                 aria-hidden="true"
               />
-              <span style={{ color: "#9CA3AF" }}>
-                <strong style={{ color: "#E5E7EB" }}>{label}:</strong> {detail}
+              <span style={{ color: "var(--policy-muted)" }}>
+                <strong style={{ color: "var(--policy-strong)" }}>{label}:</strong> {detail}
               </span>
             </li>
           ))}
@@ -135,8 +135,8 @@ const sections = [
                 style={{ backgroundColor: "#A855F7" }}
                 aria-hidden="true"
               />
-              <span style={{ color: "#9CA3AF" }}>
-                <strong style={{ color: "#E5E7EB" }}>{label}:</strong> {detail}
+              <span style={{ color: "var(--policy-muted)" }}>
+                <strong style={{ color: "var(--policy-strong)" }}>{label}:</strong> {detail}
               </span>
             </li>
           ))}
@@ -150,7 +150,7 @@ const sections = [
     title: "Cookies and Tracking Technologies",
     content: (
       <>
-        <p className="mb-4" style={{ color: "#9CA3AF" }}>
+        <p className="mb-4" style={{ color: "var(--policy-muted)" }}>
           Our website uses cookies and similar tracking technologies to enhance your
           browsing experience, analyze site traffic, and support our marketing efforts.
         </p>
@@ -191,13 +191,13 @@ const sections = [
               >
                 {type}
               </h4>
-              <p className="text-sm" style={{ color: "#9CA3AF" }}>
+              <p className="text-sm" style={{ color: "var(--policy-muted)" }}>
                 {desc}
               </p>
             </div>
           ))}
         </div>
-        <p className="mt-5 text-sm" style={{ color: "#9CA3AF" }}>
+        <p className="mt-5 text-sm" style={{ color: "var(--policy-muted)" }}>
           Most browsers allow you to control cookies through their settings. Disabling
           certain cookies may affect website functionality. For more information on
           managing cookies, visit{" "}
@@ -233,12 +233,12 @@ const sections = [
             className="flex-shrink-0 mt-0.5"
             style={{ color: "#A855F7" }}
           />
-          <p className="text-sm font-medium" style={{ color: "#E5E7EB" }}>
+          <p className="text-sm font-medium" style={{ color: "var(--policy-strong)" }}>
             Echo5 Digital does <strong>not</strong> sell, rent, or trade your personal
             information to third parties for their own marketing purposes.
           </p>
         </div>
-        <p className="mb-4" style={{ color: "#9CA3AF" }}>
+        <p className="mb-4" style={{ color: "var(--policy-muted)" }}>
           We may share your data with trusted third-party service providers who assist
           us in operating our website and delivering our services, strictly on a
           need-to-know basis and subject to appropriate data protection obligations.
@@ -259,13 +259,13 @@ const sections = [
                 style={{ backgroundColor: "#A855F7" }}
                 aria-hidden="true"
               />
-              <span className="text-sm" style={{ color: "#9CA3AF" }}>
+              <span className="text-sm" style={{ color: "var(--policy-muted)" }}>
                 {item}
               </span>
             </li>
           ))}
         </ul>
-        <p className="text-sm" style={{ color: "#9CA3AF" }}>
+        <p className="text-sm" style={{ color: "var(--policy-muted)" }}>
           We may also disclose information where required by law, to protect the rights
           or safety of Echo5 Digital or others, or in connection with a business
           transfer or acquisition.
@@ -279,7 +279,7 @@ const sections = [
     title: "Data Retention",
     content: (
       <>
-        <p className="mb-4" style={{ color: "#9CA3AF" }}>
+        <p className="mb-4" style={{ color: "var(--policy-muted)" }}>
           We retain personal data only for as long as necessary to fulfill the purposes
           described in this policy, unless a longer retention period is required or
           permitted by law. The criteria we use to determine retention periods include:
@@ -313,13 +313,13 @@ const sections = [
                 style={{ backgroundColor: "#A855F7" }}
                 aria-hidden="true"
               />
-              <span style={{ color: "#9CA3AF" }}>
-                <strong style={{ color: "#E5E7EB" }}>{label}:</strong> {detail}
+              <span style={{ color: "var(--policy-muted)" }}>
+                <strong style={{ color: "var(--policy-strong)" }}>{label}:</strong> {detail}
               </span>
             </li>
           ))}
         </ul>
-        <p className="text-sm" style={{ color: "#9CA3AF" }}>
+        <p className="text-sm" style={{ color: "var(--policy-muted)" }}>
           When data is no longer required, we delete or anonymize it in accordance
           with our internal data management procedures.
         </p>
@@ -332,7 +332,7 @@ const sections = [
     title: "Your Rights",
     content: (
       <>
-        <p className="mb-4" style={{ color: "#9CA3AF" }}>
+        <p className="mb-4" style={{ color: "var(--policy-muted)" }}>
           Depending on your location, you may have the following rights regarding your
           personal data:
         </p>
@@ -380,13 +380,13 @@ const sections = [
               >
                 {right}
               </h4>
-              <p className="text-sm" style={{ color: "#9CA3AF" }}>
+              <p className="text-sm" style={{ color: "var(--policy-muted)" }}>
                 {desc}
               </p>
             </div>
           ))}
         </div>
-        <p className="text-sm" style={{ color: "#9CA3AF" }}>
+        <p className="text-sm" style={{ color: "var(--policy-muted)" }}>
           To exercise any of these rights, please contact us using the details in the
           Contact Information section below. We will respond to your request within a
           reasonable timeframe and in accordance with applicable law. We may need to
@@ -410,27 +410,41 @@ export default function PrivacyPolicyPage() {
       <Header />
 
       <main>
-        {/* Breadcrumbs */}
-        <Breadcrumbs
-          items={[
-            { label: "Home", href: "/" },
-            { label: "Privacy Policy", href: "/privacy-policy" },
-          ]}
-        />
-
         {/* Page Header */}
-        <Section background="gradient" spacing="md" maxWidth="xl" centered>
-          {/* Decorative orb */}
+        <div className="relative overflow-hidden">
+          {/* Background image, full-bleed across the entire banner */}
           <div
             aria-hidden="true"
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] pointer-events-none"
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage:
+                "url('/technology-network-background-connection-cyber-space-ai-generative-100kb.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              opacity: 0.35,
+            }}
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                "radial-gradient(ellipse, rgba(124,58,237,0.18) 0%, transparent 70%)",
+                "linear-gradient(180deg, rgba(10,15,30,0.55) 0%, rgba(10,15,30,0.85) 70%, #0A0F1E 100%)",
             }}
           />
 
-          <div className="relative z-10">
+          <Section background="transparent" spacing="md" maxWidth="xl" centered className="relative">
+            {/* Decorative orb */}
+            <div
+              aria-hidden="true"
+              className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(ellipse, rgba(124,58,237,0.18) 0%, transparent 70%)",
+              }}
+            />
+
+            <div className="relative z-10">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full"
               style={{
@@ -492,17 +506,18 @@ export default function PrivacyPolicyPage() {
               </div>
             </div>
           </div>
-        </Section>
+          </Section>
+        </div>
 
         {/* Introduction */}
-        <Section background="default" spacing="sm" maxWidth="xl" withDivider>
+        <Section background="lavender" spacing="sm" maxWidth="xl" withDivider>
           <div className="max-w-4xl mx-auto">
             <div
               className="rounded-2xl p-8"
               style={{
                 background:
-                  "linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(168,85,247,0.05) 100%)",
-                border: "1px solid rgba(124,58,237,0.25)",
+                  "linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(168,85,247,0.08) 100%)",
+                border: "1px solid rgba(124,58,237,0.2)",
               }}
             >
               <div className="flex items-center gap-3 mb-4">
@@ -513,22 +528,21 @@ export default function PrivacyPolicyPage() {
                     border: "1px solid rgba(168,85,247,0.3)",
                   }}
                 >
-                  <Shield size={20} style={{ color: "#A855F7" }} />
+                  <Shield size={20} style={{ color: "#7C3AED" }} />
                 </div>
                 <h2
                   className="text-2xl font-bold"
-                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
+                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1E1B2E" }}
                 >
                   Introduction
                 </h2>
               </div>
-              <div className="space-y-4 text-base leading-relaxed" style={{ color: "#9CA3AF" }}>
+              <div className="space-y-4 text-base leading-relaxed" style={{ color: "rgba(30,27,46,0.7)" }}>
                 <p>
-                  Echo5 Digital (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) is an
-                  AI-powered digital marketing agency and web development company headquartered in
-                  Houston / Sugar Land, Texas. We provide services including digital marketing,
-                  search engine optimization, web design, web development, custom programming, and
-                  related solutions.
+                  Echo5 Digital is an AI-powered digital marketing agency and web development
+                  company headquartered in Houston / Sugar Land, Texas. We provide services
+                  including digital marketing, search engine optimization, web design, web
+                  development, custom programming, and related solutions.
                 </p>
                 <p>
                   This Privacy Policy describes how we collect, use, disclose, and protect
@@ -547,8 +561,8 @@ export default function PrivacyPolicyPage() {
                   contact us at{" "}
                   <a
                     href="mailto:sales@echo5digital.com"
-                    className="underline underline-offset-2 transition-colors hover:text-white"
-                    style={{ color: "#A855F7" }}
+                    className="underline underline-offset-2 transition-colors hover:text-[#1E1B2E]"
+                    style={{ color: "#7C3AED" }}
                   >
                     sales@echo5digital.com
                   </a>
@@ -560,53 +574,78 @@ export default function PrivacyPolicyPage() {
         </Section>
 
         {/* Main Policy Sections */}
-        <Section background="default" spacing="md" maxWidth="xl">
-          <div className="max-w-4xl mx-auto space-y-10">
-            {sections.map(({ id, icon: Icon, title, content }) => (
-              <div
-                key={id}
-                id={id}
-                className="rounded-2xl overflow-hidden"
-                style={{
-                  background: "rgba(255,255,255,0.02)",
-                  border: "1px solid rgba(124,58,237,0.2)",
-                }}
-              >
-                {/* Section header bar */}
+        {sections.map(({ id, icon: Icon, title, content }, i) => {
+          const isLight = i % 2 === 1;
+          return (
+            <Section
+              key={id}
+              background={isLight ? "lavender" : "default"}
+              spacing="md"
+              maxWidth="xl"
+              style={
+                {
+                  "--policy-muted": isLight ? "rgba(30,27,46,0.7)" : "#9CA3AF",
+                  "--policy-strong": isLight ? "#1E1B2E" : "#E5E7EB",
+                } as React.CSSProperties
+              }
+            >
+              <BlurIn className="max-w-4xl mx-auto">
                 <div
-                  className="flex items-center gap-3 px-6 py-4"
+                  id={id}
+                  className={[
+                    "rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1",
+                    isLight
+                      ? "hover:border-[rgba(124,58,237,0.4)] hover:shadow-[0_16px_40px_-12px_rgba(124,58,237,0.25)]"
+                      : "hover:border-[rgba(168,85,247,0.5)] hover:shadow-[0_16px_40px_-12px_rgba(124,58,237,0.35)]",
+                  ].join(" ")}
                   style={{
-                    background:
-                      "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.06) 100%)",
-                    borderBottom: "1px solid rgba(124,58,237,0.15)",
+                    background: isLight
+                      ? "rgba(124,58,237,0.04)"
+                      : "rgba(255,255,255,0.02)",
+                    border: isLight
+                      ? "1px solid rgba(124,58,237,0.15)"
+                      : "1px solid rgba(124,58,237,0.2)",
                   }}
                 >
+                  {/* Section header bar */}
                   <div
-                    className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                    className="flex items-center gap-3 px-6 py-4"
                     style={{
-                      background:
-                        "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
-                      border: "1px solid rgba(168,85,247,0.3)",
+                      background: isLight
+                        ? "linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(168,85,247,0.05) 100%)"
+                        : "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.06) 100%)",
+                      borderBottom: isLight
+                        ? "1px solid rgba(124,58,237,0.12)"
+                        : "1px solid rgba(124,58,237,0.15)",
                     }}
                   >
-                    <Icon size={18} style={{ color: "#A855F7" }} strokeWidth={1.8} />
+                    <div
+                      className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15))",
+                        border: "1px solid rgba(168,85,247,0.3)",
+                      }}
+                    >
+                      <Icon size={18} style={{ color: isLight ? "#7C3AED" : "#A855F7" }} strokeWidth={1.8} />
+                    </div>
+                    <h2
+                      className="text-xl font-bold"
+                      style={{ fontFamily: "Space Grotesk, sans-serif", color: "var(--policy-strong)" }}
+                    >
+                      {title}
+                    </h2>
                   </div>
-                  <h2
-                    className="text-xl font-bold"
-                    style={{ fontFamily: "Space Grotesk, sans-serif", color: "#E5E7EB" }}
-                  >
-                    {title}
-                  </h2>
-                </div>
 
-                {/* Section body */}
-                <div className="px-6 py-6 text-sm leading-relaxed">
-                  {content}
+                  {/* Section body */}
+                  <div className="px-6 py-6 text-sm leading-relaxed">
+                    {content}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </Section>
+              </BlurIn>
+            </Section>
+          );
+        })}
 
         {/* Contact Information */}
         <Section background="elevated" spacing="md" maxWidth="xl" withDivider>

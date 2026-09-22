@@ -843,7 +843,7 @@ export default function PricingClient({ faqData }: PricingClientProps) {
             className="text-3xl md:text-4xl font-bold mb-4"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1E1B2E" }}
           >
-            À La Carte Services
+            Services You Can Choose Separately
           </h2>
           <p
             className="text-base max-w-2xl mx-auto"

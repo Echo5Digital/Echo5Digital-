@@ -4,6 +4,7 @@ interface SectionProps {
   children: React.ReactNode;
   id?: string;
   className?: string;
+  style?: React.CSSProperties;
   background?: "default" | "elevated" | "gradient" | "transparent" | "lavender";
   spacing?: "sm" | "md" | "lg" | "xl";
   maxWidth?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full";
@@ -42,6 +43,7 @@ const Section: React.FC<SectionProps> = ({
   children,
   id,
   className = "",
+  style,
   background = "default",
   spacing = "lg",
   maxWidth = "xl",
@@ -52,6 +54,7 @@ const Section: React.FC<SectionProps> = ({
   return (
     <Tag
       id={id}
+      style={style}
       className={[
         "relative w-full overflow-hidden",
         backgroundStyles[background],
